@@ -12,6 +12,7 @@ namespace CashandCarry
 
         public static int insert(string query)
         {
+            string testing = "";
             string constring = @"Data Source=SHOAIB-PC\SQLEXPRESS;Database=CashCarry;integrated security=true";
             SqlConnection con = new SqlConnection(constring);
             try
