@@ -2,6 +2,7 @@
 using CashandCarry.Model;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -19,6 +20,20 @@ namespace CashandCarry.BL
         public string Email	{get;set;}
         public int ZoneID { get; set; }
 
+        public List<tbl_Zone> GetZone()
+        {
+            using(var context =new CashCarryEntities3())
+            {
+                return context.tbl_Zone.ToList();
+            }
+        }
+        public List<tbl_CustomerTypes> GetCusType()
+        {
+            using(var context=new CashCarryEntities3())
+            {
+                return context.tbl_CustomerTypes.ToList();
+            }
+        }
         public void Save()
         {
            using(var context=new CashCarryEntities3())
@@ -68,14 +83,20 @@ namespace CashandCarry.BL
            }
         }
 
-        public System.Data.DataTable Addnew()
+        public DataTable Addnew()
         {
-            throw new NotImplementedException();
+            string spName = "SP_Cus_AddNew";
+            SqlParameter[] prm = new SqlParameter[1];
+            prm[0] = new SqlParameter("@CustomerID", CustomerID);
+            return DB.SelectTableWithSP(spName, prm);
         }
 
-        public System.Data.DataTable Search()
+        public tbl_Customer Search()
         {
-            throw new NotImplementedException();
+           using(var context=new CashCarryEntities3())
+           {
+               return context.tbl_Customer.Where(a => a.CustomerID == CustomerID).FirstOrDefault();
+           }
         }
 
         public List<View_tbl_Customer> Select()

@@ -25,26 +25,53 @@ namespace CashandCarry.Configuration
             LoadZoneID();
             LoadCusType();
             LoadData();
+            FormDisable();
         }
 
-        private void txtSearch_TextChanged(object sender, EventArgs e)
+        private void FormDisable()
         {
-
+            txtCusID.Enabled = false;
+            txtCusName.Enabled = false;
+            txtEmail.Enabled = false;
+            txtCusType.Enabled = false;
+            txtZoneID.Enabled = false;
+            txtContact.Enabled = false;
+            txtAddress.Enabled = false;
+            btnUpdate.Enabled = false;
+            btnSave.Enabled = false;
+            btnUpdate.Enabled = false;
+            btnDelete.Enabled = false;
+            btnClear.Enabled = false;
         }
-
-        private void label13_Click(object sender, EventArgs e)
+        private void FormEnable()
         {
-
+            txtCusName.Enabled = true;
+            txtEmail.Enabled = true;
+            txtCusType.Enabled = true;
+            txtZoneID.Enabled = true;
+            txtContact.Enabled = true;
+            txtAddress.Enabled = true;
+            
+            
         }
 
+       
         private void btnAddnew_Click(object sender, EventArgs e)
         {
+            CustomerBL objCus = new CustomerBL();
+            DataTable dt = objCus.Addnew();
+            if(dt.Rows.Count>0)
+            {
+                txtCusID.Text = Convert.ToString(dt.Rows[0]["CustomerID"]);
+            }
+            FormEnable();
+            btnSave.Enabled = true;
             txtCusName.Focus();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            string message = "Are You Sure To Delete  Zone " + txtCusName.Text+ "?";
+            string message = "Are You Sure To Delete  Customer " + txtCusName.Text+ "?";
             if (MessageBox.Show(message, "Delete Alert", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
                 CustomerBL objCus = new  CustomerBL()
@@ -54,7 +81,7 @@ namespace CashandCarry.Configuration
                 objCus.Delete();
                 MessageBox.Show("Record Delete Successfull");
                 LoadData();
-                Clear();
+               // Clear();
             }
             else
             {
@@ -83,9 +110,9 @@ namespace CashandCarry.Configuration
                      Name =txtCusName.Text,
                       Address=txtAddress.Text,
                        Contact=txtContact.Text,
-                        CusTypeID=Convert.ToInt32(txtCusType.Text),
+                     CusTypeID = Convert.ToInt32(txtCusType.SelectedValue),
                          Email=txtEmail.Text,
-                          ZoneID=Convert.ToInt32(txtZoneID.Text)
+                     ZoneID = Convert.ToInt32(txtZoneID.SelectedValue)
 
                 };
                 objCus.Update();
@@ -94,7 +121,7 @@ namespace CashandCarry.Configuration
 
 
                 LoadData();
-                Clear();
+               // Clear();
             }
             else
             {
@@ -104,7 +131,13 @@ namespace CashandCarry.Configuration
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-
+            txtCusID.Clear();
+            txtCusName.Clear();
+            txtCusType.ResetText();
+            txtEmail.Clear();
+            txtSearch.Clear();
+            txtZoneID.ResetText();
+            txtAddress.Clear();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -137,8 +170,8 @@ namespace CashandCarry.Configuration
         }
         private void LoadZoneID()
         {
-            string query = "Select * from tbl_Zone";
-            DataTable dt = DB.Select(query);
+            CustomerBL objCus = new CustomerBL();
+            List<tbl_Zone> dt = objCus.GetZone();
             txtZoneID.DataSource = dt;        
             txtZoneID.AutoCompleteMode = AutoCompleteMode.Suggest;
             txtZoneID.AutoCompleteSource = AutoCompleteSource.ListItems;
@@ -174,10 +207,9 @@ namespace CashandCarry.Configuration
 
         private void LoadCusType()
         {
-            string query = "select * from tbl_CustomerTypes";
-            DataTable dt = DB.Select(query);
+            CustomerBL objCus = new CustomerBL();
+            List<tbl_CustomerTypes> dt = objCus.GetCusType();
             txtCusType.DataSource = dt;
-           
             txtCusType.AutoCompleteMode = AutoCompleteMode.Suggest;
             txtCusType.AutoCompleteSource = AutoCompleteSource.ListItems;
             txtCusType.DisplayMember = "CusType";
@@ -185,19 +217,70 @@ namespace CashandCarry.Configuration
             
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
+            if(txtSearch.Text==string.Empty)
+            {
+                MessageBox.Show("Please Enter An Id");
+            }
+            CustomerBL objCus = new CustomerBL() 
+            {
+            
+             CustomerID=Convert.ToInt32(txtSearch.Text)
+            };
+            tbl_Customer dt = objCus.Search();
+            if(dt != null)
+            {
+                btnDelete.Enabled = true;
+                btnUpdate.Enabled = true;
+            }
 
         }
 
         private void label14_Click(object sender, EventArgs e)
         {
             this.Hide();
+        }
+
+        private void dgvCus_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int rowindex = e.RowIndex;
+            int columnindex = e.ColumnIndex;
+            if(columnindex==0)
+            {
+                txtCusID.Text = dgvCus.Rows[rowindex].Cells[2].Value.ToString();
+                txtCusName.Text = dgvCus.Rows[rowindex].Cells[3].Value.ToString();
+                txtCusType.Text = dgvCus.Rows[rowindex].Cells[4].Value.ToString();
+                 txtAddress.Text= dgvCus.Rows[rowindex].Cells[5].Value.ToString();
+               txtContact.Text = dgvCus.Rows[rowindex].Cells[6].Value.ToString();
+                txtEmail.Text = dgvCus.Rows[rowindex].Cells[7].Value.ToString();
+              txtZoneID.Text = dgvCus.Rows[rowindex].Cells[8].Value.ToString();
+                
+                FormEnable();
+                btnSave.Enabled = false;
+                
+            }
+            else if(columnindex==1)
+            {
+                string message = "Are You Sure To Delete  Zone " + txtCusName.Text + "?";
+                if (MessageBox.Show(message, "Delete Alert", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                {
+                    CustomerBL objCus = new CustomerBL()
+                    {
+                        CustomerID = Convert.ToInt32(txtSearch.Text)
+                    };
+                    objCus.Delete();
+                    MessageBox.Show("Record Delete Successfull");
+                    LoadData();
+                    Clear();
+                }
+                else
+                {
+                    MessageBox.Show("No Record Deleted");
+                }
+            }
         }
     }
 }

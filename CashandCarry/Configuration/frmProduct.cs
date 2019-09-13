@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CashandCarry.BL;
+using CashandCarry.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -27,6 +29,7 @@ namespace CashandCarry.Configuration
             FormDisable();
             LoadCategory();
             LoadCompany();
+            LoadData();
 
         }
         private void LoadCategory()
@@ -79,6 +82,82 @@ namespace CashandCarry.Configuration
             
             FormEnable();
             txtProdName.Focus();
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            if(FormValidate()==true)
+            {
+                ProductBL objPro = new ProductBL() 
+                {
+                 ProductName=txtProdName.Text,
+                  TradePrice=Convert.ToDecimal(txtPP.Text),
+                   RetailPrice=Convert.ToDecimal(txtRP.Text),
+                    weight=txtWeight.Text,
+                      CategoryID=Convert.ToInt32(txtProdCate.SelectedValue),
+                       CompanyID=Convert.ToInt32(txtComName.SelectedValue),
+                        Unit=txtUnit.Text
+                };
+                objPro.Save();
+                MessageBox.Show("Product Saved Successfull");
+                LoadData();
+            }
+            else
+            {
+                MessageBox.Show("Some Fields Are Missing Or Error Occur");
+            }
+        }
+
+        private void LoadData()
+        {
+            ProductBL objPro = new ProductBL();
+            List<View_tbl_Product> dt = objPro.Select();
+            dgvProduct.Columns.Clear();
+            if(dt!= null&& dt.Count>0)
+            {
+                DataGridViewImageColumn edit = new DataGridViewImageColumn();
+                edit.Image = Properties.Resources.edit;
+                edit.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                edit.HeaderText = "Edit";
+
+                DataGridViewImageColumn delete = new DataGridViewImageColumn();
+                delete.Image = Properties.Resources.delete;
+                delete.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                delete.HeaderText = "Delete";
+                edit.Width = delete.Width = 40;
+                dgvProduct.Columns.Add(edit);
+                dgvProduct.Columns.Add(delete);
+                dgvProduct.DataSource = dt;
+                dgvProduct.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            }
+        }
+        private bool FormValidate()
+        {
+            if (txtProdName.Text == "" || txtRP.Text == "" || txtWeight.Text == "" || txtProdCate.Text == "" || txtComName.Text == "" || txtPP.Text == "") return false;
+            return true;
+        }
+
+        private void dgvProduct_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            if(txtSearch.Text==string.Empty)
+            {
+                MessageBox.Show("Please Enter An Id");
+            }
+            ProductBL objPro = new ProductBL() 
+            {
+            ProductID=Convert.ToInt32(txtSearch.Text)
+            };
+            tbl_Product dt = objPro.Search();
+            if(dt != null)
+            {
+                btnUpdate.Enabled = true;
+                btnDelete.Enabled = true;
+            }
         }
     }
 }

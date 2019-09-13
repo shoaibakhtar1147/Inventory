@@ -81,14 +81,40 @@
       <EntityTypeMapping TypeName="CashCarryModel.View_tbl_Customer">
         <MappingFragment StoreEntitySet="View_tbl_Customer">
           <ScalarProperty Name="ZoneName" ColumnName="ZoneName" />
-          <ScalarProperty Name="ZoneID" ColumnName="ZoneID" />
           <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="Contact" ColumnName="Contact" />
           <ScalarProperty Name="Address" ColumnName="Address" />
           <ScalarProperty Name="CusType" ColumnName="CusType" />
-          <ScalarProperty Name="CusTypeID" ColumnName="CusTypeID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Product">
+      <EntityTypeMapping TypeName="CashCarryModel.tbl_Product">
+        <MappingFragment StoreEntitySet="tbl_Product">
+          <ScalarProperty Name="TradePrice" ColumnName="TradePrice" />
+          <ScalarProperty Name="RetailPrice" ColumnName="RetailPrice" />
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="weight" ColumnName="weight" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="View_tbl_Product">
+      <EntityTypeMapping TypeName="CashCarryModel.View_tbl_Product">
+        <MappingFragment StoreEntitySet="View_tbl_Product">
+          <ScalarProperty Name="PurchasePrice" ColumnName="PurchasePrice" />
+          <ScalarProperty Name="RetailPrice" ColumnName="RetailPrice" />
+          <ScalarProperty Name="weight" ColumnName="weight" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="Company" ColumnName="Company" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

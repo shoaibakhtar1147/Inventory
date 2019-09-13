@@ -24,6 +24,8 @@
     <EntitySet Name="tbl_employee" EntityType="CashCarryModel.tbl_employee" />
     <EntitySet Name="tbl_Customer" EntityType="CashCarryModel.tbl_Customer" />
     <EntitySet Name="View_tbl_Customer" EntityType="CashCarryModel.View_tbl_Customer" />
+    <EntitySet Name="tbl_Product" EntityType="CashCarryModel.tbl_Product" />
+    <EntitySet Name="View_tbl_Product" EntityType="CashCarryModel.View_tbl_Product" />
   </EntityContainer>
   <EntityType Name="tbl_Zone">
     <Key>
@@ -88,12 +90,36 @@
     </Key>
     <Property Name="CustomerID" Type="Int32" Nullable="false" />
     <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-    <Property Name="CusTypeID" Type="Int32" />
     <Property Name="CusType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="Contact" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="Email" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="ZoneID" Type="Int32" />
     <Property Name="ZoneName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tbl_Product">
+    <Key>
+      <PropertyRef Name="ProductID" />
+    </Key>
+    <Property Name="ProductID" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+    <Property Name="ProductName" MaxLength="30" FixedLength="false" Unicode="false" Type="String" />
+    <Property Name="Unit" MaxLength="10" FixedLength="false" Unicode="false" Type="String" />
+    <Property Name="weight" MaxLength="20" FixedLength="false" Unicode="false" Type="String" />
+    <Property Name="CategoryID" Type="Int32" />
+    <Property Name="CompanyID" Type="Int32" />
+    <Property Name="RetailPrice" Precision="18" Scale="0" Type="Decimal" />
+    <Property Name="TradePrice" Precision="18" Scale="0" Type="Decimal" />
+  </EntityType>
+  <EntityType Name="View_tbl_Product">
+    <Key>
+      <PropertyRef Name="ProductID" />
+    </Key>
+    <Property Name="ProductID" Type="Int32" Nullable="false" />
+    <Property Name="ProductName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Company" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Unit" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="weight" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="RetailPrice" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="PurchasePrice" Type="Decimal" Precision="18" Scale="0" />
   </EntityType>
 </Schema>

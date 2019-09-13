@@ -58,6 +58,19 @@
           <Property Name="Gender" Type="bit" />
           <Property Name="Address" Type="varchar" MaxLength="100" />
         </EntityType>
+        <EntityType Name="tbl_Product">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductName" Type="varchar" MaxLength="30" />
+          <Property Name="Unit" Type="varchar" MaxLength="10" />
+          <Property Name="weight" Type="varchar" MaxLength="20" />
+          <Property Name="CategoryID" Type="int" />
+          <Property Name="CompanyID" Type="int" />
+          <Property Name="RetailPrice" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="TradePrice" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
         <EntityType Name="tbl_Zone">
           <Key>
             <PropertyRef Name="ZoneID" />
@@ -73,13 +86,26 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Customer' does not have a p
           </Key>
           <Property Name="CustomerID" Type="int" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="30" />
-          <Property Name="CusTypeID" Type="int" />
           <Property Name="CusType" Type="varchar" MaxLength="20" />
           <Property Name="Address" Type="varchar" MaxLength="100" />
           <Property Name="Contact" Type="varchar" MaxLength="20" />
           <Property Name="Email" Type="varchar" MaxLength="20" />
-          <Property Name="ZoneID" Type="int" />
           <Property Name="ZoneName" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_tbl_Product">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="ProductName" Type="varchar" MaxLength="30" />
+          <Property Name="Category" Type="varchar" MaxLength="50" />
+          <Property Name="Company" Type="varchar" MaxLength="100" />
+          <Property Name="Unit" Type="varchar" MaxLength="10" />
+          <Property Name="weight" Type="varchar" MaxLength="20" />
+          <Property Name="RetailPrice" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="PurchasePrice" Type="decimal" Precision="18" Scale="0" />
         </EntityType>
         <Function Name="SP_Cate_AddNew" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="CategoryID" Type="int" Mode="In" />
@@ -96,19 +122,30 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Customer' does not have a p
           <EntitySet Name="tbl_Customer" EntityType="Self.tbl_Customer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_CustomerTypes" EntityType="Self.tbl_CustomerTypes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_employee" EntityType="Self.tbl_employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Product" EntityType="Self.tbl_Product" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_Zone" EntityType="Self.tbl_Zone" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="View_tbl_Customer" EntityType="Self.View_tbl_Customer" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [View_tbl_Customer].[CustomerID] AS [CustomerID], 
     [View_tbl_Customer].[Name] AS [Name], 
-    [View_tbl_Customer].[CusTypeID] AS [CusTypeID], 
     [View_tbl_Customer].[CusType] AS [CusType], 
     [View_tbl_Customer].[Address] AS [Address], 
     [View_tbl_Customer].[Contact] AS [Contact], 
     [View_tbl_Customer].[Email] AS [Email], 
-    [View_tbl_Customer].[ZoneID] AS [ZoneID], 
     [View_tbl_Customer].[ZoneName] AS [ZoneName]
     FROM [dbo].[View_tbl_Customer] AS [View_tbl_Customer]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_tbl_Product" EntityType="Self.View_tbl_Product" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_tbl_Product].[ProductID] AS [ProductID], 
+    [View_tbl_Product].[ProductName] AS [ProductName], 
+    [View_tbl_Product].[Category] AS [Category], 
+    [View_tbl_Product].[Company] AS [Company], 
+    [View_tbl_Product].[Unit] AS [Unit], 
+    [View_tbl_Product].[weight] AS [weight], 
+    [View_tbl_Product].[RetailPrice] AS [RetailPrice], 
+    [View_tbl_Product].[PurchasePrice] AS [PurchasePrice]
+    FROM [dbo].[View_tbl_Product] AS [View_tbl_Product]</DefiningQuery>
           </EntitySet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -139,6 +176,8 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Customer' does not have a p
           <EntitySet Name="tbl_employee" EntityType="CashCarryModel.tbl_employee" />
           <EntitySet Name="tbl_Customer" EntityType="CashCarryModel.tbl_Customer" />
           <EntitySet Name="View_tbl_Customer" EntityType="CashCarryModel.View_tbl_Customer" />
+          <EntitySet Name="tbl_Product" EntityType="CashCarryModel.tbl_Product" />
+          <EntitySet Name="View_tbl_Product" EntityType="CashCarryModel.View_tbl_Product" />
         </EntityContainer>
         <EntityType Name="tbl_Zone">
           <Key>
@@ -203,13 +242,37 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Customer' does not have a p
           </Key>
           <Property Name="CustomerID" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="CusTypeID" Type="Int32" />
           <Property Name="CusType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Contact" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="Email" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="ZoneID" Type="Int32" />
           <Property Name="ZoneName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbl_Product">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductID" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+          <Property Name="ProductName" MaxLength="30" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="Unit" MaxLength="10" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="weight" MaxLength="20" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="CategoryID" Type="Int32" />
+          <Property Name="CompanyID" Type="Int32" />
+          <Property Name="RetailPrice" Precision="18" Scale="0" Type="Decimal" />
+          <Property Name="TradePrice" Precision="18" Scale="0" Type="Decimal" />
+        </EntityType>
+        <EntityType Name="View_tbl_Product">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="ProductName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Company" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Unit" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="weight" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="RetailPrice" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="PurchasePrice" Type="Decimal" Precision="18" Scale="0" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -297,14 +360,40 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Customer' does not have a p
             <EntityTypeMapping TypeName="CashCarryModel.View_tbl_Customer">
               <MappingFragment StoreEntitySet="View_tbl_Customer">
                 <ScalarProperty Name="ZoneName" ColumnName="ZoneName" />
-                <ScalarProperty Name="ZoneID" ColumnName="ZoneID" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Contact" ColumnName="Contact" />
                 <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="CusType" ColumnName="CusType" />
-                <ScalarProperty Name="CusTypeID" ColumnName="CusTypeID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Product">
+            <EntityTypeMapping TypeName="CashCarryModel.tbl_Product">
+              <MappingFragment StoreEntitySet="tbl_Product">
+                <ScalarProperty Name="TradePrice" ColumnName="TradePrice" />
+                <ScalarProperty Name="RetailPrice" ColumnName="RetailPrice" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="weight" ColumnName="weight" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_tbl_Product">
+            <EntityTypeMapping TypeName="CashCarryModel.View_tbl_Product">
+              <MappingFragment StoreEntitySet="View_tbl_Product">
+                <ScalarProperty Name="PurchasePrice" ColumnName="PurchasePrice" />
+                <ScalarProperty Name="RetailPrice" ColumnName="RetailPrice" />
+                <ScalarProperty Name="weight" ColumnName="weight" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="Company" ColumnName="Company" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
