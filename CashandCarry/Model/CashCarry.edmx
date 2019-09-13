@@ -22,6 +22,42 @@
           <Property Name="Contact" Type="varchar" MaxLength="20" />
           <Property Name="Address" Type="varchar" MaxLength="200" />
         </EntityType>
+        <EntityType Name="tbl_Customer">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="30" />
+          <Property Name="CusTypeID" Type="int" />
+          <Property Name="Address" Type="varchar" MaxLength="100" />
+          <Property Name="Contact" Type="varchar" MaxLength="20" />
+          <Property Name="Email" Type="varchar" MaxLength="20" />
+          <Property Name="ZoneID" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_CustomerTypes">
+          <Key>
+            <PropertyRef Name="CusTypeID" />
+          </Key>
+          <Property Name="CusTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CusType" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="tbl_employee">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="30" />
+          <Property Name="Fname" Type="varchar" MaxLength="30" />
+          <Property Name="Username" Type="varchar" MaxLength="20" />
+          <Property Name="Password" Type="varchar" MaxLength="20" />
+          <Property Name="Qualifiction" Type="varchar" MaxLength="10" />
+          <Property Name="DOB" Type="varchar" MaxLength="10" />
+          <Property Name="Cnic" Type="varchar" MaxLength="20" />
+          <Property Name="Contact" Type="varchar" MaxLength="20" />
+          <Property Name="Designation" Type="varchar" MaxLength="15" />
+          <Property Name="Gender" Type="bit" />
+          <Property Name="Address" Type="varchar" MaxLength="100" />
+        </EntityType>
         <EntityType Name="tbl_Zone">
           <Key>
             <PropertyRef Name="ZoneID" />
@@ -29,13 +65,51 @@
           <Property Name="ZoneID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ZoneName" Type="varchar" MaxLength="20" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CashCarry.dbo.View_tbl_Customer' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_tbl_Customer">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="30" />
+          <Property Name="CusTypeID" Type="int" />
+          <Property Name="CusType" Type="varchar" MaxLength="20" />
+          <Property Name="Address" Type="varchar" MaxLength="100" />
+          <Property Name="Contact" Type="varchar" MaxLength="20" />
+          <Property Name="Email" Type="varchar" MaxLength="20" />
+          <Property Name="ZoneID" Type="int" />
+          <Property Name="ZoneName" Type="varchar" MaxLength="20" />
+        </EntityType>
         <Function Name="SP_Cate_AddNew" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="CategoryID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_Zone_AddNew" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ZoneID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_Zone_Search" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ZoneID" Type="int" Mode="In" />
         </Function>
         <EntityContainer Name="CashCarryModelStoreContainer">
           <EntitySet Name="tbl_Category" EntityType="Self.tbl_Category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_Company" EntityType="Self.tbl_Company" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Customer" EntityType="Self.tbl_Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_CustomerTypes" EntityType="Self.tbl_CustomerTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_employee" EntityType="Self.tbl_employee" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_Zone" EntityType="Self.tbl_Zone" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="View_tbl_Customer" EntityType="Self.View_tbl_Customer" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_tbl_Customer].[CustomerID] AS [CustomerID], 
+    [View_tbl_Customer].[Name] AS [Name], 
+    [View_tbl_Customer].[CusTypeID] AS [CusTypeID], 
+    [View_tbl_Customer].[CusType] AS [CusType], 
+    [View_tbl_Customer].[Address] AS [Address], 
+    [View_tbl_Customer].[Contact] AS [Contact], 
+    [View_tbl_Customer].[Email] AS [Email], 
+    [View_tbl_Customer].[ZoneID] AS [ZoneID], 
+    [View_tbl_Customer].[ZoneName] AS [ZoneName]
+    FROM [dbo].[View_tbl_Customer] AS [View_tbl_Customer]</DefiningQuery>
+          </EntitySet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -55,6 +129,16 @@
           </FunctionImport>
           <EntitySet Name="tbl_Zone" EntityType="CashCarryModel.tbl_Zone" />
           <EntitySet Name="tbl_Company" EntityType="CashCarryModel.tbl_Company" />
+          <FunctionImport Name="SP_Zone_Search" ReturnType="Collection(CashCarryModel.SP_Zone_Search_Result)">
+          <Parameter Name="ZoneID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_Zone_AddNew" ReturnType="Collection(Int32)">
+          <Parameter Name="ZoneID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="tbl_CustomerTypes" EntityType="CashCarryModel.tbl_CustomerTypes" />
+          <EntitySet Name="tbl_employee" EntityType="CashCarryModel.tbl_employee" />
+          <EntitySet Name="tbl_Customer" EntityType="CashCarryModel.tbl_Customer" />
+          <EntitySet Name="View_tbl_Customer" EntityType="CashCarryModel.View_tbl_Customer" />
         </EntityContainer>
         <EntityType Name="tbl_Zone">
           <Key>
@@ -72,6 +156,60 @@
           <Property Name="Email" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="Contact" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <ComplexType Name="SP_Zone_Search_Result">
+          <Property Type="Int32" Name="ZoneID" Nullable="false" />
+          <Property Type="String" Name="ZoneName" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <EntityType Name="tbl_CustomerTypes">
+          <Key>
+            <PropertyRef Name="CusTypeID" />
+          </Key>
+          <Property Name="CusTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CusType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbl_employee">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Fname" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Username" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Qualifiction" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="DOB" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Cnic" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Contact" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Designation" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="Boolean" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbl_Customer">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="CusTypeID" Type="Int32" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Contact" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ZoneID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="View_tbl_Customer">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="CusTypeID" Type="Int32" />
+          <Property Name="CusType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Contact" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ZoneID" Type="Int32" />
+          <Property Name="ZoneName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -104,6 +242,69 @@
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
                 <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_Zone_Search" FunctionName="CashCarryModel.Store.SP_Zone_Search">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CashCarryModel.SP_Zone_Search_Result">
+                <ScalarProperty Name="ZoneID" ColumnName="ZoneID" />
+                <ScalarProperty Name="ZoneName" ColumnName="ZoneName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_Zone_AddNew" FunctionName="CashCarryModel.Store.SP_Zone_AddNew" />
+          <EntitySetMapping Name="tbl_CustomerTypes">
+            <EntityTypeMapping TypeName="CashCarryModel.tbl_CustomerTypes">
+              <MappingFragment StoreEntitySet="tbl_CustomerTypes">
+                <ScalarProperty Name="CusType" ColumnName="CusType" />
+                <ScalarProperty Name="CusTypeID" ColumnName="CusTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_employee">
+            <EntityTypeMapping TypeName="CashCarryModel.tbl_employee">
+              <MappingFragment StoreEntitySet="tbl_employee">
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Designation" ColumnName="Designation" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+                <ScalarProperty Name="Cnic" ColumnName="Cnic" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Qualifiction" ColumnName="Qualifiction" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Fname" ColumnName="Fname" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Customer">
+            <EntityTypeMapping TypeName="CashCarryModel.tbl_Customer">
+              <MappingFragment StoreEntitySet="tbl_Customer">
+                <ScalarProperty Name="ZoneID" ColumnName="ZoneID" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="CusTypeID" ColumnName="CusTypeID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_tbl_Customer">
+            <EntityTypeMapping TypeName="CashCarryModel.View_tbl_Customer">
+              <MappingFragment StoreEntitySet="View_tbl_Customer">
+                <ScalarProperty Name="ZoneName" ColumnName="ZoneName" />
+                <ScalarProperty Name="ZoneID" ColumnName="ZoneID" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="CusType" ColumnName="CusType" />
+                <ScalarProperty Name="CusTypeID" ColumnName="CusTypeID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

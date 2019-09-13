@@ -1,4 +1,5 @@
 ﻿using CashandCarry.Interface;
+using CashandCarry.Model;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace CashandCarry.BL
 {
-    class EmployeeBL:IGeneric
+    class EmployeeBL
     {
 
      public int EmployeeID{get;set;}
@@ -25,49 +26,66 @@ namespace CashandCarry.BL
      public bool Gender{get;set;}
      public string Address { get; set;}
 
-        public int Save()
+        public void Save()
         {
-            string spName = "SPInsertEmployee";
-            SqlParameter[] prm = new SqlParameter[11];
-            prm[0] = new SqlParameter("@Name", Name);
-            prm[1] = new SqlParameter("@Fname", Fname);
-            prm[2] = new SqlParameter("@Username", Username);
-            prm[3] = new SqlParameter("@Password", Password);
-            prm[4] = new SqlParameter("@Qualifiction", Qualifiction);
-            prm[5] = new SqlParameter("@DOB", DOB);
-            prm[6] = new SqlParameter("@Cnic", Cnic);
-            prm[7] = new SqlParameter("@Contact", Contact);
-            prm[8] = new SqlParameter("@Designation", Designation);
-            prm[9] = new SqlParameter("@Gender", Gender);
-            prm[10] = new SqlParameter("@Address", Address);
-            return DB.ExecuteNonQueryWithSP(spName, prm);
+           using(var context= new CashCarryEntities3())
+           {
+               tbl_employee objemp = new tbl_employee() 
+               {
+                Name=Name,
+                  Fname=Fname,
+                   Gender=Gender,
+                    Password=Password,
+                     Qualifiction=Qualifiction,
+                      Username=Username,
+                       DOB=DOB,
+                        Designation=Designation,
+                         Contact=Contact,
+                          Cnic=Cnic,
+                           Address=Address
+               };
+               context.tbl_employee.Add(objemp);
+               context.SaveChanges();
+           }
+
         }
 
-        public int Delete()
+        public void Delete()
         {
-            string spName = "SPDeleteEmp";
-            SqlParameter[] prm = new SqlParameter[1];
-            prm[0] = new SqlParameter("@EmployeeID", EmployeeID);
-            return DB.ExecuteNonQueryWithSP(spName, prm);
+            using(var context=new CashCarryEntities3())
+            {
+                var result = context.tbl_employee.Where(a => a.EmployeeID == EmployeeID).SingleOrDefault();
+                if(result != null)
+                {
+                    context.tbl_employee.Remove(result);
+                    context.SaveChanges();
+                }
+            }
         }
 
-        public int Update()
+        public void Update()
         {
-            string spName = "SPUpdateEmp";
-            SqlParameter[] prm = new SqlParameter[12];
-            prm[0]=new SqlParameter("@EmployeeID",EmployeeID);
-            prm[1]=new SqlParameter("@Name",Name);
-            prm[2]=new SqlParameter("@Fname",Fname);
-            prm[3] = new SqlParameter("@Username", Username);
-            prm[4] = new SqlParameter("@Password", Password);
-            prm[5] = new SqlParameter("@Qualifiction", Qualifiction);
-            prm[6] = new SqlParameter("@DOB", DOB);
-            prm[7] = new SqlParameter("@Cnic", Cnic);
-            prm[8] = new SqlParameter("@Contact", Contact);
-            prm[9] = new SqlParameter("@Designation", Designation);
-            prm[10] = new SqlParameter("@Gender", Gender);
-            prm[11] = new SqlParameter("@Address", Address);
-            return DB.ExecuteNonQueryWithSP(spName, prm);
+           using(var context=new CashCarryEntities3())
+           {
+               var result = context.tbl_employee.Where(a => a.EmployeeID == EmployeeID).SingleOrDefault();
+               if(result != null)
+               {
+                   result.Name = Name;
+                   result.Fname=Fname;
+                    result.Gender=Gender;
+                    result.Password=Password;
+                     result.Qualifiction=Qualifiction;
+                      result.Username=Username;
+                       result.DOB=DOB;
+                        result.Designation=Designation;
+                         result.Contact=Contact;
+                          result.Cnic=Cnic;
+                           result.Address=Address;
+                           context.SaveChanges();
+              
+               };
+              
+           }
         }
 
 
@@ -80,18 +98,20 @@ namespace CashandCarry.BL
         }
 
 
-        public DataTable Search()
+        public tbl_employee Search()
         {
-            string spName = "SPSearchEmp";
-            SqlParameter[] prm = new SqlParameter[1];
-            prm[0] = new SqlParameter("@EmployeeID", EmployeeID);
-            return DB.SelectTableWithSP(spName, prm);
+            using(var context=new CashCarryEntities3())
+            {
+                return context.tbl_employee.Where(a => a.EmployeeID == EmployeeID).FirstOrDefault();
+            }
         }
 
-        public DataTable Select()
+        public List<tbl_employee> Select()
         {
-            string spName = "SPSelectEmp";
-            return DB.SelectTableWithSP(spName, null);
+           using(var context=new CashCarryEntities3())
+            {
+                return context.tbl_employee.ToList();
+            }
         }
     }
 }

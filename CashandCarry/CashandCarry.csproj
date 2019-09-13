@@ -124,13 +124,28 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CashCarry.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Model\SP_Zone_Search_Result.cs">
+      <DependentUpon>CashCarry.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\tbl_Category.cs">
       <DependentUpon>CashCarry.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\tbl_Company.cs">
       <DependentUpon>CashCarry.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\tbl_Customer.cs">
+      <DependentUpon>CashCarry.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\tbl_CustomerTypes.cs">
+      <DependentUpon>CashCarry.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\tbl_employee.cs">
+      <DependentUpon>CashCarry.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\tbl_Zone.cs">
+      <DependentUpon>CashCarry.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\View_tbl_Customer.cs">
       <DependentUpon>CashCarry.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">

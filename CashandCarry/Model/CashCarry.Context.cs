@@ -30,6 +30,10 @@ namespace CashandCarry.Model
         public virtual DbSet<tbl_Category> tbl_Category { get; set; }
         public virtual DbSet<tbl_Zone> tbl_Zone { get; set; }
         public virtual DbSet<tbl_Company> tbl_Company { get; set; }
+        public virtual DbSet<tbl_CustomerTypes> tbl_CustomerTypes { get; set; }
+        public virtual DbSet<tbl_employee> tbl_employee { get; set; }
+        public virtual DbSet<tbl_Customer> tbl_Customer { get; set; }
+        public virtual DbSet<View_tbl_Customer> View_tbl_Customer { get; set; }
     
         public virtual ObjectResult<Nullable<int>> SP_Cate_AddNew(Nullable<int> categoryID)
         {
@@ -38,6 +42,24 @@ namespace CashandCarry.Model
                 new ObjectParameter("CategoryID", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("SP_Cate_AddNew", categoryIDParameter);
+        }
+    
+        public virtual ObjectResult<SP_Zone_Search_Result> SP_Zone_Search(Nullable<int> zoneID)
+        {
+            var zoneIDParameter = zoneID.HasValue ?
+                new ObjectParameter("ZoneID", zoneID) :
+                new ObjectParameter("ZoneID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_Zone_Search_Result>("SP_Zone_Search", zoneIDParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> SP_Zone_AddNew(Nullable<int> zoneID)
+        {
+            var zoneIDParameter = zoneID.HasValue ?
+                new ObjectParameter("ZoneID", zoneID) :
+                new ObjectParameter("ZoneID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("SP_Zone_AddNew", zoneIDParameter);
         }
     }
 }

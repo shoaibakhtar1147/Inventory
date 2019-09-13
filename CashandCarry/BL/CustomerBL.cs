@@ -1,4 +1,5 @@
 ﻿using CashandCarry.Interface;
+using CashandCarry.Model;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -8,8 +9,9 @@ using System.Threading.Tasks;
 
 namespace CashandCarry.BL
 {
-    class CustomerBL:IGeneric
+    class CustomerBL
     {
+        public int CustomerID { get; set; }
         public string Name{get;set;}
         public int CusTypeID{get;set;}
         public string Address{get;set;}
@@ -17,27 +19,53 @@ namespace CashandCarry.BL
         public string Email	{get;set;}
         public int ZoneID { get; set; }
 
-        public int Save()
+        public void Save()
         {
-            string spName = "SPInsertCustomer";
-            SqlParameter[] prm = new SqlParameter[6];
-            prm[0] = new SqlParameter("@Name", Name);
-            prm[1] = new SqlParameter("@CusTypeID", CusTypeID);
-            prm[2] = new SqlParameter("@Address", Address);
-            prm[3] = new SqlParameter("@Contact", Contact);
-            prm[4] = new SqlParameter("@Email", Email);
-            prm[5] = new SqlParameter("@ZoneID", ZoneID);
-            return DB.ExecuteNonQueryWithSP(spName, prm);
+           using(var context=new CashCarryEntities3())
+           {
+               tbl_Customer objCus = new tbl_Customer() 
+               { 
+                Name=Name,
+                 CusTypeID=CusTypeID,
+                  Address=Address,
+                   Contact=Contact,
+                    Email=Email,
+                     ZoneID=ZoneID
+               };
+               context.tbl_Customer.Add(objCus);
+               context.SaveChanges();
+           }
         }
 
-        public int Delete()
+        public void Delete()
         {
-            throw new NotImplementedException();
+           using(var context=new CashCarryEntities3())
+           {
+               var result = context.tbl_Customer.Where(a => a.CustomerID == CustomerID).SingleOrDefault();
+               if(result!=null)
+               {
+                   context.tbl_Customer.Remove(result);
+                   context.SaveChanges();
+               }
+           }
         }
 
-        public int Update()
+        public void Update()
         {
-            throw new NotImplementedException();
+           using(var context=new CashCarryEntities3())
+           {
+               var result = context.tbl_Customer.Where(a => a.CustomerID == CustomerID).SingleOrDefault();
+               if(result != null)
+               {
+                    result.Name=Name;
+                    result.CusTypeID = CusTypeID;
+                    result.Address = Address;
+                    result.Contact = Contact;
+                    result.Email = Email;
+                    result.ZoneID = ZoneID;
+                     context.SaveChanges();
+               }
+           }
         }
 
         public System.Data.DataTable Addnew()
@@ -50,9 +78,12 @@ namespace CashandCarry.BL
             throw new NotImplementedException();
         }
 
-        public System.Data.DataTable Select()
+        public List<View_tbl_Customer> Select()
         {
-            throw new NotImplementedException();
+            using(var context=new CashCarryEntities3())
+            {
+                return context.View_tbl_Customer.ToList();
+            }
         }
     }
 }

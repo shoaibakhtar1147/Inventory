@@ -14,6 +14,16 @@
     </FunctionImport>
     <EntitySet Name="tbl_Zone" EntityType="CashCarryModel.tbl_Zone" />
     <EntitySet Name="tbl_Company" EntityType="CashCarryModel.tbl_Company" />
+    <FunctionImport Name="SP_Zone_Search" ReturnType="Collection(CashCarryModel.SP_Zone_Search_Result)">
+      <Parameter Name="ZoneID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_Zone_AddNew" ReturnType="Collection(Int32)">
+      <Parameter Name="ZoneID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="tbl_CustomerTypes" EntityType="CashCarryModel.tbl_CustomerTypes" />
+    <EntitySet Name="tbl_employee" EntityType="CashCarryModel.tbl_employee" />
+    <EntitySet Name="tbl_Customer" EntityType="CashCarryModel.tbl_Customer" />
+    <EntitySet Name="View_tbl_Customer" EntityType="CashCarryModel.View_tbl_Customer" />
   </EntityContainer>
   <EntityType Name="tbl_Zone">
     <Key>
@@ -31,5 +41,59 @@
     <Property Name="Email" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
     <Property Name="Contact" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <ComplexType Name="SP_Zone_Search_Result">
+    <Property Type="Int32" Name="ZoneID" Nullable="false" />
+    <Property Type="String" Name="ZoneName" Nullable="true" MaxLength="20" />
+  </ComplexType>
+  <EntityType Name="tbl_CustomerTypes">
+    <Key>
+      <PropertyRef Name="CusTypeID" />
+    </Key>
+    <Property Name="CusTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CusType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tbl_employee">
+    <Key>
+      <PropertyRef Name="EmployeeID" />
+    </Key>
+    <Property Name="EmployeeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Fname" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Username" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Qualifiction" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="DOB" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Cnic" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Contact" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Designation" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Gender" Type="Boolean" />
+    <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tbl_Customer">
+    <Key>
+      <PropertyRef Name="CustomerID" />
+    </Key>
+    <Property Name="CustomerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="CusTypeID" Type="Int32" />
+    <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Contact" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="ZoneID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="View_tbl_Customer">
+    <Key>
+      <PropertyRef Name="CustomerID" />
+    </Key>
+    <Property Name="CustomerID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="CusTypeID" Type="Int32" />
+    <Property Name="CusType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Contact" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="ZoneID" Type="Int32" />
+    <Property Name="ZoneName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
   </EntityType>
 </Schema>

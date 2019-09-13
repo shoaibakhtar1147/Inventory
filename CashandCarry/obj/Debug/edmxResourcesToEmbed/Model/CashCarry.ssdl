@@ -17,6 +17,42 @@
     <Property Name="Contact" Type="varchar" MaxLength="20" />
     <Property Name="Address" Type="varchar" MaxLength="200" />
   </EntityType>
+  <EntityType Name="tbl_Customer">
+    <Key>
+      <PropertyRef Name="CustomerID" />
+    </Key>
+    <Property Name="CustomerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="30" />
+    <Property Name="CusTypeID" Type="int" />
+    <Property Name="Address" Type="varchar" MaxLength="100" />
+    <Property Name="Contact" Type="varchar" MaxLength="20" />
+    <Property Name="Email" Type="varchar" MaxLength="20" />
+    <Property Name="ZoneID" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_CustomerTypes">
+    <Key>
+      <PropertyRef Name="CusTypeID" />
+    </Key>
+    <Property Name="CusTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CusType" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="tbl_employee">
+    <Key>
+      <PropertyRef Name="EmployeeID" />
+    </Key>
+    <Property Name="EmployeeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="30" />
+    <Property Name="Fname" Type="varchar" MaxLength="30" />
+    <Property Name="Username" Type="varchar" MaxLength="20" />
+    <Property Name="Password" Type="varchar" MaxLength="20" />
+    <Property Name="Qualifiction" Type="varchar" MaxLength="10" />
+    <Property Name="DOB" Type="varchar" MaxLength="10" />
+    <Property Name="Cnic" Type="varchar" MaxLength="20" />
+    <Property Name="Contact" Type="varchar" MaxLength="20" />
+    <Property Name="Designation" Type="varchar" MaxLength="15" />
+    <Property Name="Gender" Type="bit" />
+    <Property Name="Address" Type="varchar" MaxLength="100" />
+  </EntityType>
   <EntityType Name="tbl_Zone">
     <Key>
       <PropertyRef Name="ZoneID" />
@@ -24,12 +60,50 @@
     <Property Name="ZoneID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ZoneName" Type="varchar" MaxLength="20" />
   </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'CashCarry.dbo.View_tbl_Customer' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="View_tbl_Customer">
+    <Key>
+      <PropertyRef Name="CustomerID" />
+    </Key>
+    <Property Name="CustomerID" Type="int" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="30" />
+    <Property Name="CusTypeID" Type="int" />
+    <Property Name="CusType" Type="varchar" MaxLength="20" />
+    <Property Name="Address" Type="varchar" MaxLength="100" />
+    <Property Name="Contact" Type="varchar" MaxLength="20" />
+    <Property Name="Email" Type="varchar" MaxLength="20" />
+    <Property Name="ZoneID" Type="int" />
+    <Property Name="ZoneName" Type="varchar" MaxLength="20" />
+  </EntityType>
   <Function Name="SP_Cate_AddNew" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="CategoryID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_Zone_AddNew" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ZoneID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_Zone_Search" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ZoneID" Type="int" Mode="In" />
   </Function>
   <EntityContainer Name="CashCarryModelStoreContainer">
     <EntitySet Name="tbl_Category" EntityType="Self.tbl_Category" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_Company" EntityType="Self.tbl_Company" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Customer" EntityType="Self.tbl_Customer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_CustomerTypes" EntityType="Self.tbl_CustomerTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_employee" EntityType="Self.tbl_employee" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_Zone" EntityType="Self.tbl_Zone" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="View_tbl_Customer" EntityType="Self.View_tbl_Customer" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [View_tbl_Customer].[CustomerID] AS [CustomerID], 
+    [View_tbl_Customer].[Name] AS [Name], 
+    [View_tbl_Customer].[CusTypeID] AS [CusTypeID], 
+    [View_tbl_Customer].[CusType] AS [CusType], 
+    [View_tbl_Customer].[Address] AS [Address], 
+    [View_tbl_Customer].[Contact] AS [Contact], 
+    [View_tbl_Customer].[Email] AS [Email], 
+    [View_tbl_Customer].[ZoneID] AS [ZoneID], 
+    [View_tbl_Customer].[ZoneName] AS [ZoneName]
+    FROM [dbo].[View_tbl_Customer] AS [View_tbl_Customer]</DefiningQuery>
+    </EntitySet>
   </EntityContainer>
 </Schema>

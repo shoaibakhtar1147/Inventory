@@ -12,7 +12,7 @@ namespace CashandCarry.BL
 {
     class ZoneBL
     {
-        public int ZoneId { get; set; }
+        public int? ZoneId { get; set; }
         public string ZoneName { get; set; }
         
         public void Save()
@@ -60,6 +60,11 @@ namespace CashandCarry.BL
             SqlParameter[] prm = new SqlParameter[1];
             prm[0] = new SqlParameter("@zoneID", ZoneId);
             return DB.SelectTableWithSP(spName, prm);
+            //using (var context= new CashCarryEntities3())
+            //{
+            //    var result= context.SP_Zone_AddNew(ZoneId).ToList();
+            //    return result;
+            //}
         }
 
         public tbl_Zone Search()

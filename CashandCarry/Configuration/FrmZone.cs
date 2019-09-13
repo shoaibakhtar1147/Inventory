@@ -82,7 +82,7 @@ namespace CashandCarry.Configuration
             }
             else
             {
-                MessageBox.Show("Some Error Occur No Record  Save");
+                MessageBox.Show("Some Error Occur No Record Save");
             }
         }
         private void FrmZone_Load(object sender, EventArgs e)

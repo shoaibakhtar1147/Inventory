@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -74,7 +74,7 @@
             this.btnSearch.Location = new System.Drawing.Point(654, 48);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(92, 23);
-            this.btnSearch.TabIndex = 34;
+            this.btnSearch.TabIndex = 2;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = false;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
@@ -85,7 +85,7 @@
             this.txtSearch.Location = new System.Drawing.Point(539, 48);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(95, 23);
-            this.txtSearch.TabIndex = 33;
+            this.txtSearch.TabIndex = 1;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // label13
@@ -111,7 +111,7 @@
             this.btnAddnew.Location = new System.Drawing.Point(771, 80);
             this.btnAddnew.Name = "btnAddnew";
             this.btnAddnew.Size = new System.Drawing.Size(110, 34);
-            this.btnAddnew.TabIndex = 31;
+            this.btnAddnew.TabIndex = 3;
             this.btnAddnew.Text = "New";
             this.btnAddnew.UseVisualStyleBackColor = false;
             this.btnAddnew.Click += new System.EventHandler(this.btnAddnew_Click);
@@ -127,7 +127,7 @@
             this.btnDelete.Location = new System.Drawing.Point(771, 228);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(110, 34);
-            this.btnDelete.TabIndex = 30;
+            this.btnDelete.TabIndex = 12;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
@@ -143,7 +143,7 @@
             this.btnUpdate.Location = new System.Drawing.Point(771, 178);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(110, 34);
-            this.btnUpdate.TabIndex = 28;
+            this.btnUpdate.TabIndex = 11;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = false;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
@@ -159,7 +159,7 @@
             this.btnClear.Location = new System.Drawing.Point(771, 280);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(110, 34);
-            this.btnClear.TabIndex = 29;
+            this.btnClear.TabIndex = 13;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = false;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
@@ -175,7 +175,7 @@
             this.btnSave.Location = new System.Drawing.Point(771, 129);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(110, 34);
-            this.btnSave.TabIndex = 27;
+            this.btnSave.TabIndex = 10;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -213,7 +213,7 @@
             this.txtCusType.Location = new System.Drawing.Point(167, 140);
             this.txtCusType.Name = "txtCusType";
             this.txtCusType.Size = new System.Drawing.Size(147, 24);
-            this.txtCusType.TabIndex = 30;
+            this.txtCusType.TabIndex = 5;
             // 
             // txtZoneID
             // 
@@ -222,7 +222,7 @@
             this.txtZoneID.Location = new System.Drawing.Point(507, 46);
             this.txtZoneID.Name = "txtZoneID";
             this.txtZoneID.Size = new System.Drawing.Size(147, 24);
-            this.txtZoneID.TabIndex = 29;
+            this.txtZoneID.TabIndex = 7;
             // 
             // label4
             // 
@@ -282,7 +282,7 @@
             this.txtAddress.Multiline = true;
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(147, 20);
-            this.txtAddress.TabIndex = 12;
+            this.txtAddress.TabIndex = 9;
             // 
             // label12
             // 
@@ -312,7 +312,7 @@
             this.txtEmail.Location = new System.Drawing.Point(167, 185);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(147, 23);
-            this.txtEmail.TabIndex = 1;
+            this.txtEmail.TabIndex = 6;
             // 
             // label6
             // 
@@ -331,7 +331,7 @@
             this.txtCusName.Location = new System.Drawing.Point(167, 93);
             this.txtCusName.Name = "txtCusName";
             this.txtCusName.Size = new System.Drawing.Size(147, 23);
-            this.txtCusName.TabIndex = 18;
+            this.txtCusName.TabIndex = 4;
             // 
             // label1
             // 
@@ -379,29 +379,29 @@
             // 
             this.dgvCus.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvCus.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCus.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCus.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvCus.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvCus.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvCus.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgvCus.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvCus.GridColor = System.Drawing.SystemColors.ActiveCaption;
             this.dgvCus.Location = new System.Drawing.Point(0, 0);
             this.dgvCus.Name = "dgvCus";
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            this.dgvCus.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+            this.dgvCus.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvCus.Size = new System.Drawing.Size(928, 168);
             this.dgvCus.TabIndex = 3;
             // 

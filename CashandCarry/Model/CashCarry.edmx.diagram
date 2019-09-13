@@ -5,9 +5,13 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="9b0364be8f224a2f8a888d12e35fcb98" Name="Diagram1">
-        <EntityTypeShape EntityType="CashCarryModel.tbl_Category" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CashCarryModel.tbl_Zone" Width="1.5" PointX="3.375" PointY="0.75" />
-        <EntityTypeShape EntityType="CashCarryModel.tbl_Company" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="CashCarryModel.tbl_Category" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="CashCarryModel.tbl_Zone" Width="1.5" PointX="3.375" PointY="0.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="CashCarryModel.tbl_Company" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="CashCarryModel.tbl_CustomerTypes" Width="1.5" PointX="3.375" PointY="3.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="CashCarryModel.tbl_employee" Width="1.5" PointX="5.375" PointY="0.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="CashCarryModel.tbl_Customer" Width="1.5" PointX="5.375" PointY="5.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="CashCarryModel.View_tbl_Customer" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

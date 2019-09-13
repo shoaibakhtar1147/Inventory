@@ -1,4 +1,5 @@
 ﻿using CashandCarry.BL;
+using CashandCarry.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -65,31 +66,43 @@ namespace CashandCarry.Configuration
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            bool Gender = rdmale.Checked ? true : false;
-            EmployeeBL objBL = new EmployeeBL()
+            if(FormValidate() == true)
             {
-                Name = txtname.Text,
-                Fname = txtFname.Text,
-                Username = txtUsername.Text,
-                Password = txtPassword.Text,
-                Qualifiction = txtQual.Text,
-                Cnic = txtCnic.Text,
-                Address = txtAddress.Text,
-                Contact = txtContact.Text,
-                Designation = txtDesig.Text,
-                DOB = txtDOB.Text,
-                Gender = Gender
-            };
-           int rowaffected= objBL.Save();
-            if(rowaffected>0)
-            {
+                bool Gender = rdmale.Checked ? true : false;
+                EmployeeBL objBL = new EmployeeBL()
+                {
+                    Name = txtname.Text,
+                    Fname = txtFname.Text,
+                    Username = txtUsername.Text,
+                    Password = txtPassword.Text,
+                    Qualifiction = txtQual.Text,
+                    Cnic = txtCnic.Text,
+                    Address = txtAddress.Text,
+                    Contact = txtContact.Text,
+                    Designation = txtDesig.Text,
+                    DOB = txtDOB.Text,
+                    Gender = Gender
+                };
+                objBL.Save();
                 MessageBox.Show("Record Saved successfull");
+                LoadData();
             }
             else
             {
                 MessageBox.Show("Record Not Saved");
             }
         
+        }
+        private bool FormValidate()
+        {
+            if (txtname.Text == "" || txtFname.Text == "" || txtQual.Text == "" || txtDOB.Text == "" || txtAddress.Text == "" || txtDesig.Text == "" || txtCnic.MaskCompleted == false || txtContact.MaskCompleted == false)
+            {
+                return false;
+            }
+            { 
+                return true; 
+            }
+            
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -117,19 +130,17 @@ namespace CashandCarry.Configuration
                        Designation=txtDesig.Text,
                         Gender=gender
             };
-                int rowaffected=objEmp.Update();
-                if(rowaffected>0)
-                {
-                    MessageBox.Show("Employee Record Updated");
-                }
-                else
-                {
-                    MessageBox.Show("Employee Record Not Updated");
-                }
-              
+                objEmp.Update();
+               MessageBox.Show("Employee Record Updated");
                 LoadData();
                 
             }
+            else
+            {
+                MessageBox.Show("Employee Record Not Updated");
+            }
+              
+               
             
         }
 
@@ -161,11 +172,9 @@ namespace CashandCarry.Configuration
             {
                 EmployeeID = Convert.ToInt32(txtSearch.Text)
             };
-                int rowaffected = objEmp.Delete();
-                if (rowaffected > 0)
-                {
+                objEmp.Delete();
                     MessageBox.Show("Record Deleted Successfull");
-                }
+               
 
             }
             else
@@ -185,21 +194,21 @@ namespace CashandCarry.Configuration
             {
                  EmployeeID =Convert.ToInt32(txtSearch.Text)
             };
-            DataTable dt = objEmp.Search();
-            if (dt.Rows.Count > 0)
+            tbl_employee dt = objEmp.Search();
+            if (dt != null) 
             {
-                txtEmpId.Text = Convert.ToString(dt.Rows[0]["EmployeeID"]);
-                txtname.Text = Convert.ToString(dt.Rows[0]["Name"]);
-                txtFname.Text = Convert.ToString(dt.Rows[0]["Fname"]);
-                txtQual.Text = Convert.ToString(dt.Rows[0]["Qualifiction"]);
-                txtPassword.Text = Convert.ToString(dt.Rows[0]["Password"]);
-                txtDOB.Text = Convert.ToString(dt.Rows[0]["DOB"]);
-                txtDesig.Text = Convert.ToString(dt.Rows[0]["Designation"]);
-                txtUsername.Text = Convert.ToString(dt.Rows[0]["Username"]);
-                txtCnic.Text = Convert.ToString(dt.Rows[0]["Cnic"]);
-                txtContact.Text = Convert.ToString(dt.Rows[0]["Contact"]);
-                txtAddress.Text = Convert.ToString(dt.Rows[0]["Address"]);
-                string gender = Convert.ToString(dt.Rows[0]["Gender"]);
+                txtEmpId.Text = Convert.ToString(dt.EmployeeID);
+                txtname.Text = Convert.ToString(dt.Name);
+                txtFname.Text = Convert.ToString(dt.Fname);
+                txtQual.Text = Convert.ToString(dt.Qualifiction);
+                txtPassword.Text = Convert.ToString(dt.Password);
+                txtDOB.Text = Convert.ToString(dt.DOB);
+                txtDesig.Text = Convert.ToString(dt.Designation);
+                txtUsername.Text = Convert.ToString(dt.Username);
+                txtCnic.Text = Convert.ToString(dt.Cnic);
+                txtContact.Text = Convert.ToString(dt.Contact);
+                txtAddress.Text = Convert.ToString(dt.Address);
+                string gender = Convert.ToString(dt.Gender);
                 if (gender == "Male")
                 {
                     rdmale.Checked = true;
@@ -222,9 +231,9 @@ namespace CashandCarry.Configuration
         private void LoadData()
         {
             EmployeeBL objEmp = new EmployeeBL();
-            DataTable dt = objEmp.Select();
+            List<tbl_employee> dt = objEmp.Select();
             dgvEmp.Columns.Clear();
-            if(dt != null && dt.Rows.Count>0)
+            if(dt != null && dt.Count>0)
             {
                 DataGridViewImageColumn edit = new DataGridViewImageColumn();
                 edit.Image = Properties.Resources.edit;
@@ -279,12 +288,10 @@ namespace CashandCarry.Configuration
                 {
                     EmployeeID = Convert.ToInt32(dgvEmp.Rows[rowindex].Cells[2].Value)
                 };
-                int rowaffected = objEmployee.Delete();
-                if (rowaffected > 0)
-                {
-                    MessageBox.Show("Deleted Successfully");
-                      
-                }
+                objEmployee.Delete();
+               MessageBox.Show("Deleted Successfully");
+               LoadData();            
+               
 
             }
         }
