@@ -54,3 +54,4 @@ C:\Users\ARSALAN COMPUTER LAB\Documents\GitHub\Inventory\CashandCarry\obj\Debug\
 C:\Users\ARSALAN COMPUTER LAB\Documents\GitHub\Inventory\CashandCarry\obj\Debug\CashandCarry.Properties.Resources.resources
 C:\Users\ARSALAN COMPUTER LAB\Documents\GitHub\Inventory\CashandCarry\obj\Debug\CashandCarry.csproj.GenerateResource.Cache
 C:\Users\ARSALAN COMPUTER LAB\Documents\GitHub\Inventory\CashandCarry\obj\Debug\CashandCarry.pdb
+C:\Users\ARSALAN COMPUTER LAB\Documents\GitHub\Inventory\CashandCarry\obj\Debug\CashandCarry.Reports.rptViewer.resources

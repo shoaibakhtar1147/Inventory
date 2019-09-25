@@ -25,7 +25,13 @@
     <EntitySet Name="tbl_Customer" EntityType="CashCarryModel.tbl_Customer" />
     <EntitySet Name="View_tbl_Customer" EntityType="CashCarryModel.View_tbl_Customer" />
     <EntitySet Name="tbl_Product" EntityType="CashCarryModel.tbl_Product" />
+    <FunctionImport Name="SP_Prod_AddNew" ReturnType="Collection(Int32)">
+      <Parameter Name="ProductID" Mode="In" Type="Int32" />
+    </FunctionImport>
     <EntitySet Name="View_tbl_Product" EntityType="CashCarryModel.View_tbl_Product" />
+    <EntitySet Name="tbl_Saledetail" EntityType="CashCarryModel.tbl_Saledetail" />
+    <EntitySet Name="tbl_SaleMAster" EntityType="CashCarryModel.tbl_SaleMAster" />
+    <EntitySet Name="View_DetailSale" EntityType="CashCarryModel.View_DetailSale" />
   </EntityContainer>
   <EntityType Name="tbl_Zone">
     <Key>
@@ -102,7 +108,6 @@
     </Key>
     <Property Name="ProductID" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
     <Property Name="ProductName" MaxLength="30" FixedLength="false" Unicode="false" Type="String" />
-    <Property Name="Unit" MaxLength="10" FixedLength="false" Unicode="false" Type="String" />
     <Property Name="weight" MaxLength="20" FixedLength="false" Unicode="false" Type="String" />
     <Property Name="CategoryID" Type="Int32" />
     <Property Name="CompanyID" Type="Int32" />
@@ -117,9 +122,40 @@
     <Property Name="ProductName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
     <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Company" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="Unit" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="weight" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="RetailPrice" Type="Decimal" Precision="18" Scale="0" />
     <Property Name="PurchasePrice" Type="Decimal" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="tbl_Saledetail">
+    <Key>
+      <PropertyRef Name="SDetailID" />
+    </Key>
+    <Property Name="SDetailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Invoice_" Type="Int32" />
+    <Property Name="ProductID" Type="Int32" />
+    <Property Name="Quantity" Type="Int32" />
+    <Property Name="Discount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="TotalAmount" Type="Decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="tbl_SaleMAster">
+    <Key>
+      <PropertyRef Name="Invoice_" />
+    </Key>
+    <Property Name="Invoice_" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SaleDate" Type="DateTime" Precision="3" />
+    <Property Name="Amount" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="TotalAmount" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Discount" Type="Decimal" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="View_DetailSale">
+    <Key>
+      <PropertyRef Name="InvoiceNo" />
+    </Key>
+    <Property Name="ProductName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="RetailPrice" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Quantity" Type="Int32" />
+    <Property Name="Discount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="TotalAmount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="InvoiceNo" Type="Int32" Nullable="false" />
   </EntityType>
 </Schema>

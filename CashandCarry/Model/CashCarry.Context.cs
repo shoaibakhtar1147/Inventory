@@ -36,6 +36,9 @@ namespace CashandCarry.Model
         public virtual DbSet<View_tbl_Customer> View_tbl_Customer { get; set; }
         public virtual DbSet<tbl_Product> tbl_Product { get; set; }
         public virtual DbSet<View_tbl_Product> View_tbl_Product { get; set; }
+        public virtual DbSet<tbl_Saledetail> tbl_Saledetail { get; set; }
+        public virtual DbSet<tbl_SaleMAster> tbl_SaleMAster { get; set; }
+        public virtual DbSet<View_DetailSale> View_DetailSale { get; set; }
     
         public virtual ObjectResult<Nullable<int>> SP_Cate_AddNew(Nullable<int> categoryID)
         {
@@ -62,6 +65,15 @@ namespace CashandCarry.Model
                 new ObjectParameter("ZoneID", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("SP_Zone_AddNew", zoneIDParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> SP_Prod_AddNew(Nullable<int> productID)
+        {
+            var productIDParameter = productID.HasValue ?
+                new ObjectParameter("ProductID", productID) :
+                new ObjectParameter("ProductID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("SP_Prod_AddNew", productIDParameter);
         }
     }
 }

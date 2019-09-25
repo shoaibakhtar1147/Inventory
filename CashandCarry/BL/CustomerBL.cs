@@ -103,7 +103,7 @@ namespace CashandCarry.BL
         {
             using(var context=new CashCarryEntities3())
             {
-                return context.View_tbl_Customer.ToList();
+               return context.View_tbl_Customer.ToList(); 
             }
         }
     }

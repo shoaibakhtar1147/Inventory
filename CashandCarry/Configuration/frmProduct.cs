@@ -18,7 +18,7 @@ namespace CashandCarry.Configuration
         {
             InitializeComponent();
         }
-
+       
         private void label7_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -63,6 +63,7 @@ namespace CashandCarry.Configuration
             btnUpdate.Enabled = false;
             btnClear.Enabled = false;
             btnDelete.Enabled = false;
+          
            
         }
         public void FormEnable()
@@ -73,15 +74,21 @@ namespace CashandCarry.Configuration
             txtProdName.Enabled = true;
             txtRP.Enabled = true;
             txtWeight.Enabled = true;
-            btnSave.Enabled = true;
-
+          
         }
 
         private void btnAddnew_Click(object sender, EventArgs e)
         {
-            
-            FormEnable();
-            txtProdName.Focus();
+            ProductBL obPro = new ProductBL();
+            DataTable dt = obPro.Addnew();
+            if(dt.Rows.Count>0)
+            {
+                txtProductID.Text = Convert.ToString(dt.Rows[0]["ProductID"]);
+                btnSave.Enabled = true;
+                FormEnable();
+                txtProdName.Focus();
+            }
+           
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -96,7 +103,7 @@ namespace CashandCarry.Configuration
                     weight=txtWeight.Text,
                       CategoryID=Convert.ToInt32(txtProdCate.SelectedValue),
                        CompanyID=Convert.ToInt32(txtComName.SelectedValue),
-                        Unit=txtUnit.Text
+                        
                 };
                 objPro.Save();
                 MessageBox.Show("Product Saved Successfull");
@@ -139,7 +146,31 @@ namespace CashandCarry.Configuration
 
         private void dgvProduct_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            int columnindex = e.ColumnIndex;
+            int rowindex = e.RowIndex;
+            if(columnindex==0)
+            {
+                txtProductID.Text = dgvProduct.Rows[rowindex].Cells[2].Value.ToString();
+                txtProdName.Text = dgvProduct.Rows[rowindex].Cells[3].Value.ToString();
+                txtProdCate.Text = dgvProduct.Rows[rowindex].Cells[4].Value.ToString();
+                txtComName.Text = dgvProduct.Rows[rowindex].Cells[5].Value.ToString();
+               
+                txtWeight.Text = dgvProduct.Rows[rowindex].Cells[6].Value.ToString();
+                txtRP.Text = dgvProduct.Rows[rowindex].Cells[7].Value.ToString();
+                txtPP.Text = dgvProduct.Rows[rowindex].Cells[8].Value.ToString();
+                FormEnable();
+            }
+            else if(columnindex==1)
+            {
+                ProductBL objPro = new ProductBL() 
+                {
+                 ProductID=Convert.ToInt32(dgvProduct.Rows[rowindex].Cells[2].Value)
 
+                };
+                objPro.Delete();
+                MessageBox.Show("Record Delete Successfull");
+                LoadData();
+            }
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -159,5 +190,52 @@ namespace CashandCarry.Configuration
                 btnDelete.Enabled = true;
             }
         }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            if(txtSearch.Text==string.Empty)
+            {
+                MessageBox.Show("Please Select A Product ID ");
+            }
+            else if (MessageBox.Show("Are You Sure To Update Product?", "UpdateAlert", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+            {
+                ProductBL objPro = new ProductBL()
+                {
+                    ProductID=Convert.ToInt32(txtProductID.Text),
+                    ProductName = txtProdName.Text,
+                    TradePrice = Convert.ToDecimal(txtPP.Text),
+                    RetailPrice = Convert.ToDecimal(txtRP.Text),
+                    weight = txtWeight.Text,
+                    CategoryID = Convert.ToInt32(txtProdCate.SelectedValue),
+                    CompanyID = Convert.ToInt32(txtComName.SelectedValue),
+                   
+                };
+                objPro.Update();
+                MessageBox.Show("Product Update Successfull");
+                LoadData();
+            }
+            else
+            {
+                MessageBox.Show("Product Not Update");
+            }
+
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            string message = "Are You Sure To Delete  Product " + txtProdName.Text + "?";
+            if (MessageBox.Show(message, "Delete Alert", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
+                ProductBL objPro=new ProductBL()
+                {
+                     ProductID = Convert.ToInt32(txtSearch.Text)
+                };
+                objPro.Delete();
+                MessageBox.Show("Record Delete Successfull");
+                LoadData();
+                
+            }
+        }
+      
     }
 }

@@ -98,23 +98,57 @@
           <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
           <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
           <ScalarProperty Name="weight" ColumnName="weight" />
-          <ScalarProperty Name="Unit" ColumnName="Unit" />
           <ScalarProperty Name="ProductName" ColumnName="ProductName" />
           <ScalarProperty Name="ProductID" ColumnName="ProductID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SP_Prod_AddNew" FunctionName="CashCarryModel.Store.SP_Prod_AddNew" />
     <EntitySetMapping Name="View_tbl_Product">
       <EntityTypeMapping TypeName="CashCarryModel.View_tbl_Product">
         <MappingFragment StoreEntitySet="View_tbl_Product">
           <ScalarProperty Name="PurchasePrice" ColumnName="PurchasePrice" />
           <ScalarProperty Name="RetailPrice" ColumnName="RetailPrice" />
           <ScalarProperty Name="weight" ColumnName="weight" />
-          <ScalarProperty Name="Unit" ColumnName="Unit" />
           <ScalarProperty Name="Company" ColumnName="Company" />
           <ScalarProperty Name="Category" ColumnName="Category" />
           <ScalarProperty Name="ProductName" ColumnName="ProductName" />
           <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Saledetail">
+      <EntityTypeMapping TypeName="CashCarryModel.tbl_Saledetail">
+        <MappingFragment StoreEntitySet="tbl_Saledetail">
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="Invoice_" ColumnName="Invoice#" />
+          <ScalarProperty Name="SDetailID" ColumnName="SDetailID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_SaleMAster">
+      <EntityTypeMapping TypeName="CashCarryModel.tbl_SaleMAster">
+        <MappingFragment StoreEntitySet="tbl_SaleMAster">
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="SaleDate" ColumnName="SaleDate" />
+          <ScalarProperty Name="Invoice_" ColumnName="Invoice#" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="View_DetailSale">
+      <EntityTypeMapping TypeName="CashCarryModel.View_DetailSale">
+        <MappingFragment StoreEntitySet="View_DetailSale">
+          <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="RetailPrice" ColumnName="RetailPrice" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

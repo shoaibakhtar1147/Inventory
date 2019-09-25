@@ -16,7 +16,6 @@ namespace CashandCarry.Model
     {
         public int ProductID { get; set; }
         public string ProductName { get; set; }
-        public string Unit { get; set; }
         public string weight { get; set; }
         public Nullable<int> CategoryID { get; set; }
         public Nullable<int> CompanyID { get; set; }

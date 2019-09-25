@@ -2,6 +2,8 @@
 using CashandCarry.Model;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,7 +31,7 @@ namespace CashandCarry.BL
                   ProductName=ProductName,
                    CategoryID=CategoryID,
                     CompanyID=CompanyID,
-                     Unit=Unit,
+                    
                        weight=weight,
                         RetailPrice=RetailPrice,
                         TradePrice=TradePrice,
@@ -40,19 +42,44 @@ namespace CashandCarry.BL
             }
         }
 
-        public int Delete()
+        public void Delete()
         {
-            throw new NotImplementedException();
+            using(var context=new CashCarryEntities3())
+            {
+                var result = context.tbl_Product.Where(a => a.ProductID == ProductID).SingleOrDefault();
+                if(result != null)
+                {
+                    context.tbl_Product.Remove(result);
+                    context.SaveChanges();
+                }
+            }
         }
 
-        public int Update()
+        public void Update()
         {
-            throw new NotImplementedException();
+            using(var context=new CashCarryEntities3())
+            {
+                var result = context.tbl_Product.Where(a => a.ProductID == ProductID).SingleOrDefault();
+                if(result != null)
+                {
+                     result.ProductName=ProductName;
+                   result.CategoryID=CategoryID;
+                    result.CompanyID=CompanyID;
+                    
+                       result.weight=weight;
+                        result.RetailPrice=RetailPrice;
+                        result.TradePrice = TradePrice;
+                        context.SaveChanges();
+                }
+            }
         }
 
-        public System.Data.DataTable Addnew()
+        public DataTable Addnew()
         {
-            throw new NotImplementedException();
+            string spName = "SP_Prod_AddNew";
+            SqlParameter[] prm = new SqlParameter[1];
+            prm[0] = new SqlParameter("@ProductID", ProductID);
+            return DB.SelectTableWithSP(spName, prm);
         }
 
         public tbl_Product Search()
