@@ -52,6 +52,7 @@ namespace CashandCarry
         {
             frmSales objSale = new frmSales();
             ShowForm(objSale);
+            
         }
 
         private void btnPuchase_Click(object sender, EventArgs e)

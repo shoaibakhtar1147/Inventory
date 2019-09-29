@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CashandCarry.Vendor;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,12 @@ namespace CashandCarry.Purchase
         public frmPurchase()
         {
             InitializeComponent();
+        }
+
+        private void btnSaleInv_Click(object sender, EventArgs e)
+        {
+            PurchaseInvoice objPur = new PurchaseInvoice();
+            objPur.ShowDialog();
         }
     }
 }

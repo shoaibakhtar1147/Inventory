@@ -69,6 +69,7 @@
           <Property Name="CompanyID" Type="int" />
           <Property Name="RetailPrice" Type="decimal" Precision="18" Scale="0" />
           <Property Name="TradePrice" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Quantity" Type="int" />
         </EntityType>
         <EntityType Name="tbl_Saledetail">
           <Key>
@@ -90,6 +91,7 @@
           <Property Name="TotalAmount" Type="decimal" Precision="18" Scale="0" />
           <Property Name="SaleDate" Type="datetime" />
           <Property Name="Discount" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="CustomerID" Type="int" />
         </EntityType>
         <EntityType Name="tbl_Zone">
           <Key>
@@ -102,14 +104,21 @@
 warning 6002: The table/view 'CashCarry.dbo.View_DetailSale' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="View_DetailSale">
           <Key>
+            <PropertyRef Name="Sr#" />
             <PropertyRef Name="InvoiceNo" />
           </Key>
+          <Property Name="Sr#" Type="int" Nullable="false" />
+          <Property Name="CustomerName" Type="varchar" MaxLength="30" />
           <Property Name="InvoiceNo" Type="int" Nullable="false" />
+          <Property Name="Date" Type="datetime" />
           <Property Name="ProductName" Type="varchar" MaxLength="30" />
           <Property Name="RetailPrice" Type="decimal" Precision="18" Scale="0" />
           <Property Name="Quantity" Type="int" />
           <Property Name="Discount" Type="decimal" Precision="18" Scale="2" />
-          <Property Name="TotalAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="BillAmount" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Flat" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="GrandTotal" Type="decimal" Precision="18" Scale="0" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'CashCarry.dbo.View_tbl_Customer' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -145,6 +154,9 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
         <Function Name="SP_Prod_AddNew" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ProductID" Type="int" Mode="In" />
         </Function>
+        <Function Name="SP_SaleInvoice_Search" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="InvoiceNo" Type="int" Mode="In" />
+        </Function>
         <Function Name="SP_Zone_AddNew" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ZoneID" Type="int" Mode="In" />
         </Function>
@@ -163,12 +175,18 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
           <EntitySet Name="tbl_Zone" EntityType="Self.tbl_Zone" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="View_DetailSale" EntityType="Self.View_DetailSale" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
+    [View_DetailSale].[Sr#] AS [Sr#], 
+    [View_DetailSale].[CustomerName] AS [CustomerName], 
     [View_DetailSale].[InvoiceNo] AS [InvoiceNo], 
+    [View_DetailSale].[Date] AS [Date], 
     [View_DetailSale].[ProductName] AS [ProductName], 
     [View_DetailSale].[RetailPrice] AS [RetailPrice], 
     [View_DetailSale].[Quantity] AS [Quantity], 
     [View_DetailSale].[Discount] AS [Discount], 
-    [View_DetailSale].[TotalAmount] AS [TotalAmount]
+    [View_DetailSale].[Amount] AS [Amount], 
+    [View_DetailSale].[BillAmount] AS [BillAmount], 
+    [View_DetailSale].[Flat] AS [Flat], 
+    [View_DetailSale].[GrandTotal] AS [GrandTotal]
     FROM [dbo].[View_DetailSale] AS [View_DetailSale]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="View_tbl_Customer" EntityType="Self.View_tbl_Customer" store:Type="Views" store:Schema="dbo">
@@ -230,6 +248,9 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
           <EntitySet Name="tbl_Saledetail" EntityType="CashCarryModel.tbl_Saledetail" />
           <EntitySet Name="tbl_SaleMAster" EntityType="CashCarryModel.tbl_SaleMAster" />
           <EntitySet Name="View_DetailSale" EntityType="CashCarryModel.View_DetailSale" />
+          <FunctionImport Name="SP_SaleInvoice_Search" ReturnType="Collection(CashCarryModel.SP_SaleInvoice_Search_Result)">
+          <Parameter Name="InvoiceNo" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="tbl_Zone">
           <Key>
@@ -311,6 +332,7 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
           <Property Name="CompanyID" Type="Int32" />
           <Property Name="RetailPrice" Precision="18" Scale="0" Type="Decimal" />
           <Property Name="TradePrice" Precision="18" Scale="0" Type="Decimal" />
+          <Property Name="Quantity" Type="Int32" />
         </EntityType>
         <EntityType Name="View_tbl_Product">
           <Key>
@@ -344,18 +366,38 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
           <Property Name="Amount" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="TotalAmount" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="Discount" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="CustomerID" Type="Int32" />
         </EntityType>
         <EntityType Name="View_DetailSale">
           <Key>
             <PropertyRef Name="InvoiceNo" />
+            <PropertyRef Name="Sr_" />
           </Key>
+          <Property Name="InvoiceNo" Type="Int32" Nullable="false" />
           <Property Name="ProductName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="RetailPrice" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="Quantity" Type="Int32" />
           <Property Name="Discount" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="TotalAmount" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="InvoiceNo" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="GrandTotal" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="BillAmount" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Flat" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Sr_" Type="Int32" Nullable="false" />
+          <Property Name="CustomerName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
         </EntityType>
+        <ComplexType Name="SP_SaleInvoice_Search_Result">
+          <Property Type="Int32" Name="InvoiceNo" Nullable="false" />
+          <Property Type="DateTime" Name="Date" Nullable="true" Precision="23" />
+          <Property Type="String" Name="ProductName" Nullable="true" MaxLength="30" />
+          <Property Type="Decimal" Name="RetailPrice" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Int32" Name="Quantity" Nullable="true" />
+          <Property Type="Decimal" Name="Discount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="Amount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="BillAmount" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="Flat" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="GrandTotal" Nullable="true" Precision="18" Scale="0" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -454,6 +496,7 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
           <EntitySetMapping Name="tbl_Product">
             <EntityTypeMapping TypeName="CashCarryModel.tbl_Product">
               <MappingFragment StoreEntitySet="tbl_Product">
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
                 <ScalarProperty Name="TradePrice" ColumnName="TradePrice" />
                 <ScalarProperty Name="RetailPrice" ColumnName="RetailPrice" />
                 <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
@@ -493,6 +536,7 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
           <EntitySetMapping Name="tbl_SaleMAster">
             <EntityTypeMapping TypeName="CashCarryModel.tbl_SaleMAster">
               <MappingFragment StoreEntitySet="tbl_SaleMAster">
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
                 <ScalarProperty Name="Discount" ColumnName="Discount" />
                 <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
                 <ScalarProperty Name="Amount" ColumnName="Amount" />
@@ -504,15 +548,37 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
           <EntitySetMapping Name="View_DetailSale">
             <EntityTypeMapping TypeName="CashCarryModel.View_DetailSale">
               <MappingFragment StoreEntitySet="View_DetailSale">
-                <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
-                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="Sr_" ColumnName="Sr#" />
+                <ScalarProperty Name="Flat" ColumnName="Flat" />
+                <ScalarProperty Name="BillAmount" ColumnName="BillAmount" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="GrandTotal" ColumnName="GrandTotal" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="Discount" ColumnName="Discount" />
                 <ScalarProperty Name="Quantity" ColumnName="Quantity" />
                 <ScalarProperty Name="RetailPrice" ColumnName="RetailPrice" />
                 <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_SaleInvoice_Search" FunctionName="CashCarryModel.Store.SP_SaleInvoice_Search">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CashCarryModel.SP_SaleInvoice_Search_Result">
+                <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="RetailPrice" ColumnName="RetailPrice" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="BillAmount" ColumnName="BillAmount" />
+                <ScalarProperty Name="Flat" ColumnName="Flat" />
+                <ScalarProperty Name="GrandTotal" ColumnName="GrandTotal" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

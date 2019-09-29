@@ -136,6 +136,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CashCarry.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Model\SP_SaleInvoice_Search_Result.cs">
+      <DependentUpon>CashCarry.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\SP_Zone_Search_Result.cs">
       <DependentUpon>CashCarry.tt</DependentUpon>
     </Compile>
@@ -186,10 +189,10 @@
     <Compile Include="Configuration\FrmConfiguration.Designer.cs">
       <DependentUpon>FrmConfiguration.cs</DependentUpon>
     </Compile>
-    <Compile Include="Purchase\frmPurchase.cs">
+    <Compile Include="Vendor\frmPurchase.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Purchase\frmPurchase.Designer.cs">
+    <Compile Include="Vendor\frmPurchase.Designer.cs">
       <DependentUpon>frmPurchase.cs</DependentUpon>
     </Compile>
     <Compile Include="Reports\frmReports.cs">
@@ -204,10 +207,10 @@
     <Compile Include="Reports\rptViewer.Designer.cs">
       <DependentUpon>rptViewer.cs</DependentUpon>
     </Compile>
-    <Compile Include="Reports\SaleInvoice.cs">
+    <Compile Include="Reports\saleInvoiceReport.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>SaleInvoice.rpt</DependentUpon>
+      <DependentUpon>saleInvoiceReport.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Sales\FrmSaleInvoice.cs">
@@ -242,6 +245,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Vendor\PurchaseInvoice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vendor\PurchaseInvoice.Designer.cs">
+      <DependentUpon>PurchaseInvoice.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Configuration\frmCustomer.resx">
       <DependentUpon>frmCustomer.cs</DependentUpon>
     </EmbeddedResource>
@@ -269,7 +278,7 @@
     <EmbeddedResource Include="Configuration\ProductCategory.resx">
       <DependentUpon>ProductCategory.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Purchase\frmPurchase.resx">
+    <EmbeddedResource Include="Vendor\frmPurchase.resx">
       <DependentUpon>frmPurchase.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\frmReports.resx">
@@ -278,9 +287,9 @@
     <EmbeddedResource Include="Reports\rptViewer.resx">
       <DependentUpon>rptViewer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\SaleInvoice.rpt">
+    <EmbeddedResource Include="Reports\saleInvoiceReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>SaleInvoice.cs</LastGenOutput>
+      <LastGenOutput>saleInvoiceReport.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Sales\FrmSaleInvoice.resx">
       <DependentUpon>FrmSaleInvoice.cs</DependentUpon>
@@ -301,6 +310,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vendor\PurchaseInvoice.resx">
+      <DependentUpon>PurchaseInvoice.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="Model\CashCarry.edmx">
       <Generator>EntityModelCodeGenerator</Generator>

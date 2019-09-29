@@ -75,5 +75,14 @@ namespace CashandCarry.Model
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("SP_Prod_AddNew", productIDParameter);
         }
+    
+        public virtual ObjectResult<SP_SaleInvoice_Search_Result> SP_SaleInvoice_Search(Nullable<int> invoiceNo)
+        {
+            var invoiceNoParameter = invoiceNo.HasValue ?
+                new ObjectParameter("InvoiceNo", invoiceNo) :
+                new ObjectParameter("InvoiceNo", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_SaleInvoice_Search_Result>("SP_SaleInvoice_Search", invoiceNoParameter);
+        }
     }
 }

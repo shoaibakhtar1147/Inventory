@@ -10,17 +10,18 @@
 namespace CashandCarry.Model
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class tbl_Product
+    public partial class SP_SaleInvoice_Search_Result
     {
-        public int ProductID { get; set; }
+        public int InvoiceNo { get; set; }
+        public Nullable<System.DateTime> Date { get; set; }
         public string ProductName { get; set; }
-        public string weight { get; set; }
-        public Nullable<int> CategoryID { get; set; }
-        public Nullable<int> CompanyID { get; set; }
         public Nullable<decimal> RetailPrice { get; set; }
-        public Nullable<decimal> TradePrice { get; set; }
         public Nullable<int> Quantity { get; set; }
+        public Nullable<decimal> Discount { get; set; }
+        public Nullable<decimal> Amount { get; set; }
+        public Nullable<decimal> BillAmount { get; set; }
+        public Nullable<decimal> Flat { get; set; }
+        public Nullable<decimal> GrandTotal { get; set; }
     }
 }

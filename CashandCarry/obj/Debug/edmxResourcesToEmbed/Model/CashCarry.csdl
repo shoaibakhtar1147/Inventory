@@ -32,6 +32,9 @@
     <EntitySet Name="tbl_Saledetail" EntityType="CashCarryModel.tbl_Saledetail" />
     <EntitySet Name="tbl_SaleMAster" EntityType="CashCarryModel.tbl_SaleMAster" />
     <EntitySet Name="View_DetailSale" EntityType="CashCarryModel.View_DetailSale" />
+    <FunctionImport Name="SP_SaleInvoice_Search" ReturnType="Collection(CashCarryModel.SP_SaleInvoice_Search_Result)">
+      <Parameter Name="InvoiceNo" Mode="In" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
   <EntityType Name="tbl_Zone">
     <Key>
@@ -113,6 +116,7 @@
     <Property Name="CompanyID" Type="Int32" />
     <Property Name="RetailPrice" Precision="18" Scale="0" Type="Decimal" />
     <Property Name="TradePrice" Precision="18" Scale="0" Type="Decimal" />
+    <Property Name="Quantity" Type="Int32" />
   </EntityType>
   <EntityType Name="View_tbl_Product">
     <Key>
@@ -146,16 +150,36 @@
     <Property Name="Amount" Type="Decimal" Precision="18" Scale="0" />
     <Property Name="TotalAmount" Type="Decimal" Precision="18" Scale="0" />
     <Property Name="Discount" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="CustomerID" Type="Int32" />
   </EntityType>
   <EntityType Name="View_DetailSale">
     <Key>
       <PropertyRef Name="InvoiceNo" />
+      <PropertyRef Name="Sr_" />
     </Key>
+    <Property Name="InvoiceNo" Type="Int32" Nullable="false" />
     <Property Name="ProductName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
     <Property Name="RetailPrice" Type="Decimal" Precision="18" Scale="0" />
     <Property Name="Quantity" Type="Int32" />
     <Property Name="Discount" Type="Decimal" Precision="18" Scale="2" />
-    <Property Name="TotalAmount" Type="Decimal" Precision="18" Scale="2" />
-    <Property Name="InvoiceNo" Type="Int32" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
+    <Property Name="GrandTotal" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="BillAmount" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Flat" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Sr_" Type="Int32" Nullable="false" />
+    <Property Name="CustomerName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
   </EntityType>
+  <ComplexType Name="SP_SaleInvoice_Search_Result">
+    <Property Type="Int32" Name="InvoiceNo" Nullable="false" />
+    <Property Type="DateTime" Name="Date" Nullable="true" Precision="23" />
+    <Property Type="String" Name="ProductName" Nullable="true" MaxLength="30" />
+    <Property Type="Decimal" Name="RetailPrice" Nullable="true" Precision="18" Scale="0" />
+    <Property Type="Int32" Name="Quantity" Nullable="true" />
+    <Property Type="Decimal" Name="Discount" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Amount" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="BillAmount" Nullable="true" Precision="18" Scale="0" />
+    <Property Type="Decimal" Name="Flat" Nullable="true" Precision="18" Scale="0" />
+    <Property Type="Decimal" Name="GrandTotal" Nullable="true" Precision="18" Scale="0" />
+  </ComplexType>
 </Schema>

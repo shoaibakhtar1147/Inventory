@@ -20,7 +20,9 @@ namespace CashandCarry.Reports
         private void rptViewer_Load(object sender, EventArgs e)
         {
 
-            this.crptView.RefreshReport();
+            this.crptViewer.RefreshReport();
+            this.crptViewer.RefreshReport();
+            this.crptViewer.RefreshReport();
         }
 
         private void crptView_Load(object sender, EventArgs e)

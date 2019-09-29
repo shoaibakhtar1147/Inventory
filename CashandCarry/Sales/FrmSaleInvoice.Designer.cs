@@ -42,6 +42,7 @@
             this.txtCusName = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.txtBillDiscount = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
             this.txtGrandTotal = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
@@ -85,7 +86,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dgvProduct = new System.Windows.Forms.DataGridView();
-            this.txtBillDiscount = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -175,7 +175,7 @@
             this.groupBox2.Size = new System.Drawing.Size(302, 191);
             this.groupBox2.TabIndex = 11;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Customer Details";
+            this.groupBox2.Text = "Customer Info";
             // 
             // txtCusID
             // 
@@ -262,6 +262,16 @@
             this.groupBox5.TabIndex = 14;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Payment";
+            // 
+            // txtBillDiscount
+            // 
+            this.txtBillDiscount.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold);
+            this.txtBillDiscount.Location = new System.Drawing.Point(131, 116);
+            this.txtBillDiscount.Name = "txtBillDiscount";
+            this.txtBillDiscount.Size = new System.Drawing.Size(142, 23);
+            this.txtBillDiscount.TabIndex = 19;
+            this.txtBillDiscount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtBillDiscount.Leave += new System.EventHandler(this.txtBillDiscount_Leave);
             // 
             // label22
             // 
@@ -378,6 +388,7 @@
             this.txtTotalPay.Size = new System.Drawing.Size(142, 23);
             this.txtTotalPay.TabIndex = 20;
             this.txtTotalPay.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtTotalPay.TextChanged += new System.EventHandler(this.txtTotalPay_TextChanged);
             // 
             // label18
             // 
@@ -523,7 +534,7 @@
             this.groupBox3.Size = new System.Drawing.Size(493, 306);
             this.groupBox3.TabIndex = 12;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Product Details";
+            this.groupBox3.Text = "Product Info";
             this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
             // 
             // label21
@@ -778,17 +789,6 @@
             this.dgvProduct.Name = "dgvProduct";
             this.dgvProduct.Size = new System.Drawing.Size(672, 262);
             this.dgvProduct.TabIndex = 14;
-           // this.dgvProduct.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvProduct_RowPostPaint);
-            // 
-            // txtBillDiscount
-            // 
-            this.txtBillDiscount.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold);
-            this.txtBillDiscount.Location = new System.Drawing.Point(131, 116);
-            this.txtBillDiscount.Name = "txtBillDiscount";
-            this.txtBillDiscount.Size = new System.Drawing.Size(142, 23);
-            this.txtBillDiscount.TabIndex = 19;
-            this.txtBillDiscount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtBillDiscount.Leave += new System.EventHandler(this.txtBillDiscount_Leave);
             // 
             // FrmSaleInvoice
             // 

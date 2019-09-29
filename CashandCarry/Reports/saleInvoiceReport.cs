@@ -16,14 +16,14 @@ namespace CashandCarry.Reports {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class SaleInvoice : ReportClass {
+    public class saleInvoiceReport : ReportClass {
         
-        public SaleInvoice() {
+        public saleInvoiceReport() {
         }
         
         public override string ResourceName {
             get {
-                return "SaleInvoice.rpt";
+                return "saleInvoiceReport.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace CashandCarry.Reports {
         
         public override string FullResourceName {
             get {
-                return "CashandCarry.Reports.SaleInvoice.rpt";
+                return "CashandCarry.Reports.saleInvoiceReport.rpt";
             }
             set {
                 // Do nothing
@@ -87,12 +87,20 @@ namespace CashandCarry.Reports {
                 return this.ReportDefinition.Sections[4];
             }
         }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.Shared.IParameterField Parameter_InvoiceNo {
+            get {
+                return this.DataDefinition.ParameterFields[0];
+            }
+        }
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedSaleInvoice : Component, ICachedReport {
+    public class CachedsaleInvoiceReport : Component, ICachedReport {
         
-        public CachedSaleInvoice() {
+        public CachedsaleInvoiceReport() {
         }
         
         [Browsable(false)]
@@ -129,7 +137,7 @@ namespace CashandCarry.Reports {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            SaleInvoice rpt = new SaleInvoice();
+            saleInvoiceReport rpt = new saleInvoiceReport();
             rpt.Site = this.Site;
             return rpt;
         }

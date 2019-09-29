@@ -188,6 +188,7 @@
             this.btnSaleInv.TabIndex = 1;
             this.btnSaleInv.Text = "Add";
             this.btnSaleInv.UseVisualStyleBackColor = false;
+            this.btnSaleInv.Click += new System.EventHandler(this.btnSaleInv_Click);
             // 
             // frmPurchase
             // 

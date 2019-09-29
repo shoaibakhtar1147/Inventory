@@ -28,33 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.cachedSaleInvoice1 = new CashandCarry.Reports.CachedSaleInvoice();
-            this.crptView = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+            this.crptViewer = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.SuspendLayout();
             // 
-            // crptView
+            // crptViewer
             // 
-            this.crptView.ActiveViewIndex = -1;
-            this.crptView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.crptView.Cursor = System.Windows.Forms.Cursors.Default;
-            this.crptView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.crptView.Location = new System.Drawing.Point(0, 0);
-            this.crptView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.crptView.Name = "crptView";
-            this.crptView.Size = new System.Drawing.Size(1329, 571);
-            this.crptView.TabIndex = 0;
-            this.crptView.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
-            this.crptView.Load += new System.EventHandler(this.crptView_Load);
+            this.crptViewer.ActiveViewIndex = -1;
+            this.crptViewer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.crptViewer.Cursor = System.Windows.Forms.Cursors.Default;
+            this.crptViewer.DisplayStatusBar = false;
+            this.crptViewer.DisplayToolbar = false;
+            this.crptViewer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.crptViewer.Location = new System.Drawing.Point(0, 0);
+            this.crptViewer.Name = "crptViewer";
+            this.crptViewer.Size = new System.Drawing.Size(1329, 571);
+            this.crptViewer.TabIndex = 0;
+            this.crptViewer.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
             // 
             // rptViewer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1329, 571);
-            this.Controls.Add(this.crptView);
+            this.Controls.Add(this.crptViewer);
             this.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "rptViewer";
@@ -68,8 +67,8 @@
 
         #endregion
 
-        private CachedSaleInvoice cachedSaleInvoice1;
-        public CrystalDecisions.Windows.Forms.CrystalReportViewer crptView;
+        private saleInvoiceReport cachedsaleInvoiceReport1;
+        public CrystalDecisions.Windows.Forms.CrystalReportViewer crptViewer;
 
 
     }

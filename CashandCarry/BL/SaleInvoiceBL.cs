@@ -15,9 +15,10 @@ namespace CashandCarry.BL
         public int InvoiceNo { get; set; }
         public DateTime SaleDate { get; set; }
         public int ProductID { get; set; }
-        
+        public int CustomerID { get; set; }
         public decimal Amount { get; set; }
         public int Quantity { get; set; }
+        
         public decimal GST { get; set; }
         public decimal Discount { get; set; }
         public decimal TotalAmount { get; set; }
@@ -41,6 +42,7 @@ namespace CashandCarry.BL
                 context.SaveChanges();
             }
         }
+        
         public void SaveMaster()
         {
             using (var context = new CashCarryEntities3())
@@ -50,20 +52,23 @@ namespace CashandCarry.BL
                     Amount = TotalBill,
                     Discount = BillDiscount,
                     SaleDate = SaleDate,
-                    TotalAmount = GrandTotal
+                     CustomerID=CustomerID,
+                    TotalAmount = GrandTotal,
+                     
                 };
                 context.tbl_SaleMAster.Add(objMas);
                 context.SaveChanges();
             }
         }
-
-        public List<View_DetailSale> SelectSaleDetail()
+        public int UpdateProd()
         {
-            using (var context = new CashCarryEntities3())
-            {
-                return context.View_DetailSale.Where(a => a.InvoiceNo== InvoiceNo).ToList();
-            }
+            string spName = "SP_Quantity_Update";
+            SqlParameter[] prm = new SqlParameter[2];
+            prm[0] = new SqlParameter("@ProductID", ProductID);
+            prm[1] = new SqlParameter("@Quantity", Quantity);
+            return DB.ExecuteNonQueryWithSP(spName, prm);
         }
+      
         public int Delete()
         {
             throw new NotImplementedException();
@@ -95,6 +100,7 @@ namespace CashandCarry.BL
 
         public System.Data.DataTable Select()
         {
+
             throw new NotImplementedException();
         }
     }

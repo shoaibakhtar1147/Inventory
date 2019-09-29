@@ -93,6 +93,7 @@
     <EntitySetMapping Name="tbl_Product">
       <EntityTypeMapping TypeName="CashCarryModel.tbl_Product">
         <MappingFragment StoreEntitySet="tbl_Product">
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
           <ScalarProperty Name="TradePrice" ColumnName="TradePrice" />
           <ScalarProperty Name="RetailPrice" ColumnName="RetailPrice" />
           <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
@@ -132,6 +133,7 @@
     <EntitySetMapping Name="tbl_SaleMAster">
       <EntityTypeMapping TypeName="CashCarryModel.tbl_SaleMAster">
         <MappingFragment StoreEntitySet="tbl_SaleMAster">
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
           <ScalarProperty Name="Discount" ColumnName="Discount" />
           <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
           <ScalarProperty Name="Amount" ColumnName="Amount" />
@@ -143,14 +145,36 @@
     <EntitySetMapping Name="View_DetailSale">
       <EntityTypeMapping TypeName="CashCarryModel.View_DetailSale">
         <MappingFragment StoreEntitySet="View_DetailSale">
-          <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
-          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="Sr_" ColumnName="Sr#" />
+          <ScalarProperty Name="Flat" ColumnName="Flat" />
+          <ScalarProperty Name="BillAmount" ColumnName="BillAmount" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="GrandTotal" ColumnName="GrandTotal" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
           <ScalarProperty Name="Discount" ColumnName="Discount" />
           <ScalarProperty Name="Quantity" ColumnName="Quantity" />
           <ScalarProperty Name="RetailPrice" ColumnName="RetailPrice" />
           <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SP_SaleInvoice_Search" FunctionName="CashCarryModel.Store.SP_SaleInvoice_Search">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CashCarryModel.SP_SaleInvoice_Search_Result">
+          <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="RetailPrice" ColumnName="RetailPrice" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="BillAmount" ColumnName="BillAmount" />
+          <ScalarProperty Name="Flat" ColumnName="Flat" />
+          <ScalarProperty Name="GrandTotal" ColumnName="GrandTotal" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

@@ -53,22 +53,6 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.txtPayDue = new System.Windows.Forms.TextBox();
-            this.txtGrandTotal = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.txtTotalPay = new System.Windows.Forms.TextBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.dgvPaymentInfo = new System.Windows.Forms.DataGridView();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.txtPayMode = new System.Windows.Forms.ComboBox();
-            this.txtPayDate = new System.Windows.Forms.DateTimePicker();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.txtPayment = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtCusID = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -78,12 +62,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dgvProduct = new System.Windows.Forms.DataGridView();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.txtInvoiceDate = new System.Windows.Forms.DateTimePicker();
-            this.txtInvoiceID = new System.Windows.Forms.TextBox();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.btnSearch = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtReturnDate = new System.Windows.Forms.DateTimePicker();
             this.txtReturnID = new System.Windows.Forms.TextBox();
@@ -91,17 +69,39 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label19 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.txtPayment = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtPayDate = new System.Windows.Forms.DateTimePicker();
+            this.txtPayMode = new System.Windows.Forms.ComboBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.dgvPaymentInfo = new System.Windows.Forms.DataGridView();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label18 = new System.Windows.Forms.Label();
+            this.txtTotalPay = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.txtGrandTotal = new System.Windows.Forms.TextBox();
+            this.txtPayDue = new System.Windows.Forms.TextBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.txtInvoiceID = new System.Windows.Forms.TextBox();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.label21 = new System.Windows.Forms.Label();
+            this.txtInvoiceDate = new System.Windows.Forms.DateTimePicker();
             this.groupBox3.SuspendLayout();
             this.groupBox6.SuspendLayout();
-            this.groupBox5.SuspendLayout();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPaymentInfo)).BeginInit();
-            this.groupBox4.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProduct)).BeginInit();
-            this.groupBox7.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPaymentInfo)).BeginInit();
+            this.panel1.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.groupBox7.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox3
@@ -415,177 +415,6 @@
             this.btnSave.Text = "Save + Print";
             this.btnSave.UseVisualStyleBackColor = false;
             // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.txtPayDue);
-            this.groupBox5.Controls.Add(this.txtGrandTotal);
-            this.groupBox5.Controls.Add(this.label16);
-            this.groupBox5.Controls.Add(this.label17);
-            this.groupBox5.Controls.Add(this.txtTotalPay);
-            this.groupBox5.Controls.Add(this.label18);
-            this.groupBox5.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox5.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.groupBox5.Location = new System.Drawing.Point(320, 462);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(298, 138);
-            this.groupBox5.TabIndex = 54;
-            this.groupBox5.TabStop = false;
-            // 
-            // txtPayDue
-            // 
-            this.txtPayDue.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPayDue.Location = new System.Drawing.Point(138, 104);
-            this.txtPayDue.Name = "txtPayDue";
-            this.txtPayDue.Size = new System.Drawing.Size(122, 23);
-            this.txtPayDue.TabIndex = 25;
-            // 
-            // txtGrandTotal
-            // 
-            this.txtGrandTotal.Enabled = false;
-            this.txtGrandTotal.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtGrandTotal.Location = new System.Drawing.Point(138, 32);
-            this.txtGrandTotal.Name = "txtGrandTotal";
-            this.txtGrandTotal.Size = new System.Drawing.Size(122, 23);
-            this.txtGrandTotal.TabIndex = 23;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label16.Location = new System.Drawing.Point(28, 35);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(89, 16);
-            this.label16.TabIndex = 23;
-            this.label16.Text = "Grand Total:";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label17.Location = new System.Drawing.Point(28, 107);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(97, 16);
-            this.label17.TabIndex = 16;
-            this.label17.Text = "Payment Due:";
-            // 
-            // txtTotalPay
-            // 
-            this.txtTotalPay.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotalPay.Location = new System.Drawing.Point(138, 68);
-            this.txtTotalPay.Name = "txtTotalPay";
-            this.txtTotalPay.Size = new System.Drawing.Size(122, 23);
-            this.txtTotalPay.TabIndex = 24;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label18.Location = new System.Drawing.Point(28, 71);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(103, 16);
-            this.label18.TabIndex = 0;
-            this.label18.Text = "Total Payment:";
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.dgvPaymentInfo);
-            this.panel1.Location = new System.Drawing.Point(624, 472);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(368, 127);
-            this.panel1.TabIndex = 52;
-            // 
-            // dgvPaymentInfo
-            // 
-            this.dgvPaymentInfo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPaymentInfo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvPaymentInfo.Location = new System.Drawing.Point(0, 0);
-            this.dgvPaymentInfo.Name = "dgvPaymentInfo";
-            this.dgvPaymentInfo.Size = new System.Drawing.Size(368, 127);
-            this.dgvPaymentInfo.TabIndex = 22;
-            this.dgvPaymentInfo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPaymentInfo_CellContentClick);
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.txtPayMode);
-            this.groupBox4.Controls.Add(this.txtPayDate);
-            this.groupBox4.Controls.Add(this.label13);
-            this.groupBox4.Controls.Add(this.label14);
-            this.groupBox4.Controls.Add(this.txtPayment);
-            this.groupBox4.Controls.Add(this.label15);
-            this.groupBox4.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.groupBox4.Location = new System.Drawing.Point(12, 462);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(302, 138);
-            this.groupBox4.TabIndex = 53;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Payment Info";
-            // 
-            // txtPayMode
-            // 
-            this.txtPayMode.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPayMode.FormattingEnabled = true;
-            this.txtPayMode.Items.AddRange(new object[] {
-            ""});
-            this.txtPayMode.Location = new System.Drawing.Point(137, 32);
-            this.txtPayMode.Name = "txtPayMode";
-            this.txtPayMode.Size = new System.Drawing.Size(148, 24);
-            this.txtPayMode.TabIndex = 19;
-            // 
-            // txtPayDate
-            // 
-            this.txtPayDate.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold);
-            this.txtPayDate.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.txtPayDate.Location = new System.Drawing.Point(138, 102);
-            this.txtPayDate.Name = "txtPayDate";
-            this.txtPayDate.Size = new System.Drawing.Size(147, 23);
-            this.txtPayDate.TabIndex = 21;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label13.Location = new System.Drawing.Point(23, 36);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(109, 16);
-            this.label13.TabIndex = 23;
-            this.label13.Text = "Payment Mode:";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label14.Location = new System.Drawing.Point(23, 107);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(102, 16);
-            this.label14.TabIndex = 16;
-            this.label14.Text = "Payment Date:";
-            // 
-            // txtPayment
-            // 
-            this.txtPayment.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPayment.Location = new System.Drawing.Point(138, 68);
-            this.txtPayment.Name = "txtPayment";
-            this.txtPayment.Size = new System.Drawing.Size(147, 23);
-            this.txtPayment.TabIndex = 20;
-            this.txtPayment.TextChanged += new System.EventHandler(this.txtPayment_TextChanged);
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label15.Location = new System.Drawing.Point(23, 71);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(68, 16);
-            this.label15.TabIndex = 0;
-            this.label15.Text = "Payment:";
-            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.txtCusID);
@@ -679,77 +508,6 @@
             this.dgvProduct.Size = new System.Drawing.Size(672, 120);
             this.dgvProduct.TabIndex = 18;
             // 
-            // groupBox7
-            // 
-            this.groupBox7.Controls.Add(this.btnSearch);
-            this.groupBox7.Controls.Add(this.txtInvoiceDate);
-            this.groupBox7.Controls.Add(this.txtInvoiceID);
-            this.groupBox7.Controls.Add(this.label20);
-            this.groupBox7.Controls.Add(this.label21);
-            this.groupBox7.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox7.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.groupBox7.Location = new System.Drawing.Point(12, 43);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(302, 134);
-            this.groupBox7.TabIndex = 59;
-            this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "Sales Invoice";
-            // 
-            // txtInvoiceDate
-            // 
-            this.txtInvoiceDate.Enabled = false;
-            this.txtInvoiceDate.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold);
-            this.txtInvoiceDate.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.txtInvoiceDate.Location = new System.Drawing.Point(141, 98);
-            this.txtInvoiceDate.Name = "txtInvoiceDate";
-            this.txtInvoiceDate.Size = new System.Drawing.Size(147, 23);
-            this.txtInvoiceDate.TabIndex = 25;
-            // 
-            // txtInvoiceID
-            // 
-            this.txtInvoiceID.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtInvoiceID.Location = new System.Drawing.Point(138, 33);
-            this.txtInvoiceID.Name = "txtInvoiceID";
-            this.txtInvoiceID.Size = new System.Drawing.Size(147, 23);
-            this.txtInvoiceID.TabIndex = 24;
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label20.Location = new System.Drawing.Point(25, 36);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(76, 16);
-            this.label20.TabIndex = 23;
-            this.label20.Text = "Invoice ID:";
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label21.Location = new System.Drawing.Point(25, 102);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(93, 16);
-            this.label21.TabIndex = 0;
-            this.label21.Text = "Invoice Date:";
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
-            this.btnSearch.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSearch.FlatAppearance.BorderSize = 0;
-            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSearch.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearch.ForeColor = System.Drawing.Color.White;
-            this.btnSearch.Location = new System.Drawing.Point(165, 67);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(92, 23);
-            this.btnSearch.TabIndex = 26;
-            this.btnSearch.Text = "Search";
-            this.btnSearch.UseVisualStyleBackColor = false;
-            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.txtReturnDate);
@@ -828,6 +586,248 @@
             this.label19.Text = "X";
             this.label19.Click += new System.EventHandler(this.label19_Click);
             // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label15.Location = new System.Drawing.Point(23, 71);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(68, 16);
+            this.label15.TabIndex = 0;
+            this.label15.Text = "Payment:";
+            // 
+            // txtPayment
+            // 
+            this.txtPayment.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPayment.Location = new System.Drawing.Point(138, 68);
+            this.txtPayment.Name = "txtPayment";
+            this.txtPayment.Size = new System.Drawing.Size(147, 23);
+            this.txtPayment.TabIndex = 20;
+            this.txtPayment.TextChanged += new System.EventHandler(this.txtPayment_TextChanged);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label14.Location = new System.Drawing.Point(23, 107);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(102, 16);
+            this.label14.TabIndex = 16;
+            this.label14.Text = "Payment Date:";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label13.Location = new System.Drawing.Point(23, 36);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(109, 16);
+            this.label13.TabIndex = 23;
+            this.label13.Text = "Payment Mode:";
+            // 
+            // txtPayDate
+            // 
+            this.txtPayDate.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold);
+            this.txtPayDate.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.txtPayDate.Location = new System.Drawing.Point(138, 102);
+            this.txtPayDate.Name = "txtPayDate";
+            this.txtPayDate.Size = new System.Drawing.Size(147, 23);
+            this.txtPayDate.TabIndex = 21;
+            // 
+            // txtPayMode
+            // 
+            this.txtPayMode.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPayMode.FormattingEnabled = true;
+            this.txtPayMode.Items.AddRange(new object[] {
+            ""});
+            this.txtPayMode.Location = new System.Drawing.Point(137, 32);
+            this.txtPayMode.Name = "txtPayMode";
+            this.txtPayMode.Size = new System.Drawing.Size(148, 24);
+            this.txtPayMode.TabIndex = 19;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.txtPayMode);
+            this.groupBox4.Controls.Add(this.txtPayDate);
+            this.groupBox4.Controls.Add(this.label13);
+            this.groupBox4.Controls.Add(this.label14);
+            this.groupBox4.Controls.Add(this.txtPayment);
+            this.groupBox4.Controls.Add(this.label15);
+            this.groupBox4.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox4.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.groupBox4.Location = new System.Drawing.Point(12, 462);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(302, 138);
+            this.groupBox4.TabIndex = 53;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Payment Info";
+            // 
+            // dgvPaymentInfo
+            // 
+            this.dgvPaymentInfo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPaymentInfo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvPaymentInfo.Location = new System.Drawing.Point(0, 0);
+            this.dgvPaymentInfo.Name = "dgvPaymentInfo";
+            this.dgvPaymentInfo.Size = new System.Drawing.Size(368, 127);
+            this.dgvPaymentInfo.TabIndex = 22;
+            this.dgvPaymentInfo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPaymentInfo_CellContentClick);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.dgvPaymentInfo);
+            this.panel1.Location = new System.Drawing.Point(624, 472);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(368, 127);
+            this.panel1.TabIndex = 52;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label18.Location = new System.Drawing.Point(28, 71);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(103, 16);
+            this.label18.TabIndex = 0;
+            this.label18.Text = "Total Payment:";
+            // 
+            // txtTotalPay
+            // 
+            this.txtTotalPay.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTotalPay.Location = new System.Drawing.Point(138, 68);
+            this.txtTotalPay.Name = "txtTotalPay";
+            this.txtTotalPay.Size = new System.Drawing.Size(122, 23);
+            this.txtTotalPay.TabIndex = 24;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label17.Location = new System.Drawing.Point(28, 107);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(97, 16);
+            this.label17.TabIndex = 16;
+            this.label17.Text = "Payment Due:";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label16.Location = new System.Drawing.Point(28, 35);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(89, 16);
+            this.label16.TabIndex = 23;
+            this.label16.Text = "Grand Total:";
+            // 
+            // txtGrandTotal
+            // 
+            this.txtGrandTotal.Enabled = false;
+            this.txtGrandTotal.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtGrandTotal.Location = new System.Drawing.Point(138, 32);
+            this.txtGrandTotal.Name = "txtGrandTotal";
+            this.txtGrandTotal.Size = new System.Drawing.Size(122, 23);
+            this.txtGrandTotal.TabIndex = 23;
+            // 
+            // txtPayDue
+            // 
+            this.txtPayDue.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPayDue.Location = new System.Drawing.Point(138, 104);
+            this.txtPayDue.Name = "txtPayDue";
+            this.txtPayDue.Size = new System.Drawing.Size(122, 23);
+            this.txtPayDue.TabIndex = 25;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.txtPayDue);
+            this.groupBox5.Controls.Add(this.txtGrandTotal);
+            this.groupBox5.Controls.Add(this.label16);
+            this.groupBox5.Controls.Add(this.label17);
+            this.groupBox5.Controls.Add(this.txtTotalPay);
+            this.groupBox5.Controls.Add(this.label18);
+            this.groupBox5.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox5.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.groupBox5.Location = new System.Drawing.Point(320, 462);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(298, 138);
+            this.groupBox5.TabIndex = 54;
+            this.groupBox5.TabStop = false;
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.btnSearch);
+            this.groupBox7.Controls.Add(this.txtInvoiceDate);
+            this.groupBox7.Controls.Add(this.txtInvoiceID);
+            this.groupBox7.Controls.Add(this.label20);
+            this.groupBox7.Controls.Add(this.label21);
+            this.groupBox7.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox7.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.groupBox7.Location = new System.Drawing.Point(12, 43);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(302, 134);
+            this.groupBox7.TabIndex = 59;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Sales Invoice";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label20.Location = new System.Drawing.Point(25, 36);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(76, 16);
+            this.label20.TabIndex = 23;
+            this.label20.Text = "Invoice ID:";
+            // 
+            // txtInvoiceID
+            // 
+            this.txtInvoiceID.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtInvoiceID.Location = new System.Drawing.Point(138, 33);
+            this.txtInvoiceID.Name = "txtInvoiceID";
+            this.txtInvoiceID.Size = new System.Drawing.Size(147, 23);
+            this.txtInvoiceID.TabIndex = 24;
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
+            this.btnSearch.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSearch.FlatAppearance.BorderSize = 0;
+            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSearch.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearch.ForeColor = System.Drawing.Color.White;
+            this.btnSearch.Location = new System.Drawing.Point(165, 67);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(92, 23);
+            this.btnSearch.TabIndex = 26;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.UseVisualStyleBackColor = false;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label21.Location = new System.Drawing.Point(25, 102);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(93, 16);
+            this.label21.TabIndex = 0;
+            this.label21.Text = "Invoice Date:";
+            // 
+            // txtInvoiceDate
+            // 
+            this.txtInvoiceDate.Enabled = false;
+            this.txtInvoiceDate.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold);
+            this.txtInvoiceDate.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.txtInvoiceDate.Location = new System.Drawing.Point(141, 98);
+            this.txtInvoiceDate.Name = "txtInvoiceDate";
+            this.txtInvoiceDate.Size = new System.Drawing.Size(147, 23);
+            this.txtInvoiceDate.TabIndex = 25;
+            // 
             // FrmSaleReturn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -851,20 +851,20 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox6.ResumeLayout(false);
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPaymentInfo)).EndInit();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProduct)).EndInit();
-            this.groupBox7.ResumeLayout(false);
-            this.groupBox7.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPaymentInfo)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -896,22 +896,6 @@
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.TextBox txtPayDue;
-        private System.Windows.Forms.TextBox txtGrandTotal;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.TextBox txtTotalPay;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.DataGridView dgvPaymentInfo;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.ComboBox txtPayMode;
-        private System.Windows.Forms.DateTimePicker txtPayDate;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox txtPayment;
-        private System.Windows.Forms.Label label15;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox txtCusID;
         private System.Windows.Forms.Label label5;
@@ -922,12 +906,6 @@
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.DataGridView dgvProduct;
-        private System.Windows.Forms.GroupBox groupBox7;
-        private System.Windows.Forms.Button btnSearch;
-        private System.Windows.Forms.DateTimePicker txtInvoiceDate;
-        private System.Windows.Forms.TextBox txtInvoiceID;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Label label21;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DateTimePicker txtReturnDate;
         private System.Windows.Forms.TextBox txtReturnID;
@@ -935,5 +913,27 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox txtPayment;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.DateTimePicker txtPayDate;
+        private System.Windows.Forms.ComboBox txtPayMode;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.DataGridView dgvPaymentInfo;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox txtTotalPay;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox txtGrandTotal;
+        private System.Windows.Forms.TextBox txtPayDue;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.DateTimePicker txtInvoiceDate;
+        private System.Windows.Forms.TextBox txtInvoiceID;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label21;
     }
 }

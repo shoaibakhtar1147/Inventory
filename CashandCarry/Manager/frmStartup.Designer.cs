@@ -69,7 +69,7 @@
             this.btnReport.Location = new System.Drawing.Point(0, 218);
             this.btnReport.Name = "btnReport";
             this.btnReport.Size = new System.Drawing.Size(161, 40);
-            this.btnReport.TabIndex = 2;
+            this.btnReport.TabIndex = 5;
             this.btnReport.Text = "Report";
             this.btnReport.UseVisualStyleBackColor = false;
             this.btnReport.Click += new System.EventHandler(this.btnReport_Click);
@@ -87,7 +87,7 @@
             this.btnPuchase.Location = new System.Drawing.Point(0, 172);
             this.btnPuchase.Name = "btnPuchase";
             this.btnPuchase.Size = new System.Drawing.Size(161, 40);
-            this.btnPuchase.TabIndex = 1;
+            this.btnPuchase.TabIndex = 4;
             this.btnPuchase.Text = "Purchase";
             this.btnPuchase.UseVisualStyleBackColor = false;
             this.btnPuchase.Click += new System.EventHandler(this.btnPuchase_Click);
@@ -105,7 +105,7 @@
             this.btnLogOut.Location = new System.Drawing.Point(0, 263);
             this.btnLogOut.Name = "btnLogOut";
             this.btnLogOut.Size = new System.Drawing.Size(161, 40);
-            this.btnLogOut.TabIndex = 0;
+            this.btnLogOut.TabIndex = 6;
             this.btnLogOut.Text = "Log Out";
             this.btnLogOut.UseVisualStyleBackColor = false;
             this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
@@ -123,7 +123,7 @@
             this.btnSales.Location = new System.Drawing.Point(0, 126);
             this.btnSales.Name = "btnSales";
             this.btnSales.Size = new System.Drawing.Size(161, 40);
-            this.btnSales.TabIndex = 0;
+            this.btnSales.TabIndex = 3;
             this.btnSales.Text = "Sales";
             this.btnSales.UseVisualStyleBackColor = false;
             this.btnSales.Click += new System.EventHandler(this.btnSales_Click);
@@ -141,7 +141,7 @@
             this.btnConfiguration.Location = new System.Drawing.Point(0, 80);
             this.btnConfiguration.Name = "btnConfiguration";
             this.btnConfiguration.Size = new System.Drawing.Size(161, 40);
-            this.btnConfiguration.TabIndex = 0;
+            this.btnConfiguration.TabIndex = 2;
             this.btnConfiguration.Text = "Administration";
             this.btnConfiguration.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnConfiguration.UseVisualStyleBackColor = false;
@@ -161,7 +161,7 @@
             this.btnHome.Location = new System.Drawing.Point(0, 34);
             this.btnHome.Name = "btnHome";
             this.btnHome.Size = new System.Drawing.Size(161, 40);
-            this.btnHome.TabIndex = 0;
+            this.btnHome.TabIndex = 1;
             this.btnHome.Text = "     Home ";
             this.btnHome.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnHome.UseVisualStyleBackColor = false;
