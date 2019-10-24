@@ -35,6 +35,11 @@
     <FunctionImport Name="SP_SaleInvoice_Search" ReturnType="Collection(CashCarryModel.SP_SaleInvoice_Search_Result)">
       <Parameter Name="InvoiceNo" Mode="In" Type="Int32" />
     </FunctionImport>
+    <EntitySet Name="Tbl_PurchaseDetail" EntityType="CashCarryModel.Tbl_PurchaseDetail" />
+    <EntitySet Name="Tbl_PurchaseMaster" EntityType="CashCarryModel.Tbl_PurchaseMaster" />
+    <FunctionImport Name="SP_Cus_Search" ReturnType="Collection(CashCarryModel.SP_Cus_Search_Result)">
+      <Parameter Name="CustomerID" Mode="In" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
   <EntityType Name="tbl_Zone">
     <Key>
@@ -181,5 +186,34 @@
     <Property Type="Decimal" Name="BillAmount" Nullable="true" Precision="18" Scale="0" />
     <Property Type="Decimal" Name="Flat" Nullable="true" Precision="18" Scale="0" />
     <Property Type="Decimal" Name="GrandTotal" Nullable="true" Precision="18" Scale="0" />
+  </ComplexType>
+  <EntityType Name="Tbl_PurchaseDetail">
+    <Key>
+      <PropertyRef Name="PDetailID" />
+    </Key>
+    <Property Name="PDetailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PInvoice" Type="Int32" />
+    <Property Name="ProductID" Type="Int32" />
+    <Property Name="Quantity" Type="Int32" />
+    <Property Name="TotalAmount" Type="Decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="Tbl_PurchaseMaster">
+    <Key>
+      <PropertyRef Name="PInvoice" />
+    </Key>
+    <Property Name="PInvoice" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CompanyID" Type="Int32" />
+    <Property Name="PurchaseDate" Type="DateTime" Precision="3" />
+    <Property Name="TotalAmount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Discount" Type="Decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <ComplexType Name="SP_Cus_Search_Result">
+    <Property Type="Int32" Name="CustomerID" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="CusType" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="Address" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Contact" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="ZoneName" Nullable="true" MaxLength="20" />
   </ComplexType>
 </Schema>

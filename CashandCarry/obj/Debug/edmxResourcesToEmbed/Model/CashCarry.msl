@@ -176,5 +176,40 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <EntitySetMapping Name="Tbl_PurchaseDetail">
+      <EntityTypeMapping TypeName="CashCarryModel.Tbl_PurchaseDetail">
+        <MappingFragment StoreEntitySet="Tbl_PurchaseDetail">
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="PInvoice" ColumnName="PInvoice" />
+          <ScalarProperty Name="PDetailID" ColumnName="PDetailID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_PurchaseMaster">
+      <EntityTypeMapping TypeName="CashCarryModel.Tbl_PurchaseMaster">
+        <MappingFragment StoreEntitySet="Tbl_PurchaseMaster">
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+          <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+          <ScalarProperty Name="PInvoice" ColumnName="PInvoice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SP_Cus_Search" FunctionName="CashCarryModel.Store.SP_Cus_Search">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CashCarryModel.SP_Cus_Search_Result">
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CusType" ColumnName="CusType" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Contact" ColumnName="Contact" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="ZoneName" ColumnName="ZoneName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

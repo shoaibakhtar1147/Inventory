@@ -90,12 +90,14 @@ namespace CashandCarry.BL
             prm[0] = new SqlParameter("@CustomerID", CustomerID);
             return DB.SelectTableWithSP(spName, prm);
         }
-
+       
+        
         public tbl_Customer Search()
         {
            using(var context=new CashCarryEntities3())
            {
                return context.tbl_Customer.Where(a => a.CustomerID == CustomerID).FirstOrDefault();
+                
            }
         }
 

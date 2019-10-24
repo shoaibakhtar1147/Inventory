@@ -35,11 +35,11 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.txtCusID = new System.Windows.Forms.ComboBox();
+            this.txtCusName = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtContact = new System.Windows.Forms.MaskedTextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.txtCusName = new System.Windows.Forms.TextBox();
+            this.txtCusId = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.txtBillDiscount = new System.Windows.Forms.TextBox();
@@ -63,10 +63,11 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.label19 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.txtQuantity = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.txtWeight = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.txtProdID = new System.Windows.Forms.ComboBox();
+            this.txtProdName = new System.Windows.Forms.ComboBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnProdUpdate = new System.Windows.Forms.Button();
             this.btnRemove = new System.Windows.Forms.Button();
@@ -74,7 +75,6 @@
             this.txtTotalAmount = new System.Windows.Forms.TextBox();
             this.txtDiscount = new System.Windows.Forms.TextBox();
             this.txtAmount = new System.Windows.Forms.TextBox();
-            this.txtQuantity = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -82,10 +82,10 @@
             this.txtPrice = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtProdName = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dgvProduct = new System.Windows.Forms.DataGridView();
+            this.txtProdId = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -162,11 +162,11 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.txtCusID);
+            this.groupBox2.Controls.Add(this.txtCusName);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.txtContact);
             this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Controls.Add(this.txtCusName);
+            this.groupBox2.Controls.Add(this.txtCusId);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.ForeColor = System.Drawing.SystemColors.ActiveCaption;
@@ -177,24 +177,24 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Customer Info";
             // 
-            // txtCusID
+            // txtCusName
             // 
-            this.txtCusID.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCusID.FormattingEnabled = true;
-            this.txtCusID.Items.AddRange(new object[] {
+            this.txtCusName.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCusName.FormattingEnabled = true;
+            this.txtCusName.Items.AddRange(new object[] {
             ""});
-            this.txtCusID.Location = new System.Drawing.Point(127, 60);
-            this.txtCusID.Name = "txtCusID";
-            this.txtCusID.Size = new System.Drawing.Size(148, 24);
-            this.txtCusID.TabIndex = 2;
-            this.txtCusID.Leave += new System.EventHandler(this.txtCusID_Leave);
+            this.txtCusName.Location = new System.Drawing.Point(132, 96);
+            this.txtCusName.Name = "txtCusName";
+            this.txtCusName.Size = new System.Drawing.Size(148, 24);
+            this.txtCusName.TabIndex = 2;
+            this.txtCusName.Leave += new System.EventHandler(this.txtCusName_Leave);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label5.Location = new System.Drawing.Point(17, 63);
+            this.label5.Location = new System.Drawing.Point(17, 59);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(90, 16);
             this.label5.TabIndex = 23;
@@ -203,7 +203,7 @@
             // txtContact
             // 
             this.txtContact.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtContact.Location = new System.Drawing.Point(127, 135);
+            this.txtContact.Location = new System.Drawing.Point(132, 132);
             this.txtContact.Mask = "0000-0000000";
             this.txtContact.Name = "txtContact";
             this.txtContact.Size = new System.Drawing.Size(147, 23);
@@ -220,13 +220,13 @@
             this.label9.TabIndex = 16;
             this.label9.Text = "Contact:";
             // 
-            // txtCusName
+            // txtCusId
             // 
-            this.txtCusName.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCusName.Location = new System.Drawing.Point(127, 99);
-            this.txtCusName.Name = "txtCusName";
-            this.txtCusName.Size = new System.Drawing.Size(147, 23);
-            this.txtCusName.TabIndex = 1;
+            this.txtCusId.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCusId.Location = new System.Drawing.Point(132, 56);
+            this.txtCusId.Name = "txtCusId";
+            this.txtCusId.Size = new System.Drawing.Size(147, 23);
+            this.txtCusId.TabIndex = 1;
             // 
             // label7
             // 
@@ -506,10 +506,12 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.txtProdId);
+            this.groupBox3.Controls.Add(this.txtQuantity);
             this.groupBox3.Controls.Add(this.label21);
             this.groupBox3.Controls.Add(this.txtWeight);
             this.groupBox3.Controls.Add(this.label14);
-            this.groupBox3.Controls.Add(this.txtProdID);
+            this.groupBox3.Controls.Add(this.txtProdName);
             this.groupBox3.Controls.Add(this.btnAdd);
             this.groupBox3.Controls.Add(this.btnProdUpdate);
             this.groupBox3.Controls.Add(this.btnRemove);
@@ -517,7 +519,6 @@
             this.groupBox3.Controls.Add(this.txtTotalAmount);
             this.groupBox3.Controls.Add(this.txtDiscount);
             this.groupBox3.Controls.Add(this.txtAmount);
-            this.groupBox3.Controls.Add(this.txtQuantity);
             this.groupBox3.Controls.Add(this.label12);
             this.groupBox3.Controls.Add(this.label11);
             this.groupBox3.Controls.Add(this.label10);
@@ -525,7 +526,6 @@
             this.groupBox3.Controls.Add(this.txtPrice);
             this.groupBox3.Controls.Add(this.label2);
             this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Controls.Add(this.txtProdName);
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.ForeColor = System.Drawing.SystemColors.ActiveCaption;
@@ -536,6 +536,18 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Product Info";
             this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
+            // 
+            // txtQuantity
+            // 
+            this.txtQuantity.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtQuantity.Location = new System.Drawing.Point(138, 171);
+            this.txtQuantity.Name = "txtQuantity";
+            this.txtQuantity.Size = new System.Drawing.Size(147, 23);
+            this.txtQuantity.TabIndex = 4;
+            this.txtQuantity.Tag = "";
+            this.txtQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQuantity_KeyPress);
+            this.txtQuantity.Leave += new System.EventHandler(this.txtQuantity_Leave_1);
             // 
             // label21
             // 
@@ -568,17 +580,17 @@
             this.label14.TabIndex = 31;
             this.label14.Text = "Weight:";
             // 
-            // txtProdID
+            // txtProdName
             // 
-            this.txtProdID.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtProdID.FormattingEnabled = true;
-            this.txtProdID.Items.AddRange(new object[] {
+            this.txtProdName.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtProdName.FormattingEnabled = true;
+            this.txtProdName.Items.AddRange(new object[] {
             ""});
-            this.txtProdID.Location = new System.Drawing.Point(137, 37);
-            this.txtProdID.Name = "txtProdID";
-            this.txtProdID.Size = new System.Drawing.Size(148, 24);
-            this.txtProdID.TabIndex = 3;
-            this.txtProdID.Leave += new System.EventHandler(this.txtProdID_Leave);
+            this.txtProdName.Location = new System.Drawing.Point(138, 73);
+            this.txtProdName.Name = "txtProdName";
+            this.txtProdName.Size = new System.Drawing.Size(147, 24);
+            this.txtProdName.TabIndex = 3;
+            this.txtProdName.Leave += new System.EventHandler(this.txtProd_Leave);
             // 
             // btnAdd
             // 
@@ -669,16 +681,6 @@
             this.txtAmount.TabIndex = 7;
             this.txtAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // txtQuantity
-            // 
-            this.txtQuantity.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtQuantity.Location = new System.Drawing.Point(138, 171);
-            this.txtQuantity.Name = "txtQuantity";
-            this.txtQuantity.Size = new System.Drawing.Size(147, 23);
-            this.txtQuantity.TabIndex = 4;
-            this.txtQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtQuantity.Leave += new System.EventHandler(this.txtQuantity_Leave);
-            // 
             // label12
             // 
             this.label12.AutoSize = true;
@@ -755,14 +757,6 @@
             this.label4.TabIndex = 16;
             this.label4.Text = "Price:";
             // 
-            // txtProdName
-            // 
-            this.txtProdName.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtProdName.Location = new System.Drawing.Point(138, 73);
-            this.txtProdName.Name = "txtProdName";
-            this.txtProdName.Size = new System.Drawing.Size(147, 23);
-            this.txtProdName.TabIndex = 4;
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -784,11 +778,22 @@
             // 
             // dgvProduct
             // 
+            this.dgvProduct.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvProduct.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvProduct.Location = new System.Drawing.Point(0, 0);
             this.dgvProduct.Name = "dgvProduct";
             this.dgvProduct.Size = new System.Drawing.Size(672, 262);
             this.dgvProduct.TabIndex = 14;
+            // 
+            // txtProdId
+            // 
+            this.txtProdId.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtProdId.Location = new System.Drawing.Point(138, 37);
+            this.txtProdId.Name = "txtProdId";
+            this.txtProdId.Size = new System.Drawing.Size(147, 23);
+            this.txtProdId.TabIndex = 112;
+            this.txtProdId.Tag = "";
+            this.txtProdId.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // FrmSaleInvoice
             // 
@@ -838,7 +843,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.MaskedTextBox txtContact;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox txtCusName;
+        private System.Windows.Forms.TextBox txtCusId;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.TextBox txtPayDue;
@@ -862,7 +867,6 @@
         private System.Windows.Forms.TextBox txtTotalAmount;
         private System.Windows.Forms.TextBox txtDiscount;
         private System.Windows.Forms.TextBox txtAmount;
-        private System.Windows.Forms.TextBox txtQuantity;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
@@ -870,12 +874,11 @@
         private System.Windows.Forms.TextBox txtPrice;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtProdName;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.DataGridView dgvProduct;
-        private System.Windows.Forms.ComboBox txtProdID;
-        private System.Windows.Forms.ComboBox txtCusID;
+        private System.Windows.Forms.ComboBox txtProdName;
+        private System.Windows.Forms.ComboBox txtCusName;
         private System.Windows.Forms.ComboBox txtPayMode;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox txtWeight;
@@ -886,6 +889,8 @@
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label21;
         public System.Windows.Forms.TextBox txtBillDiscount;
+        private System.Windows.Forms.TextBox txtQuantity;
+        private System.Windows.Forms.TextBox txtProdId;
 
     }
 }

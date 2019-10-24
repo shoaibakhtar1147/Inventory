@@ -1,4 +1,5 @@
-﻿namespace CashandCarry.Reports
+﻿using CashandCarry.Reports.Sale;
+namespace CashandCarry.Reports
 {
     partial class rptViewer
     {
@@ -36,8 +37,6 @@
             this.crptViewer.ActiveViewIndex = -1;
             this.crptViewer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.crptViewer.Cursor = System.Windows.Forms.Cursors.Default;
-            this.crptViewer.DisplayStatusBar = false;
-            this.crptViewer.DisplayToolbar = false;
             this.crptViewer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.crptViewer.Location = new System.Drawing.Point(0, 0);
             this.crptViewer.Name = "crptViewer";
@@ -58,7 +57,6 @@
             this.MinimizeBox = false;
             this.Name = "rptViewer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Sale Invoice Report";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.rptViewer_Load);
             this.ResumeLayout(false);

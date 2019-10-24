@@ -18,8 +18,10 @@ namespace CashandCarry.BL
         public int CustomerID { get; set; }
         public decimal Amount { get; set; }
         public int Quantity { get; set; }
-        
+        public DateTime mindate { get; set; }
+        public DateTime maxdate { get; set; }
         public decimal GST { get; set; }
+        public string CusName { get; set; }
         public decimal Discount { get; set; }
         public decimal TotalAmount { get; set; }
         public decimal GrandTotal { get; set; }
@@ -32,6 +34,7 @@ namespace CashandCarry.BL
             {
                 tbl_Saledetail objsale = new tbl_Saledetail()
                 {
+                     
                     Invoice_ = InvoiceNo,
                     ProductID = ProductID,
                     Discount = Discount,
@@ -62,28 +65,31 @@ namespace CashandCarry.BL
         }
         public int UpdateProd()
         {
-            string spName = "SP_Quantity_Update";
-            SqlParameter[] prm = new SqlParameter[2];
-            prm[0] = new SqlParameter("@ProductID", ProductID);
-            prm[1] = new SqlParameter("@Quantity", Quantity);
-            return DB.ExecuteNonQueryWithSP(spName, prm);
+            string query = "update tbl_Product set Quantity=Quantity - '" + Quantity + "' where ProductID='" + ProductID + "' ";
+            return DB.insert(query);
+            //string spName = "SP_Quantity_Update";
+            //SqlParameter[] prm = new SqlParameter[2];
+            //prm[0] = new SqlParameter("@ProductID", ProductID);
+            //prm[1] = new SqlParameter("@Quantity", Quantity);
+            //return DB.ExecuteNonQueryWithSP(spName, prm);
         }
       
         public int Delete()
         {
             throw new NotImplementedException();
         }
-        public DataTable sumSalesDetail()
-        {
-            string spName = "SP_SaleDetail_Sum";
-            SqlParameter[] prm = new SqlParameter[1];
-            prm[0] = new SqlParameter("@InvoiceNo", InvoiceNo);
-            return DB.SelectTableWithSP(spName, prm);
-        }
+      
 
         public int Update()
         {
             throw new NotImplementedException();
+        }
+        public DataTable SelectByCus()
+        {
+            string spName = "SP_SaleMas_ByCus";
+            SqlParameter[] prm = new SqlParameter[1];
+            prm[0] = new SqlParameter("@CusName", CusName);
+           return DB.SelectTableWithSP(spName, prm);
         }
         public DataTable Addnew()
         {
@@ -97,10 +103,16 @@ namespace CashandCarry.BL
         {
             throw new NotImplementedException();
         }
-
-        public System.Data.DataTable Select()
+        public DataTable SelectByDate()
         {
-
+            String spName = "SP_SaleMas_DateDiff";
+            SqlParameter[] prm = new SqlParameter[2];
+            prm[0] = new SqlParameter("@MinDate", mindate);
+            prm[1] = new SqlParameter("@MaxDate", maxdate);
+            return DB.SelectTableWithSP(spName, prm);
+        }
+        public DataTable Select()
+        {
             throw new NotImplementedException();
         }
     }

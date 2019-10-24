@@ -66,6 +66,26 @@
     <Property Name="TradePrice" Type="decimal" Precision="18" Scale="0" />
     <Property Name="Quantity" Type="int" />
   </EntityType>
+  <EntityType Name="Tbl_PurchaseDetail">
+    <Key>
+      <PropertyRef Name="PDetailID" />
+    </Key>
+    <Property Name="PDetailID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PInvoice" Type="int" />
+    <Property Name="ProductID" Type="int" />
+    <Property Name="Quantity" Type="int" />
+    <Property Name="TotalAmount" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="Tbl_PurchaseMaster">
+    <Key>
+      <PropertyRef Name="PInvoice" />
+    </Key>
+    <Property Name="PInvoice" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CompanyID" Type="int" />
+    <Property Name="PurchaseDate" Type="datetime" />
+    <Property Name="TotalAmount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Discount" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
   <EntityType Name="tbl_Saledetail">
     <Key>
       <PropertyRef Name="SDetailID" />
@@ -146,6 +166,9 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
   <Function Name="SP_Cate_AddNew" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="CategoryID" Type="int" Mode="In" />
   </Function>
+  <Function Name="SP_Cus_Search" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CustomerID" Type="int" Mode="In" />
+  </Function>
   <Function Name="SP_Prod_AddNew" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ProductID" Type="int" Mode="In" />
   </Function>
@@ -165,6 +188,8 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
     <EntitySet Name="tbl_CustomerTypes" EntityType="Self.tbl_CustomerTypes" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_employee" EntityType="Self.tbl_employee" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_Product" EntityType="Self.tbl_Product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_PurchaseDetail" EntityType="Self.Tbl_PurchaseDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_PurchaseMaster" EntityType="Self.Tbl_PurchaseMaster" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_Saledetail" EntityType="Self.tbl_Saledetail" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_SaleMAster" EntityType="Self.tbl_SaleMAster" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_Zone" EntityType="Self.tbl_Zone" Schema="dbo" store:Type="Tables" />

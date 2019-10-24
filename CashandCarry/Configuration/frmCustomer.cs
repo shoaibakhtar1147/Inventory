@@ -22,8 +22,7 @@ namespace CashandCarry.Configuration
         private void frmCustomer_Load(object sender, EventArgs e)
         {
             txtCusName.Focus();
-            LoadZoneID();
-            LoadCusType();
+            
             LoadData();
             FormDisable();
         }
@@ -65,6 +64,8 @@ namespace CashandCarry.Configuration
                 txtCusID.Text = Convert.ToString(dt.Rows[0]["CustomerID"]);
             }
             FormEnable();
+            LoadZoneID();
+            LoadCusType();
             btnSave.Enabled = true;
             txtCusName.Focus();
         }
@@ -228,11 +229,12 @@ namespace CashandCarry.Configuration
             CustomerBL objCus = new CustomerBL() 
             {
             
-             CustomerID=Convert.ToInt32(txtSearch.Text)
+               CustomerID =Convert.ToInt32(txtSearch.Text)
             };
             tbl_Customer dt = objCus.Search();
             if(dt != null)
             {
+                dgvCus.DataSource = dt;
                 btnDelete.Enabled = true;
                 btnUpdate.Enabled = true;
             }

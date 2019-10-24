@@ -1,6 +1,7 @@
 ﻿using CashandCarry.BL;
 using CashandCarry.Model;
 using CashandCarry.Reports;
+using CashandCarry.Reports.Sale;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,7 +24,7 @@ namespace CashandCarry.Sales
         private void FrmSaleInvoice_Load(object sender, EventArgs e)
         {
             FormDisable();
-            txtCusName.Focus();
+            txtCusId.Focus();
 
 
         }
@@ -55,7 +56,7 @@ namespace CashandCarry.Sales
                 LoadGridProd();
                 SumCalculate();
                 btnSave.Enabled = true;
-                txtCusID.Focus();
+                txtCusName.Focus();
 
 
 
@@ -63,8 +64,8 @@ namespace CashandCarry.Sales
         }
         private void FormDisable()
         {
-            txtCusID.Enabled = false;
             txtCusName.Enabled = false;
+            txtCusId.Enabled = false;
             txtDiscount.Enabled = false;
             txtTotalBill.Enabled = false;
             txtBillDiscount.Enabled = false;
@@ -73,8 +74,8 @@ namespace CashandCarry.Sales
             txtDiscount.Enabled = false;
             txtInvoiceDate.Enabled = false;
             txtPayDue.Enabled = false;
-            txtProdID.Enabled = false;
             txtProdName.Enabled = false;
+            txtProdId.Enabled = false;
             txtTotalPay.Enabled = false;
             txtPrice.Enabled = false;
             txtAmount.Enabled = false;
@@ -95,8 +96,8 @@ namespace CashandCarry.Sales
 
         private void FormEnable()
         {
-            txtProdID.Enabled = true;
-            txtCusID.Enabled = true;
+            txtProdName.Enabled = true;
+            txtCusName.Enabled = true;
             txtDiscount.Enabled = true;
             txtBillDiscount.Enabled = true;
             txtQuantity.Enabled = true;
@@ -112,85 +113,26 @@ namespace CashandCarry.Sales
         {
             CustomerBL objCus = new CustomerBL();
             List<View_tbl_Customer> dt = objCus.Select();
-            txtCusID.DataSource = dt;
-            txtCusID.AutoCompleteMode = AutoCompleteMode.Suggest;
-            txtCusID.AutoCompleteSource = AutoCompleteSource.ListItems;
-            txtCusID.DisplayMember = "CustomerID";
-            txtCusID.ValueMember = "CustomerID";
+            txtCusName.DataSource = dt;
+            txtCusName.AutoCompleteMode = AutoCompleteMode.Suggest;
+            txtCusName.AutoCompleteSource = AutoCompleteSource.ListItems;
+            txtCusName.DisplayMember = "Name";
+            txtCusName.ValueMember = "CustomerID";
         }
 
-        private void txtCusID_Leave(object sender, EventArgs e)
-        {
-            CustomerBL objCus = new CustomerBL()
-            {
-                CustomerID = Convert.ToInt32(txtCusID.Text)
-            };
-            tbl_Customer dt = objCus.Search();
-            if (dt != null)
-            {
-                txtCusName.Text = dt.Name;
-                txtContact.Text = dt.Contact;
-            }
-        }
+        
         private void LoadProd()
         {
             ProductBL objPro = new ProductBL();
             List<View_tbl_Product> dt = objPro.Select();
-            txtProdID.DataSource = dt;
-            txtProdID.AutoCompleteMode = AutoCompleteMode.Suggest;
-            txtProdID.AutoCompleteSource = AutoCompleteSource.ListItems;
-            txtProdID.DisplayMember = "ProductID";
-            txtProdID.ValueMember = "ProductID";
+            txtProdName.DataSource = dt;
+            txtProdName.AutoCompleteMode = AutoCompleteMode.Suggest;
+            txtProdName.AutoCompleteSource = AutoCompleteSource.ListItems;
+            txtProdName.DisplayMember = "ProductName";
+            txtProdName.ValueMember = "ProductID";
         }
-        private void txtProdID_Leave(object sender, EventArgs e)
-        {
-            if (txtProdID.Text == string.Empty)
-            {
-                MessageBox.Show("Please Enter Product Id");
-                txtProdID.Focus();
-            }
-            else
-            {
-                ProductBL objPro = new ProductBL()
-                {
-                    ProductID = Convert.ToInt32(txtProdID.Text)
-                };
-                tbl_Product dt = objPro.Search();
-                if (dt != null)
-                {
-                    txtProdName.Text = dt.ProductName;
-                    txtPrice.Text = Convert.ToString(dt.RetailPrice);
-                    txtWeight.Text = dt.weight;
-
-
-                }
-            }
-            
-        }
-
-        private void txtQuantity_Leave(object sender, EventArgs e)
-        {
-            if (txtQuantity.Text == string.Empty)
-            {
-                MessageBox.Show("Please Enter Quantity");
-                txtQuantity.Focus();
-            }
-            else if (txtQuantity.Text == "00" || txtQuantity.Text == "0")
-            {
-                MessageBox.Show("Null Value Not Acceptable Please Enter Quantity");
-                txtQuantity.Focus();
-
-
-            }
-            else
-            {
-
-                int val1 = Convert.ToInt32(txtPrice.Text);
-                int val2 = Convert.ToInt32(txtQuantity.Text);
-                int val3 = val1 * val2;
-                txtAmount.Text = val3.ToString();
-            }
-        }
+      
+      
 
         private void txtDiscount_Leave(object sender, EventArgs e)
         {
@@ -211,7 +153,7 @@ namespace CashandCarry.Sales
         }
         private void LoadGridProd()
         {
-            dt.Columns.Add("Edit");
+          
             dt.Columns.Add("SrNo").AutoIncrement=true;
             dt.Columns["SrNo"].AutoIncrementSeed = 1;
             dt.Columns["SrNo"].AutoIncrementStep=1;
@@ -252,13 +194,13 @@ namespace CashandCarry.Sales
             
             DataRow dr = dt.NewRow();
            
-            dr[0] = Properties.Resources.edit;
-            dr[2] = txtProdID.Text;
-            dr[3] = txtProdName.Text;
-            dr[4] = txtPrice.Text;
-            dr[5] = txtQuantity.Text;
-            dr[6] = txtDiscount.Text;
-            dr[7] = txtTotalAmount.Text;
+           
+            dr[1] = txtProdId.Text;
+            dr[2] = txtProdName.Text; 
+            dr[3] = txtPrice.Text;
+            dr[4] = txtQuantity.Text;
+            dr[5] = txtDiscount.Text;
+            dr[6] = txtTotalAmount.Text;
             dt.Rows.Add(dr);
            // MessageBox.Show("Product Saved Successfull");
             ClearGroup();
@@ -268,92 +210,49 @@ namespace CashandCarry.Sales
         }
         private void SumCalculate()
         {
-            //SaleInvoiceBL objSale = new SaleInvoiceBL()
-            //{
-            //    InvoiceNo = Convert.ToInt32(txtInvoiceID.Text)
-            //};
-            //DataTable dt = objSale.sumSalesDetail();
-
-            //if (dt.Rows.Count > 0)
-            //{
-            //    txtTotalBill.Text = Convert.ToString(dt.Rows[0]["Invoice#"]);
-            //    txtGrandTotal.Text = Convert.ToString(dt.Rows[0]["Invoice#"]);
-            //}
+           
             int sum = 0;
             for (int i = 0; i < dgvProduct.Rows.Count; ++i)
             {
-                sum += Convert.ToInt32(dgvProduct.Rows[i].Cells[7].Value);
+                sum += Convert.ToInt32(dgvProduct.Rows[i].Cells[6].Value);
             }
             txtTotalBill.Text = sum.ToString();
            
         }
-        //private void LoadSaleDetail()
-        //{
-        //    SaleInvoiceBL objSale = new SaleInvoiceBL()
-        //    {
-        //        InvoiceNo = Convert.ToInt32(txtInvoiceID.Text)
-        //    };
-        //    List<View_DetailSale> dt = objSale.SelectSaleDetail();
-        //    //string query = "Select * from View_DetailSale where Invoice#=2";
-        //    //DataTable dt = DB.Select(query);
-        //    dgvProduct.Columns.Clear();
-        //    if (dt != null && dt.Count > 0)
-        //    {
-        //        DataGridViewImageColumn edit = new DataGridViewImageColumn();
-        //       edit.Image = Properties.Resources.edit;
-        //        edit.ImageLayout = DataGridViewImageCellLayout.Zoom;
-        //        edit.HeaderText = "Edit";
-        //        edit.Width = 40;
-        //        dgvProduct.Columns.Add(edit);
-        //        dgvProduct.DataSource = dt;
-        //        dgvProduct.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-        //    }
-
-        //}
-
+       
 
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-
-
-           //string query="update tbl_Quantity set Qty=Qty - '"+txtQuantity.Text +"' where qtyId='1'";
-           //DB.insert(query);
-           
-            SaleInvoiceBL objProd = new SaleInvoiceBL() ;
-
-            objProd.ProductID = txtProdID.SelectedIndex;
-            objProd.Quantity = Convert.ToInt32(txtQuantity.Text);
             
-            int rowaffected = objProd.UpdateProd();
-            if(rowaffected>0)
+            
+           
+            SaleInvoiceBL objProd = new SaleInvoiceBL();
+            for (int i = 0; i < dgvProduct.RowCount - 1; i++)
             {
-                MessageBox.Show("Update Successfull");
-            }
-            else
-            {
-                MessageBox.Show("Update Error");
-            }
-            SaleInvoiceBL objmas = new SaleInvoiceBL()
-             {
-                 SaleDate = DateTime.Parse(txtInvoiceDate.Text),
+                objProd.ProductID = Convert.ToInt32(dgvProduct.Rows[i].Cells[1].Value.ToString());
+                objProd.Quantity = Convert.ToInt32(dgvProduct.Rows[i].Cells[4].Value.ToString());
+                objProd.UpdateProd();
 
-
-                 TotalBill = Convert.ToDecimal(txtTotalBill.Text),
+            }
+            SaleInvoiceBL objmas = new SaleInvoiceBL() { 
+             
+                SaleDate = DateTime.Parse(txtInvoiceDate.Text),
+                TotalBill = Convert.ToDecimal(txtTotalBill.Text),
                  BillDiscount = Convert.ToDecimal(txtBillDiscount.Text),
                  GrandTotal = Convert.ToDecimal(txtGrandTotal.Text),
-                 CustomerID=Convert.ToInt32(txtCusID.Text)
-             };
+                 CustomerID=Convert.ToInt32(txtCusId.Text)
+        };
            
             SaleInvoiceBL objsale = new SaleInvoiceBL();
 
             for (int i = 0; i < dgvProduct.RowCount - 1; i++)
             {
                 objsale.InvoiceNo = Convert.ToInt32(txtInvoiceID.Text);
-                objsale.ProductID = Convert.ToInt32(dgvProduct.Rows[i].Cells[2].Value.ToString());
-                objsale.Quantity = Convert.ToInt32(dgvProduct.Rows[i].Cells[5].Value.ToString());
-                objsale.Discount = Convert.ToDecimal(dgvProduct.Rows[i].Cells[6].Value.ToString());
-                objsale.TotalAmount = Convert.ToDecimal(dgvProduct.Rows[i].Cells[7].Value.ToString());
+                objsale.ProductID = Convert.ToInt32(dgvProduct.Rows[i].Cells[1].Value.ToString());
+                objsale.Quantity = Convert.ToInt32(dgvProduct.Rows[i].Cells[4].Value.ToString());
+                objsale.Discount = Convert.ToDecimal(dgvProduct.Rows[i].Cells[5].Value.ToString());
+                objsale.TotalAmount = Convert.ToDecimal(dgvProduct.Rows[i].Cells[6].Value.ToString());
                 objsale.SaveDetail();
             }
             
@@ -414,6 +313,77 @@ namespace CashandCarry.Sales
               
             }
            
+        }
+
+        private void txtQuantity_Leave_1(object sender, EventArgs e)
+        {
+            if (txtQuantity.Text == string.Empty)
+            {
+                MessageBox.Show("Please Enter Quantity");
+                txtQuantity.Focus();
+            }
+            else if (txtQuantity.Text == "00" || txtQuantity.Text == "0")
+            {
+                MessageBox.Show("Null Value Not Acceptable Please Enter Quantity");
+                txtQuantity.Focus();
+
+
+            }
+            else
+            {
+
+                int val1 = Convert.ToInt32(txtPrice.Text);
+                int val2 = Convert.ToInt32(txtQuantity.Text);
+                int val3 = val1 * val2;
+                txtAmount.Text = val3.ToString();
+            }
+        }
+
+        private void txtQuantity_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(!char.IsControl(e.KeyChar)&&!char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtCusName_Leave(object sender, EventArgs e)
+        {
+            CustomerBL objCus = new CustomerBL()
+            {
+                CustomerID = Convert.ToInt32(txtCusName.SelectedValue)
+            };
+            tbl_Customer dt = objCus.Search();
+            if (dt != null)
+            {
+                txtCusId.Text = Convert.ToString(dt.CustomerID);
+                txtContact.Text = dt.Contact;
+            }
+        }
+
+        private void txtProd_Leave(object sender, EventArgs e)
+        {
+                if (txtProdName.Text == string.Empty)
+            {
+                MessageBox.Show("Please Enter Product Id");
+                txtProdName.Focus();
+            }
+            else
+            {
+                ProductBL objPro = new ProductBL()
+                {
+                     ProductID = Convert.ToInt32(txtProdName.SelectedValue)
+                };
+                tbl_Product dt = objPro.Search();
+                if (dt != null)
+                {
+                    txtProdId.Text =Convert.ToString(dt.ProductID);
+                    txtPrice.Text = Convert.ToString(dt.RetailPrice);
+                    txtWeight.Text = dt.weight;
+
+
+                }
+            }
         }
 
         

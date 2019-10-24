@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CashandCarry.Reports {
+namespace CashandCarry.Reports.Purchase {
     using System;
     using System.ComponentModel;
     using CrystalDecisions.Shared;
@@ -16,14 +16,14 @@ namespace CashandCarry.Reports {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class saleInvoiceReport : ReportClass {
+    public class PurchaseGeneralReport : ReportClass {
         
-        public saleInvoiceReport() {
+        public PurchaseGeneralReport() {
         }
         
         public override string ResourceName {
             get {
-                return "saleInvoiceReport.rpt";
+                return "PurchaseGeneralReport.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace CashandCarry.Reports {
         
         public override string FullResourceName {
             get {
-                return "CashandCarry.Reports.saleInvoiceReport.rpt";
+                return "CashandCarry.Reports.Purchase.PurchaseGeneralReport.rpt";
             }
             set {
                 // Do nothing
@@ -90,17 +90,25 @@ namespace CashandCarry.Reports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_InvoiceNo {
+        public CrystalDecisions.Shared.IParameterField Parameter_mindate {
             get {
                 return this.DataDefinition.ParameterFields[0];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.Shared.IParameterField Parameter_maxdate {
+            get {
+                return this.DataDefinition.ParameterFields[1];
             }
         }
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedsaleInvoiceReport : Component, ICachedReport {
+    public class CachedPurchaseGeneralReport : Component, ICachedReport {
         
-        public CachedsaleInvoiceReport() {
+        public CachedPurchaseGeneralReport() {
         }
         
         [Browsable(false)]
@@ -137,7 +145,7 @@ namespace CashandCarry.Reports {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            saleInvoiceReport rpt = new saleInvoiceReport();
+            PurchaseGeneralReport rpt = new PurchaseGeneralReport();
             rpt.Site = this.Site;
             return rpt;
         }

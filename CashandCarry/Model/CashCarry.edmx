@@ -71,6 +71,26 @@
           <Property Name="TradePrice" Type="decimal" Precision="18" Scale="0" />
           <Property Name="Quantity" Type="int" />
         </EntityType>
+        <EntityType Name="Tbl_PurchaseDetail">
+          <Key>
+            <PropertyRef Name="PDetailID" />
+          </Key>
+          <Property Name="PDetailID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PInvoice" Type="int" />
+          <Property Name="ProductID" Type="int" />
+          <Property Name="Quantity" Type="int" />
+          <Property Name="TotalAmount" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="Tbl_PurchaseMaster">
+          <Key>
+            <PropertyRef Name="PInvoice" />
+          </Key>
+          <Property Name="PInvoice" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyID" Type="int" />
+          <Property Name="PurchaseDate" Type="datetime" />
+          <Property Name="TotalAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Discount" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
         <EntityType Name="tbl_Saledetail">
           <Key>
             <PropertyRef Name="SDetailID" />
@@ -151,6 +171,9 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
         <Function Name="SP_Cate_AddNew" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="CategoryID" Type="int" Mode="In" />
         </Function>
+        <Function Name="SP_Cus_Search" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CustomerID" Type="int" Mode="In" />
+        </Function>
         <Function Name="SP_Prod_AddNew" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ProductID" Type="int" Mode="In" />
         </Function>
@@ -170,6 +193,8 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
           <EntitySet Name="tbl_CustomerTypes" EntityType="Self.tbl_CustomerTypes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_employee" EntityType="Self.tbl_employee" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_Product" EntityType="Self.tbl_Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_PurchaseDetail" EntityType="Self.Tbl_PurchaseDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_PurchaseMaster" EntityType="Self.Tbl_PurchaseMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_Saledetail" EntityType="Self.tbl_Saledetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_SaleMAster" EntityType="Self.tbl_SaleMAster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_Zone" EntityType="Self.tbl_Zone" Schema="dbo" store:Type="Tables" />
@@ -250,6 +275,11 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
           <EntitySet Name="View_DetailSale" EntityType="CashCarryModel.View_DetailSale" />
           <FunctionImport Name="SP_SaleInvoice_Search" ReturnType="Collection(CashCarryModel.SP_SaleInvoice_Search_Result)">
           <Parameter Name="InvoiceNo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="Tbl_PurchaseDetail" EntityType="CashCarryModel.Tbl_PurchaseDetail" />
+          <EntitySet Name="Tbl_PurchaseMaster" EntityType="CashCarryModel.Tbl_PurchaseMaster" />
+          <FunctionImport Name="SP_Cus_Search" ReturnType="Collection(CashCarryModel.SP_Cus_Search_Result)">
+          <Parameter Name="CustomerID" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="tbl_Zone">
@@ -397,6 +427,35 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
           <Property Type="Decimal" Name="BillAmount" Nullable="true" Precision="18" Scale="0" />
           <Property Type="Decimal" Name="Flat" Nullable="true" Precision="18" Scale="0" />
           <Property Type="Decimal" Name="GrandTotal" Nullable="true" Precision="18" Scale="0" />
+        </ComplexType>
+        <EntityType Name="Tbl_PurchaseDetail">
+          <Key>
+            <PropertyRef Name="PDetailID" />
+          </Key>
+          <Property Name="PDetailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PInvoice" Type="Int32" />
+          <Property Name="ProductID" Type="Int32" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="TotalAmount" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="Tbl_PurchaseMaster">
+          <Key>
+            <PropertyRef Name="PInvoice" />
+          </Key>
+          <Property Name="PInvoice" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyID" Type="Int32" />
+          <Property Name="PurchaseDate" Type="DateTime" Precision="3" />
+          <Property Name="TotalAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Discount" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <ComplexType Name="SP_Cus_Search_Result">
+          <Property Type="Int32" Name="CustomerID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="CusType" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Contact" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="ZoneName" Nullable="true" MaxLength="20" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -576,6 +635,41 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
                 <ScalarProperty Name="BillAmount" ColumnName="BillAmount" />
                 <ScalarProperty Name="Flat" ColumnName="Flat" />
                 <ScalarProperty Name="GrandTotal" ColumnName="GrandTotal" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="Tbl_PurchaseDetail">
+            <EntityTypeMapping TypeName="CashCarryModel.Tbl_PurchaseDetail">
+              <MappingFragment StoreEntitySet="Tbl_PurchaseDetail">
+                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="PInvoice" ColumnName="PInvoice" />
+                <ScalarProperty Name="PDetailID" ColumnName="PDetailID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_PurchaseMaster">
+            <EntityTypeMapping TypeName="CashCarryModel.Tbl_PurchaseMaster">
+              <MappingFragment StoreEntitySet="Tbl_PurchaseMaster">
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+                <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="PInvoice" ColumnName="PInvoice" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_Cus_Search" FunctionName="CashCarryModel.Store.SP_Cus_Search">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CashCarryModel.SP_Cus_Search_Result">
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CusType" ColumnName="CusType" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="ZoneName" ColumnName="ZoneName" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

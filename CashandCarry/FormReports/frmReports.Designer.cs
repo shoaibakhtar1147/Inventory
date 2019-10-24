@@ -31,7 +31,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnSaleInv = new System.Windows.Forms.Button();
+            this.btnCus = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -65,7 +65,7 @@
             this.panel3.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.panel3.Controls.Add(this.label1);
             this.panel3.Controls.Add(this.pictureBox1);
-            this.panel3.Controls.Add(this.btnSaleInv);
+            this.panel3.Controls.Add(this.btnCus);
             this.panel3.Location = new System.Drawing.Point(588, 105);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(165, 156);
@@ -92,20 +92,21 @@
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
-            // btnSaleInv
+            // btnCus
             // 
-            this.btnSaleInv.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
-            this.btnSaleInv.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSaleInv.FlatAppearance.BorderSize = 0;
-            this.btnSaleInv.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSaleInv.Font = new System.Drawing.Font("Century Schoolbook", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSaleInv.ForeColor = System.Drawing.Color.White;
-            this.btnSaleInv.Location = new System.Drawing.Point(33, 129);
-            this.btnSaleInv.Name = "btnSaleInv";
-            this.btnSaleInv.Size = new System.Drawing.Size(98, 23);
-            this.btnSaleInv.TabIndex = 1;
-            this.btnSaleInv.Text = "Print";
-            this.btnSaleInv.UseVisualStyleBackColor = false;
+            this.btnCus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
+            this.btnCus.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCus.FlatAppearance.BorderSize = 0;
+            this.btnCus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCus.Font = new System.Drawing.Font("Century Schoolbook", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCus.ForeColor = System.Drawing.Color.White;
+            this.btnCus.Location = new System.Drawing.Point(33, 129);
+            this.btnCus.Name = "btnCus";
+            this.btnCus.Size = new System.Drawing.Size(98, 23);
+            this.btnCus.TabIndex = 1;
+            this.btnCus.Text = "Print";
+            this.btnCus.UseVisualStyleBackColor = false;
+            this.btnCus.Click += new System.EventHandler(this.btnCus_Click);
             // 
             // panel1
             // 
@@ -247,6 +248,7 @@
             this.button3.TabIndex = 1;
             this.button3.Text = "Print";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // panel5
             // 
@@ -294,6 +296,7 @@
             this.button4.TabIndex = 1;
             this.button4.Text = "Print";
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // frmReports
             // 
@@ -332,7 +335,7 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button btnSaleInv;
+        private System.Windows.Forms.Button btnCus;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel4;

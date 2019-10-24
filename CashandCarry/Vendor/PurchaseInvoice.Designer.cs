@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtInvoiceDate = new System.Windows.Forms.DateTimePicker();
+            this.txtPurInvoiceDate = new System.Windows.Forms.DateTimePicker();
             this.txtInvoiceID = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -42,30 +42,28 @@
             this.txtCusName = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.txtCompany = new System.Windows.Forms.ComboBox();
+            this.txtCompanyName = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtComContact = new System.Windows.Forms.MaskedTextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtComName = new System.Windows.Forms.TextBox();
+            this.txtComID = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.txtWeight = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.txtProdID = new System.Windows.Forms.ComboBox();
+            this.txtProdName = new System.Windows.Forms.ComboBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnProdUpdate = new System.Windows.Forms.Button();
             this.btnRemove = new System.Windows.Forms.Button();
             this.btnReset = new System.Windows.Forms.Button();
-            this.txtTotalAmount = new System.Windows.Forms.TextBox();
             this.txtAmount = new System.Windows.Forms.TextBox();
             this.txtQuantity = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.txtPrice = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.txtProdName = new System.Windows.Forms.TextBox();
+            this.txtProdID = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.txtBillDiscount = new System.Windows.Forms.TextBox();
@@ -85,7 +83,6 @@
             this.dgvProduct = new System.Windows.Forms.DataGridView();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.btnNew = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
@@ -103,7 +100,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.txtInvoiceDate);
+            this.groupBox1.Controls.Add(this.txtPurInvoiceDate);
             this.groupBox1.Controls.Add(this.txtInvoiceID);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label1);
@@ -116,21 +113,21 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = " Purchase Invoice";
             // 
-            // txtInvoiceDate
+            // txtPurInvoiceDate
             // 
-            this.txtInvoiceDate.Enabled = false;
-            this.txtInvoiceDate.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold);
-            this.txtInvoiceDate.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.txtInvoiceDate.Location = new System.Drawing.Point(130, 72);
-            this.txtInvoiceDate.Name = "txtInvoiceDate";
-            this.txtInvoiceDate.Size = new System.Drawing.Size(147, 23);
-            this.txtInvoiceDate.TabIndex = 25;
+            this.txtPurInvoiceDate.Enabled = false;
+            this.txtPurInvoiceDate.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold);
+            this.txtPurInvoiceDate.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.txtPurInvoiceDate.Location = new System.Drawing.Point(132, 71);
+            this.txtPurInvoiceDate.Name = "txtPurInvoiceDate";
+            this.txtPurInvoiceDate.Size = new System.Drawing.Size(147, 23);
+            this.txtPurInvoiceDate.TabIndex = 25;
             // 
             // txtInvoiceID
             // 
             this.txtInvoiceID.Enabled = false;
             this.txtInvoiceID.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtInvoiceID.Location = new System.Drawing.Point(130, 37);
+            this.txtInvoiceID.Location = new System.Drawing.Point(132, 36);
             this.txtInvoiceID.Name = "txtInvoiceID";
             this.txtInvoiceID.Size = new System.Drawing.Size(147, 23);
             this.txtInvoiceID.TabIndex = 24;
@@ -247,31 +244,32 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.txtCompany);
+            this.groupBox3.Controls.Add(this.txtCompanyName);
             this.groupBox3.Controls.Add(this.label2);
             this.groupBox3.Controls.Add(this.txtComContact);
             this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Controls.Add(this.txtComName);
+            this.groupBox3.Controls.Add(this.txtComID);
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.ForeColor = System.Drawing.SystemColors.ActiveCaption;
             this.groupBox3.Location = new System.Drawing.Point(12, 158);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(302, 191);
-            this.groupBox3.TabIndex = 40;
+            this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Company Info";
             // 
-            // txtCompany
+            // txtCompanyName
             // 
-            this.txtCompany.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCompany.FormattingEnabled = true;
-            this.txtCompany.Items.AddRange(new object[] {
+            this.txtCompanyName.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCompanyName.FormattingEnabled = true;
+            this.txtCompanyName.Items.AddRange(new object[] {
             ""});
-            this.txtCompany.Location = new System.Drawing.Point(127, 60);
-            this.txtCompany.Name = "txtCompany";
-            this.txtCompany.Size = new System.Drawing.Size(148, 24);
-            this.txtCompany.TabIndex = 2;
+            this.txtCompanyName.Location = new System.Drawing.Point(132, 96);
+            this.txtCompanyName.Name = "txtCompanyName";
+            this.txtCompanyName.Size = new System.Drawing.Size(148, 24);
+            this.txtCompanyName.TabIndex = 2;
+            this.txtCompanyName.Leave += new System.EventHandler(this.txtCompanyName_Leave);
             // 
             // label2
             // 
@@ -287,7 +285,7 @@
             // txtComContact
             // 
             this.txtComContact.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtComContact.Location = new System.Drawing.Point(127, 135);
+            this.txtComContact.Location = new System.Drawing.Point(132, 135);
             this.txtComContact.Mask = "0000-0000000";
             this.txtComContact.Name = "txtComContact";
             this.txtComContact.Size = new System.Drawing.Size(147, 23);
@@ -304,13 +302,15 @@
             this.label4.TabIndex = 16;
             this.label4.Text = "Contact:";
             // 
-            // txtComName
+            // txtComID
             // 
-            this.txtComName.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtComName.Location = new System.Drawing.Point(127, 99);
-            this.txtComName.Name = "txtComName";
-            this.txtComName.Size = new System.Drawing.Size(147, 23);
-            this.txtComName.TabIndex = 1;
+            this.txtComID.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.txtComID.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.txtComID.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtComID.Location = new System.Drawing.Point(132, 60);
+            this.txtComID.Name = "txtComID";
+            this.txtComID.Size = new System.Drawing.Size(147, 23);
+            this.txtComID.TabIndex = 1;
             // 
             // label6
             // 
@@ -327,28 +327,26 @@
             // 
             this.groupBox4.Controls.Add(this.txtWeight);
             this.groupBox4.Controls.Add(this.label14);
-            this.groupBox4.Controls.Add(this.txtProdID);
+            this.groupBox4.Controls.Add(this.txtProdName);
             this.groupBox4.Controls.Add(this.btnAdd);
             this.groupBox4.Controls.Add(this.btnProdUpdate);
             this.groupBox4.Controls.Add(this.btnRemove);
             this.groupBox4.Controls.Add(this.btnReset);
-            this.groupBox4.Controls.Add(this.txtTotalAmount);
             this.groupBox4.Controls.Add(this.txtAmount);
             this.groupBox4.Controls.Add(this.txtQuantity);
             this.groupBox4.Controls.Add(this.label12);
             this.groupBox4.Controls.Add(this.label11);
-            this.groupBox4.Controls.Add(this.label8);
             this.groupBox4.Controls.Add(this.txtPrice);
             this.groupBox4.Controls.Add(this.label13);
             this.groupBox4.Controls.Add(this.label15);
-            this.groupBox4.Controls.Add(this.txtProdName);
+            this.groupBox4.Controls.Add(this.txtProdID);
             this.groupBox4.Controls.Add(this.label16);
             this.groupBox4.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.ForeColor = System.Drawing.SystemColors.ActiveCaption;
             this.groupBox4.Location = new System.Drawing.Point(320, 43);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(493, 306);
-            this.groupBox4.TabIndex = 41;
+            this.groupBox4.Size = new System.Drawing.Size(493, 273);
+            this.groupBox4.TabIndex = 3;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Product Info";
             // 
@@ -372,16 +370,17 @@
             this.label14.TabIndex = 31;
             this.label14.Text = "Weight:";
             // 
-            // txtProdID
+            // txtProdName
             // 
-            this.txtProdID.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtProdID.FormattingEnabled = true;
-            this.txtProdID.Items.AddRange(new object[] {
+            this.txtProdName.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtProdName.FormattingEnabled = true;
+            this.txtProdName.Items.AddRange(new object[] {
             ""});
-            this.txtProdID.Location = new System.Drawing.Point(137, 37);
-            this.txtProdID.Name = "txtProdID";
-            this.txtProdID.Size = new System.Drawing.Size(148, 24);
-            this.txtProdID.TabIndex = 3;
+            this.txtProdName.Location = new System.Drawing.Point(138, 73);
+            this.txtProdName.Name = "txtProdName";
+            this.txtProdName.Size = new System.Drawing.Size(148, 24);
+            this.txtProdName.TabIndex = 3;
+            this.txtProdName.Leave += new System.EventHandler(this.txtProdName_Leave);
             // 
             // btnAdd
             // 
@@ -394,9 +393,10 @@
             this.btnAdd.Location = new System.Drawing.Point(353, 73);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(108, 23);
-            this.btnAdd.TabIndex = 10;
+            this.btnAdd.TabIndex = 5;
             this.btnAdd.Text = "Add To Cart";
             this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnProdUpdate
             // 
@@ -443,15 +443,6 @@
             this.btnReset.Text = "Reset";
             this.btnReset.UseVisualStyleBackColor = false;
             // 
-            // txtTotalAmount
-            // 
-            this.txtTotalAmount.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotalAmount.Location = new System.Drawing.Point(138, 250);
-            this.txtTotalAmount.Name = "txtTotalAmount";
-            this.txtTotalAmount.Size = new System.Drawing.Size(147, 23);
-            this.txtTotalAmount.TabIndex = 9;
-            this.txtTotalAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
             // txtAmount
             // 
             this.txtAmount.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -469,6 +460,7 @@
             this.txtQuantity.Size = new System.Drawing.Size(147, 23);
             this.txtQuantity.TabIndex = 4;
             this.txtQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtQuantity.Leave += new System.EventHandler(this.txtQuantity_Leave);
             // 
             // label12
             // 
@@ -491,17 +483,6 @@
             this.label11.Size = new System.Drawing.Size(62, 16);
             this.label11.TabIndex = 28;
             this.label11.Text = "Amount:";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label8.Location = new System.Drawing.Point(25, 253);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(97, 16);
-            this.label8.TabIndex = 26;
-            this.label8.Text = "Total Amount:";
             // 
             // txtPrice
             // 
@@ -535,13 +516,13 @@
             this.label15.TabIndex = 16;
             this.label15.Text = "Price:";
             // 
-            // txtProdName
+            // txtProdID
             // 
-            this.txtProdName.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtProdName.Location = new System.Drawing.Point(138, 72);
-            this.txtProdName.Name = "txtProdName";
-            this.txtProdName.Size = new System.Drawing.Size(147, 23);
-            this.txtProdName.TabIndex = 4;
+            this.txtProdID.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtProdID.Location = new System.Drawing.Point(138, 36);
+            this.txtProdID.Name = "txtProdID";
+            this.txtProdID.Size = new System.Drawing.Size(147, 23);
+            this.txtProdID.TabIndex = 4;
             // 
             // label16
             // 
@@ -574,7 +555,7 @@
             this.groupBox5.Location = new System.Drawing.Point(13, 352);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(301, 273);
-            this.groupBox5.TabIndex = 42;
+            this.groupBox5.TabIndex = 7;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Payment";
             // 
@@ -584,8 +565,9 @@
             this.txtBillDiscount.Location = new System.Drawing.Point(131, 116);
             this.txtBillDiscount.Name = "txtBillDiscount";
             this.txtBillDiscount.Size = new System.Drawing.Size(142, 23);
-            this.txtBillDiscount.TabIndex = 19;
+            this.txtBillDiscount.TabIndex = 7;
             this.txtBillDiscount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtBillDiscount.Leave += new System.EventHandler(this.txtBillDiscount_Leave);
             // 
             // label22
             // 
@@ -655,6 +637,7 @@
             // 
             // txtPayDue
             // 
+            this.txtPayDue.Enabled = false;
             this.txtPayDue.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPayDue.Location = new System.Drawing.Point(131, 223);
             this.txtPayDue.Name = "txtPayDue";
@@ -700,8 +683,9 @@
             this.txtTotalPay.Location = new System.Drawing.Point(131, 186);
             this.txtTotalPay.Name = "txtTotalPay";
             this.txtTotalPay.Size = new System.Drawing.Size(142, 23);
-            this.txtTotalPay.TabIndex = 20;
+            this.txtTotalPay.TabIndex = 8;
             this.txtTotalPay.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtTotalPay.TextChanged += new System.EventHandler(this.txtTotalPay_TextChanged);
             // 
             // label24
             // 
@@ -724,23 +708,21 @@
             // 
             // dgvProduct
             // 
-            this.dgvProduct.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvProduct.Location = new System.Drawing.Point(0, 0);
             this.dgvProduct.Name = "dgvProduct";
             this.dgvProduct.Size = new System.Drawing.Size(672, 262);
-            this.dgvProduct.TabIndex = 14;
+            this.dgvProduct.TabIndex = 220;
             // 
             // groupBox6
             // 
             this.groupBox6.Controls.Add(this.btnNew);
-            this.groupBox6.Controls.Add(this.btnDelete);
             this.groupBox6.Controls.Add(this.btnUpdate);
             this.groupBox6.Controls.Add(this.btnClear);
             this.groupBox6.Controls.Add(this.btnSave);
             this.groupBox6.Location = new System.Drawing.Point(819, 47);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(173, 302);
-            this.groupBox6.TabIndex = 51;
+            this.groupBox6.Size = new System.Drawing.Size(173, 269);
+            this.groupBox6.TabIndex = 1;
             this.groupBox6.TabStop = false;
             // 
             // btnNew
@@ -757,21 +739,7 @@
             this.btnNew.TabIndex = 1;
             this.btnNew.Text = "New";
             this.btnNew.UseVisualStyleBackColor = false;
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
-            this.btnDelete.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnDelete.FlatAppearance.BorderSize = 0;
-            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDelete.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.ForeColor = System.Drawing.Color.White;
-            this.btnDelete.Location = new System.Drawing.Point(30, 181);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(110, 34);
-            this.btnDelete.TabIndex = 20;
-            this.btnDelete.Text = "Delete";
-            this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
             // btnUpdate
             // 
@@ -796,7 +764,7 @@
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClear.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClear.ForeColor = System.Drawing.Color.White;
-            this.btnClear.Location = new System.Drawing.Point(30, 233);
+            this.btnClear.Location = new System.Drawing.Point(30, 181);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(110, 34);
             this.btnClear.TabIndex = 21;
@@ -814,9 +782,10 @@
             this.btnSave.Location = new System.Drawing.Point(30, 82);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(110, 34);
-            this.btnSave.TabIndex = 18;
-            this.btnSave.Text = "Save + Print";
+            this.btnSave.TabIndex = 9;
+            this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // lblminimize
             // 
@@ -849,6 +818,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "PurchaseInvoice";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Load += new System.EventHandler(this.PurchaseInvoice_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -871,7 +841,7 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DateTimePicker txtInvoiceDate;
+        private System.Windows.Forms.DateTimePicker txtPurInvoiceDate;
         private System.Windows.Forms.TextBox txtInvoiceID;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
@@ -884,30 +854,27 @@
         private System.Windows.Forms.TextBox txtCusName;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.ComboBox txtCompany;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.MaskedTextBox txtComContact;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtComName;
+        private System.Windows.Forms.TextBox txtComID;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.TextBox txtWeight;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.ComboBox txtProdID;
+        private System.Windows.Forms.ComboBox txtProdName;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnProdUpdate;
         private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.Button btnReset;
-        private System.Windows.Forms.TextBox txtTotalAmount;
         private System.Windows.Forms.TextBox txtAmount;
         private System.Windows.Forms.TextBox txtQuantity;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtPrice;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.TextBox txtProdName;
+        private System.Windows.Forms.TextBox txtProdID;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.GroupBox groupBox5;
         public System.Windows.Forms.TextBox txtBillDiscount;
@@ -927,10 +894,10 @@
         private System.Windows.Forms.DataGridView dgvProduct;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.Button btnNew;
-        private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label lblminimize;
+        private System.Windows.Forms.ComboBox txtCompanyName;
     }
 }

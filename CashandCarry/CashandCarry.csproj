@@ -68,6 +68,7 @@
     <Compile Include="BL\CustomerBL.cs" />
     <Compile Include="BL\EmployeeBL.cs" />
     <Compile Include="BL\ProductBL.cs" />
+    <Compile Include="BL\PurchaseInvoiceBL.cs" />
     <Compile Include="BL\SaleInvoiceBL.cs" />
     <Compile Include="BL\ZoneBL.cs" />
     <Compile Include="Configuration\FrmZone.cs">
@@ -78,6 +79,36 @@
     </Compile>
     <Compile Include="DAL\DB.cs" />
     <Compile Include="Design.cs" />
+    <Compile Include="FormReports\FrmCustomerReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormReports\FrmCustomerReport.Designer.cs">
+      <DependentUpon>FrmCustomerReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormReports\FrmPurchaseReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormReports\FrmPurchaseReport.Designer.cs">
+      <DependentUpon>FrmPurchaseReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormReports\FrmPurReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormReports\FrmPurReport.Designer.cs">
+      <DependentUpon>FrmPurReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormReports\FrmSaleReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormReports\FrmSaleReport.Designer.cs">
+      <DependentUpon>FrmSaleReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormReports\FrmsalReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormReports\FrmsalReport.Designer.cs">
+      <DependentUpon>FrmsalReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Interface\IGeneric.cs" />
     <Compile Include="Configuration\frmCustomer.cs">
       <SubType>Form</SubType>
@@ -136,6 +167,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CashCarry.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Model\SP_Cus_Search_Result.cs">
+      <DependentUpon>CashCarry.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\SP_SaleInvoice_Search_Result.cs">
       <DependentUpon>CashCarry.tt</DependentUpon>
     </Compile>
@@ -158,6 +192,12 @@
       <DependentUpon>CashCarry.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\tbl_Product.cs">
+      <DependentUpon>CashCarry.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Tbl_PurchaseDetail.cs">
+      <DependentUpon>CashCarry.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Tbl_PurchaseMaster.cs">
       <DependentUpon>CashCarry.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\tbl_Saledetail.cs">
@@ -189,16 +229,46 @@
     <Compile Include="Configuration\FrmConfiguration.Designer.cs">
       <DependentUpon>FrmConfiguration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\CustomerReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CustomerReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Purchase\PurchaseByCompReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PurchaseByCompReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Purchase\PurchaseGeneralReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PurchaseGeneralReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Sale\SaleByCusReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SaleByCusReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Sale\SaleGeneralReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SaleGeneralReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Vendor\frmPurchase.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Vendor\frmPurchase.Designer.cs">
       <DependentUpon>frmPurchase.cs</DependentUpon>
     </Compile>
-    <Compile Include="Reports\frmReports.cs">
+    <Compile Include="FormReports\frmReports.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Reports\frmReports.Designer.cs">
+    <Compile Include="FormReports\frmReports.Designer.cs">
       <DependentUpon>frmReports.cs</DependentUpon>
     </Compile>
     <Compile Include="Reports\rptViewer.cs">
@@ -207,7 +277,7 @@
     <Compile Include="Reports\rptViewer.Designer.cs">
       <DependentUpon>rptViewer.cs</DependentUpon>
     </Compile>
-    <Compile Include="Reports\saleInvoiceReport.cs">
+    <Compile Include="Reports\Sale\saleInvoiceReport.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>saleInvoiceReport.rpt</DependentUpon>
@@ -263,6 +333,21 @@
     <EmbeddedResource Include="Configuration\FrmZone.resx">
       <DependentUpon>FrmZone.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormReports\FrmCustomerReport.resx">
+      <DependentUpon>FrmCustomerReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormReports\FrmPurchaseReport.resx">
+      <DependentUpon>FrmPurchaseReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormReports\FrmPurReport.resx">
+      <DependentUpon>FrmPurReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormReports\FrmSaleReport.resx">
+      <DependentUpon>FrmSaleReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormReports\FrmsalReport.resx">
+      <DependentUpon>FrmsalReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Manager\frmHomePage.resx">
       <DependentUpon>frmHomePage.cs</DependentUpon>
     </EmbeddedResource>
@@ -278,16 +363,36 @@
     <EmbeddedResource Include="Configuration\ProductCategory.resx">
       <DependentUpon>ProductCategory.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\CustomerReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CustomerReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Purchase\PurchaseByCompReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PurchaseByCompReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Purchase\PurchaseGeneralReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PurchaseGeneralReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Sale\SaleByCusReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>SaleByCusReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Sale\SaleGeneralReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>SaleGeneralReport.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vendor\frmPurchase.resx">
       <DependentUpon>frmPurchase.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\frmReports.resx">
+    <EmbeddedResource Include="FormReports\frmReports.resx">
       <DependentUpon>frmReports.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\rptViewer.resx">
       <DependentUpon>rptViewer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\saleInvoiceReport.rpt">
+    <EmbeddedResource Include="Reports\Sale\saleInvoiceReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>saleInvoiceReport.cs</LastGenOutput>
     </EmbeddedResource>
@@ -412,6 +517,7 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

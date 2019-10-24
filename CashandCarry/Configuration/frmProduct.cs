@@ -27,8 +27,7 @@ namespace CashandCarry.Configuration
         private void frmProduct_Load(object sender, EventArgs e)
         {
             FormDisable();
-            LoadCategory();
-            LoadCompany();
+           
             LoadData();
 
         }
@@ -87,6 +86,8 @@ namespace CashandCarry.Configuration
                 btnSave.Enabled = true;
                 FormEnable();
                 txtProdName.Focus();
+                LoadCategory();
+                LoadCompany();
             }
            
         }
