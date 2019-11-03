@@ -37,6 +37,20 @@ namespace CashandCarry.Reports
             objCus.ShowDialog();
         }
 
+        private void btnComReport_Click(object sender, EventArgs e)
+        {
+            FrmComReport objCom = new FrmComReport();
+            objCom.ShowDialog();
+        }
+
+        private void btnProdReport_Click(object sender, EventArgs e)
+        {
+            FrmProductReport objpro = new FrmProductReport();
+            objpro.ShowDialog();
+        }
+
+        
+       
        
     }
 }

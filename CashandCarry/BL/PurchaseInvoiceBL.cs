@@ -25,6 +25,8 @@ namespace CashandCarry.BL
         public decimal TotalAmount { get; set; }
         public decimal GrandTotal { get; set; }
         public decimal TotalBill { get; set; }
+        public decimal Payment { get; set; }
+        public decimal DuePayment { get; set; }
 
         public void SaveDetail()
         {
@@ -47,10 +49,13 @@ namespace CashandCarry.BL
             {
                 Tbl_PurchaseMaster objMas = new Tbl_PurchaseMaster() 
                 {
+                    PInvoice=PInvoice,
                  CompanyID=companyID,
                   Discount=Discount,
                    PurchaseDate=PurchaseDate,
-                    TotalAmount=GrandTotal
+                    TotalAmount=GrandTotal,
+                    Payment=Payment,
+                    DuePayment=DuePayment
                 };
                 context.Tbl_PurchaseMaster.Add(objMas);
                 context.SaveChanges();
@@ -101,7 +106,7 @@ namespace CashandCarry.BL
         {
             string spName = "SP_Purchase_ByCom";
             SqlParameter[] prm = new SqlParameter[1];
-            prm[0] = new SqlParameter("@CompanyName", CompanyName);
+            prm[0] = new SqlParameter("@CompanyID", companyID);
             return DB.SelectTableWithSP(spName, prm);
         }
         public DataTable Select()

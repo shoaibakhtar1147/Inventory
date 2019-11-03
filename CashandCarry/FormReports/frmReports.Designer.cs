@@ -35,11 +35,11 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnProdReport = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnComReport = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
@@ -113,7 +113,7 @@
             this.panel1.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.pictureBox2);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.btnProdReport);
             this.panel1.Location = new System.Drawing.Point(378, 297);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(165, 156);
@@ -140,27 +140,28 @@
             this.pictureBox2.TabIndex = 3;
             this.pictureBox2.TabStop = false;
             // 
-            // button1
+            // btnProdReport
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Century Schoolbook", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(33, 129);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(98, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Print";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnProdReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
+            this.btnProdReport.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnProdReport.FlatAppearance.BorderSize = 0;
+            this.btnProdReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnProdReport.Font = new System.Drawing.Font("Century Schoolbook", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProdReport.ForeColor = System.Drawing.Color.White;
+            this.btnProdReport.Location = new System.Drawing.Point(33, 129);
+            this.btnProdReport.Name = "btnProdReport";
+            this.btnProdReport.Size = new System.Drawing.Size(98, 23);
+            this.btnProdReport.TabIndex = 1;
+            this.btnProdReport.Text = "Print";
+            this.btnProdReport.UseVisualStyleBackColor = false;
+            this.btnProdReport.Click += new System.EventHandler(this.btnProdReport_Click);
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.pictureBox3);
-            this.panel2.Controls.Add(this.button2);
+            this.panel2.Controls.Add(this.btnComReport);
             this.panel2.Location = new System.Drawing.Point(170, 292);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(165, 156);
@@ -187,20 +188,21 @@
             this.pictureBox3.TabIndex = 3;
             this.pictureBox3.TabStop = false;
             // 
-            // button2
+            // btnComReport
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
-            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Century Schoolbook", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(33, 129);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(98, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Print";
-            this.button2.UseVisualStyleBackColor = false;
+            this.btnComReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
+            this.btnComReport.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnComReport.FlatAppearance.BorderSize = 0;
+            this.btnComReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnComReport.Font = new System.Drawing.Font("Century Schoolbook", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnComReport.ForeColor = System.Drawing.Color.White;
+            this.btnComReport.Location = new System.Drawing.Point(33, 129);
+            this.btnComReport.Name = "btnComReport";
+            this.btnComReport.Size = new System.Drawing.Size(98, 23);
+            this.btnComReport.TabIndex = 1;
+            this.btnComReport.Text = "Print";
+            this.btnComReport.UseVisualStyleBackColor = false;
+            this.btnComReport.Click += new System.EventHandler(this.btnComReport_Click);
             // 
             // panel4
             // 
@@ -348,9 +350,9 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnComReport;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnProdReport;
     }
 }

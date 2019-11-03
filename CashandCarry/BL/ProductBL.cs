@@ -81,12 +81,18 @@ namespace CashandCarry.BL
             prm[0] = new SqlParameter("@ProductID", ProductID);
             return DB.SelectTableWithSP(spName, prm);
         }
-
-        public tbl_Product Search()
+        public DataTable SearchByPRod()
+        {
+            string spName = "SP_Search_Product";
+            SqlParameter[] prm = new SqlParameter[1];
+            prm[0] = new SqlParameter("@ProductID", ProductID);
+            return DB.SelectTableWithSP(spName, prm);
+        }
+        public List<tbl_Product> Search()
         {
            using(var context=new CashCarryEntities3())
            {
-               return context.tbl_Product.Where(a => a.ProductID == ProductID).FirstOrDefault();
+               return context.tbl_Product.Where(a => a.ProductID == ProductID).ToList();
            }
         }
 

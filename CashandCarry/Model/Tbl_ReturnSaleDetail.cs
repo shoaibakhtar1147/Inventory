@@ -12,15 +12,12 @@ namespace CashandCarry.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class tbl_SaleMAster
+    public partial class Tbl_ReturnSaleDetail
     {
-        public int Invoice_ { get; set; }
-        public Nullable<System.DateTime> SaleDate { get; set; }
+        public int RDetailID { get; set; }
+        public Nullable<int> RInvoice { get; set; }
+        public Nullable<int> ProductID { get; set; }
+        public Nullable<int> Quantity { get; set; }
         public Nullable<decimal> Amount { get; set; }
-        public Nullable<decimal> TotalAmount { get; set; }
-        public Nullable<decimal> Discount { get; set; }
-        public Nullable<int> CustomerID { get; set; }
-        public Nullable<decimal> Payment { get; set; }
-        public Nullable<decimal> DuePayment { get; set; }
     }
 }

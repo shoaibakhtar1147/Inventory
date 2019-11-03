@@ -231,7 +231,7 @@ namespace CashandCarry.Configuration
             
                CustomerID =Convert.ToInt32(txtSearch.Text)
             };
-            tbl_Customer dt = objCus.Search();
+            var dt = objCus.Search();
             if(dt != null)
             {
                 dgvCus.DataSource = dt;

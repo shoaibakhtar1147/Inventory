@@ -31,7 +31,7 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnProdUpdate = new System.Windows.Forms.Button();
-            this.btnReomve = new System.Windows.Forms.Button();
+            this.btnRemove = new System.Windows.Forms.Button();
             this.btnReset = new System.Windows.Forms.Button();
             this.txtTotalAmount = new System.Windows.Forms.TextBox();
             this.txtDiscount = new System.Windows.Forms.TextBox();
@@ -49,8 +49,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.btnNew = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.btnUpdate = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -61,7 +59,6 @@
             this.txtCusName = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.dgvProduct = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtReturnDate = new System.Windows.Forms.DateTimePicker();
             this.txtReturnID = new System.Windows.Forms.TextBox();
@@ -69,46 +66,39 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label19 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.txtPayment = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.txtPayDate = new System.Windows.Forms.DateTimePicker();
             this.txtPayMode = new System.Windows.Forms.ComboBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.dgvPaymentInfo = new System.Windows.Forms.DataGridView();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label18 = new System.Windows.Forms.Label();
-            this.txtTotalPay = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.txtGrandTotal = new System.Windows.Forms.TextBox();
-            this.txtPayDue = new System.Windows.Forms.TextBox();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.label20 = new System.Windows.Forms.Label();
-            this.txtInvoiceID = new System.Windows.Forms.TextBox();
-            this.btnSearch = new System.Windows.Forms.Button();
+            this.txtDuePay = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
-            this.txtInvoiceDate = new System.Windows.Forms.DateTimePicker();
+            this.txtPayment = new System.Windows.Forms.TextBox();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.txtInvoiceID = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.dgvProduct = new System.Windows.Forms.DataGridView();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox3.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvProduct)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPaymentInfo)).BeginInit();
-            this.panel1.SuspendLayout();
-            this.groupBox5.SuspendLayout();
             this.groupBox7.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProduct)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.btnAdd);
             this.groupBox3.Controls.Add(this.btnProdUpdate);
-            this.groupBox3.Controls.Add(this.btnReomve);
+            this.groupBox3.Controls.Add(this.btnRemove);
             this.groupBox3.Controls.Add(this.btnReset);
             this.groupBox3.Controls.Add(this.txtTotalAmount);
             this.groupBox3.Controls.Add(this.txtDiscount);
@@ -163,20 +153,20 @@
             this.btnProdUpdate.Text = "Update";
             this.btnProdUpdate.UseVisualStyleBackColor = false;
             // 
-            // btnReomve
+            // btnRemove
             // 
-            this.btnReomve.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
-            this.btnReomve.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnReomve.FlatAppearance.BorderSize = 0;
-            this.btnReomve.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReomve.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReomve.ForeColor = System.Drawing.Color.White;
-            this.btnReomve.Location = new System.Drawing.Point(353, 143);
-            this.btnReomve.Name = "btnReomve";
-            this.btnReomve.Size = new System.Drawing.Size(108, 23);
-            this.btnReomve.TabIndex = 17;
-            this.btnReomve.Text = "Remove";
-            this.btnReomve.UseVisualStyleBackColor = false;
+            this.btnRemove.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
+            this.btnRemove.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRemove.FlatAppearance.BorderSize = 0;
+            this.btnRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRemove.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemove.ForeColor = System.Drawing.Color.White;
+            this.btnRemove.Location = new System.Drawing.Point(353, 143);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(108, 23);
+            this.btnRemove.TabIndex = 17;
+            this.btnRemove.Text = "Remove";
+            this.btnRemove.UseVisualStyleBackColor = false;
             // 
             // btnReset
             // 
@@ -192,6 +182,7 @@
             this.btnReset.TabIndex = 14;
             this.btnReset.Text = "Reset";
             this.btnReset.UseVisualStyleBackColor = false;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // txtTotalAmount
             // 
@@ -330,13 +321,11 @@
             // groupBox6
             // 
             this.groupBox6.Controls.Add(this.btnNew);
-            this.groupBox6.Controls.Add(this.btnDelete);
-            this.groupBox6.Controls.Add(this.btnUpdate);
             this.groupBox6.Controls.Add(this.btnClear);
             this.groupBox6.Controls.Add(this.btnSave);
             this.groupBox6.Location = new System.Drawing.Point(819, 47);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(173, 278);
+            this.groupBox6.Size = new System.Drawing.Size(173, 181);
             this.groupBox6.TabIndex = 56;
             this.groupBox6.TabStop = false;
             // 
@@ -354,36 +343,7 @@
             this.btnNew.TabIndex = 26;
             this.btnNew.Text = "New";
             this.btnNew.UseVisualStyleBackColor = false;
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
-            this.btnDelete.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnDelete.FlatAppearance.BorderSize = 0;
-            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDelete.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.ForeColor = System.Drawing.Color.White;
-            this.btnDelete.Location = new System.Drawing.Point(31, 173);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(110, 34);
-            this.btnDelete.TabIndex = 29;
-            this.btnDelete.Text = "Delete";
-            this.btnDelete.UseVisualStyleBackColor = false;
-            // 
-            // btnUpdate
-            // 
-            this.btnUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
-            this.btnUpdate.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnUpdate.FlatAppearance.BorderSize = 0;
-            this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUpdate.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.ForeColor = System.Drawing.Color.White;
-            this.btnUpdate.Location = new System.Drawing.Point(31, 123);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(110, 34);
-            this.btnUpdate.TabIndex = 28;
-            this.btnUpdate.Text = "Update";
-            this.btnUpdate.UseVisualStyleBackColor = false;
+            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
             // btnClear
             // 
@@ -393,7 +353,7 @@
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClear.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClear.ForeColor = System.Drawing.Color.White;
-            this.btnClear.Location = new System.Drawing.Point(31, 225);
+            this.btnClear.Location = new System.Drawing.Point(31, 124);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(110, 34);
             this.btnClear.TabIndex = 30;
@@ -425,7 +385,7 @@
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.groupBox2.Location = new System.Drawing.Point(12, 289);
+            this.groupBox2.Location = new System.Drawing.Point(12, 275);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(302, 171);
             this.groupBox2.TabIndex = 50;
@@ -493,20 +453,11 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.dgvProduct);
-            this.panel3.Location = new System.Drawing.Point(320, 340);
+            this.panel3.Controls.Add(this.dataGridView1);
+            this.panel3.Location = new System.Drawing.Point(320, 334);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(672, 120);
+            this.panel3.Size = new System.Drawing.Size(672, 142);
             this.panel3.TabIndex = 58;
-            // 
-            // dgvProduct
-            // 
-            this.dgvProduct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvProduct.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvProduct.Location = new System.Drawing.Point(0, 0);
-            this.dgvProduct.Name = "dgvProduct";
-            this.dgvProduct.Size = new System.Drawing.Size(672, 120);
-            this.dgvProduct.TabIndex = 18;
             // 
             // groupBox1
             // 
@@ -516,7 +467,7 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.groupBox1.Location = new System.Drawing.Point(12, 183);
+            this.groupBox1.Location = new System.Drawing.Point(12, 162);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(302, 108);
             this.groupBox1.TabIndex = 60;
@@ -586,37 +537,6 @@
             this.label19.Text = "X";
             this.label19.Click += new System.EventHandler(this.label19_Click);
             // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label15.Location = new System.Drawing.Point(23, 71);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(68, 16);
-            this.label15.TabIndex = 0;
-            this.label15.Text = "Payment:";
-            // 
-            // txtPayment
-            // 
-            this.txtPayment.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPayment.Location = new System.Drawing.Point(138, 68);
-            this.txtPayment.Name = "txtPayment";
-            this.txtPayment.Size = new System.Drawing.Size(147, 23);
-            this.txtPayment.TabIndex = 20;
-            this.txtPayment.TextChanged += new System.EventHandler(this.txtPayment_TextChanged);
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label14.Location = new System.Drawing.Point(23, 107);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(102, 16);
-            this.label14.TabIndex = 16;
-            this.label14.Text = "Payment Date:";
-            // 
             // label13
             // 
             this.label13.AutoSize = true;
@@ -628,17 +548,9 @@
             this.label13.TabIndex = 23;
             this.label13.Text = "Payment Mode:";
             // 
-            // txtPayDate
-            // 
-            this.txtPayDate.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold);
-            this.txtPayDate.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.txtPayDate.Location = new System.Drawing.Point(138, 102);
-            this.txtPayDate.Name = "txtPayDate";
-            this.txtPayDate.Size = new System.Drawing.Size(147, 23);
-            this.txtPayDate.TabIndex = 21;
-            // 
             // txtPayMode
             // 
+            this.txtPayMode.Enabled = false;
             this.txtPayMode.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPayMode.FormattingEnabled = true;
             this.txtPayMode.Items.AddRange(new object[] {
@@ -647,150 +559,98 @@
             this.txtPayMode.Name = "txtPayMode";
             this.txtPayMode.Size = new System.Drawing.Size(148, 24);
             this.txtPayMode.TabIndex = 19;
+            this.txtPayMode.Text = "Cash";
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.txtDuePay);
             this.groupBox4.Controls.Add(this.txtPayMode);
-            this.groupBox4.Controls.Add(this.txtPayDate);
+            this.groupBox4.Controls.Add(this.textBox2);
             this.groupBox4.Controls.Add(this.label13);
             this.groupBox4.Controls.Add(this.label14);
-            this.groupBox4.Controls.Add(this.txtPayment);
             this.groupBox4.Controls.Add(this.label15);
+            this.groupBox4.Controls.Add(this.label21);
+            this.groupBox4.Controls.Add(this.txtPayment);
             this.groupBox4.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.groupBox4.Location = new System.Drawing.Point(12, 462);
+            this.groupBox4.Location = new System.Drawing.Point(12, 452);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(302, 138);
+            this.groupBox4.Size = new System.Drawing.Size(302, 179);
             this.groupBox4.TabIndex = 53;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Payment Info";
             // 
-            // dgvPaymentInfo
+            // txtDuePay
             // 
-            this.dgvPaymentInfo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPaymentInfo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvPaymentInfo.Location = new System.Drawing.Point(0, 0);
-            this.dgvPaymentInfo.Name = "dgvPaymentInfo";
-            this.dgvPaymentInfo.Size = new System.Drawing.Size(368, 127);
-            this.dgvPaymentInfo.TabIndex = 22;
-            this.dgvPaymentInfo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPaymentInfo_CellContentClick);
+            this.txtDuePay.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDuePay.Location = new System.Drawing.Point(135, 144);
+            this.txtDuePay.Name = "txtDuePay";
+            this.txtDuePay.Size = new System.Drawing.Size(150, 23);
+            this.txtDuePay.TabIndex = 31;
             // 
-            // panel1
+            // textBox2
             // 
-            this.panel1.Controls.Add(this.dgvPaymentInfo);
-            this.panel1.Location = new System.Drawing.Point(624, 472);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(368, 127);
-            this.panel1.TabIndex = 52;
+            this.textBox2.Enabled = false;
+            this.textBox2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.Location = new System.Drawing.Point(135, 72);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(150, 23);
+            this.textBox2.TabIndex = 28;
             // 
-            // label18
+            // label14
             // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label18.Location = new System.Drawing.Point(28, 71);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(103, 16);
-            this.label18.TabIndex = 0;
-            this.label18.Text = "Total Payment:";
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label14.Location = new System.Drawing.Point(25, 75);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(89, 16);
+            this.label14.TabIndex = 29;
+            this.label14.Text = "Grand Total:";
             // 
-            // txtTotalPay
+            // label15
             // 
-            this.txtTotalPay.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotalPay.Location = new System.Drawing.Point(138, 68);
-            this.txtTotalPay.Name = "txtTotalPay";
-            this.txtTotalPay.Size = new System.Drawing.Size(122, 23);
-            this.txtTotalPay.TabIndex = 24;
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label15.Location = new System.Drawing.Point(25, 147);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(97, 16);
+            this.label15.TabIndex = 27;
+            this.label15.Text = "Payment Due:";
             // 
-            // label17
+            // label21
             // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label17.Location = new System.Drawing.Point(28, 107);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(97, 16);
-            this.label17.TabIndex = 16;
-            this.label17.Text = "Payment Due:";
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label21.Location = new System.Drawing.Point(25, 111);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(103, 16);
+            this.label21.TabIndex = 26;
+            this.label21.Text = "Total Payment:";
             // 
-            // label16
+            // txtPayment
             // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label16.Location = new System.Drawing.Point(28, 35);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(89, 16);
-            this.label16.TabIndex = 23;
-            this.label16.Text = "Grand Total:";
-            // 
-            // txtGrandTotal
-            // 
-            this.txtGrandTotal.Enabled = false;
-            this.txtGrandTotal.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtGrandTotal.Location = new System.Drawing.Point(138, 32);
-            this.txtGrandTotal.Name = "txtGrandTotal";
-            this.txtGrandTotal.Size = new System.Drawing.Size(122, 23);
-            this.txtGrandTotal.TabIndex = 23;
-            // 
-            // txtPayDue
-            // 
-            this.txtPayDue.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPayDue.Location = new System.Drawing.Point(138, 104);
-            this.txtPayDue.Name = "txtPayDue";
-            this.txtPayDue.Size = new System.Drawing.Size(122, 23);
-            this.txtPayDue.TabIndex = 25;
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.txtPayDue);
-            this.groupBox5.Controls.Add(this.txtGrandTotal);
-            this.groupBox5.Controls.Add(this.label16);
-            this.groupBox5.Controls.Add(this.label17);
-            this.groupBox5.Controls.Add(this.txtTotalPay);
-            this.groupBox5.Controls.Add(this.label18);
-            this.groupBox5.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox5.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.groupBox5.Location = new System.Drawing.Point(320, 462);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(298, 138);
-            this.groupBox5.TabIndex = 54;
-            this.groupBox5.TabStop = false;
+            this.txtPayment.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPayment.Location = new System.Drawing.Point(135, 108);
+            this.txtPayment.Name = "txtPayment";
+            this.txtPayment.Size = new System.Drawing.Size(150, 23);
+            this.txtPayment.TabIndex = 30;
             // 
             // groupBox7
             // 
             this.groupBox7.Controls.Add(this.btnSearch);
-            this.groupBox7.Controls.Add(this.txtInvoiceDate);
             this.groupBox7.Controls.Add(this.txtInvoiceID);
             this.groupBox7.Controls.Add(this.label20);
-            this.groupBox7.Controls.Add(this.label21);
             this.groupBox7.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox7.ForeColor = System.Drawing.SystemColors.ActiveCaption;
             this.groupBox7.Location = new System.Drawing.Point(12, 43);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(302, 134);
+            this.groupBox7.Size = new System.Drawing.Size(302, 112);
             this.groupBox7.TabIndex = 59;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Sales Invoice";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label20.Location = new System.Drawing.Point(25, 36);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(76, 16);
-            this.label20.TabIndex = 23;
-            this.label20.Text = "Invoice ID:";
-            // 
-            // txtInvoiceID
-            // 
-            this.txtInvoiceID.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtInvoiceID.Location = new System.Drawing.Point(138, 33);
-            this.txtInvoiceID.Name = "txtInvoiceID";
-            this.txtInvoiceID.Size = new System.Drawing.Size(147, 23);
-            this.txtInvoiceID.TabIndex = 24;
             // 
             // btnSearch
             // 
@@ -806,27 +666,54 @@
             this.btnSearch.TabIndex = 26;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = false;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
-            // label21
+            // txtInvoiceID
             // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label21.Location = new System.Drawing.Point(25, 102);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(93, 16);
-            this.label21.TabIndex = 0;
-            this.label21.Text = "Invoice Date:";
+            this.txtInvoiceID.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtInvoiceID.Location = new System.Drawing.Point(138, 33);
+            this.txtInvoiceID.Name = "txtInvoiceID";
+            this.txtInvoiceID.Size = new System.Drawing.Size(147, 23);
+            this.txtInvoiceID.TabIndex = 24;
             // 
-            // txtInvoiceDate
+            // label20
             // 
-            this.txtInvoiceDate.Enabled = false;
-            this.txtInvoiceDate.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold);
-            this.txtInvoiceDate.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.txtInvoiceDate.Location = new System.Drawing.Point(141, 98);
-            this.txtInvoiceDate.Name = "txtInvoiceDate";
-            this.txtInvoiceDate.Size = new System.Drawing.Size(147, 23);
-            this.txtInvoiceDate.TabIndex = 25;
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label20.Location = new System.Drawing.Point(25, 36);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(76, 16);
+            this.label20.TabIndex = 23;
+            this.label20.Text = "Invoice ID:";
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.dgvProduct);
+            this.panel1.Location = new System.Drawing.Point(320, 488);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(672, 143);
+            this.panel1.TabIndex = 61;
+            // 
+            // dgvProduct
+            // 
+            this.dgvProduct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvProduct.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvProduct.Location = new System.Drawing.Point(0, 0);
+            this.dgvProduct.Name = "dgvProduct";
+            this.dgvProduct.ReadOnly = true;
+            this.dgvProduct.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            this.dgvProduct.Size = new System.Drawing.Size(672, 143);
+            this.dgvProduct.TabIndex = 23;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(672, 142);
+            this.dataGridView1.TabIndex = 0;
             // 
             // FrmSaleReturn
             // 
@@ -834,13 +721,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1057, 643);
             this.ControlBox = false;
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox6);
-            this.Controls.Add(this.groupBox5);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.label19);
@@ -848,23 +734,22 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "FrmSaleReturn";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Load += new System.EventHandler(this.FrmSaleReturn_Load);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvProduct)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPaymentInfo)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProduct)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -874,7 +759,7 @@
 
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button btnProdUpdate;
-        private System.Windows.Forms.Button btnReomve;
+        private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.TextBox txtTotalAmount;
         private System.Windows.Forms.TextBox txtDiscount;
@@ -892,8 +777,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.Button btnNew;
-        private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.GroupBox groupBox2;
@@ -905,7 +788,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.DataGridView dgvProduct;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DateTimePicker txtReturnDate;
         private System.Windows.Forms.TextBox txtReturnID;
@@ -913,27 +795,21 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.TextBox txtPayment;
-        private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.DateTimePicker txtPayDate;
         private System.Windows.Forms.ComboBox txtPayMode;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.DataGridView dgvPaymentInfo;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox txtTotalPay;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox txtGrandTotal;
-        private System.Windows.Forms.TextBox txtPayDue;
-        private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.Button btnSearch;
-        private System.Windows.Forms.DateTimePicker txtInvoiceDate;
         private System.Windows.Forms.TextBox txtInvoiceID;
         private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.TextBox txtDuePay;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.TextBox txtPayment;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.DataGridView dgvProduct;
     }
 }

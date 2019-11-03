@@ -78,14 +78,12 @@ namespace CashandCarry.Configuration
             {
                 CompanyID=Convert.ToInt32(txtSearch.Text)
             };
-            tbl_Company dt = objCom.Search();
+            var dt = objCom.Search();
             if(dt != null)
             {
-                txtComID.Text = Convert.ToString(dt.CompanyID);
-                txtComName.Text = Convert.ToString(dt.CompanyName);
-                txtEmail.Text = Convert.ToString(dt.Email);
-                txtContact.Text = Convert.ToString(dt.Contact);
-                txtAddress.Text = Convert.ToString(dt.Address);
+                dgvCompany.DataSource = dt;
+                btnDelete.Enabled = true;
+                btnUpdate.Enabled = true;
                 
             }
 
@@ -191,6 +189,38 @@ namespace CashandCarry.Configuration
         private void txtAddress_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void dgvCompany_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int rowindex = e.RowIndex;
+            int columnindex = e.ColumnIndex;
+            if(columnindex ==0)
+            {
+                txtComID.Text = dgvCompany.Rows[rowindex].Cells[2].Value.ToString();
+                txtComName.Text = dgvCompany.Rows[rowindex].Cells[3].Value.ToString();
+                txtEmail.Text = dgvCompany.Rows[rowindex].Cells[4].Value.ToString();
+                txtContact.Text = dgvCompany.Rows[rowindex].Cells[5].Value.ToString();
+                txtAddress.Text = dgvCompany.Rows[rowindex].Cells[6].Value.ToString();
+                FormEnable();
+                btnSave.Enabled = false;
+            }
+            else if(columnindex==1)
+            {
+                 string message = "Are You Sure To Delete Company " + txtComName.Text+"?";
+            if(MessageBox.Show(message,"Delete Alert",MessageBoxButtons.YesNo,MessageBoxIcon.Warning)==DialogResult.Yes)
+            {
+                CompanyBL objCom = new CompanyBL()
+                {
+                    CompanyID = int.Parse(txtSearch.Text)
+                };
+                objCom.Delete();
+
+                    MessageBox.Show("Record Deleted Successfull");
+                    LoadData();
+                
+            }
+            }
         }
     }
 }

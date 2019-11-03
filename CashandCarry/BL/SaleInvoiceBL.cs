@@ -27,6 +27,8 @@ namespace CashandCarry.BL
         public decimal GrandTotal { get; set; }
         public decimal BillDiscount { get; set; }
         public decimal TotalBill { get; set; }
+        public decimal Payment { get; set; }
+        public decimal DuePayment { get; set; }
 
         public void SaveDetail()
         {
@@ -57,6 +59,8 @@ namespace CashandCarry.BL
                     SaleDate = SaleDate,
                      CustomerID=CustomerID,
                     TotalAmount = GrandTotal,
+                     Payment=Payment,
+                     DuePayment=DuePayment
                      
                 };
                 context.tbl_SaleMAster.Add(objMas);
@@ -65,30 +69,26 @@ namespace CashandCarry.BL
         }
         public int UpdateProd()
         {
-            string query = "update tbl_Product set Quantity=Quantity - '" + Quantity + "' where ProductID='" + ProductID + "' ";
-            return DB.insert(query);
-            //string spName = "SP_Quantity_Update";
-            //SqlParameter[] prm = new SqlParameter[2];
-            //prm[0] = new SqlParameter("@ProductID", ProductID);
-            //prm[1] = new SqlParameter("@Quantity", Quantity);
-            //return DB.ExecuteNonQueryWithSP(spName, prm);
+            //string query = "update tbl_Product set Quantity=Quantity - '" + Quantity + "' where ProductID='" + ProductID + "' ";
+            //return DB.insert(query);
+            string spName = "SP_Quantity_Update";
+            SqlParameter[] prm = new SqlParameter[2];
+            prm[0] = new SqlParameter("@ProductID", ProductID);
+            prm[1] = new SqlParameter("@Quantity", Quantity);
+            return DB.ExecuteNonQueryWithSP(spName, prm);
         }
-      
-        public int Delete()
+      public DataTable Search()
         {
-            throw new NotImplementedException();
-        }
-      
-
-        public int Update()
-        {
-            throw new NotImplementedException();
+            string spName = "SP_SaleInvoice_Search";
+            SqlParameter[] prm = new SqlParameter[1];
+            prm[0] = new SqlParameter("@InvoiceNo", InvoiceNo);
+            return DB.SelectTableWithSP(spName, prm);
         }
         public DataTable SelectByCus()
         {
             string spName = "SP_SaleMas_ByCus";
             SqlParameter[] prm = new SqlParameter[1];
-            prm[0] = new SqlParameter("@CusName", CusName);
+            prm[0] = new SqlParameter("@CusID", CustomerID);
            return DB.SelectTableWithSP(spName, prm);
         }
         public DataTable Addnew()
@@ -99,10 +99,6 @@ namespace CashandCarry.BL
             return DB.SelectTableWithSP(spName, prm);
         }
 
-        public System.Data.DataTable Search()
-        {
-            throw new NotImplementedException();
-        }
         public DataTable SelectByDate()
         {
             String spName = "SP_SaleMas_DateDiff";
@@ -111,9 +107,6 @@ namespace CashandCarry.BL
             prm[1] = new SqlParameter("@MaxDate", maxdate);
             return DB.SelectTableWithSP(spName, prm);
         }
-        public DataTable Select()
-        {
-            throw new NotImplementedException();
-        }
+      
     }
 }

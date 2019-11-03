@@ -49,7 +49,7 @@
             this.label20 = new System.Windows.Forms.Label();
             this.txtPayMode = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.txtPayDue = new System.Windows.Forms.TextBox();
+            this.txtDuePay = new System.Windows.Forms.TextBox();
             this.txtTotalBill = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
@@ -57,12 +57,11 @@
             this.label18 = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.btnNew = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.btnUpdate = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.label19 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.txtProdId = new System.Windows.Forms.TextBox();
             this.txtQuantity = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.txtWeight = new System.Windows.Forms.TextBox();
@@ -70,7 +69,6 @@
             this.txtProdName = new System.Windows.Forms.ComboBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnProdUpdate = new System.Windows.Forms.Button();
-            this.btnRemove = new System.Windows.Forms.Button();
             this.btnReset = new System.Windows.Forms.Button();
             this.txtTotalAmount = new System.Windows.Forms.TextBox();
             this.txtDiscount = new System.Windows.Forms.TextBox();
@@ -85,7 +83,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dgvProduct = new System.Windows.Forms.DataGridView();
-            this.txtProdId = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -248,7 +245,7 @@
             this.groupBox5.Controls.Add(this.label20);
             this.groupBox5.Controls.Add(this.txtPayMode);
             this.groupBox5.Controls.Add(this.label13);
-            this.groupBox5.Controls.Add(this.txtPayDue);
+            this.groupBox5.Controls.Add(this.txtDuePay);
             this.groupBox5.Controls.Add(this.txtTotalBill);
             this.groupBox5.Controls.Add(this.label16);
             this.groupBox5.Controls.Add(this.label17);
@@ -271,6 +268,7 @@
             this.txtBillDiscount.Size = new System.Drawing.Size(142, 23);
             this.txtBillDiscount.TabIndex = 19;
             this.txtBillDiscount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtBillDiscount.TextChanged += new System.EventHandler(this.txtBillDiscount_TextChanged);
             this.txtBillDiscount.Leave += new System.EventHandler(this.txtBillDiscount_Leave);
             // 
             // label22
@@ -339,14 +337,14 @@
             this.label13.TabIndex = 25;
             this.label13.Text = "Payment Mode:";
             // 
-            // txtPayDue
+            // txtDuePay
             // 
-            this.txtPayDue.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPayDue.Location = new System.Drawing.Point(131, 223);
-            this.txtPayDue.Name = "txtPayDue";
-            this.txtPayDue.Size = new System.Drawing.Size(142, 23);
-            this.txtPayDue.TabIndex = 20;
-            this.txtPayDue.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtDuePay.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDuePay.Location = new System.Drawing.Point(131, 223);
+            this.txtDuePay.Name = "txtDuePay";
+            this.txtDuePay.Size = new System.Drawing.Size(142, 23);
+            this.txtDuePay.TabIndex = 20;
+            this.txtDuePay.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txtTotalBill
             // 
@@ -404,13 +402,11 @@
             // groupBox6
             // 
             this.groupBox6.Controls.Add(this.btnNew);
-            this.groupBox6.Controls.Add(this.btnDelete);
-            this.groupBox6.Controls.Add(this.btnUpdate);
             this.groupBox6.Controls.Add(this.btnClear);
             this.groupBox6.Controls.Add(this.btnSave);
             this.groupBox6.Location = new System.Drawing.Point(819, 47);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(173, 302);
+            this.groupBox6.Size = new System.Drawing.Size(173, 190);
             this.groupBox6.TabIndex = 46;
             this.groupBox6.TabStop = false;
             // 
@@ -430,36 +426,6 @@
             this.btnNew.UseVisualStyleBackColor = false;
             this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
-            // btnDelete
-            // 
-            this.btnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
-            this.btnDelete.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnDelete.FlatAppearance.BorderSize = 0;
-            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDelete.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.ForeColor = System.Drawing.Color.White;
-            this.btnDelete.Location = new System.Drawing.Point(30, 181);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(110, 34);
-            this.btnDelete.TabIndex = 20;
-            this.btnDelete.Text = "Delete";
-            this.btnDelete.UseVisualStyleBackColor = false;
-            // 
-            // btnUpdate
-            // 
-            this.btnUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
-            this.btnUpdate.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnUpdate.FlatAppearance.BorderSize = 0;
-            this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUpdate.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.ForeColor = System.Drawing.Color.White;
-            this.btnUpdate.Location = new System.Drawing.Point(30, 131);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(110, 34);
-            this.btnUpdate.TabIndex = 19;
-            this.btnUpdate.Text = "Update";
-            this.btnUpdate.UseVisualStyleBackColor = false;
-            // 
             // btnClear
             // 
             this.btnClear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
@@ -468,12 +434,13 @@
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClear.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClear.ForeColor = System.Drawing.Color.White;
-            this.btnClear.Location = new System.Drawing.Point(30, 233);
+            this.btnClear.Location = new System.Drawing.Point(30, 128);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(110, 34);
             this.btnClear.TabIndex = 21;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = false;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // btnSave
             // 
@@ -514,7 +481,6 @@
             this.groupBox3.Controls.Add(this.txtProdName);
             this.groupBox3.Controls.Add(this.btnAdd);
             this.groupBox3.Controls.Add(this.btnProdUpdate);
-            this.groupBox3.Controls.Add(this.btnRemove);
             this.groupBox3.Controls.Add(this.btnReset);
             this.groupBox3.Controls.Add(this.txtTotalAmount);
             this.groupBox3.Controls.Add(this.txtDiscount);
@@ -536,6 +502,16 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Product Info";
             this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
+            // 
+            // txtProdId
+            // 
+            this.txtProdId.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtProdId.Location = new System.Drawing.Point(138, 37);
+            this.txtProdId.Name = "txtProdId";
+            this.txtProdId.Size = new System.Drawing.Size(147, 23);
+            this.txtProdId.TabIndex = 112;
+            this.txtProdId.Tag = "";
+            this.txtProdId.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txtQuantity
             // 
@@ -622,21 +598,7 @@
             this.btnProdUpdate.TabIndex = 11;
             this.btnProdUpdate.Text = "Update";
             this.btnProdUpdate.UseVisualStyleBackColor = false;
-            // 
-            // btnRemove
-            // 
-            this.btnRemove.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
-            this.btnRemove.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnRemove.FlatAppearance.BorderSize = 0;
-            this.btnRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRemove.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRemove.ForeColor = System.Drawing.Color.White;
-            this.btnRemove.Location = new System.Drawing.Point(353, 143);
-            this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(108, 23);
-            this.btnRemove.TabIndex = 12;
-            this.btnRemove.Text = "Remove";
-            this.btnRemove.UseVisualStyleBackColor = false;
+            this.btnProdUpdate.Click += new System.EventHandler(this.btnProdUpdate_Click);
             // 
             // btnReset
             // 
@@ -652,6 +614,7 @@
             this.btnReset.TabIndex = 13;
             this.btnReset.Text = "Reset";
             this.btnReset.UseVisualStyleBackColor = false;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // txtTotalAmount
             // 
@@ -785,16 +748,6 @@
             this.dgvProduct.Size = new System.Drawing.Size(672, 262);
             this.dgvProduct.TabIndex = 14;
             // 
-            // txtProdId
-            // 
-            this.txtProdId.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtProdId.Location = new System.Drawing.Point(138, 37);
-            this.txtProdId.Name = "txtProdId";
-            this.txtProdId.Size = new System.Drawing.Size(147, 23);
-            this.txtProdId.TabIndex = 112;
-            this.txtProdId.Tag = "";
-            this.txtProdId.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
             // FrmSaleInvoice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -846,7 +799,7 @@
         private System.Windows.Forms.TextBox txtCusId;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.TextBox txtPayDue;
+        private System.Windows.Forms.TextBox txtDuePay;
         private System.Windows.Forms.TextBox txtTotalBill;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
@@ -854,15 +807,12 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.Button btnNew;
-        private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnProdUpdate;
-        private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.TextBox txtTotalAmount;
         private System.Windows.Forms.TextBox txtDiscount;

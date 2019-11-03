@@ -30,9 +30,11 @@
         {
             this.crptViewerSale = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtinvoiceNo = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.btnCusName = new System.Windows.Forms.Button();
-            this.txtCusnam = new System.Windows.Forms.TextBox();
+            this.txtCus = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnSearch = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -69,9 +71,11 @@
             // groupBox1
             // 
             this.groupBox1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.groupBox1.Controls.Add(this.txtinvoiceNo);
+            this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.btnCusName);
-            this.groupBox1.Controls.Add(this.txtCusnam);
+            this.groupBox1.Controls.Add(this.txtCus);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.btnSearch);
             this.groupBox1.Controls.Add(this.label2);
@@ -82,10 +86,29 @@
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ActiveCaption;
             this.groupBox1.Location = new System.Drawing.Point(49, 23);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(672, 113);
+            this.groupBox1.Size = new System.Drawing.Size(779, 113);
             this.groupBox1.TabIndex = 80;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Sales Invoice";
+            // 
+            // txtinvoiceNo
+            // 
+            this.txtinvoiceNo.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtinvoiceNo.Location = new System.Drawing.Point(425, 71);
+            this.txtinvoiceNo.Name = "txtinvoiceNo";
+            this.txtinvoiceNo.Size = new System.Drawing.Size(147, 23);
+            this.txtinvoiceNo.TabIndex = 84;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label6.Location = new System.Drawing.Point(338, 78);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(81, 16);
+            this.label6.TabIndex = 83;
+            this.label6.Text = "Invoice No:";
             // 
             // label4
             // 
@@ -106,7 +129,7 @@
             this.btnCusName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCusName.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCusName.ForeColor = System.Drawing.Color.White;
-            this.btnCusName.Location = new System.Drawing.Point(547, 75);
+            this.btnCusName.Location = new System.Drawing.Point(658, 75);
             this.btnCusName.Name = "btnCusName";
             this.btnCusName.Size = new System.Drawing.Size(92, 23);
             this.btnCusName.TabIndex = 67;
@@ -114,13 +137,13 @@
             this.btnCusName.UseVisualStyleBackColor = false;
             this.btnCusName.Click += new System.EventHandler(this.btnCusName_Click);
             // 
-            // txtCusnam
+            // txtCus
             // 
-            this.txtCusnam.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCusnam.Location = new System.Drawing.Point(160, 75);
-            this.txtCusnam.Name = "txtCusnam";
-            this.txtCusnam.Size = new System.Drawing.Size(147, 23);
-            this.txtCusnam.TabIndex = 66;
+            this.txtCus.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCus.Location = new System.Drawing.Point(160, 75);
+            this.txtCus.Name = "txtCus";
+            this.txtCus.Size = new System.Drawing.Size(147, 23);
+            this.txtCus.TabIndex = 66;
             // 
             // label3
             // 
@@ -129,9 +152,9 @@
             this.label3.ForeColor = System.Drawing.SystemColors.ActiveCaption;
             this.label3.Location = new System.Drawing.Point(32, 78);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(116, 16);
+            this.label3.Size = new System.Drawing.Size(90, 16);
             this.label3.TabIndex = 65;
-            this.label3.Text = "Customer Name:";
+            this.label3.Text = "Customer ID:";
             // 
             // btnSearch
             // 
@@ -141,7 +164,7 @@
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearch.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSearch.ForeColor = System.Drawing.Color.White;
-            this.btnSearch.Location = new System.Drawing.Point(547, 33);
+            this.btnSearch.Location = new System.Drawing.Point(658, 33);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(92, 23);
             this.btnSearch.TabIndex = 64;
@@ -154,7 +177,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label2.Location = new System.Drawing.Point(338, 36);
+            this.label2.Location = new System.Drawing.Point(393, 36);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(26, 16);
             this.label2.TabIndex = 63;
@@ -175,7 +198,7 @@
             // 
             this.txtmaxdate.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold);
             this.txtmaxdate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.txtmaxdate.Location = new System.Drawing.Point(370, 31);
+            this.txtmaxdate.Location = new System.Drawing.Point(425, 29);
             this.txtmaxdate.Name = "txtmaxdate";
             this.txtmaxdate.Size = new System.Drawing.Size(147, 23);
             this.txtmaxdate.TabIndex = 61;
@@ -290,6 +313,7 @@
             this.Name = "FrmsalReport";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FrmsalReport";
+            this.Load += new System.EventHandler(this.FrmsalReport_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -305,7 +329,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnCusName;
-        private System.Windows.Forms.TextBox txtCusnam;
+        private System.Windows.Forms.TextBox txtCus;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Label label2;
@@ -320,5 +344,7 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtCusName;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtinvoiceNo;
+        private System.Windows.Forms.Label label6;
     }
 }

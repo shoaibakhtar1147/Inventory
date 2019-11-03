@@ -67,11 +67,11 @@ namespace CashandCarry.BL
             //}
         }
 
-        public tbl_Zone Search()
+        public List<tbl_Zone> Search()
         {
             using(var context=new CashCarryEntities3())
             {
-                return context.tbl_Zone.Where(a => a.ZoneID == ZoneId).FirstOrDefault();
+                return context.tbl_Zone.Where(a => a.ZoneID == ZoneId).ToList();
             }
         }
 

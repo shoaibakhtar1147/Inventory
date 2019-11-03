@@ -57,7 +57,8 @@ C:\Users\ARSALAN COMPUTER LAB\Documents\GitHub\Inventory\CashandCarry\obj\Debug\
 C:\Users\ARSALAN COMPUTER LAB\Documents\GitHub\Inventory\CashandCarry\obj\Debug\CashandCarry.Reports.rptViewer.resources
 C:\Users\ARSALAN COMPUTER LAB\Documents\GitHub\Inventory\CashandCarry\obj\Debug\CashandCarry.Vendor.PurchaseInvoice.resources
 C:\Users\ARSALAN COMPUTER LAB\Documents\GitHub\Inventory\CashandCarry\obj\Debug\CashandCarry.FormReports.FrmCustomerReport.resources
-C:\Users\ARSALAN COMPUTER LAB\Documents\GitHub\Inventory\CashandCarry\obj\Debug\CashandCarry.FormReports.FrmPurchaseReport.resources
 C:\Users\ARSALAN COMPUTER LAB\Documents\GitHub\Inventory\CashandCarry\obj\Debug\CashandCarry.FormReports.FrmSaleReport.resources
 C:\Users\ARSALAN COMPUTER LAB\Documents\GitHub\Inventory\CashandCarry\obj\Debug\CashandCarry.FormReports.FrmsalReport.resources
 C:\Users\ARSALAN COMPUTER LAB\Documents\GitHub\Inventory\CashandCarry\obj\Debug\CashandCarry.FormReports.FrmPurReport.resources
+C:\Users\ARSALAN COMPUTER LAB\Documents\GitHub\Inventory\CashandCarry\obj\Debug\CashandCarry.FormReports.FrmComReport.resources
+C:\Users\ARSALAN COMPUTER LAB\Documents\GitHub\Inventory\CashandCarry\obj\Debug\CashandCarry.FormReports.FrmProductReport.resources

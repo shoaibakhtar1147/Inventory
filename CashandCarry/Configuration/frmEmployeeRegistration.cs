@@ -194,31 +194,32 @@ namespace CashandCarry.Configuration
             {
                  EmployeeID =Convert.ToInt32(txtSearch.Text)
             };
-            tbl_employee dt = objEmp.Search();
+            var dt = objEmp.Search();
             if (dt != null) 
             {
-                txtEmpId.Text = Convert.ToString(dt.EmployeeID);
-                txtname.Text = Convert.ToString(dt.Name);
-                txtFname.Text = Convert.ToString(dt.Fname);
-                txtQual.Text = Convert.ToString(dt.Qualifiction);
-                txtPassword.Text = Convert.ToString(dt.Password);
-                txtDOB.Text = Convert.ToString(dt.DOB);
-                txtDesig.Text = Convert.ToString(dt.Designation);
-                txtUsername.Text = Convert.ToString(dt.Username);
-                txtCnic.Text = Convert.ToString(dt.Cnic);
-                txtContact.Text = Convert.ToString(dt.Contact);
-                txtAddress.Text = Convert.ToString(dt.Address);
-                string gender = Convert.ToString(dt.Gender);
-                if (gender == "Male")
-                {
-                    rdmale.Checked = true;
-                }
-                else
-                {
-                    rdfemale.Checked = true;
-                }
-                FormEnable();
-                btnUpdate.Enabled = true;
+                //txtEmpId.Text = Convert.ToString(dt.EmployeeID);
+                //txtname.Text = Convert.ToString(dt.Name);
+                //txtFname.Text = Convert.ToString(dt.Fname);
+                //txtQual.Text = Convert.ToString(dt.Qualifiction);
+                //txtPassword.Text = Convert.ToString(dt.Password);
+                //txtDOB.Text = Convert.ToString(dt.DOB);
+                //txtDesig.Text = Convert.ToString(dt.Designation);
+                //txtUsername.Text = Convert.ToString(dt.Username);
+                //txtCnic.Text = Convert.ToString(dt.Cnic);
+                //txtContact.Text = Convert.ToString(dt.Contact);
+                //txtAddress.Text = Convert.ToString(dt.Address);
+                //string gender = Convert.ToString(dt.Gender);
+                //if (gender == "Male")
+                //{
+                //    rdmale.Checked = true;
+                //}
+                //else
+                //{
+                //    rdfemale.Checked = true;
+                //}
+                //FormEnable();
+                //btnUpdate.Enabled = true;
+                dgvEmp.DataSource = dt;
                 btnDelete.Enabled = true;
                 
             }
@@ -249,6 +250,10 @@ namespace CashandCarry.Configuration
                 dgvEmp.Columns.Add(delete);
                 dgvEmp.DataSource = dt;
                 dgvEmp.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            }
+            else
+            {
+                MessageBox.Show("No Data");
             }
         }
         private void dgvEmp_CellContentClick(object sender, DataGridViewCellEventArgs e)

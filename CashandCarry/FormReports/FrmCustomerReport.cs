@@ -22,26 +22,26 @@ namespace CashandCarry.FormReports
 
         private void btnCusName_Click(object sender, EventArgs e)
         {
-            if(txtSearch.Text !=string.Empty)
+            
+            CustomerReport objCus = new CustomerReport();
+            if (!string.IsNullOrEmpty(txtSearch.Text))
             {
-                CustomerBL objCus = new CustomerBL()
+                objCus.SetParameterValue("@CustomerID", txtSearch.Text);
+                CustomerBL objCust = new CustomerBL()
                 {
-                    CustomerID = Convert.ToInt32(txtSearch.Text)
+                    CustomerID = Convert.ToInt32(txtSearch.Text),
+                    
                 };
-                tbl_Customer dt = objCus.Search();
-                if (dt != null)
+                DataTable dt = objCust.SelectByCus();
+                if (dt.Rows.Count>0)
                 {
-                    dgvCus.DataSource = dt;
+                    objCus.SetDataSource(dt);
+                    crptViewerCus.ReportSource = objCus;
                 }
             }
             else
             {
-                CustomerBL objCus = new CustomerBL();
-                List<View_tbl_Customer> dt = objCus.Select();
-                if(dt!= null)
-                {
-                    dgvCus.DataSource = dt;
-                }
+                MessageBox.Show("Please Enter Enter ID");
             }
            
         }
@@ -64,47 +64,29 @@ namespace CashandCarry.FormReports
 
             //}
         }
-        private void LoadReport()
+
+        private void FrmCustomerReport_Load(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void btnAllRecord_Click(object sender, EventArgs e)
         {
             CustomerReport objCus = new CustomerReport();
-            if (!string.IsNullOrEmpty(txtSearch.Text))
+            objCus.SetParameterValue("@CustomerID", null);
+            CustomerBL objCust = new CustomerBL();
+            List<View_tbl_Customer> dt = objCust.Select();
+            if (dt != null)
             {
-                objCus.SetParameterValue("@CustomerID", txtSearch.Text);
+                objCus.SetDataSource(dt);
+                crptViewerCus.ReportSource = objCus;
             }
-            else
-            {
-                objCus.SetParameterValue("@CustomerID", null);
-            }
-            rptViewer obView = new rptViewer();
-            obView.crptViewer.ReportSource = objCus;
-            //obView.WindowState = FormWindowState.Maximized;
-            //obView.ShowDialog();
         }
-        private void btnView_Click(object sender, EventArgs e)
-        {
-            CustomerReport objCus = new CustomerReport();
-            if (!string.IsNullOrEmpty(txtSearch.Text))
-            {
-                objCus.SetParameterValue("@CustomerID", txtSearch.Text);
-            }
-            else
-            {
-                objCus.SetParameterValue("@CustomerID", null);
-            }
-            rptViewer obView = new rptViewer();
-            obView.crptViewer.ReportSource = objCus;
-            obView.WindowState = FormWindowState.Maximized;
-            obView.ShowDialog();
-        }
+       
+      
 
-        private void txtSearch_TextChanged(object sender, EventArgs e)
-        {
+      
 
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
+       
     }
 }

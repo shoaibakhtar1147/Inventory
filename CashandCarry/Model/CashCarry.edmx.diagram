@@ -15,10 +15,12 @@
         <EntityTypeShape EntityType="CashCarryModel.tbl_Product" PointX="9.25" PointY="0.75" Width="1.5" IsExpanded="false" />
         <EntityTypeShape EntityType="CashCarryModel.View_tbl_Product" Width="1.5" PointX="7.375" PointY="0.75" IsExpanded="false" />
         <EntityTypeShape EntityType="CashCarryModel.tbl_Saledetail" Width="1.5" PointX="0.625" PointY="2.875" IsExpanded="false" />
-        <EntityTypeShape EntityType="CashCarryModel.tbl_SaleMAster" Width="1.5" PointX="0.5" PointY="5.375" IsExpanded="false" />
+        <EntityTypeShape EntityType="CashCarryModel.tbl_SaleMAster" Width="1.5" PointX="0.5" PointY="5.375" IsExpanded="true" />
         <EntityTypeShape EntityType="CashCarryModel.View_DetailSale" Width="1.5" PointX="3.375" PointY="4.75" IsExpanded="false" />
         <EntityTypeShape EntityType="CashCarryModel.Tbl_PurchaseDetail" Width="1.5" PointX="5.75" PointY="4.75" />
-        <EntityTypeShape EntityType="CashCarryModel.Tbl_PurchaseMaster" Width="1.5" PointX="0.75" PointY="6.75" />
+        <EntityTypeShape EntityType="CashCarryModel.Tbl_PurchaseMaster" Width="1.5" PointX="7.875" PointY="4.75" />
+        <EntityTypeShape EntityType="CashCarryModel.Tbl_ReturnSaleDetail" Width="1.5" PointX="3.75" PointY="7.75" />
+        <EntityTypeShape EntityType="CashCarryModel.Tbl_ReturnSaleMaster" Width="1.5" PointX="0.75" PointY="8.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

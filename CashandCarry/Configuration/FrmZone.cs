@@ -145,11 +145,10 @@ namespace CashandCarry.Configuration
             {
             ZoneId=Convert.ToInt32(txtSearch.Text)
             };
-            tbl_Zone dt = objZone.Search();
+            var dt = objZone.Search();
             if(dt != null)
             {
-                txtZoneID.Text = Convert.ToString(dt.ZoneID);
-                txtZoneName.Text = Convert.ToString(dt.ZoneName);
+                dgvZone.DataSource = dt;
                 txtZoneName.Enabled = true;
                 btnUpdate.Enabled = true;
                 btnDelete.Enabled = true;

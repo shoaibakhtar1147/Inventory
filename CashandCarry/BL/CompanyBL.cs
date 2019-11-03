@@ -70,11 +70,11 @@ namespace CashandCarry.BL
             return DB.SelectTableWithSP(spName, prm);
         }
 
-        public tbl_Company Search()
+        public List<tbl_Company> Search()
         {
             using(var context=new CashCarryEntities3())
             {
-                return context.tbl_Company.Where(a => a.CompanyID == CompanyID).FirstOrDefault();
+                return context.tbl_Company.Where(a => a.CompanyID == CompanyID).ToList();
             }
         }
 

@@ -85,6 +85,27 @@
     <Property Name="PurchaseDate" Type="datetime" />
     <Property Name="TotalAmount" Type="decimal" Precision="18" Scale="2" />
     <Property Name="Discount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Payment" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="DuePayment" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="Tbl_ReturnSaleDetail">
+    <Key>
+      <PropertyRef Name="RDetailID" />
+    </Key>
+    <Property Name="RDetailID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RInvoice" Type="int" />
+    <Property Name="ProductID" Type="int" />
+    <Property Name="Quantity" Type="int" />
+    <Property Name="Amount" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="Tbl_ReturnSaleMaster">
+    <Key>
+      <PropertyRef Name="RInvoice" />
+    </Key>
+    <Property Name="RInvoice" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Invoice#" Type="int" />
+    <Property Name="ReturnAmount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="ReturnDate" Type="datetime" />
   </EntityType>
   <EntityType Name="tbl_Saledetail">
     <Key>
@@ -107,6 +128,8 @@
     <Property Name="SaleDate" Type="datetime" />
     <Property Name="Discount" Type="decimal" Precision="18" Scale="0" />
     <Property Name="CustomerID" Type="int" />
+    <Property Name="Payment" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="DuePayment" Type="decimal" Precision="18" Scale="2" />
   </EntityType>
   <EntityType Name="tbl_Zone">
     <Key>
@@ -162,6 +185,7 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
     <Property Name="weight" Type="varchar" MaxLength="20" />
     <Property Name="RetailPrice" Type="decimal" Precision="18" Scale="0" />
     <Property Name="PurchasePrice" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Quantity" Type="int" />
   </EntityType>
   <Function Name="SP_Cate_AddNew" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="CategoryID" Type="int" Mode="In" />
@@ -178,9 +202,6 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
   <Function Name="SP_Zone_AddNew" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ZoneID" Type="int" Mode="In" />
   </Function>
-  <Function Name="SP_Zone_Search" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="ZoneID" Type="int" Mode="In" />
-  </Function>
   <EntityContainer Name="CashCarryModelStoreContainer">
     <EntitySet Name="tbl_Category" EntityType="Self.tbl_Category" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_Company" EntityType="Self.tbl_Company" Schema="dbo" store:Type="Tables" />
@@ -190,6 +211,8 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
     <EntitySet Name="tbl_Product" EntityType="Self.tbl_Product" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tbl_PurchaseDetail" EntityType="Self.Tbl_PurchaseDetail" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tbl_PurchaseMaster" EntityType="Self.Tbl_PurchaseMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_ReturnSaleDetail" EntityType="Self.Tbl_ReturnSaleDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_ReturnSaleMaster" EntityType="Self.Tbl_ReturnSaleMaster" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_Saledetail" EntityType="Self.tbl_Saledetail" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_SaleMAster" EntityType="Self.tbl_SaleMAster" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_Zone" EntityType="Self.tbl_Zone" Schema="dbo" store:Type="Tables" />
@@ -228,7 +251,8 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
     [View_tbl_Product].[Company] AS [Company], 
     [View_tbl_Product].[weight] AS [weight], 
     [View_tbl_Product].[RetailPrice] AS [RetailPrice], 
-    [View_tbl_Product].[PurchasePrice] AS [PurchasePrice]
+    [View_tbl_Product].[PurchasePrice] AS [PurchasePrice], 
+    [View_tbl_Product].[Quantity] AS [Quantity]
     FROM [dbo].[View_tbl_Product] AS [View_tbl_Product]</DefiningQuery>
     </EntitySet>
   </EntityContainer>

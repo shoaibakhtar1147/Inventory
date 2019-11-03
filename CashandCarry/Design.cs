@@ -10,6 +10,7 @@ namespace CashandCarry
 {
     class Design
     {
+        
         public void Designform(Form frm)
         {
             foreach (Control control in frm.Controls)

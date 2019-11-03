@@ -58,7 +58,7 @@ namespace CashandCarry.Vendor
             txtInvoiceID.Enabled = false;
            
             btnSave.Enabled = false;
-            btnUpdate.Enabled = false;
+            
            
             btnProdUpdate.Enabled = false;
             btnRemove.Enabled = false;
@@ -78,7 +78,8 @@ namespace CashandCarry.Vendor
            
             txtProdName.Enabled = true;
             txtTotalPay.Enabled = true;
-            
+            btnProdUpdate.Enabled = true;
+            btnRemove.Enabled = true;
             btnSave.Enabled = true;
             btnAdd.Enabled = true;
             btnReset.Enabled = true;
@@ -133,11 +134,11 @@ namespace CashandCarry.Vendor
                 {
                  CompanyID=Convert.ToInt32(txtCompanyName.SelectedValue)
                 };
-                tbl_Company dt = objCom.Search();
+                var dt = objCom.Search();
                 if(dt != null)
                 {
-                    txtComID.Text = Convert.ToString(dt.CompanyID);
-                    txtComContact.Text = dt.Contact;
+                    txtComID.Text = Convert.ToString(dt[0].CompanyID);
+                    txtComContact.Text = dt[0].Contact;
                 }
 
             }
@@ -157,12 +158,12 @@ namespace CashandCarry.Vendor
                 {
                     ProductID = Convert.ToInt32(txtProdName.SelectedValue)
                 };
-                tbl_Product dt = objPro.Search();
+                var dt = objPro.Search();
                 if (dt != null)
                 {
-                    txtProdID.Text = Convert.ToString(dt.ProductID);
-                    txtPrice.Text = Convert.ToString(dt.RetailPrice);
-                    txtWeight.Text = dt.weight;
+                    txtProdID.Text = Convert.ToString(dt[0].ProductID);
+                    txtPrice.Text = Convert.ToString(dt[0].RetailPrice);
+                    txtWeight.Text = dt[0].weight;
 
                 }
             }
@@ -281,10 +282,13 @@ namespace CashandCarry.Vendor
             }
             PurchaseInvoiceBL objmas = new PurchaseInvoiceBL() 
             {
+                PInvoice=Convert.ToInt32(txtInvoiceID.Text),
              companyID=Convert.ToInt32(txtComID.Text),
              Discount=Convert.ToInt32(txtBillDiscount.Text),
               PurchaseDate=DateTime.Parse(txtPurInvoiceDate.Text),
-               GrandTotal=Convert.ToInt32(txtGrandTotal.Text)
+               GrandTotal=Convert.ToInt32(txtGrandTotal.Text),
+               Payment=Convert.ToDecimal(txtTotalPay.Text),
+               DuePayment=Convert.ToDecimal(txtPayDue.Text)
             };
 
             PurchaseInvoiceBL objDet = new PurchaseInvoiceBL();
@@ -301,9 +305,19 @@ namespace CashandCarry.Vendor
             objmas.SaveMaster();
         }
 
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+             dgvProduct.DataSource = dt;
+            dt.Rows.Clear();
+            txtTotalBill.Clear();
+            txtGrandTotal.Clear();
+            txtBillDiscount.Clear();
+        }
+        }
+
       
        
        
        
     }
-}
+

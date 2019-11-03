@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CashandCarry.Reports.Sale {
+namespace CashandCarry.Reports {
     using System;
     using System.ComponentModel;
     using CrystalDecisions.Shared;
@@ -16,14 +16,14 @@ namespace CashandCarry.Reports.Sale {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class SaleByCusReport : ReportClass {
+    public class CompanyReport : ReportClass {
         
-        public SaleByCusReport() {
+        public CompanyReport() {
         }
         
         public override string ResourceName {
             get {
-                return "SaleByCusReport.rpt";
+                return "CompanyReport.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace CashandCarry.Reports.Sale {
         
         public override string FullResourceName {
             get {
-                return "CashandCarry.Reports.Sale.SaleByCusReport.rpt";
+                return "CashandCarry.Reports.CompanyReport.rpt";
             }
             set {
                 // Do nothing
@@ -90,7 +90,7 @@ namespace CashandCarry.Reports.Sale {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_CusID {
+        public CrystalDecisions.Shared.IParameterField Parameter_ComID {
             get {
                 return this.DataDefinition.ParameterFields[0];
             }
@@ -98,9 +98,9 @@ namespace CashandCarry.Reports.Sale {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedSaleByCusReport : Component, ICachedReport {
+    public class CachedCompanyReport : Component, ICachedReport {
         
-        public CachedSaleByCusReport() {
+        public CachedCompanyReport() {
         }
         
         [Browsable(false)]
@@ -137,7 +137,7 @@ namespace CashandCarry.Reports.Sale {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            SaleByCusReport rpt = new SaleByCusReport();
+            CompanyReport rpt = new CompanyReport();
             rpt.Site = this.Site;
             return rpt;
         }

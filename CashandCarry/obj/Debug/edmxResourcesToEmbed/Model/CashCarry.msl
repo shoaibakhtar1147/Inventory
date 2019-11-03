@@ -29,14 +29,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="SP_Zone_Search" FunctionName="CashCarryModel.Store.SP_Zone_Search">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="CashCarryModel.SP_Zone_Search_Result">
-          <ScalarProperty Name="ZoneID" ColumnName="ZoneID" />
-          <ScalarProperty Name="ZoneName" ColumnName="ZoneName" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="SP_Zone_AddNew" FunctionName="CashCarryModel.Store.SP_Zone_AddNew" />
     <EntitySetMapping Name="tbl_CustomerTypes">
       <EntityTypeMapping TypeName="CashCarryModel.tbl_CustomerTypes">
@@ -108,6 +100,7 @@
     <EntitySetMapping Name="View_tbl_Product">
       <EntityTypeMapping TypeName="CashCarryModel.View_tbl_Product">
         <MappingFragment StoreEntitySet="View_tbl_Product">
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
           <ScalarProperty Name="PurchasePrice" ColumnName="PurchasePrice" />
           <ScalarProperty Name="RetailPrice" ColumnName="RetailPrice" />
           <ScalarProperty Name="weight" ColumnName="weight" />
@@ -133,6 +126,8 @@
     <EntitySetMapping Name="tbl_SaleMAster">
       <EntityTypeMapping TypeName="CashCarryModel.tbl_SaleMAster">
         <MappingFragment StoreEntitySet="tbl_SaleMAster">
+          <ScalarProperty Name="DuePayment" ColumnName="DuePayment" />
+          <ScalarProperty Name="Payment" ColumnName="Payment" />
           <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
           <ScalarProperty Name="Discount" ColumnName="Discount" />
           <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
@@ -190,6 +185,8 @@
     <EntitySetMapping Name="Tbl_PurchaseMaster">
       <EntityTypeMapping TypeName="CashCarryModel.Tbl_PurchaseMaster">
         <MappingFragment StoreEntitySet="Tbl_PurchaseMaster">
+          <ScalarProperty Name="DuePayment" ColumnName="DuePayment" />
+          <ScalarProperty Name="Payment" ColumnName="Payment" />
           <ScalarProperty Name="Discount" ColumnName="Discount" />
           <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
           <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
@@ -211,5 +208,26 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <EntitySetMapping Name="Tbl_ReturnSaleDetail">
+      <EntityTypeMapping TypeName="CashCarryModel.Tbl_ReturnSaleDetail">
+        <MappingFragment StoreEntitySet="Tbl_ReturnSaleDetail">
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="RInvoice" ColumnName="RInvoice" />
+          <ScalarProperty Name="RDetailID" ColumnName="RDetailID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_ReturnSaleMaster">
+      <EntityTypeMapping TypeName="CashCarryModel.Tbl_ReturnSaleMaster">
+        <MappingFragment StoreEntitySet="Tbl_ReturnSaleMaster">
+          <ScalarProperty Name="ReturnDate" ColumnName="ReturnDate" />
+          <ScalarProperty Name="ReturnAmount" ColumnName="ReturnAmount" />
+          <ScalarProperty Name="Invoice_" ColumnName="Invoice#" />
+          <ScalarProperty Name="RInvoice" ColumnName="RInvoice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

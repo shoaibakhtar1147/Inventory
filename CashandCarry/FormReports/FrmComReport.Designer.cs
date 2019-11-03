@@ -1,6 +1,6 @@
 ﻿namespace CashandCarry.FormReports
 {
-    partial class FrmCustomerReport
+    partial class FrmComReport
     {
         /// <summary>
         /// Required designer variable.
@@ -36,16 +36,14 @@
             this.label9 = new System.Windows.Forms.Label();
             this.txtCusName = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.btnCusName = new System.Windows.Forms.Button();
-            this.txtSearch = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.lblminimize = new System.Windows.Forms.Label();
             this.btnAllRecord = new System.Windows.Forms.Button();
-            this.crptViewerCus = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+            this.btnComName = new System.Windows.Forms.Button();
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.crptViewerCom = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.panel2.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -56,7 +54,7 @@
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(930, 10);
-            this.panel2.TabIndex = 72;
+            this.panel2.TabIndex = 73;
             // 
             // groupBox2
             // 
@@ -136,50 +134,6 @@
             this.label7.TabIndex = 0;
             this.label7.Text = "Name:";
             // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.crptViewerCus);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 137);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(930, 342);
-            this.panel1.TabIndex = 78;
-            // 
-            // btnCusName
-            // 
-            this.btnCusName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
-            this.btnCusName.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCusName.FlatAppearance.BorderSize = 0;
-            this.btnCusName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCusName.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCusName.ForeColor = System.Drawing.Color.White;
-            this.btnCusName.Location = new System.Drawing.Point(684, 95);
-            this.btnCusName.Name = "btnCusName";
-            this.btnCusName.Size = new System.Drawing.Size(92, 23);
-            this.btnCusName.TabIndex = 82;
-            this.btnCusName.Text = "Search";
-            this.btnCusName.UseVisualStyleBackColor = false;
-            this.btnCusName.Click += new System.EventHandler(this.btnCusName_Click);
-            // 
-            // txtSearch
-            // 
-            this.txtSearch.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearch.Location = new System.Drawing.Point(521, 95);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(147, 23);
-            this.txtSearch.TabIndex = 81;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label3.Location = new System.Drawing.Point(393, 98);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(90, 16);
-            this.label3.TabIndex = 80;
-            this.label3.Text = "Customer ID:";
-            // 
             // lblminimize
             // 
             this.lblminimize.AutoSize = true;
@@ -189,7 +143,7 @@
             this.lblminimize.Location = new System.Drawing.Point(899, 23);
             this.lblminimize.Name = "lblminimize";
             this.lblminimize.Size = new System.Drawing.Size(17, 16);
-            this.lblminimize.TabIndex = 83;
+            this.lblminimize.TabIndex = 84;
             this.lblminimize.Text = "X";
             this.lblminimize.Click += new System.EventHandler(this.lblminimize_Click);
             // 
@@ -204,45 +158,76 @@
             this.btnAllRecord.Location = new System.Drawing.Point(824, 95);
             this.btnAllRecord.Name = "btnAllRecord";
             this.btnAllRecord.Size = new System.Drawing.Size(92, 23);
-            this.btnAllRecord.TabIndex = 84;
+            this.btnAllRecord.TabIndex = 88;
             this.btnAllRecord.Text = "All Record";
             this.btnAllRecord.UseVisualStyleBackColor = false;
             this.btnAllRecord.Click += new System.EventHandler(this.btnAllRecord_Click);
             // 
-            // crptViewerCus
+            // btnComName
             // 
-            this.crptViewerCus.ActiveViewIndex = -1;
-            this.crptViewerCus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.crptViewerCus.Cursor = System.Windows.Forms.Cursors.Default;
-            this.crptViewerCus.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.crptViewerCus.Location = new System.Drawing.Point(0, 0);
-            this.crptViewerCus.Name = "crptViewerCus";
-            this.crptViewerCus.Size = new System.Drawing.Size(930, 342);
-            this.crptViewerCus.TabIndex = 1;
-            this.crptViewerCus.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
+            this.btnComName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
+            this.btnComName.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnComName.FlatAppearance.BorderSize = 0;
+            this.btnComName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnComName.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnComName.ForeColor = System.Drawing.Color.White;
+            this.btnComName.Location = new System.Drawing.Point(684, 95);
+            this.btnComName.Name = "btnComName";
+            this.btnComName.Size = new System.Drawing.Size(92, 23);
+            this.btnComName.TabIndex = 87;
+            this.btnComName.Text = "Search";
+            this.btnComName.UseVisualStyleBackColor = false;
+            this.btnComName.Click += new System.EventHandler(this.btnComName_Click);
             // 
-            // FrmCustomerReport
+            // txtSearch
+            // 
+            this.txtSearch.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearch.Location = new System.Drawing.Point(521, 95);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(147, 23);
+            this.txtSearch.TabIndex = 86;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label3.Location = new System.Drawing.Point(393, 98);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(93, 16);
+            this.label3.TabIndex = 85;
+            this.label3.Text = "Company ID:";
+            // 
+            // crptViewerCom
+            // 
+            this.crptViewerCom.ActiveViewIndex = -1;
+            this.crptViewerCom.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.crptViewerCom.Cursor = System.Windows.Forms.Cursors.Default;
+            this.crptViewerCom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.crptViewerCom.Location = new System.Drawing.Point(0, 137);
+            this.crptViewerCom.Name = "crptViewerCom";
+            this.crptViewerCom.Size = new System.Drawing.Size(930, 342);
+            this.crptViewerCom.TabIndex = 89;
+            this.crptViewerCom.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
+            // 
+            // FrmComReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(930, 479);
-            this.ControlBox = false;
+            this.Controls.Add(this.crptViewerCom);
             this.Controls.Add(this.btnAllRecord);
-            this.Controls.Add(this.lblminimize);
-            this.Controls.Add(this.btnCusName);
+            this.Controls.Add(this.btnComName);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.lblminimize);
             this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "FrmCustomerReport";
+            this.Name = "FrmComReport";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "CustomerReport";
-            this.Load += new System.EventHandler(this.FrmCustomerReport_Load);
             this.panel2.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -258,12 +243,11 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtCusName;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btnCusName;
-        private System.Windows.Forms.TextBox txtSearch;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblminimize;
         private System.Windows.Forms.Button btnAllRecord;
-        private CrystalDecisions.Windows.Forms.CrystalReportViewer crptViewerCus;
+        private System.Windows.Forms.Button btnComName;
+        private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.Label label3;
+        private CrystalDecisions.Windows.Forms.CrystalReportViewer crptViewerCom;
     }
 }

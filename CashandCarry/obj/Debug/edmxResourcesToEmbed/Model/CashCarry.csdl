@@ -40,6 +40,8 @@
     <FunctionImport Name="SP_Cus_Search" ReturnType="Collection(CashCarryModel.SP_Cus_Search_Result)">
       <Parameter Name="CustomerID" Mode="In" Type="Int32" />
     </FunctionImport>
+    <EntitySet Name="Tbl_ReturnSaleDetail" EntityType="CashCarryModel.Tbl_ReturnSaleDetail" />
+    <EntitySet Name="Tbl_ReturnSaleMaster" EntityType="CashCarryModel.Tbl_ReturnSaleMaster" />
   </EntityContainer>
   <EntityType Name="tbl_Zone">
     <Key>
@@ -134,6 +136,7 @@
     <Property Name="weight" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="RetailPrice" Type="Decimal" Precision="18" Scale="0" />
     <Property Name="PurchasePrice" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Quantity" Type="Int32" />
   </EntityType>
   <EntityType Name="tbl_Saledetail">
     <Key>
@@ -156,6 +159,8 @@
     <Property Name="TotalAmount" Type="Decimal" Precision="18" Scale="0" />
     <Property Name="Discount" Type="Decimal" Precision="18" Scale="0" />
     <Property Name="CustomerID" Type="Int32" />
+    <Property Name="Payment" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="DuePayment" Type="Decimal" Precision="18" Scale="2" />
   </EntityType>
   <EntityType Name="View_DetailSale">
     <Key>
@@ -206,6 +211,8 @@
     <Property Name="PurchaseDate" Type="DateTime" Precision="3" />
     <Property Name="TotalAmount" Type="Decimal" Precision="18" Scale="2" />
     <Property Name="Discount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Payment" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="DuePayment" Type="Decimal" Precision="18" Scale="2" />
   </EntityType>
   <ComplexType Name="SP_Cus_Search_Result">
     <Property Type="Int32" Name="CustomerID" Nullable="false" />
@@ -216,4 +223,23 @@
     <Property Type="String" Name="Email" Nullable="true" MaxLength="20" />
     <Property Type="String" Name="ZoneName" Nullable="true" MaxLength="20" />
   </ComplexType>
+  <EntityType Name="Tbl_ReturnSaleDetail">
+    <Key>
+      <PropertyRef Name="RDetailID" />
+    </Key>
+    <Property Name="RDetailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RInvoice" Type="Int32" />
+    <Property Name="ProductID" Type="Int32" />
+    <Property Name="Quantity" Type="Int32" />
+    <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="Tbl_ReturnSaleMaster">
+    <Key>
+      <PropertyRef Name="RInvoice" />
+    </Key>
+    <Property Name="RInvoice" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Invoice_" Type="Int32" />
+    <Property Name="ReturnAmount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="ReturnDate" Type="DateTime" Precision="3" />
+  </EntityType>
 </Schema>

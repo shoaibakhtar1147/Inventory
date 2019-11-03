@@ -139,11 +139,10 @@ namespace CashandCarry.Configuration
             { 
             CategoryID=Convert.ToInt32(txtSearch.Text)
             };
-            tbl_Category result= objCate.Search();
-            if(result != null)
+            var dt= objCate.Search();
+            if(dt != null)
             {
-                txtCategoryID.Text = Convert.ToString(result.CategoryID);
-                txtCategory.Text = Convert.ToString(result.CategoryName);
+                dgvCategory.DataSource = dt;
                 txtCategory.Enabled = true;
                 
             }

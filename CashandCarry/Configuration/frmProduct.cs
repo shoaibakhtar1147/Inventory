@@ -33,17 +33,20 @@ namespace CashandCarry.Configuration
         }
         private void LoadCategory()
         {
-            string query = "Select * from tbl_Category";
-            DataTable dt = DB.Select(query);
+            //string query = "Select * from tbl_Category";
+            //DataTable dt = DB.Select(query);
+            CategoryBL objcate = new CategoryBL();
+            var dt = objcate.Select();
             txtProdCate.DataSource = dt;
-
             txtProdCate.DisplayMember = "CategoryName";
             txtProdCate.ValueMember = "CategoryID";
         }
         private void LoadCompany()
         {
-            string query = "Select * from tbl_Company";
-            DataTable dt = DB.Select(query);
+            //string query = "Select * from tbl_Company";
+            //DataTable dt = DB.Select(query);
+            CompanyBL objcom = new CompanyBL();
+            var dt = objcom.Select();
             txtComName.DataSource = dt;
             txtComName.DisplayMember = "CompanyName";
             txtComName.ValueMember = "CompanyID";
@@ -184,9 +187,10 @@ namespace CashandCarry.Configuration
             {
             ProductID=Convert.ToInt32(txtSearch.Text)
             };
-            tbl_Product dt = objPro.Search();
+            var dt = objPro.Search();
             if(dt != null)
             {
+                dgvProduct.DataSource = dt;
                 btnUpdate.Enabled = true;
                 btnDelete.Enabled = true;
             }

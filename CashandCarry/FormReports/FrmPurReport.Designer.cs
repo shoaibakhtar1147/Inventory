@@ -128,9 +128,9 @@
             this.label3.ForeColor = System.Drawing.SystemColors.ActiveCaption;
             this.label3.Location = new System.Drawing.Point(32, 78);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(119, 16);
+            this.label3.Size = new System.Drawing.Size(93, 16);
             this.label3.TabIndex = 65;
-            this.label3.Text = "Company Name:";
+            this.label3.Text = "Company ID:";
             // 
             // btnSearch
             // 
@@ -288,6 +288,7 @@
             this.Controls.Add(this.crptViewerPurchase);
             this.Name = "FrmPurReport";
             this.Text = "FrmPurReport";
+            this.Load += new System.EventHandler(this.FrmPurReport_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel2.ResumeLayout(false);

@@ -183,9 +183,9 @@
             // 
             this.panel1.Controls.Add(this.dgvCompany);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 348);
+            this.panel1.Location = new System.Drawing.Point(0, 344);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(928, 129);
+            this.panel1.Size = new System.Drawing.Size(924, 129);
             this.panel1.TabIndex = 2;
             // 
             // dgvCompany
@@ -215,8 +215,9 @@
             this.dgvCompany.Name = "dgvCompany";
             dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
             this.dgvCompany.RowsDefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvCompany.Size = new System.Drawing.Size(928, 129);
+            this.dgvCompany.Size = new System.Drawing.Size(924, 129);
             this.dgvCompany.TabIndex = 4;
+            this.dgvCompany.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCompany_CellContentClick);
             // 
             // btnAddnew
             // 
@@ -304,7 +305,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(928, 10);
+            this.panel2.Size = new System.Drawing.Size(924, 10);
             this.panel2.TabIndex = 23;
             // 
             // label2
@@ -360,7 +361,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(928, 477);
+            this.ClientSize = new System.Drawing.Size(924, 473);
             this.ControlBox = false;
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.label2);

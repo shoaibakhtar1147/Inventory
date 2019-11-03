@@ -98,11 +98,11 @@ namespace CashandCarry.BL
         }
 
 
-        public tbl_employee Search()
+        public List<tbl_employee> Search()
         {
             using(var context=new CashCarryEntities3())
             {
-                return context.tbl_employee.Where(a => a.EmployeeID == EmployeeID).FirstOrDefault();
+                return context.tbl_employee.Where(a => a.EmployeeID == EmployeeID).ToList();
             }
         }
 

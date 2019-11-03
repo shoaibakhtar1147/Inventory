@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CashandCarry.Reports.Purchase {
+namespace CashandCarry.Reports {
     using System;
     using System.ComponentModel;
     using CrystalDecisions.Shared;
@@ -16,14 +16,14 @@ namespace CashandCarry.Reports.Purchase {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class PurchaseByCompReport : ReportClass {
+    public class ProductReport : ReportClass {
         
-        public PurchaseByCompReport() {
+        public ProductReport() {
         }
         
         public override string ResourceName {
             get {
-                return "PurchaseByCompReport.rpt";
+                return "ProductReport.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace CashandCarry.Reports.Purchase {
         
         public override string FullResourceName {
             get {
-                return "CashandCarry.Reports.Purchase.PurchaseByCompReport.rpt";
+                return "CashandCarry.Reports.ProductReport.rpt";
             }
             set {
                 // Do nothing
@@ -90,7 +90,7 @@ namespace CashandCarry.Reports.Purchase {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_CompanyName {
+        public CrystalDecisions.Shared.IParameterField Parameter_ProductID {
             get {
                 return this.DataDefinition.ParameterFields[0];
             }
@@ -98,9 +98,9 @@ namespace CashandCarry.Reports.Purchase {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedPurchaseByCompReport : Component, ICachedReport {
+    public class CachedProductReport : Component, ICachedReport {
         
-        public CachedPurchaseByCompReport() {
+        public CachedProductReport() {
         }
         
         [Browsable(false)]
@@ -137,7 +137,7 @@ namespace CashandCarry.Reports.Purchase {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            PurchaseByCompReport rpt = new PurchaseByCompReport();
+            ProductReport rpt = new ProductReport();
             rpt.Site = this.Site;
             return rpt;
         }

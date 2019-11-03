@@ -92,13 +92,21 @@ namespace CashandCarry.BL
         }
        
         
-        public tbl_Customer Search()
+        public List<tbl_Customer> Search()
         {
            using(var context=new CashCarryEntities3())
            {
-               return context.tbl_Customer.Where(a => a.CustomerID == CustomerID).FirstOrDefault();
+               return context.tbl_Customer.Where(a => a.CustomerID == CustomerID).ToList();
                 
            }
+        }
+        public DataTable SelectByCus()
+        {
+            string spName = "SP_Cus_Search";
+            SqlParameter[] prm = new SqlParameter[1];
+            prm[0] = new SqlParameter("@CustomerID", CustomerID);
+      
+            return DB.SelectTableWithSP(spName, prm);
         }
 
         public List<View_tbl_Customer> Select()

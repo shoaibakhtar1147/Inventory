@@ -51,6 +51,7 @@ namespace CashandCarry.Sales
                 LoadCus();
                 LoadProd();
                 btnSave.Enabled = true;
+                btnClear.Enabled = true;
                 FormEnable();
                 //LoadSaleDetail();
                 LoadGridProd();
@@ -73,7 +74,7 @@ namespace CashandCarry.Sales
             txtContact.Enabled = false;
             txtDiscount.Enabled = false;
             txtInvoiceDate.Enabled = false;
-            txtPayDue.Enabled = false;
+            txtDuePay.Enabled = false;
             txtProdName.Enabled = false;
             txtProdId.Enabled = false;
             txtTotalPay.Enabled = false;
@@ -84,10 +85,10 @@ namespace CashandCarry.Sales
             txtInvoiceID.Enabled = false;
             txtTotalAmount.Enabled = false;
             btnSave.Enabled = false;
-            btnUpdate.Enabled = false;
-            btnDelete.Enabled = false;
+            
+            
             btnProdUpdate.Enabled = false;
-            btnRemove.Enabled = false;
+            
             btnAdd.Enabled = false;
             btnReset.Enabled = false;
             btnClear.Enabled = false;
@@ -105,7 +106,7 @@ namespace CashandCarry.Sales
             txtTotalPay.Enabled = true;
 
             btnProdUpdate.Enabled = true;
-            btnRemove.Enabled = true;
+            
             btnAdd.Enabled = true;
             btnReset.Enabled = true;
         }
@@ -177,6 +178,7 @@ namespace CashandCarry.Sales
                
             }
         }
+        
         DataTable dt = new DataTable();
         private void btnAdd_Click(object sender, EventArgs e)
         {
@@ -241,7 +243,9 @@ namespace CashandCarry.Sales
                 TotalBill = Convert.ToDecimal(txtTotalBill.Text),
                  BillDiscount = Convert.ToDecimal(txtBillDiscount.Text),
                  GrandTotal = Convert.ToDecimal(txtGrandTotal.Text),
-                 CustomerID=Convert.ToInt32(txtCusId.Text)
+                 CustomerID=Convert.ToInt32(txtCusId.Text),
+                 Payment=Convert.ToDecimal(txtTotalPay.Text),
+                 DuePayment=Convert.ToDecimal(txtDuePay.Text)
         };
            
             SaleInvoiceBL objsale = new SaleInvoiceBL();
@@ -269,6 +273,15 @@ namespace CashandCarry.Sales
             rptViewer objview = new rptViewer();
            //objSale.SetDataSource =;
             objSale.SetParameterValue("@InvoiceNo", txtInvoiceID.Text);
+            SaleInvoiceBL obj = new SaleInvoiceBL()
+            {
+                InvoiceNo = Convert.ToInt32(txtInvoiceID.Text)
+            };
+            DataTable dt = obj.Search();
+            if (dt.Rows.Count > 0)
+            {
+                objSale.SetDataSource(dt);
+            }
             objview.crptViewer.ReportSource = objSale;
             objview.WindowState = FormWindowState.Normal;
             objview.ShowDialog();
@@ -278,22 +291,19 @@ namespace CashandCarry.Sales
 
         private void txtBillDiscount_Leave(object sender, EventArgs e)
         {
-            if(txtBillDiscount.Text ==string.Empty )
+
+            if (txtBillDiscount.Text == string.Empty)
             {
                 txtBillDiscount.Text = "0";
                 int Bill = Convert.ToInt32(txtTotalBill.Text);
-                txtGrandTotal.Text=Bill.ToString();
+                txtGrandTotal.Text = Bill.ToString();
             }
-            else
+            else if (txtBillDiscount.Text == "0")
             {
+                txtBillDiscount.Text = "0";
                 int Bill = Convert.ToInt32(txtTotalBill.Text);
-
-                int val2 = (Bill / 100) * Convert.ToInt32(txtBillDiscount.Text);
-                int val3 = Bill - val2;
-                txtGrandTotal.Text = val3.ToString();
-
+                txtGrandTotal.Text = Bill.ToString();
             }
-            
         }
 
         private void txtTotalPay_TextChanged(object sender, EventArgs e)
@@ -309,7 +319,7 @@ namespace CashandCarry.Sales
                 int val = Convert.ToInt32(txtGrandTotal.Text);
                 int val1 = Convert.ToInt32(txtTotalPay.Text);
                 int val2 = val - val1;
-                txtPayDue.Text = val2.ToString();
+                txtDuePay.Text = val2.ToString();
               
             }
            
@@ -349,15 +359,17 @@ namespace CashandCarry.Sales
 
         private void txtCusName_Leave(object sender, EventArgs e)
         {
+            var customrId=Convert.ToInt32(txtCusName.SelectedValue);
             CustomerBL objCus = new CustomerBL()
             {
-                CustomerID = Convert.ToInt32(txtCusName.SelectedValue)
+                CustomerID = customrId
             };
-            tbl_Customer dt = objCus.Search();
-            if (dt != null)
+
+            var dt = objCus.Search();
+                if (dt.Count>0)
             {
-                txtCusId.Text = Convert.ToString(dt.CustomerID);
-                txtContact.Text = dt.Contact;
+                txtCusId.Text = Convert.ToString(dt[0].CustomerID);
+                txtContact.Text = dt[0].Contact;
             }
         }
 
@@ -374,28 +386,79 @@ namespace CashandCarry.Sales
                 {
                      ProductID = Convert.ToInt32(txtProdName.SelectedValue)
                 };
-                tbl_Product dt = objPro.Search();
+                List<tbl_Product> dt = objPro.Search();
                 if (dt != null)
                 {
-                    txtProdId.Text =Convert.ToString(dt.ProductID);
-                    txtPrice.Text = Convert.ToString(dt.RetailPrice);
-                    txtWeight.Text = dt.weight;
+                    txtProdId.Text =Convert.ToString(dt[0].ProductID);
+                    txtPrice.Text = Convert.ToString(dt[0].RetailPrice);
+                    txtWeight.Text = dt[0].weight;
 
 
                 }
             }
         }
 
+        private void btnClear_Click(object sender, EventArgs e)
+        {
         
+        }
 
-       
+        private void btnProdUpdate_Click(object sender, EventArgs e)
+        {
+            bool found = false;
+            if(dgvProduct.Rows.Count>0)
+            {
+               foreach(DataGridViewRow row in dgvProduct.Rows)
+                {
 
+                    if (Convert.ToString(dgvProduct.Rows[0].Cells[2].Value) == txtProdName.Text && Convert.ToString(dgvProduct.Rows[0].Cells[3].Value) == txtPrice.Text)
+                    {
+                        dgvProduct.Rows[0].Cells[4].Value = Convert.ToString(txtQuantity.Text);
+                        dgvProduct.Rows[0].Cells[5].Value = Convert.ToString(txtDiscount.Text);
+                        dgvProduct.Rows[0].Cells[6].Value = Convert.ToString(txtTotalAmount.Text);
+                        found = true;
+                        SumCalculate();
+                        ClearGroup();
+                        txtBillDiscount.Focus();
+                    }
+                    if (!found)
+                    {
+                        MessageBox.Show("Some Error Has Occur");
 
+                    }
+                }
+                  
+                }
+           
+        }
 
+        private void txtBillDiscount_TextChanged(object sender, EventArgs e)
+        {
+            if (txtBillDiscount.Text == string.Empty)
+            {
+                txtBillDiscount.Text = "0";
+                int Bill = Convert.ToInt32(txtTotalBill.Text);
+                txtGrandTotal.Text = Bill.ToString();
+            }
+            else
+            {
+                int Bill = Convert.ToInt32(txtTotalBill.Text);
 
+                int val2 = (Bill / 100) * Convert.ToInt32(txtBillDiscount.Text);
+                int val3 = Bill - val2;
+                txtGrandTotal.Text = val3.ToString();
 
+            }
+        }
 
-
-    }
-
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            dgvProduct.DataSource = dt;
+            dt.Rows.Clear();
+            txtTotalBill.Clear();
+            txtGrandTotal.Clear();
+            txtBillDiscount.Clear();
+        }
+        
+        }
 }

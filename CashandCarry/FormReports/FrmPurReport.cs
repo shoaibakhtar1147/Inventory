@@ -1,4 +1,5 @@
-﻿using CashandCarry.Reports.Purchase;
+﻿using CashandCarry.BL;
+using CashandCarry.Reports.Purchase;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,17 +25,47 @@ namespace CashandCarry.FormReports
            
             objPur.SetParameterValue("@mindate", txtMinDate.Value);
             objPur.SetParameterValue("@maxdate", txtmaxdate.Value);
+            PurchaseInvoiceBL obj = new PurchaseInvoiceBL()
+            {
+                mindate = Convert.ToDateTime(txtMinDate.Value),
+                maxdate = Convert.ToDateTime(txtmaxdate.Value)
+            };
+            DataTable dt = obj.SelectByDate();
+            if (dt.Rows.Count > 0)
+            {
+                objPur.SetDataSource(dt);
+            }
             crptViewerPurchase.ReportSource = objPur;
            
         }
 
         private void btnCusName_Click(object sender, EventArgs e)
         {
-            PurchaseByCompReport objPur = new PurchaseByCompReport();
-           
-            objPur.SetParameterValue("@CompanyName", txtComname.Text);
-            crptViewerPurchase.ReportSource = objPur;
-           
+            PurchaseReportCom objPur = new  PurchaseReportCom();
+
+            if(!string.IsNullOrEmpty(txtComname.Text))
+            {
+                objPur.SetParameterValue("@CompanyID", txtComname.Text);
+                PurchaseInvoiceBL obj = new PurchaseInvoiceBL()
+                {
+                    companyID = Convert.ToInt32(txtComname.Text)
+                };
+                DataTable dt = obj.SelectByCompany();
+                if (dt.Rows.Count > 0)
+                {
+                    objPur.SetDataSource(dt);
+                    crptViewerPurchase.ReportSource = objPur;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please Enter Company ID");
+            }
+        }
+
+        private void FrmPurReport_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

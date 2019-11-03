@@ -1,4 +1,5 @@
-﻿using CashandCarry.Reports.Sale;
+﻿using CashandCarry.BL;
+using CashandCarry.Reports.Sale;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -26,10 +27,18 @@ namespace CashandCarry.FormReports
         private void btnSearch_Click(object sender, EventArgs e)
         {
             SaleGeneralReport objrep = new SaleGeneralReport();
-          
-            //objSale.SetDataSource =;
             objrep.SetParameterValue("@mindate", txtMinDate.Value);
             objrep.SetParameterValue("@maxdate", txtmaxdate.Value);
+            SaleInvoiceBL obj = new SaleInvoiceBL()
+            {
+                mindate = Convert.ToDateTime(txtMinDate.Value),
+                maxdate = Convert.ToDateTime(txtmaxdate.Value)
+            };
+            DataTable dt = obj.SelectByDate();
+            if (dt.Rows.Count > 0)
+            {
+                objrep.SetDataSource(dt);
+            }
             crptViewerSale.ReportSource = objrep;
 
             
@@ -37,11 +46,47 @@ namespace CashandCarry.FormReports
 
         private void btnCusName_Click(object sender, EventArgs e)
         {
-            SaleByCusReport objSale = new SaleByCusReport();
-            objSale.SetParameterValue("@CusName", txtCusnam.Text);
-            crptViewerSale.ReportSource = objSale;
-
+            if(!String.IsNullOrEmpty(txtCus.Text))
+            {
+                SaleByCusReport objSale = new SaleByCusReport();
+            objSale.SetParameterValue("@CusID", txtCus.Text);
+            SaleInvoiceBL objsal = new SaleInvoiceBL()
+            {
+                CustomerID = Convert.ToInt32(txtCus.Text)
+            };
+            DataTable dt = objsal.SelectByCus();
+            if (dt.Rows.Count > 0)
+            {
+                objSale.SetDataSource(dt);
+                crptViewerSale.ReportSource = objSale;
+                txtCus.Clear();
+                // btnCusprint.Visible = true;
+            }
             
+            }
+            else if(!String.IsNullOrEmpty(txtinvoiceNo.Text))
+            {
+                 saleInvoiceReport objSale = new saleInvoiceReport();
+                 objSale.SetParameterValue("@InvoiceNo", txtinvoiceNo.Text);
+                 SaleInvoiceBL obj = new SaleInvoiceBL() 
+                 {
+                 InvoiceNo=Convert.ToInt32(txtinvoiceNo.Text)
+                 };
+                 DataTable dt = obj.Search();
+                if(dt.Rows.Count>0)
+                {
+                    objSale.SetDataSource(dt);
+                    crptViewerSale.ReportSource = objSale;
+                    txtinvoiceNo.Clear();
+                }
+                
+            }
+            
+        }
+
+        private void FrmsalReport_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
