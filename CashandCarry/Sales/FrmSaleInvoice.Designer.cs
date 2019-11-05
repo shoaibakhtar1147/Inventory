@@ -345,6 +345,7 @@
             this.txtDuePay.Size = new System.Drawing.Size(142, 23);
             this.txtDuePay.TabIndex = 20;
             this.txtDuePay.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtDuePay.TextChanged += new System.EventHandler(this.txtDuePay_TextChanged);
             // 
             // txtTotalBill
             // 
@@ -747,6 +748,7 @@
             this.dgvProduct.Name = "dgvProduct";
             this.dgvProduct.Size = new System.Drawing.Size(672, 262);
             this.dgvProduct.TabIndex = 14;
+            this.dgvProduct.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProduct_CellContentClick);
             // 
             // FrmSaleInvoice
             // 

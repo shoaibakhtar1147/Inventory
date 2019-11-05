@@ -157,7 +157,6 @@
     <Property Name="SaleDate" Type="DateTime" Precision="3" />
     <Property Name="Amount" Type="Decimal" Precision="18" Scale="0" />
     <Property Name="TotalAmount" Type="Decimal" Precision="18" Scale="0" />
-    <Property Name="Discount" Type="Decimal" Precision="18" Scale="0" />
     <Property Name="CustomerID" Type="Int32" />
     <Property Name="Payment" Type="Decimal" Precision="18" Scale="2" />
     <Property Name="DuePayment" Type="Decimal" Precision="18" Scale="2" />
@@ -165,7 +164,6 @@
   <EntityType Name="View_DetailSale">
     <Key>
       <PropertyRef Name="InvoiceNo" />
-      <PropertyRef Name="Sr_" />
     </Key>
     <Property Name="InvoiceNo" Type="Int32" Nullable="false" />
     <Property Name="ProductName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
@@ -176,8 +174,6 @@
     <Property Name="GrandTotal" Type="Decimal" Precision="18" Scale="0" />
     <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
     <Property Name="BillAmount" Type="Decimal" Precision="18" Scale="0" />
-    <Property Name="Flat" Type="Decimal" Precision="18" Scale="0" />
-    <Property Name="Sr_" Type="Int32" Nullable="false" />
     <Property Name="CustomerName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
   </EntityType>
   <ComplexType Name="SP_SaleInvoice_Search_Result">

@@ -95,7 +95,13 @@ namespace CashandCarry.BL
                return context.tbl_Product.Where(a => a.ProductID == ProductID).ToList();
            }
         }
-
+        public List<tbl_Product> SearchByName()
+        {
+            using (var context = new CashCarryEntities3())
+            {
+                return context.tbl_Product.Where(a => a.ProductName == ProductName).ToList();
+            }
+        }
         public List<View_tbl_Product> Select()
         {
             using(var context=new CashCarryEntities3())

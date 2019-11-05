@@ -36,7 +36,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.txtCusName = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.lblminimize = new System.Windows.Forms.Label();
             this.btnAllRecord = new System.Windows.Forms.Button();
             this.btnProd = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
@@ -134,19 +133,6 @@
             this.label7.TabIndex = 0;
             this.label7.Text = "Name:";
             // 
-            // lblminimize
-            // 
-            this.lblminimize.AutoSize = true;
-            this.lblminimize.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lblminimize.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblminimize.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.lblminimize.Location = new System.Drawing.Point(899, 23);
-            this.lblminimize.Name = "lblminimize";
-            this.lblminimize.Size = new System.Drawing.Size(17, 16);
-            this.lblminimize.TabIndex = 85;
-            this.lblminimize.Text = "X";
-            this.lblminimize.Click += new System.EventHandler(this.lblminimize_Click);
-            // 
             // btnAllRecord
             // 
             this.btnAllRecord.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
@@ -215,18 +201,15 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(930, 479);
-            this.ControlBox = false;
             this.Controls.Add(this.crptViewerProd);
             this.Controls.Add(this.btnAllRecord);
             this.Controls.Add(this.btnProd);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.lblminimize);
             this.Controls.Add(this.panel2);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmProductReport";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "FrmProductReport";
+            this.Text = "Product Report";
             this.panel2.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -245,7 +228,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtCusName;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label lblminimize;
         private System.Windows.Forms.Button btnAllRecord;
         private System.Windows.Forms.Button btnProd;
         private System.Windows.Forms.TextBox txtSearch;

@@ -24,6 +24,7 @@ namespace CashandCarry.Configuration
         {
             FormDisable();
             LoadData();
+            
         }
 
         private void FormEnable()
@@ -158,6 +159,7 @@ namespace CashandCarry.Configuration
                 FormEnable();
                 btnSave.Enabled = true;
                    txtname.Focus();
+                  
               
             }
         }
@@ -221,6 +223,7 @@ namespace CashandCarry.Configuration
                 //btnUpdate.Enabled = true;
                 dgvEmp.DataSource = dt;
                 btnDelete.Enabled = true;
+               
                 
             }
             else
@@ -253,7 +256,7 @@ namespace CashandCarry.Configuration
             }
             else
             {
-                MessageBox.Show("No Data");
+                MessageBox.Show("No Record Found");
             }
         }
         private void dgvEmp_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -309,6 +312,58 @@ namespace CashandCarry.Configuration
         private void label14_Click(object sender, EventArgs e)
         {
             this.Hide();
+        }
+
+        private void dgvEmp_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            int rowindex = e.RowIndex;
+            int columnindex = e.ColumnIndex;
+            
+            if(columnindex==0)
+            {
+                txtEmpId.Text = dgvEmp.Rows[rowindex].Cells[2].Value.ToString();
+                txtname.Text = dgvEmp.Rows[rowindex].Cells[3].Value.ToString();
+                txtFname.Text = dgvEmp.Rows[rowindex].Cells[4].Value.ToString();
+                txtUsername.Text = dgvEmp.Rows[rowindex].Cells[5].Value.ToString();
+                txtPassword.Text = dgvEmp.Rows[rowindex].Cells[6].Value.ToString();
+                txtQual.Text = dgvEmp.Rows[rowindex].Cells[7].Value.ToString();
+                txtDOB.Text = dgvEmp.Rows[rowindex].Cells[8].Value.ToString();
+                txtCnic.Text = dgvEmp.Rows[rowindex].Cells[9].Value.ToString();
+                txtContact.Text = dgvEmp.Rows[rowindex].Cells[10].Value.ToString();
+                txtDesig.Text = dgvEmp.Rows[rowindex].Cells[11].Value.ToString();
+                string gender = dgvEmp.Rows[rowindex].Cells[12].Value.ToString();
+                if(gender=="True")
+                {
+                    rdmale.Checked = true;
+                }
+               else
+                {
+                    rdfemale.Checked = true;
+                }
+                txtAddress.Text = dgvEmp.Rows[rowindex].Cells[13].Value.ToString();
+                FormEnable();
+             }
+            else if(columnindex==1)
+            {
+                string message = "Are you sure to Delete Employee" + txtname.Text + "?";
+
+                if (MessageBox.Show(message, "Delete Alert", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                {
+                    EmployeeBL objEmp = new EmployeeBL()
+                    {
+                        EmployeeID = Convert.ToInt32(txtSearch.Text)
+                    };
+                    objEmp.Delete();
+                    MessageBox.Show("Record Deleted Successfull");
+
+
+                }
+                else
+                {
+                    MessageBox.Show("Record Deleted Not Successfull");
+                }
+                LoadData();
+            }
         }
 
         

@@ -11,7 +11,7 @@ namespace CashandCarry.BL
 {
     class ReturnSaleBL
     {
-       
+        public int CustomerID { get; set; }
         public int RInvoice {get;set;}
         public int ProductID {get;set;}
         public int Quantity{get;set;}
@@ -53,7 +53,14 @@ namespace CashandCarry.BL
             prm[0] = new SqlParameter("@InvoiceNo", Invoiceno);
             return DB.SelectTableWithSP(spName, prm);
         }
-
+        public string GetDuePayment()
+        {
+            string spName = "SP_DuePayment_Sum";
+            SqlParameter[] prm = new SqlParameter[1];
+            prm[0] = new SqlParameter("@CustomerID", CustomerID);
+            string value = DB.SelectScalerWithSP(spName, prm);
+            return value;
+        }
         public System.Data.DataTable Select()
         {
             throw new NotImplementedException();

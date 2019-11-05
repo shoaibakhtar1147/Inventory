@@ -377,7 +377,7 @@ namespace CashandCarry.Sales
         {
                 if (txtProdName.Text == string.Empty)
             {
-                MessageBox.Show("Please Enter Product Id");
+                MessageBox.Show("Please Enter Product Name");
                 txtProdName.Focus();
             }
             else
@@ -458,6 +458,16 @@ namespace CashandCarry.Sales
             txtTotalBill.Clear();
             txtGrandTotal.Clear();
             txtBillDiscount.Clear();
+        }
+
+        private void dgvProduct_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void txtDuePay_TextChanged(object sender, EventArgs e)
+        {
+
         }
         
         }

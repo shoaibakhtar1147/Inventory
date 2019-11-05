@@ -62,6 +62,10 @@ namespace CashandCarry.FormReports
                 txtCus.Clear();
                 // btnCusprint.Visible = true;
             }
+            else
+            {
+                MessageBox.Show("Record Not Valid ");
+            }
             
             }
             else if(!String.IsNullOrEmpty(txtinvoiceNo.Text))

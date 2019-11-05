@@ -55,7 +55,7 @@ namespace CashandCarry.BL
                 tbl_SaleMAster objMas = new tbl_SaleMAster()
                 {
                     Amount = TotalBill,
-                    Discount = BillDiscount,
+                  
                     SaleDate = SaleDate,
                      CustomerID=CustomerID,
                     TotalAmount = GrandTotal,

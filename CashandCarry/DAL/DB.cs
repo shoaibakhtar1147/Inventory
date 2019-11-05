@@ -37,7 +37,31 @@ namespace CashandCarry
             }
         }
 
+        public static string SelectScalerWithSP(string spName,SqlParameter[]prm)
+        {
+            string constring = @"Data Source=SHOAIB-PC\SQLEXPRESS;Database=CashCarry;integrated security=true";
+            try
+            {
+                SqlConnection cn = new SqlConnection(constring);
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = spName;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Connection = cn;
+                if (prm != null)
+                {
+                    cmd.Parameters.AddRange(prm);
+                }
+                cn.Open();
+                string value = Convert.ToString(cmd.ExecuteScalar());
+                cn.Close();
 
+                return value;
+            }
+            catch (Exception ex)
+            {
+                return "";
+            }
+        }
         public static int ExecuteNonQueryWithSP(string spName, SqlParameter[] prm)
         {
             string constring = @"Data Source=SHOAIB-PC\SQLEXPRESS;Database=CashCarry;integrated security=true";

@@ -16,7 +16,7 @@
         <EntityTypeShape EntityType="CashCarryModel.View_tbl_Product" Width="1.5" PointX="7.375" PointY="0.75" IsExpanded="false" />
         <EntityTypeShape EntityType="CashCarryModel.tbl_Saledetail" Width="1.5" PointX="0.625" PointY="2.875" IsExpanded="false" />
         <EntityTypeShape EntityType="CashCarryModel.tbl_SaleMAster" Width="1.5" PointX="0.5" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="CashCarryModel.View_DetailSale" Width="1.5" PointX="3.375" PointY="4.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="CashCarryModel.View_DetailSale" Width="1.5" PointX="3.375" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CashCarryModel.Tbl_PurchaseDetail" Width="1.5" PointX="5.75" PointY="4.75" />
         <EntityTypeShape EntityType="CashCarryModel.Tbl_PurchaseMaster" Width="1.5" PointX="7.875" PointY="4.75" />
         <EntityTypeShape EntityType="CashCarryModel.Tbl_ReturnSaleDetail" Width="1.5" PointX="3.75" PointY="7.75" />

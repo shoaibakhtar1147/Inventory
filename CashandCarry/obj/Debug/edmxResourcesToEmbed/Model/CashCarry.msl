@@ -129,7 +129,6 @@
           <ScalarProperty Name="DuePayment" ColumnName="DuePayment" />
           <ScalarProperty Name="Payment" ColumnName="Payment" />
           <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
-          <ScalarProperty Name="Discount" ColumnName="Discount" />
           <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
           <ScalarProperty Name="Amount" ColumnName="Amount" />
           <ScalarProperty Name="SaleDate" ColumnName="SaleDate" />
@@ -141,8 +140,6 @@
       <EntityTypeMapping TypeName="CashCarryModel.View_DetailSale">
         <MappingFragment StoreEntitySet="View_DetailSale">
           <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
-          <ScalarProperty Name="Sr_" ColumnName="Sr#" />
-          <ScalarProperty Name="Flat" ColumnName="Flat" />
           <ScalarProperty Name="BillAmount" ColumnName="BillAmount" />
           <ScalarProperty Name="Amount" ColumnName="Amount" />
           <ScalarProperty Name="GrandTotal" ColumnName="GrandTotal" />

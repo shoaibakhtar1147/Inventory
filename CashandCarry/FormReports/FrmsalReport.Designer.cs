@@ -312,7 +312,7 @@
             this.Controls.Add(this.crptViewerSale);
             this.Name = "FrmsalReport";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "FrmsalReport";
+            this.Text = "Sale Report";
             this.Load += new System.EventHandler(this.FrmsalReport_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

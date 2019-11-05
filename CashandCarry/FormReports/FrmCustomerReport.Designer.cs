@@ -37,12 +37,11 @@
             this.txtCusName = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.crptViewerCus = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.btnCusName = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.lblminimize = new System.Windows.Forms.Label();
             this.btnAllRecord = new System.Windows.Forms.Button();
-            this.crptViewerCus = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.panel2.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -145,6 +144,18 @@
             this.panel1.Size = new System.Drawing.Size(930, 342);
             this.panel1.TabIndex = 78;
             // 
+            // crptViewerCus
+            // 
+            this.crptViewerCus.ActiveViewIndex = -1;
+            this.crptViewerCus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.crptViewerCus.Cursor = System.Windows.Forms.Cursors.Default;
+            this.crptViewerCus.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.crptViewerCus.Location = new System.Drawing.Point(0, 0);
+            this.crptViewerCus.Name = "crptViewerCus";
+            this.crptViewerCus.Size = new System.Drawing.Size(930, 342);
+            this.crptViewerCus.TabIndex = 1;
+            this.crptViewerCus.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
+            // 
             // btnCusName
             // 
             this.btnCusName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
@@ -180,19 +191,6 @@
             this.label3.TabIndex = 80;
             this.label3.Text = "Customer ID:";
             // 
-            // lblminimize
-            // 
-            this.lblminimize.AutoSize = true;
-            this.lblminimize.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lblminimize.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblminimize.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.lblminimize.Location = new System.Drawing.Point(899, 23);
-            this.lblminimize.Name = "lblminimize";
-            this.lblminimize.Size = new System.Drawing.Size(17, 16);
-            this.lblminimize.TabIndex = 83;
-            this.lblminimize.Text = "X";
-            this.lblminimize.Click += new System.EventHandler(this.lblminimize_Click);
-            // 
             // btnAllRecord
             // 
             this.btnAllRecord.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
@@ -209,35 +207,20 @@
             this.btnAllRecord.UseVisualStyleBackColor = false;
             this.btnAllRecord.Click += new System.EventHandler(this.btnAllRecord_Click);
             // 
-            // crptViewerCus
-            // 
-            this.crptViewerCus.ActiveViewIndex = -1;
-            this.crptViewerCus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.crptViewerCus.Cursor = System.Windows.Forms.Cursors.Default;
-            this.crptViewerCus.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.crptViewerCus.Location = new System.Drawing.Point(0, 0);
-            this.crptViewerCus.Name = "crptViewerCus";
-            this.crptViewerCus.Size = new System.Drawing.Size(930, 342);
-            this.crptViewerCus.TabIndex = 1;
-            this.crptViewerCus.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
-            // 
             // FrmCustomerReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(930, 479);
-            this.ControlBox = false;
             this.Controls.Add(this.btnAllRecord);
-            this.Controls.Add(this.lblminimize);
             this.Controls.Add(this.btnCusName);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmCustomerReport";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "CustomerReport";
+            this.Text = "Customer Report";
             this.Load += new System.EventHandler(this.FrmCustomerReport_Load);
             this.panel2.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
@@ -262,7 +245,6 @@
         private System.Windows.Forms.Button btnCusName;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label lblminimize;
         private System.Windows.Forms.Button btnAllRecord;
         private CrystalDecisions.Windows.Forms.CrystalReportViewer crptViewerCus;
     }

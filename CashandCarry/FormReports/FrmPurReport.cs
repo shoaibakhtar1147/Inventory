@@ -41,22 +41,39 @@ namespace CashandCarry.FormReports
 
         private void btnCusName_Click(object sender, EventArgs e)
         {
-            PurchaseReportCom objPur = new  PurchaseReportCom();
-
-            if(!string.IsNullOrEmpty(txtComname.Text))
-            {
-                objPur.SetParameterValue("@CompanyID", txtComname.Text);
+           if(!string.IsNullOrEmpty(txtComname.Text))
+           {
+               PurchaseReportCom objPur = new PurchaseReportCom();    
+               objPur.SetParameterValue("@CompanyID", txtComname.Text);
                 PurchaseInvoiceBL obj = new PurchaseInvoiceBL()
-                {
-                    companyID = Convert.ToInt32(txtComname.Text)
-                };
-                DataTable dt = obj.SelectByCompany();
-                if (dt.Rows.Count > 0)
-                {
-                    objPur.SetDataSource(dt);
-                    crptViewerPurchase.ReportSource = objPur;
-                }
+                   {
+                       companyID = Convert.ToInt32(txtComname.Text)
+                   };
+                   DataTable dt = obj.SelectByCompany();
+                   if (dt.Rows.Count > 0)
+                   {
+                       objPur.SetDataSource(dt);
+                       crptViewerPurchase.ReportSource = objPur;
+                   }
+           
             }
+           else if(!string.IsNullOrEmpty(txtInvoice.Text))
+           {
+               PurchaseInvoiceReport objPurchase = new PurchaseInvoiceReport();
+               objPurchase.SetParameterValue("@PInvoice", txtInvoice.Text);
+               PurchaseInvoiceBL obj = new PurchaseInvoiceBL() 
+               {
+                PInvoice=Convert.ToInt32(txtInvoice.Text)
+               };
+               DataTable dt = obj.Search();
+               if(dt.Rows.Count>0)
+               {
+                   objPurchase.SetDataSource(dt);
+                   crptViewerPurchase.ReportSource = objPurchase;
+                   
+                   txtInvoice.Clear();
+               }
+           }
             else
             {
                 MessageBox.Show("Please Enter Company ID");

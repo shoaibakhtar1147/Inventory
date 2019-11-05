@@ -126,7 +126,6 @@
     <Property Name="Amount" Type="decimal" Precision="18" Scale="0" />
     <Property Name="TotalAmount" Type="decimal" Precision="18" Scale="0" />
     <Property Name="SaleDate" Type="datetime" />
-    <Property Name="Discount" Type="decimal" Precision="18" Scale="0" />
     <Property Name="CustomerID" Type="int" />
     <Property Name="Payment" Type="decimal" Precision="18" Scale="2" />
     <Property Name="DuePayment" Type="decimal" Precision="18" Scale="2" />
@@ -142,12 +141,10 @@
 warning 6002: The table/view 'CashCarry.dbo.View_DetailSale' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="View_DetailSale">
     <Key>
-      <PropertyRef Name="Sr#" />
       <PropertyRef Name="InvoiceNo" />
     </Key>
-    <Property Name="Sr#" Type="int" Nullable="false" />
-    <Property Name="CustomerName" Type="varchar" MaxLength="30" />
     <Property Name="InvoiceNo" Type="int" Nullable="false" />
+    <Property Name="CustomerName" Type="varchar" MaxLength="30" />
     <Property Name="Date" Type="datetime" />
     <Property Name="ProductName" Type="varchar" MaxLength="30" />
     <Property Name="RetailPrice" Type="decimal" Precision="18" Scale="0" />
@@ -155,7 +152,6 @@ warning 6002: The table/view 'CashCarry.dbo.View_DetailSale' does not have a pri
     <Property Name="Discount" Type="decimal" Precision="18" Scale="2" />
     <Property Name="Amount" Type="decimal" Precision="18" Scale="2" />
     <Property Name="BillAmount" Type="decimal" Precision="18" Scale="0" />
-    <Property Name="Flat" Type="decimal" Precision="18" Scale="0" />
     <Property Name="GrandTotal" Type="decimal" Precision="18" Scale="0" />
   </EntityType>
   <!--Errors Found During Generation:
@@ -218,9 +214,8 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
     <EntitySet Name="tbl_Zone" EntityType="Self.tbl_Zone" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="View_DetailSale" EntityType="Self.View_DetailSale" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
-    [View_DetailSale].[Sr#] AS [Sr#], 
-    [View_DetailSale].[CustomerName] AS [CustomerName], 
     [View_DetailSale].[InvoiceNo] AS [InvoiceNo], 
+    [View_DetailSale].[CustomerName] AS [CustomerName], 
     [View_DetailSale].[Date] AS [Date], 
     [View_DetailSale].[ProductName] AS [ProductName], 
     [View_DetailSale].[RetailPrice] AS [RetailPrice], 
@@ -228,7 +223,6 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
     [View_DetailSale].[Discount] AS [Discount], 
     [View_DetailSale].[Amount] AS [Amount], 
     [View_DetailSale].[BillAmount] AS [BillAmount], 
-    [View_DetailSale].[Flat] AS [Flat], 
     [View_DetailSale].[GrandTotal] AS [GrandTotal]
     FROM [dbo].[View_DetailSale] AS [View_DetailSale]</DefiningQuery>
     </EntitySet>

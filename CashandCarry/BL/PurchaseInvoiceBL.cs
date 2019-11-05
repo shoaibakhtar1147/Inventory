@@ -90,9 +90,12 @@ namespace CashandCarry.BL
             
         }
 
-        public System.Data.DataTable Search()
+        public DataTable Search()
         {
-            throw new NotImplementedException();
+            string spName = "SP_PurchaseInvoice_Search";
+            SqlParameter[] prm = new SqlParameter[1];
+            prm[0] = new SqlParameter("@PInvoice", PInvoice);
+            return DB.SelectTableWithSP(spName,prm);
         }
         public DataTable SelectByDate()
         {

@@ -23,8 +23,6 @@ namespace CashandCarry.Model
         public Nullable<decimal> GrandTotal { get; set; }
         public Nullable<decimal> Amount { get; set; }
         public Nullable<decimal> BillAmount { get; set; }
-        public Nullable<decimal> Flat { get; set; }
-        public int Sr_ { get; set; }
         public string CustomerName { get; set; }
     }
 }
