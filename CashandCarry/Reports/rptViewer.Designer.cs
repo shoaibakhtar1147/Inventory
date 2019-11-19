@@ -38,9 +38,9 @@ namespace CashandCarry.Reports
             this.crptViewer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.crptViewer.Cursor = System.Windows.Forms.Cursors.Default;
             this.crptViewer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.crptViewer.Location = new System.Drawing.Point(0, 0);
+            this.crptViewer.Location = new System.Drawing.Point(20, 60);
             this.crptViewer.Name = "crptViewer";
-            this.crptViewer.Size = new System.Drawing.Size(1329, 571);
+            this.crptViewer.Size = new System.Drawing.Size(1289, 491);
             this.crptViewer.TabIndex = 0;
             this.crptViewer.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
             // 
@@ -51,13 +51,11 @@ namespace CashandCarry.Reports
             this.ClientSize = new System.Drawing.Size(1329, 571);
             this.Controls.Add(this.crptViewer);
             this.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "rptViewer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.rptViewer_Load);
             this.ResumeLayout(false);
 

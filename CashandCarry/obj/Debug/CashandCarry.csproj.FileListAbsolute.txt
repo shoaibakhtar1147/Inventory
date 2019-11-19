@@ -62,3 +62,14 @@ C:\Users\ARSALAN COMPUTER LAB\Documents\GitHub\Inventory\CashandCarry\obj\Debug\
 C:\Users\ARSALAN COMPUTER LAB\Documents\GitHub\Inventory\CashandCarry\obj\Debug\CashandCarry.FormReports.FrmPurReport.resources
 C:\Users\ARSALAN COMPUTER LAB\Documents\GitHub\Inventory\CashandCarry\obj\Debug\CashandCarry.FormReports.FrmComReport.resources
 C:\Users\ARSALAN COMPUTER LAB\Documents\GitHub\Inventory\CashandCarry\obj\Debug\CashandCarry.FormReports.FrmProductReport.resources
+C:\Users\ARSALAN COMPUTER LAB\Documents\GitHub\Inventory\CashandCarry\bin\Debug\MetroFramework.dll
+C:\Users\ARSALAN COMPUTER LAB\Documents\GitHub\Inventory\CashandCarry\bin\Debug\MetroFramework.Fonts.dll
+C:\Users\ARSALAN COMPUTER LAB\Documents\GitHub\Inventory\CashandCarry\obj\Debug\CashandCarry.FrmMessageBox.SaleMesage.resources
+C:\Users\ARSALAN COMPUTER LAB\Documents\GitHub\Inventory\CashandCarry\obj\Debug\CashandCarry.FormReports.FrmsalReturn.resources
+C:\Users\ARSALAN COMPUTER LAB\Documents\GitHub\Inventory\CashandCarry\obj\Debug\CashandCarry.Vendor.FrmPurchaseReturn.resources
+C:\Users\ARSALAN COMPUTER LAB\Documents\GitHub\Inventory\CashandCarry\obj\Debug\CashandCarry.FrmMessageBox.PurchaseMesageBox.resources
+C:\Users\ARSALAN COMPUTER LAB\Documents\GitHub\Inventory\CashandCarry\obj\Debug\CashandCarry.FormReports.FrmPurReturnReport.resources
+C:\Users\ARSALAN COMPUTER LAB\Documents\GitHub\Inventory\CashandCarry\obj\Debug\CashandCarry.Employee.FrmEmployee.resources
+C:\Users\ARSALAN COMPUTER LAB\Documents\GitHub\Inventory\CashandCarry\obj\Debug\CashandCarry.Configuration.FrmCustomerType.resources
+C:\Users\ARSALAN COMPUTER LAB\Documents\GitHub\Inventory\CashandCarry\obj\Debug\CashandCarry.Employee.FrmEmployeeSalary.resources
+C:\Users\ARSALAN COMPUTER LAB\Documents\GitHub\Inventory\CashandCarry\obj\Debug\CashandCarry.Sales.SaleRecovery.resources

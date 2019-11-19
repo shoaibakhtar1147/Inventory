@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmStartup));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnEmployee = new System.Windows.Forms.Button();
             this.btnReport = new System.Windows.Forms.Button();
             this.btnPuchase = new System.Windows.Forms.Button();
             this.btnLogOut = new System.Windows.Forms.Button();
@@ -44,6 +45,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
+            this.panel1.Controls.Add(this.btnEmployee);
             this.panel1.Controls.Add(this.btnReport);
             this.panel1.Controls.Add(this.btnPuchase);
             this.panel1.Controls.Add(this.btnLogOut);
@@ -56,6 +58,24 @@
             this.panel1.Size = new System.Drawing.Size(161, 588);
             this.panel1.TabIndex = 0;
             // 
+            // btnEmployee
+            // 
+            this.btnEmployee.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
+            this.btnEmployee.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEmployee.FlatAppearance.BorderSize = 0;
+            this.btnEmployee.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEmployee.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEmployee.ForeColor = System.Drawing.Color.White;
+            this.btnEmployee.Image = global::CashandCarry.Properties.Resources.employee__4_;
+            this.btnEmployee.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnEmployee.Location = new System.Drawing.Point(0, 218);
+            this.btnEmployee.Name = "btnEmployee";
+            this.btnEmployee.Size = new System.Drawing.Size(161, 40);
+            this.btnEmployee.TabIndex = 7;
+            this.btnEmployee.Text = "Employee";
+            this.btnEmployee.UseVisualStyleBackColor = false;
+            this.btnEmployee.Click += new System.EventHandler(this.btnEmployee_Click);
+            // 
             // btnReport
             // 
             this.btnReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
@@ -66,7 +86,7 @@
             this.btnReport.ForeColor = System.Drawing.Color.White;
             this.btnReport.Image = global::CashandCarry.Properties.Resources.growth;
             this.btnReport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReport.Location = new System.Drawing.Point(0, 218);
+            this.btnReport.Location = new System.Drawing.Point(0, 263);
             this.btnReport.Name = "btnReport";
             this.btnReport.Size = new System.Drawing.Size(161, 40);
             this.btnReport.TabIndex = 5;
@@ -102,7 +122,7 @@
             this.btnLogOut.ForeColor = System.Drawing.Color.White;
             this.btnLogOut.Image = global::CashandCarry.Properties.Resources.icons8_logout_rounded_up_24;
             this.btnLogOut.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLogOut.Location = new System.Drawing.Point(0, 263);
+            this.btnLogOut.Location = new System.Drawing.Point(0, 304);
             this.btnLogOut.Name = "btnLogOut";
             this.btnLogOut.Size = new System.Drawing.Size(161, 40);
             this.btnLogOut.TabIndex = 6;
@@ -195,7 +215,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.ForeColor = System.Drawing.SystemColors.Control;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmStartup";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.frmStartup_Load);
@@ -215,5 +235,6 @@
         private System.Windows.Forms.Panel pnlmain;
         private System.Windows.Forms.Button btnReport;
         private System.Windows.Forms.Button btnPuchase;
+        private System.Windows.Forms.Button btnEmployee;
     }
 }

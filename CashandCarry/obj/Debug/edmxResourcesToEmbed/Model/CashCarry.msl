@@ -21,6 +21,7 @@
     <EntitySetMapping Name="tbl_Company">
       <EntityTypeMapping TypeName="CashCarryModel.tbl_Company">
         <MappingFragment StoreEntitySet="tbl_Company">
+          <ScalarProperty Name="DuePayment" ColumnName="DuePayment" />
           <ScalarProperty Name="Address" ColumnName="Address" />
           <ScalarProperty Name="Contact" ColumnName="Contact" />
           <ScalarProperty Name="Email" ColumnName="Email" />
@@ -41,6 +42,9 @@
     <EntitySetMapping Name="tbl_employee">
       <EntityTypeMapping TypeName="CashCarryModel.tbl_employee">
         <MappingFragment StoreEntitySet="tbl_employee">
+          <ScalarProperty Name="LoginTypeID" ColumnName="LoginTypeID" />
+          <ScalarProperty Name="AsignDate" ColumnName="AsignDate" />
+          <ScalarProperty Name="Salary" ColumnName="Salary" />
           <ScalarProperty Name="Address" ColumnName="Address" />
           <ScalarProperty Name="Gender" ColumnName="Gender" />
           <ScalarProperty Name="Designation" ColumnName="Designation" />
@@ -59,6 +63,7 @@
     <EntitySetMapping Name="tbl_Customer">
       <EntityTypeMapping TypeName="CashCarryModel.tbl_Customer">
         <MappingFragment StoreEntitySet="tbl_Customer">
+          <ScalarProperty Name="DuePayment" ColumnName="DuePayment" />
           <ScalarProperty Name="ZoneID" ColumnName="ZoneID" />
           <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="Contact" ColumnName="Contact" />
@@ -72,6 +77,7 @@
     <EntitySetMapping Name="View_tbl_Customer">
       <EntityTypeMapping TypeName="CashCarryModel.View_tbl_Customer">
         <MappingFragment StoreEntitySet="View_tbl_Customer">
+          <ScalarProperty Name="DuePayment" ColumnName="DuePayment" />
           <ScalarProperty Name="ZoneName" ColumnName="ZoneName" />
           <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="Contact" ColumnName="Contact" />
@@ -130,7 +136,6 @@
           <ScalarProperty Name="Payment" ColumnName="Payment" />
           <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
           <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
-          <ScalarProperty Name="Amount" ColumnName="Amount" />
           <ScalarProperty Name="SaleDate" ColumnName="SaleDate" />
           <ScalarProperty Name="Invoice_" ColumnName="Invoice#" />
         </MappingFragment>
@@ -139,8 +144,10 @@
     <EntitySetMapping Name="View_DetailSale">
       <EntityTypeMapping TypeName="CashCarryModel.View_DetailSale">
         <MappingFragment StoreEntitySet="View_DetailSale">
+          <ScalarProperty Name="TotalDue" ColumnName="TotalDue" />
+          <ScalarProperty Name="DuePayment" ColumnName="DuePayment" />
+          <ScalarProperty Name="Payment" ColumnName="Payment" />
           <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
-          <ScalarProperty Name="BillAmount" ColumnName="BillAmount" />
           <ScalarProperty Name="Amount" ColumnName="Amount" />
           <ScalarProperty Name="GrandTotal" ColumnName="GrandTotal" />
           <ScalarProperty Name="Date" ColumnName="Date" />
@@ -209,6 +216,7 @@
       <EntityTypeMapping TypeName="CashCarryModel.Tbl_ReturnSaleDetail">
         <MappingFragment StoreEntitySet="Tbl_ReturnSaleDetail">
           <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
           <ScalarProperty Name="Quantity" ColumnName="Quantity" />
           <ScalarProperty Name="ProductID" ColumnName="ProductID" />
           <ScalarProperty Name="RInvoice" ColumnName="RInvoice" />
@@ -219,10 +227,91 @@
     <EntitySetMapping Name="Tbl_ReturnSaleMaster">
       <EntityTypeMapping TypeName="CashCarryModel.Tbl_ReturnSaleMaster">
         <MappingFragment StoreEntitySet="Tbl_ReturnSaleMaster">
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="TotalBill" ColumnName="TotalBill" />
+          <ScalarProperty Name="ReturnCash" ColumnName="ReturnCash" />
           <ScalarProperty Name="ReturnDate" ColumnName="ReturnDate" />
           <ScalarProperty Name="ReturnAmount" ColumnName="ReturnAmount" />
           <ScalarProperty Name="Invoice_" ColumnName="Invoice#" />
           <ScalarProperty Name="RInvoice" ColumnName="RInvoice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_PurchaseReturn_Detail">
+      <EntityTypeMapping TypeName="CashCarryModel.Tbl_PurchaseReturn_Detail">
+        <MappingFragment StoreEntitySet="Tbl_PurchaseReturn_Detail">
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="PReturnID" ColumnName="PReturnID" />
+          <ScalarProperty Name="PReturnDetailID" ColumnName="PReturnDetailID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_PurchaseReturn_Master">
+      <EntityTypeMapping TypeName="CashCarryModel.Tbl_PurchaseReturn_Master">
+        <MappingFragment StoreEntitySet="Tbl_PurchaseReturn_Master">
+          <ScalarProperty Name="PInvoice" ColumnName="PInvoice" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="ReturnDue" ColumnName="ReturnDue" />
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+          <ScalarProperty Name="ReturnCash" ColumnName="ReturnCash" />
+          <ScalarProperty Name="ReturnDate" ColumnName="ReturnDate" />
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+          <ScalarProperty Name="PReturnID" ColumnName="PReturnID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Employee_Salary">
+      <EntityTypeMapping TypeName="CashCarryModel.tbl_Employee_Salary">
+        <MappingFragment StoreEntitySet="tbl_Employee_Salary">
+          <ScalarProperty Name="SalaryDate" ColumnName="SalaryDate" />
+          <ScalarProperty Name="ResginDate" ColumnName="ResginDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Salary" ColumnName="Salary" />
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+          <ScalarProperty Name="SalaryID" ColumnName="SalaryID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SP_CusType_AddNew" FunctionName="CashCarryModel.Store.SP_CusType_AddNew" />
+    <EntitySetMapping Name="Tbl_SaleRecovery">
+      <EntityTypeMapping TypeName="CashCarryModel.Tbl_SaleRecovery">
+        <MappingFragment StoreEntitySet="Tbl_SaleRecovery">
+          <ScalarProperty Name="RecoveryDate" ColumnName="RecoveryDate" />
+          <ScalarProperty Name="ReturnCash" ColumnName="ReturnCash" />
+          <ScalarProperty Name="RInvoice" ColumnName="RInvoice" />
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="SRecoveryID" ColumnName="SRecoveryID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="View_Employee">
+      <EntityTypeMapping TypeName="CashCarryModel.View_Employee">
+        <MappingFragment StoreEntitySet="View_Employee">
+          <ScalarProperty Name="LoginType" ColumnName="LoginType" />
+          <ScalarProperty Name="Designation" ColumnName="Designation" />
+          <ScalarProperty Name="AsignDate" ColumnName="AsignDate" />
+          <ScalarProperty Name="Salary" ColumnName="Salary" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Contact" ColumnName="Contact" />
+          <ScalarProperty Name="Cnic" ColumnName="Cnic" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="Qualifiction" ColumnName="Qualifiction" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Fname" ColumnName="Fname" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Login_Type">
+      <EntityTypeMapping TypeName="CashCarryModel.tbl_Login_Type">
+        <MappingFragment StoreEntitySet="tbl_Login_Type">
+          <ScalarProperty Name="LoginType" ColumnName="LoginType" />
+          <ScalarProperty Name="LoginTypeID" ColumnName="LoginTypeID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

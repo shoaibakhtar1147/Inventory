@@ -1,5 +1,6 @@
 ﻿using CashandCarry.BL;
 using CashandCarry.Reports;
+using MetroFramework.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,7 +13,7 @@ using System.Windows.Forms;
 
 namespace CashandCarry.FormReports
 {
-    public partial class FrmProductReport : Form
+    public partial class FrmProductReport : MetroForm
     {
         public FrmProductReport()
         {

@@ -1,5 +1,8 @@
 ﻿using CashandCarry.BL;
 using CashandCarry.Model;
+using CashandCarry.Reports;
+using CashandCarry.Reports.SaleReturn;
+using MetroFramework.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,7 +15,7 @@ using System.Windows.Forms;
 
 namespace CashandCarry.Sales
 {
-    public partial class FrmSaleReturn : Form
+    public partial class FrmSaleReturn : MetroForm
     {
         public FrmSaleReturn()
         {
@@ -69,7 +72,7 @@ namespace CashandCarry.Sales
             btnAdd.Enabled = false;
             btnReset.Enabled = false;
             btnClear.Enabled = false;
-            txtReturnPay.Enabled = false;
+            txtReturnCash.Enabled = false;
             txtDuePay.Enabled = false;
             
            
@@ -84,10 +87,11 @@ namespace CashandCarry.Sales
             btnAdd.Enabled = true;
             btnSearch.Enabled = true;
             btnReset.Enabled = true;
-            txtReturnPay.Enabled = true;
+            txtReturnCash.Enabled = true;
             txtCusName.Enabled = true;
             txtProdName.Enabled = true;
             txtBalance.Enabled = true;
+            btnSave.Enabled = true;
             
         }
 
@@ -116,12 +120,17 @@ namespace CashandCarry.Sales
         }
         private void GetDue()
         {
-            ReturnSaleBL objRet = new ReturnSaleBL() 
-            {
-             CustomerID = Convert.ToInt32(txtCusID.Text)
-            };
             
-            txtDuePay.Text = objRet.GetDuePayment().ToString();
+            CustomerBL objCus = new CustomerBL() 
+            { 
+                CustomerID=Convert.ToInt32(txtCusID.Text)  
+            };
+            var dt = objCus.Search();
+            if(dt!= null &&dt.Count>0)
+            {
+                txtDuePay.Text = Convert.ToString(dt[0].DuePayment);
+            }
+
 
             
         }
@@ -172,11 +181,28 @@ namespace CashandCarry.Sales
 
         private void txtQuantity_Leave(object sender, EventArgs e)
         {
-            int val = Convert.ToInt32(txtAmount.Text);
+            if (txtQuantity.Text == string.Empty)
+            {
+                MessageBox.Show("Please Enter Quantity");
+                txtQuantity.Focus();
+                return;
+            }
+                if(txtQuantity.Text != string.Empty)
+                {
+                    int val1 = Convert.ToInt32(txtPrice.Text);
+                    int val2 = Convert.ToInt32(txtQuantity.Text);
+                    int val3 = val1 * val2;
+                    txtAmount.Text = val3.ToString();
+                }
+             if(txtDiscount.Text !=string.Empty)
+            {
 
-            decimal val1 = ((val * Convert.ToDecimal(txtDiscount.Text)) / 100);
-            decimal val2 = val - val1;
-            txtTotalAmount.Text = val2.ToString();
+                int val = Convert.ToInt32(txtAmount.Text);
+
+                decimal val1 = ((val * Convert.ToDecimal(txtDiscount.Text)) / 100);
+                decimal val2 = val - val1;
+                txtTotalAmount.Text = val2.ToString();
+            }
         }
         private void LoadGridProd()
         {
@@ -202,6 +228,17 @@ namespace CashandCarry.Sales
            
 
         }
+        private void ClearGroup()
+        {
+            foreach (Control c in groupBox3.Controls)
+            {
+                if (c is TextBox)
+                {
+                    c.Text = "";
+                }
+
+            }
+        }
         DataTable dt = new DataTable();
         private void btnAdd_Click(object sender, EventArgs e)
         {
@@ -216,8 +253,10 @@ namespace CashandCarry.Sales
             dr[6] = txtDiscount.Text;
             dr[7] = txtTotalAmount.Text;
             dt.Rows.Add(dr);
-            txtReturnPay.Focus();
+            txtReturnCash.Focus();
+           
             SumCalculate();
+           ClearGroup();
         }
         private void SumCalculate()
         {
@@ -233,21 +272,109 @@ namespace CashandCarry.Sales
        
         private void btnSave_Click(object sender, EventArgs e)
         {
+            ReturnSaleBL objUp = new ReturnSaleBL();
+            for (int i = 0; i < dgvReturnItem.RowCount - 1; i++)
+            {
+                objUp.TotalAmount = Convert.ToDecimal(dgvReturnItem.Rows[0].Cells[7].Value.ToString());
+                objUp.Invoiceno = Convert.ToInt32(txtInvoiceID.Text);
+                objUp.Quantity = Convert.ToInt32(dgvReturnItem.Rows[0].Cells[5].Value.ToString());
+                objUp.ProductID = Convert.ToInt32(dgvReturnItem.Rows[0].Cells[2].Value.ToString());
+                objUp.UpdateInvoice();
+            }
+            ReturnSaleBL obj2 = new ReturnSaleBL()
+            {
+                Invoiceno = Convert.ToInt32(txtInvoiceID.Text),
+                TotalBill = Convert.ToDecimal(txtTotalBill.Text)
+                  
+            };
+            obj2.UpdateInvoice();
+            
+            ReturnSaleBL objProd = new ReturnSaleBL() 
+            {
+             ProductID=Convert.ToInt32(txtProdID.Text),
+              Quantity=Convert.ToInt32(txtQuantity.Text)
+            };
+            objProd.UpdateProd();
+
+            ReturnSaleBL objMas = new ReturnSaleBL()
+            {
+                Invoiceno = Convert.ToInt32(txtInvoiceID.Text),
+                ReturnAmount = Convert.ToDecimal(txtBalance.Text),
+                ReturnDate = DateTime.Parse(txtReturnDate.Text),
+                TotalBill = Convert.ToDecimal(txtTotalBill.Text),
+                ReturnCash = Convert.ToDecimal(txtReturnCash.Text),
+                CustomerID=Convert.ToInt32(txtCusID.Text)
+            };
+            ReturnSaleBL objDetail = new ReturnSaleBL();
+            for (int i = 0; i < dgvReturnItem.RowCount - 1; i++)
+            {
+
+                objDetail.RInvoice = Convert.ToInt32(txtReturnID.Text);
+                objDetail.ProductID = Convert.ToInt32(dgvReturnItem.Rows[0].Cells[2].Value.ToString());
+                objDetail.Quantity = Convert.ToInt32(dgvReturnItem.Rows[0].Cells[5].Value.ToString());
+                objDetail.Discount = Convert.ToDecimal(dgvReturnItem.Rows[0].Cells[6].Value.ToString());
+                objDetail.Amount = Convert.ToDecimal(dgvReturnItem.Rows[0].Cells[7].Value.ToString());
+                objDetail.SaveDetail();
+            }
+            PurchaseInvoiceBL objPur = new PurchaseInvoiceBL();
+            for (int i = 0; i < dgvReturnItem.Rows.Count - 1; i++)
+            {
+                objPur.ProductID = Convert.ToInt32(dgvReturnItem.Rows[0].Cells[2].Value.ToString());
+                objPur.Quantity = Convert.ToInt32(dgvReturnItem.Rows[0].Cells[5].Value.ToString());
+                objPur.ProdUpdate();
+            }
+            ReturnSaleBL objDue = new ReturnSaleBL()
+            {
+                CustomerID = Convert.ToInt32(txtCusID.Text),
+                DuePayment = Convert.ToDecimal(txtBalance.Text)
+            };
+            objDue.UpdateDueSub();
+
+            if(txtBalance.Text !="0.00")
+            {
+                SaleRecoveryBL objRec = new SaleRecoveryBL() 
+                {
+                 CustomerID=Convert.ToInt32(txtCusID.Text),
+                  RecoveryDate=Convert.ToDateTime(txtReturnDate.Text),
+                   RInvoice=Convert.ToInt32(txtReturnID.Text),
+                    ReturnCash=Convert.ToDecimal(txtBalance.Text)
+                };
+                objRec.Save();
+            }
+
+            objMas.SaveMaster();
+
+           SaleReturnReport objRep = new SaleReturnReport();
+           rptViewer objView = new rptViewer();
+           objRep.SetParameterValue("@RinvoiceNo", txtReturnID.Text);
+           ReturnSaleBL obj = new ReturnSaleBL() 
+           {
+            RInvoice=Convert.ToInt32(txtReturnID.Text)
+           }; 
+           DataTable dt = obj.Select();
+            if( dt.Rows.Count>0 )
+            {
+                objRep.SetDataSource(dt);
+            }
+            objView.crptViewer.ReportSource = objRep;
+            objView.WindowState = FormWindowState.Normal;
+            objView.ShowDialog();
+          
+
 
         }
 
         private void txtReturnPay_TextChanged(object sender, EventArgs e)
         {
-            
-           
+
+
+            if (!(string.IsNullOrEmpty(txtTotalBill.Text) || string.IsNullOrEmpty(txtReturnCash.Text)))
+            {
                 decimal Bill = Convert.ToDecimal(txtTotalBill.Text);
-
-                decimal val2 = Convert.ToDecimal(txtReturnPay.Text);
+                decimal val2 = Convert.ToDecimal(txtReturnCash.Text);
                 decimal val3 = Bill - val2;
-                txtBalance.Text = val3.ToString();
-
-           
-            
+                txtBalance.Text = val3.ToString(); 
+            } 
         }
 
         private void dgvProduct_CellContentClick_2(object sender, DataGridViewCellEventArgs e)
@@ -271,29 +398,7 @@ namespace CashandCarry.Sales
 
         }
 
-        private void txtQuantity_TextChanged(object sender, EventArgs e)
-        {
-            if (txtQuantity.Text == string.Empty)
-            {
-                MessageBox.Show("Please Enter Quantity");
-                txtQuantity.Focus();
-            }
-            else if (txtQuantity.Text == null)
-            {
-                MessageBox.Show("Null Value Not Acceptable Please Enter Quantity");
-                txtQuantity.Focus();
-
-
-            }
-            else
-            {
-
-                int val1 = Convert.ToInt32(txtPrice.Text);
-                int val2 = Convert.ToInt32(txtQuantity.Text);
-                int val3 = val1 * val2;
-                txtAmount.Text = val3.ToString();
-            }
-        }
+      
 
         private void txtCusName_Leave_1(object sender, EventArgs e)
         {
@@ -315,24 +420,60 @@ namespace CashandCarry.Sales
 
         private void txtProdName_Leave(object sender, EventArgs e)
         {
-            ProductBL objPro = new ProductBL()
+            if (txtProdName.Text == string.Empty)
             {
-                ProductName = txtProdName.Text
-            };
-            List<tbl_Product> dt = objPro.SearchByName();
-            if (dt != null && dt.Count > 0)
-            {
-                txtProdID.Text = Convert.ToString(dt[0].ProductID);
-                txtPrice.Text = Convert.ToString(dt[0].RetailPrice);
+                MessageBox.Show("Please Enter Product Name");
+                txtProdName.Focus();
             }
+            else
+            {
+                ProductBL objPro = new ProductBL()
+                {
+                    ProductName = txtProdName.Text
+                };
+                List<tbl_Product> dt = objPro.SearchByName();
+                if (dt != null && dt.Count > 0)
+                {
+                    txtProdID.Text = Convert.ToString(dt[0].ProductID);
+                    txtPrice.Text = Convert.ToString(dt[0].RetailPrice);
+                }
+            }
+            
         }
 
         private void txtReturnPay_Leave(object sender, EventArgs e)
         {
-            decimal bal = Convert.ToDecimal(txtBalance.Text);
-            decimal Due = Convert.ToDecimal(txtDuePay.Text);
-            decimal result = Due - bal;
-            txtDuePay.Text = result.ToString();
+            if(txtReturnCash.Text == string.Empty)
+            {
+                txtReturnCash.Text = "0";
+            }
+            else
+            {
+                decimal bal = Convert.ToDecimal(txtBalance.Text);
+                decimal Due = Convert.ToDecimal(txtDuePay.Text);
+                decimal result = Due - bal;
+                txtDuePay.Text = result.ToString();
+            }
+        }
+
+        private void txtBalance_Leave(object sender, EventArgs e)
+        {
+            if (txtBalance.Text == string.Empty)
+            {
+                txtReturnCash.Text = "0";
+            }
+            else
+            {
+                decimal bal = Convert.ToDecimal(txtBalance.Text);
+                decimal Due = Convert.ToDecimal(txtDuePay.Text);
+                decimal result = Due - bal;
+                txtDuePay.Text = result.ToString();
+            }
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

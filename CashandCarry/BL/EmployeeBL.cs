@@ -25,27 +25,37 @@ namespace CashandCarry.BL
      public string Designation{get;set;}
      public bool Gender{get;set;}
      public string Address { get; set;}
+     public decimal Salary { get; set; }
+     public DateTime AsignDate { get; set; }
+     public int LoginType { get; set; }
+     public bool Status { get; set; }
 
         public void Save()
         {
            using(var context= new CashCarryEntities3())
            {
-               tbl_employee objemp = new tbl_employee() 
-               {
-                Name=Name,
-                  Fname=Fname,
-                   Gender=Gender,
-                    Password=Password,
-                     Qualifiction=Qualifiction,
-                      Username=Username,
-                       DOB=DOB,
-                        Designation=Designation,
-                         Contact=Contact,
-                          Cnic=Cnic,
-                           Address=Address
-               };
-               context.tbl_employee.Add(objemp);
-               context.SaveChanges();
+            
+                  tbl_employee objemp = new tbl_employee()
+                  {
+                     
+                      Name = Name,
+                      Fname = Fname,
+                      Gender = Gender,
+                      Password = Password,
+                      Qualifiction = Qualifiction,
+                      Username = Username,
+                      DOB = DOB,
+                      Designation = Designation,
+                      Contact = Contact,
+                      Cnic = Cnic,
+                      Address = Address,
+                      AsignDate = AsignDate,
+                      Salary = Salary,
+                      LoginTypeID = LoginType
+                  };
+                  context.tbl_employee.Add(objemp);
+                  context.SaveChanges();
+               
            }
 
         }
@@ -81,6 +91,8 @@ namespace CashandCarry.BL
                          result.Contact=Contact;
                           result.Cnic=Cnic;
                            result.Address=Address;
+                           result.Salary = Salary;
+                           result.AsignDate = AsignDate;
                            context.SaveChanges();
               
                };
@@ -106,11 +118,18 @@ namespace CashandCarry.BL
             }
         }
 
-        public List<tbl_employee> Select()
+        public List<View_Employee> Select()
         {
            using(var context=new CashCarryEntities3())
             {
-                return context.tbl_employee.ToList();
+                return context.View_Employee.ToList();
+            }
+        }
+        public List<tbl_Login_Type> SelectLogin()
+        {
+            using(var context=new CashCarryEntities3())
+            {
+                return context.tbl_Login_Type.ToList();
             }
         }
     }

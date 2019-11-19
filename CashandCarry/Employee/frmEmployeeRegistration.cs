@@ -1,5 +1,7 @@
 ﻿using CashandCarry.BL;
+using CashandCarry.Employee;
 using CashandCarry.Model;
+using MetroFramework.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,7 +14,7 @@ using System.Windows.Forms;
 
 namespace CashandCarry.Configuration
 {
-    public partial class frmEmployeeRegistration : Form
+    public partial class frmEmployeeRegistration :MetroForm
     {
         public frmEmployeeRegistration()
         {
@@ -31,9 +33,9 @@ namespace CashandCarry.Configuration
         {
             txtFname.Enabled = true;
             txtname.Enabled = true;
-            txtPassword.Enabled = true;
+            
             txtQual.Enabled = true;
-            txtUsername.Enabled = true;
+            
             txtDOB.Enabled = true;
             txtDesig.Enabled = true;
             rdfemale.Enabled = true;
@@ -43,15 +45,24 @@ namespace CashandCarry.Configuration
             txtContact.Enabled = true;
             btnUpdate.Enabled = true;
             btnClear.Enabled = true;
+            txtAssignID.Enabled = true ;
+            txtSalary.Enabled = true;
+            txtAsignDate.Enabled = true;
         }
         private void FormDisable()
         {
-
+            txtSalary.Enabled = false;
+            txtAsignDate.Enabled = false;
             txtFname.Enabled = false;
             txtname.Enabled = false;
-            txtPassword.Enabled = false;
             txtQual.Enabled = false;
-            txtUsername.Enabled = false;
+            lblLoginType.Hide();
+            lblPassword.Hide();
+            lblUsername.Hide();
+            txtUsername.Hide();
+            txtPassword.Hide();
+            txtLoginType.Hide();
+            txtAssignID.Enabled = false;
             txtDOB.Enabled = false;
             txtDesig.Enabled = false;
             rdfemale.Enabled = false;
@@ -69,24 +80,33 @@ namespace CashandCarry.Configuration
         {
             if(FormValidate() == true)
             {
-                bool Gender = rdmale.Checked ? true : false;
-                EmployeeBL objBL = new EmployeeBL()
-                {
-                    Name = txtname.Text,
-                    Fname = txtFname.Text,
-                    Username = txtUsername.Text,
-                    Password = txtPassword.Text,
-                    Qualifiction = txtQual.Text,
-                    Cnic = txtCnic.Text,
-                    Address = txtAddress.Text,
-                    Contact = txtContact.Text,
-                    Designation = txtDesig.Text,
-                    DOB = txtDOB.Text,
-                    Gender = Gender
-                };
-                objBL.Save();
-                MessageBox.Show("Record Saved successfull");
-                LoadData();
+             
+              
+                 bool Gender = rdmale.Checked ? true : false;
+                 EmployeeBL objBL = new EmployeeBL()
+                 {
+                     
+                    
+                     Name = txtname.Text,
+                     Fname = txtFname.Text,
+                     Qualifiction = txtQual.Text,
+                     Cnic = txtCnic.Text,
+                     Address = txtAddress.Text,
+                     Contact = txtContact.Text,
+                     Designation = txtDesig.Text,
+                     DOB = txtDOB.Text,
+                     Gender = Gender,
+                     AsignDate = Convert.ToDateTime(txtAsignDate.Text),
+                     Salary = Convert.ToDecimal(txtSalary.Text),
+                     Password=txtPassword.Text,
+                     Username=txtUsername.Text,
+                     LoginType=Convert.ToInt32(txtLoginType.SelectedValue),
+                    
+                 };
+                 objBL.Save();
+                 MessageBox.Show("Record Saved successfull");
+                 LoadData();
+             
             }
             else
             {
@@ -121,15 +141,16 @@ namespace CashandCarry.Configuration
              EmployeeID=Convert.ToInt32(txtEmpId.Text),
               Name=txtname.Text,
                Fname=txtFname.Text,
-               Username=txtUsername.Text,
-                Password=txtPassword.Text,
                   Qualifiction=txtQual.Text,
                    DOB=txtDOB.Text,
                     Address=txtAddress.Text,
                      Cnic=txtCnic.Text,
                       Contact=txtContact.Text,
                        Designation=txtDesig.Text,
-                        Gender=gender
+                        Gender=gender,
+                        AsignDate=Convert.ToDateTime( txtAsignDate.Text),
+                        Salary=Convert.ToDecimal(txtSalary.Text)
+
             };
                 objEmp.Update();
                MessageBox.Show("Employee Record Updated");
@@ -192,39 +213,20 @@ namespace CashandCarry.Configuration
             {
                 MessageBox.Show("Please Enter An ID");
             }
-            EmployeeBL objEmp = new EmployeeBL()
+            else if(!string.IsNullOrEmpty(txtSearch.Text))
             {
-                 EmployeeID =Convert.ToInt32(txtSearch.Text)
-            };
-            var dt = objEmp.Search();
-            if (dt != null) 
-            {
-                //txtEmpId.Text = Convert.ToString(dt.EmployeeID);
-                //txtname.Text = Convert.ToString(dt.Name);
-                //txtFname.Text = Convert.ToString(dt.Fname);
-                //txtQual.Text = Convert.ToString(dt.Qualifiction);
-                //txtPassword.Text = Convert.ToString(dt.Password);
-                //txtDOB.Text = Convert.ToString(dt.DOB);
-                //txtDesig.Text = Convert.ToString(dt.Designation);
-                //txtUsername.Text = Convert.ToString(dt.Username);
-                //txtCnic.Text = Convert.ToString(dt.Cnic);
-                //txtContact.Text = Convert.ToString(dt.Contact);
-                //txtAddress.Text = Convert.ToString(dt.Address);
-                //string gender = Convert.ToString(dt.Gender);
-                //if (gender == "Male")
-                //{
-                //    rdmale.Checked = true;
-                //}
-                //else
-                //{
-                //    rdfemale.Checked = true;
-                //}
-                //FormEnable();
-                //btnUpdate.Enabled = true;
-                dgvEmp.DataSource = dt;
-                btnDelete.Enabled = true;
-               
-                
+                EmployeeBL objEmp = new EmployeeBL()
+                {
+                    EmployeeID = Convert.ToInt32(txtSearch.Text)
+                };
+                var dt = objEmp.Search();
+                if (dt != null)
+                {
+                    dgvEmp.DataSource = dt;
+                    btnDelete.Enabled = true;
+
+
+                }
             }
             else
             {
@@ -235,7 +237,7 @@ namespace CashandCarry.Configuration
         private void LoadData()
         {
             EmployeeBL objEmp = new EmployeeBL();
-            List<tbl_employee> dt = objEmp.Select();
+            var dt = objEmp.Select();
             dgvEmp.Columns.Clear();
             if(dt != null && dt.Count>0)
             {
@@ -259,50 +261,7 @@ namespace CashandCarry.Configuration
                 MessageBox.Show("No Record Found");
             }
         }
-        private void dgvEmp_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            
-            int rowindex = e.RowIndex;
-            int columnindex = e.ColumnIndex;
-            if (columnindex == 0)
-            {
-                 int i = 2;
-                txtEmpId.Text = dgvEmp.Rows[rowindex].Cells[i++].Value.ToString();
-                txtname.Text = dgvEmp.Rows[rowindex].Cells[i++].Value.ToString();
-                txtFname.Text = dgvEmp.Rows[rowindex].Cells[i++].Value.ToString();
-                txtUsername.Text = dgvEmp.Rows[rowindex].Cells[i++].Value.ToString();
-                txtPassword.Text = dgvEmp.Rows[rowindex].Cells[i++].Value.ToString();
-                txtQual.Text = dgvEmp.Rows[rowindex].Cells[i++].Value.ToString();
-                txtDOB.Text = dgvEmp.Rows[rowindex].Cells[i++].Value.ToString();
-                txtCnic.Text = dgvEmp.Rows[rowindex].Cells[i++].Value.ToString();
-                txtContact.Text = dgvEmp.Rows[rowindex].Cells[i++].Value.ToString();
-                txtDesig.Text = dgvEmp.Rows[rowindex].Cells[i++].Value.ToString();
-                string gender = dgvEmp.Rows[rowindex].Cells[i++].Value.ToString();
-                if (gender == "Male")
-                {
-                    rdmale.Checked = true;
-                }
-                else
-                {
-                    rdfemale.Checked = true;
-                }
-                txtAddress.Text = dgvEmp.Rows[rowindex].Cells[i++].Value.ToString();
-                FormEnable();
-                btnUpdate.Enabled = true;
-            }
-            else if (columnindex == 1)
-            {
-                EmployeeBL objEmployee = new EmployeeBL()
-                {
-                    EmployeeID = Convert.ToInt32(dgvEmp.Rows[rowindex].Cells[2].Value)
-                };
-                objEmployee.Delete();
-               MessageBox.Show("Deleted Successfully");
-               LoadData();            
-               
-
-            }
-        }
+        
 
         private void btnClear_Click(object sender, EventArgs e)
         {
@@ -314,12 +273,13 @@ namespace CashandCarry.Configuration
             this.Hide();
         }
 
-        private void dgvEmp_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        
+        private void dgvEmp_CellContentClick_2(object sender, DataGridViewCellEventArgs e)
         {
             int rowindex = e.RowIndex;
             int columnindex = e.ColumnIndex;
-            
-            if(columnindex==0)
+
+            if (columnindex == 0)
             {
                 txtEmpId.Text = dgvEmp.Rows[rowindex].Cells[2].Value.ToString();
                 txtname.Text = dgvEmp.Rows[rowindex].Cells[3].Value.ToString();
@@ -332,18 +292,21 @@ namespace CashandCarry.Configuration
                 txtContact.Text = dgvEmp.Rows[rowindex].Cells[10].Value.ToString();
                 txtDesig.Text = dgvEmp.Rows[rowindex].Cells[11].Value.ToString();
                 string gender = dgvEmp.Rows[rowindex].Cells[12].Value.ToString();
-                if(gender=="True")
+                if (gender == "True")
                 {
                     rdmale.Checked = true;
                 }
-               else
+                else
                 {
                     rdfemale.Checked = true;
                 }
                 txtAddress.Text = dgvEmp.Rows[rowindex].Cells[13].Value.ToString();
+                txtSalary.Text = dgvEmp.Rows[rowindex].Cells[14].Value.ToString();
+                txtAsignDate.Text = dgvEmp.Rows[rowindex].Cells[15].Value.ToString();
                 FormEnable();
-             }
-            else if(columnindex==1)
+                btnDelete.Enabled = true;
+            }
+            else if (columnindex == 1)
             {
                 string message = "Are you sure to Delete Employee" + txtname.Text + "?";
 
@@ -364,8 +327,42 @@ namespace CashandCarry.Configuration
                 }
                 LoadData();
             }
+
         }
 
+
+        private void txtAssignID_CheckedChanged(object sender, EventArgs e)
+        {
+         if(txtAssignID.Checked==true)
+         {
+             lblLoginType.Visible = true;
+             lblPassword.Visible = true;
+             lblUsername.Visible = true;
+             txtUsername.Visible = true;
+             txtPassword.Visible = true;
+             txtLoginType.Visible = true;
+            LoadLoginType();
+         }
+            else if(txtAssignID.Checked==false)
+         {
+             lblLoginType.Hide();
+             lblPassword.Hide();
+             lblUsername.Hide();
+             txtUsername.Hide();
+             txtPassword.Hide();
+             txtLoginType.Hide();
+         }
+        }
+        private void LoadLoginType()
+        {
+            EmployeeBL objEmp = new EmployeeBL();
+            var dt = objEmp.SelectLogin();
+            txtLoginType.DataSource = dt;
+            txtLoginType.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            txtLoginType.AutoCompleteSource = AutoCompleteSource.ListItems;
+            txtLoginType.DisplayMember = "LoginType";
+            txtLoginType.ValueMember = "LoginTypeID";
+        }
         
 
         

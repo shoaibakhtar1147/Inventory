@@ -43,6 +43,12 @@ namespace CashandCarry.Model
         public virtual DbSet<Tbl_PurchaseMaster> Tbl_PurchaseMaster { get; set; }
         public virtual DbSet<Tbl_ReturnSaleDetail> Tbl_ReturnSaleDetail { get; set; }
         public virtual DbSet<Tbl_ReturnSaleMaster> Tbl_ReturnSaleMaster { get; set; }
+        public virtual DbSet<Tbl_PurchaseReturn_Detail> Tbl_PurchaseReturn_Detail { get; set; }
+        public virtual DbSet<Tbl_PurchaseReturn_Master> Tbl_PurchaseReturn_Master { get; set; }
+        public virtual DbSet<tbl_Employee_Salary> tbl_Employee_Salary { get; set; }
+        public virtual DbSet<Tbl_SaleRecovery> Tbl_SaleRecovery { get; set; }
+        public virtual DbSet<View_Employee> View_Employee { get; set; }
+        public virtual DbSet<tbl_Login_Type> tbl_Login_Type { get; set; }
     
         public virtual ObjectResult<Nullable<int>> SP_Cate_AddNew(Nullable<int> categoryID)
         {
@@ -96,6 +102,15 @@ namespace CashandCarry.Model
                 new ObjectParameter("CustomerID", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_Cus_Search_Result>("SP_Cus_Search", customerIDParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> SP_CusType_AddNew(Nullable<int> cusTypeID)
+        {
+            var cusTypeIDParameter = cusTypeID.HasValue ?
+                new ObjectParameter("CusTypeID", cusTypeID) :
+                new ObjectParameter("CusTypeID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("SP_CusType_AddNew", cusTypeIDParameter);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using CashandCarry.BL;
 using CashandCarry.Model;
+using MetroFramework.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,7 +13,7 @@ using System.Windows.Forms;
 
 namespace CashandCarry.Configuration
 {
-    public partial class ProductCategory : Form
+    public partial class ProductCategory : MetroForm
     {
         public ProductCategory()
         {
@@ -135,23 +136,27 @@ namespace CashandCarry.Configuration
             {
                 MessageBox.Show("Please Enter An ID");
             }
-            CategoryBL objCate = new CategoryBL() 
-            { 
-            CategoryID=Convert.ToInt32(txtSearch.Text)
-            };
-            var dt= objCate.Search();
-            if(dt != null)
+           else if(!string.IsNullOrEmpty(txtSearch.Text))
             {
-                dgvCategory.DataSource = dt;
-                txtCategory.Enabled = true;
-                
+                CategoryBL objCate = new CategoryBL()
+                {
+                    CategoryID = Convert.ToInt32(txtSearch.Text)
+                };
+                var dt = objCate.Search();
+                if (dt != null)
+                {
+                    dgvCategory.DataSource = dt;
+                    txtCategory.Enabled = true;
+                    btnUpdate.Enabled = true;
+                    btnDelete.Enabled = true;
+
+                }
             }
             else  
             {
                 MessageBox.Show("Record Not Found");
             }
-            btnUpdate.Enabled = true;
-            btnDelete.Enabled = true;
+           
                 
         }
         private void btnDelete_Click(object sender, EventArgs e)

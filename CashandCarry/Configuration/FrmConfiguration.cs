@@ -1,6 +1,7 @@
 ﻿using CashandCarry.Configuration;
 using CashandCarry.Configuration;
 using CashandCarry.Configuration;
+using MetroFramework.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -55,6 +56,17 @@ namespace CashandCarry.Configuration
         {
             FrmZone objZon = new FrmZone();
             objZon.ShowDialog();
+        }
+
+        private void FrmConfiguration_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCusType_Click(object sender, EventArgs e)
+        {
+            FrmCustomerType obj = new FrmCustomerType();
+            obj.ShowDialog();
         }
 
        

@@ -54,7 +54,7 @@ namespace CashandCarry.BL
             {
                 tbl_SaleMAster objMas = new tbl_SaleMAster()
                 {
-                    Amount = TotalBill,
+                   
                   
                     SaleDate = SaleDate,
                      CustomerID=CustomerID,
@@ -69,12 +69,11 @@ namespace CashandCarry.BL
         }
         public int UpdateProd()
         {
-            //string query = "update tbl_Product set Quantity=Quantity - '" + Quantity + "' where ProductID='" + ProductID + "' ";
-            //return DB.insert(query);
             string spName = "SP_Quantity_Update";
-            SqlParameter[] prm = new SqlParameter[2];
+            SqlParameter[] prm = new SqlParameter[3];
             prm[0] = new SqlParameter("@ProductID", ProductID);
             prm[1] = new SqlParameter("@Quantity", Quantity);
+            prm[2] = new SqlParameter("@Action", 1);
             return DB.ExecuteNonQueryWithSP(spName, prm);
         }
       public DataTable Search()
@@ -84,13 +83,13 @@ namespace CashandCarry.BL
             prm[0] = new SqlParameter("@InvoiceNo", InvoiceNo);
             return DB.SelectTableWithSP(spName, prm);
         }
-        public DataTable SelectByCus()
-        {
-            string spName = "SP_SaleMas_ByCus";
-            SqlParameter[] prm = new SqlParameter[1];
-            prm[0] = new SqlParameter("@CusID", CustomerID);
-           return DB.SelectTableWithSP(spName, prm);
-        }
+        //public DataTable SelectByCus()
+        //{
+        //    string spName = "SP_SaleMas_ByCus";
+        //    SqlParameter[] prm = new SqlParameter[1];
+        //    prm[0] = new SqlParameter("@CusID", CustomerID);
+        //   return DB.SelectTableWithSP(spName, prm);
+        //}
         public DataTable Addnew()
         {
             string spName = "SP_SaleMAster";
@@ -99,13 +98,22 @@ namespace CashandCarry.BL
             return DB.SelectTableWithSP(spName, prm);
         }
 
-        public DataTable SelectByDate()
+        //public DataTable SelectByDate()
+        //{
+        //    String spName = "SP_SaleMas_DateDiff";
+        //    SqlParameter[] prm = new SqlParameter[2];
+        //    prm[0] = new SqlParameter("@MinDate", mindate);
+        //    prm[1] = new SqlParameter("@MaxDate", maxdate);
+        //    return DB.SelectTableWithSP(spName, prm);
+        //}
+        public int UpdateDueSum()
         {
-            String spName = "SP_SaleMas_DateDiff";
-            SqlParameter[] prm = new SqlParameter[2];
-            prm[0] = new SqlParameter("@MinDate", mindate);
-            prm[1] = new SqlParameter("@MaxDate", maxdate);
-            return DB.SelectTableWithSP(spName, prm);
+            string spName = "[SP_Update_DuePayment]";
+            SqlParameter[] prm = new SqlParameter[3];
+            prm[0] = new SqlParameter("@CustomerID", CustomerID);
+            prm[1] = new SqlParameter("@DuePayment", DuePayment);
+            prm[2] = new SqlParameter("@prmtype", 1);
+            return DB.ExecuteNonQueryWithSP(spName, prm);
         }
       
     }

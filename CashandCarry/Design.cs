@@ -36,7 +36,7 @@ namespace CashandCarry
                     control.ForeColor = Color.WhiteSmoke;
                 }
             }
-
+            
         }
 
        

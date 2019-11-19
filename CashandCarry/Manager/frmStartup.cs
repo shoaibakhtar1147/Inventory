@@ -1,5 +1,6 @@
 ﻿using CashandCarry.Configuration;
 using CashandCarry.Configuration;
+using CashandCarry.Employee;
 using CashandCarry.Purchase;
 using CashandCarry.Reports;
 using CashandCarry.Sales;
@@ -73,8 +74,13 @@ namespace CashandCarry
             ShowForm(obj);
         }
 
-        
+        private void btnEmployee_Click(object sender, EventArgs e)
+        {
+            FrmEmployee obj = new FrmEmployee();
+            ShowForm(obj);
+        }
 
+       
        
         
 

@@ -1,6 +1,7 @@
 ﻿using CashandCarry.BL;
 using CashandCarry.Reports;
 using CashandCarry.Reports.Sale;
+using MetroFramework.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,33 +25,33 @@ namespace CashandCarry.FormReports
         private void btnSearch_Click(object sender, EventArgs e)
         {
             
-            SaleInvoiceBL obj = new SaleInvoiceBL()
-            {
-                mindate = Convert.ToDateTime(txtMinDate.Value),
-                maxdate = Convert.ToDateTime(txtmaxdate.Value)
-            };
-            DataTable dt = obj.SelectByDate();
-            if (dt.Rows.Count > 0)
-            {
-                dgvSale.DataSource = dt;
-                btnPrint.Visible = true;
-            }
+            //SaleInvoiceBL obj = new SaleInvoiceBL()
+            //{
+            //    mindate = Convert.ToDateTime(txtMinDate.Value),
+            //    maxdate = Convert.ToDateTime(txtmaxdate.Value)
+            //};
+            //DataTable dt = obj.SelectByDate();
+            //if (dt.Rows.Count > 0)
+            //{
+            //    dgvSale.DataSource = dt;
+            //    btnPrint.Visible = true;
+            //}
             isReport1 = true;
         }
 
         private void btnCusName_Click(object sender, EventArgs e)
         {
-            isReport1 = false;
-            SaleInvoiceBL objsal = new SaleInvoiceBL()
-            {
-                CusName = txtCusnam.Text
-            };
-            DataTable dt = objsal.SelectByCus();
-            if (dt.Rows.Count > 0)
-            {
-                dgvSale.DataSource = dt;
-               // btnCusprint.Visible = true;
-            }
+            //isReport1 = false;
+            //SaleInvoiceBL objsal = new SaleInvoiceBL()
+            //{
+            //    CusName = txtCusnam.Text
+            //};
+            //DataTable dt = objsal.SelectByCus();
+            //if (dt.Rows.Count > 0)
+            //{
+            //    dgvSale.DataSource = dt;
+            //   // btnCusprint.Visible = true;
+            //}
         }
 
         private void FrmSaleReport_Load(object sender, EventArgs e)

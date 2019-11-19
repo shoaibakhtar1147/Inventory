@@ -1,6 +1,8 @@
 ﻿using CashandCarry.BL;
 using CashandCarry.Model;
 using CashandCarry.Reports;
+using CashandCarry.Reports.Customer;
+using MetroFramework.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,7 +15,7 @@ using System.Windows.Forms;
 
 namespace CashandCarry.FormReports
 {
-    public partial class FrmCustomerReport : Form
+    public partial class FrmCustomerReport : MetroForm
     {
         public FrmCustomerReport()
         {
@@ -27,17 +29,19 @@ namespace CashandCarry.FormReports
             if (!string.IsNullOrEmpty(txtSearch.Text))
             {
                 objCus.SetParameterValue("@CustomerID", txtSearch.Text);
-                CustomerBL objCust = new CustomerBL()
-                {
-                    CustomerID = Convert.ToInt32(txtSearch.Text),
+                //CustomerBL objCust = new CustomerBL()
+                //{
+                //    CustomerID = Convert.ToInt32(txtSearch.Text),
                     
-                };
-                DataTable dt = objCust.SelectByCus();
-                if (dt.Rows.Count>0)
-                {
-                    objCus.SetDataSource(dt);
-                    crptViewerCus.ReportSource = objCus;
-                }
+                //};
+                //DataTable dt = objCust.SelectByCus();
+                //if (dt.Rows.Count>0)
+                //{
+                //    objCus.SetDataSource(dt);
+                   
+                //}
+                crptViewerCus.ReportSource = objCus;
+                txtSearch.Clear();
             }
             else
             {
@@ -72,16 +76,11 @@ namespace CashandCarry.FormReports
 
         private void btnAllRecord_Click(object sender, EventArgs e)
         {
-            CustomerReport objCus = new CustomerReport();
+            CustomerGeneralReport objCus = new CustomerGeneralReport();
             objCus.SetParameterValue("@CustomerID", null);
-            CustomerBL objCust = new CustomerBL();
-            List<View_tbl_Customer> dt = objCust.Select();
-            if (dt != null)
-            {
-                objCus.SetDataSource(dt);
-                crptViewerCus.ReportSource = objCus;
-            }
+            crptViewerCus.ReportSource = objCus;
         }
+
        
       
 

@@ -1,5 +1,6 @@
 ﻿using CashandCarry.BL;
 using CashandCarry.Model;
+using MetroFramework.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,7 +13,7 @@ using System.Windows.Forms;
 
 namespace CashandCarry.Configuration
 {
-    public partial class frmCompany : Form
+    public partial class frmCompany : MetroForm
     {
         public frmCompany()
         {
@@ -74,26 +75,27 @@ namespace CashandCarry.Configuration
                 MessageBox.Show("Please Enter ID");
             }
 
-            CompanyBL objCom = new CompanyBL() 
+           else if(!string.IsNullOrEmpty(txtSearch.Text))
             {
-                CompanyID=Convert.ToInt32(txtSearch.Text)
-            };
-            var dt = objCom.Search();
-            if(dt != null)
-            {
-                dgvCompany.DataSource = dt;
-                btnDelete.Enabled = true;
-                btnUpdate.Enabled = true;
-                
+                CompanyBL objCom = new CompanyBL()
+                {
+                    CompanyID = Convert.ToInt32(txtSearch.Text)
+                };
+                var dt = objCom.Search();
+                if (dt != null)
+                {
+                    dgvCompany.DataSource = dt;
+                    btnDelete.Enabled = true;
+                    btnUpdate.Enabled = true;
+                    FormEnable();
+                }
             }
 
             else
             {
                 MessageBox.Show("Record Not Found");
             }
-            FormEnable();
-            btnDelete.Enabled = true;
-            btnUpdate.Enabled = true;
+            
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -191,11 +193,13 @@ namespace CashandCarry.Configuration
 
         }
 
-        private void dgvCompany_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        
+
+        private void dgvCompany_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
             int rowindex = e.RowIndex;
             int columnindex = e.ColumnIndex;
-            if(columnindex ==0)
+            if (columnindex == 0)
             {
                 txtComID.Text = dgvCompany.Rows[rowindex].Cells[2].Value.ToString();
                 txtComName.Text = dgvCompany.Rows[rowindex].Cells[3].Value.ToString();
@@ -204,22 +208,25 @@ namespace CashandCarry.Configuration
                 txtAddress.Text = dgvCompany.Rows[rowindex].Cells[6].Value.ToString();
                 FormEnable();
                 btnSave.Enabled = false;
+                btnUpdate.Enabled = true;
+                btnDelete.Enabled = true;
+                btnClear.Enabled = true;
             }
-            else if(columnindex==1)
+            else if (columnindex == 1)
             {
-                 string message = "Are You Sure To Delete Company " + txtComName.Text+"?";
-            if(MessageBox.Show(message,"Delete Alert",MessageBoxButtons.YesNo,MessageBoxIcon.Warning)==DialogResult.Yes)
-            {
-                CompanyBL objCom = new CompanyBL()
+                string message = "Are You Sure To Delete Company " + txtComName.Text + "?";
+                if (MessageBox.Show(message, "Delete Alert", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
-                    CompanyID = int.Parse(txtSearch.Text)
-                };
-                objCom.Delete();
+                    CompanyBL objCom = new CompanyBL()
+                    {
+                        CompanyID = int.Parse(txtSearch.Text)
+                    };
+                    objCom.Delete();
 
                     MessageBox.Show("Record Deleted Successfull");
                     LoadData();
-                
-            }
+
+                }
             }
         }
     }

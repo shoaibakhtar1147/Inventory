@@ -37,6 +37,8 @@ namespace CashandCarry
             }
         }
 
+        
+      
         public static string SelectScalerWithSP(string spName,SqlParameter[]prm)
         {
             string constring = @"Data Source=SHOAIB-PC\SQLEXPRESS;Database=CashCarry;integrated security=true";

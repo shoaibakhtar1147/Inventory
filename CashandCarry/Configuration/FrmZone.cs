@@ -1,5 +1,6 @@
 ﻿using CashandCarry.BL;
 using CashandCarry.Model;
+using MetroFramework.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,7 +13,7 @@ using System.Windows.Forms;
 
 namespace CashandCarry.Configuration
 {
-    public partial class FrmZone : Form
+    public partial class FrmZone : MetroForm
     {
         public FrmZone()
         {
@@ -141,18 +142,25 @@ namespace CashandCarry.Configuration
             {
                 MessageBox.Show("Please Enter An ID");
             }
-            ZoneBL objZone = new ZoneBL() 
+            else if(!string.IsNullOrEmpty(txtSearch.Text))
             {
-            ZoneId=Convert.ToInt32(txtSearch.Text)
-            };
-            var dt = objZone.Search();
-            if(dt != null)
+                ZoneBL objZone = new ZoneBL()
+                {
+                    ZoneId = Convert.ToInt32(txtSearch.Text)
+                };
+                var dt = objZone.Search();
+                if (dt != null)
+                {
+                    dgvZone.DataSource = dt;
+                    txtZoneName.Enabled = true;
+                    btnUpdate.Enabled = true;
+                    btnDelete.Enabled = true;
+
+                }
+            }
+            else
             {
-                dgvZone.DataSource = dt;
-                txtZoneName.Enabled = true;
-                btnUpdate.Enabled = true;
-                btnDelete.Enabled = true;
-               
+                MessageBox.Show("No Record Found OR Empty");
             }
         }
         private void btnDelete_Click(object sender, EventArgs e)
@@ -174,30 +182,32 @@ namespace CashandCarry.Configuration
                 MessageBox.Show("No Record Deleted");
             }
         }
-        private void dgvZone_CellContentClick(object sender, DataGridViewCellEventArgs e)
+      
+        private void dgvZone_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
             int rowindex = e.RowIndex;
             int Columnindex = e.ColumnIndex;
-            if(Columnindex==0)
+            if (Columnindex == 0)
             {
                 txtZoneID.Text = dgvZone.Rows[rowindex].Cells[2].Value.ToString();
                 txtZoneName.Text = dgvZone.Rows[rowindex].Cells[3].Value.ToString();
                 btnUpdate.Enabled = true;
                 txtZoneName.Enabled = true;
-         }
-          else  if(Columnindex==1)
+                btnDelete.Enabled = true;
+            }
+            else if (Columnindex == 1)
             {
                 ZoneBL objcate = new ZoneBL()
                 {
                     ZoneId = Convert.ToInt32(dgvZone.Rows[rowindex].Cells[2].Value)
                 };
-                 objcate.Delete();
-                
-                    MessageBox.Show("Deleted Successfully");
-                    loadData();
+                objcate.Delete();
 
-                }
+                MessageBox.Show("Deleted Successfully");
+                loadData();
+
             }
+        }
         }
         
     }

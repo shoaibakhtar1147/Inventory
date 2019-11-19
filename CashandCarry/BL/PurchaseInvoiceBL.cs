@@ -72,8 +72,13 @@ namespace CashandCarry.BL
         }
         public int ProdUpdate()
         {
-            string query = "update tbl_Product set Quantity= Quantity + '" +Quantity  + "' where ProductID='" + ProductID + "'";
-            return DB.insert(query);
+
+            string SpName = "SP_Quantity_Update";
+            SqlParameter[] prm = new SqlParameter[3];
+            prm[0] = new SqlParameter("@ProductID", ProductID);
+            prm[1] = new SqlParameter("@Quantity", Quantity);
+            prm[2] = new SqlParameter("@Action", 2);
+            return DB.ExecuteNonQueryWithSP(SpName, prm);
         }
 
         public int Update()
@@ -97,24 +102,34 @@ namespace CashandCarry.BL
             prm[0] = new SqlParameter("@PInvoice", PInvoice);
             return DB.SelectTableWithSP(spName,prm);
         }
-        public DataTable SelectByDate()
-        {
-            string spName = "SP_Purchase_DateDiff";
-            SqlParameter[] prm = new SqlParameter[2];
-            prm[0] = new SqlParameter("@mindate", mindate);
-            prm[1] = new SqlParameter("@maxdate", maxdate);
-            return DB.SelectTableWithSP(spName, prm);
-        }
-        public DataTable SelectByCompany()
-        {
-            string spName = "SP_Purchase_ByCom";
-            SqlParameter[] prm = new SqlParameter[1];
-            prm[0] = new SqlParameter("@CompanyID", companyID);
-            return DB.SelectTableWithSP(spName, prm);
-        }
+        //public DataTable SelectByDate()
+        //{
+        //    string spName = "SP_Purchase_DateDiff";
+        //    SqlParameter[] prm = new SqlParameter[2];
+        //    prm[0] = new SqlParameter("@mindate", mindate);
+        //    prm[1] = new SqlParameter("@maxdate", maxdate);
+        //    return DB.SelectTableWithSP(spName, prm);
+        //}
+        //public DataTable SelectByCompany()
+        //{
+        //    string spName = "SP_Purchase_ByCom";
+        //    SqlParameter[] prm = new SqlParameter[1];
+        //    prm[0] = new SqlParameter("@CompanyID", companyID);
+        //    return DB.SelectTableWithSP(spName, prm);
+        //}
         public DataTable Select()
         {
             throw new NotImplementedException();
+        }
+        public int UpdateDuePayment()
+        {
+            string spName = "SP_Update_PReturn_DuePayment";
+            SqlParameter[] prm = new SqlParameter[3];
+            prm[0] = new SqlParameter("@CompanyID", companyID);
+            prm[1] = new SqlParameter("@DuePayment", DuePayment);
+            prm[2] = new SqlParameter("@Action", 1);
+            return DB.ExecuteNonQueryWithSP(spName, prm);
+
         }
     }
 }

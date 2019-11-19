@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CashandCarry.Reports {
+namespace CashandCarry.Reports.Company {
     using System;
     using System.ComponentModel;
     using CrystalDecisions.Shared;
@@ -41,7 +41,7 @@ namespace CashandCarry.Reports {
         
         public override string FullResourceName {
             get {
-                return "CashandCarry.Reports.CompanyReport.rpt";
+                return "CashandCarry.Reports.Company.CompanyReport.rpt";
             }
             set {
                 // Do nothing

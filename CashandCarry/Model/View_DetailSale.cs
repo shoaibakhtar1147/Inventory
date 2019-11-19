@@ -22,7 +22,9 @@ namespace CashandCarry.Model
         public Nullable<System.DateTime> Date { get; set; }
         public Nullable<decimal> GrandTotal { get; set; }
         public Nullable<decimal> Amount { get; set; }
-        public Nullable<decimal> BillAmount { get; set; }
         public string CustomerName { get; set; }
+        public Nullable<decimal> Payment { get; set; }
+        public Nullable<decimal> DuePayment { get; set; }
+        public Nullable<decimal> TotalDue { get; set; }
     }
 }

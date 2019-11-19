@@ -20,20 +20,8 @@ namespace CashandCarry.BL
         public string Email	{get;set;}
         public int ZoneID { get; set; }
 
-        public List<tbl_Zone> GetZone()
-        {
-            using(var context =new CashCarryEntities3())
-            {
-                return context.tbl_Zone.ToList();
-            }
-        }
-        public List<tbl_CustomerTypes> GetCusType()
-        {
-            using(var context=new CashCarryEntities3())
-            {
-                return context.tbl_CustomerTypes.ToList();
-            }
-        }
+      
+     
         public void Save()
         {
            using(var context=new CashCarryEntities3())
@@ -108,14 +96,14 @@ namespace CashandCarry.BL
                 
            }
         }
-        public DataTable SelectByCus()
-        {
-            string spName = "SP_Cus_Search";
-            SqlParameter[] prm = new SqlParameter[1];
-            prm[0] = new SqlParameter("@CustomerID", CustomerID);
+        //public DataTable SelectByCus()
+        //{
+        //    string spName = "SP_Cus_Search";
+        //    SqlParameter[] prm = new SqlParameter[1];
+        //    prm[0] = new SqlParameter("@CustomerID", CustomerID);
       
-            return DB.SelectTableWithSP(spName, prm);
-        }
+        //    return DB.SelectTableWithSP(spName, prm);
+        //}
 
         public List<View_tbl_Customer> Select()
         {

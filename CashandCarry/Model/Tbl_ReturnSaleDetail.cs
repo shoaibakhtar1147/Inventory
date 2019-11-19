@@ -18,6 +18,7 @@ namespace CashandCarry.Model
         public Nullable<int> RInvoice { get; set; }
         public Nullable<int> ProductID { get; set; }
         public Nullable<int> Quantity { get; set; }
+        public Nullable<decimal> Discount { get; set; }
         public Nullable<decimal> Amount { get; set; }
     }
 }

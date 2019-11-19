@@ -26,5 +26,8 @@ namespace CashandCarry.Model
         public string Designation { get; set; }
         public Nullable<bool> Gender { get; set; }
         public string Address { get; set; }
+        public Nullable<decimal> Salary { get; set; }
+        public Nullable<System.DateTime> AsignDate { get; set; }
+        public Nullable<int> LoginTypeID { get; set; }
     }
 }

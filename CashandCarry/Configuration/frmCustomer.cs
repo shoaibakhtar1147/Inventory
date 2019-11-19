@@ -1,5 +1,6 @@
 ﻿using CashandCarry.BL;
 using CashandCarry.Model;
+using MetroFramework.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,7 +13,7 @@ using System.Windows.Forms;
 
 namespace CashandCarry.Configuration
 {
-    public partial class frmCustomer : Form
+    public partial class frmCustomer :MetroFramework.Forms.MetroForm
     {
         public frmCustomer()
         {
@@ -155,7 +156,7 @@ namespace CashandCarry.Configuration
                     ZoneID = Convert.ToInt32(txtZoneID.SelectedValue)
                 };
                 objcus.Save();
-                MessageBox.Show("record saved successfull");
+                MessageBox.Show("Record Saved Successfull");
                 LoadData();
                
             }
@@ -171,8 +172,9 @@ namespace CashandCarry.Configuration
         }
         private void LoadZoneID()
         {
-            CustomerBL objCus = new CustomerBL();
-            List<tbl_Zone> dt = objCus.GetZone();
+            
+            ZoneBL objZone = new ZoneBL();
+            var dt = objZone.Select();
             txtZoneID.DataSource = dt;        
             txtZoneID.AutoCompleteMode = AutoCompleteMode.Suggest;
             txtZoneID.AutoCompleteSource = AutoCompleteSource.ListItems;
@@ -208,8 +210,8 @@ namespace CashandCarry.Configuration
 
         private void LoadCusType()
         {
-            CustomerBL objCus = new CustomerBL();
-            List<tbl_CustomerTypes> dt = objCus.GetCusType();
+            CusTypeBL objCus = new CusTypeBL();
+            List<tbl_CustomerTypes> dt = objCus.Select();
             txtCusType.DataSource = dt;
             txtCusType.AutoCompleteMode = AutoCompleteMode.Suggest;
             txtCusType.AutoCompleteSource = AutoCompleteSource.ListItems;
@@ -224,19 +226,22 @@ namespace CashandCarry.Configuration
         {
             if(txtSearch.Text==string.Empty)
             {
-                MessageBox.Show("Please Enter An Id");
+                MessageBox.Show("Please Enter An ID");
             }
-            CustomerBL objCus = new CustomerBL() 
+          else
             {
-            
-               CustomerID =Convert.ToInt32(txtSearch.Text)
-            };
-            var dt = objCus.Search();
-            if(dt != null)
-            {
-                dgvCus.DataSource = dt;
-                btnDelete.Enabled = true;
-                btnUpdate.Enabled = true;
+                CustomerBL objCus = new CustomerBL()
+                {
+
+                    CustomerID = Convert.ToInt32(txtSearch.Text)
+                };
+                var dt = objCus.Search();
+                if (dt != null)
+                {
+                    dgvCus.DataSource = dt;
+                    btnDelete.Enabled = true;
+                    btnUpdate.Enabled = true;
+                }
             }
 
         }
@@ -246,25 +251,34 @@ namespace CashandCarry.Configuration
             this.Hide();
         }
 
-        private void dgvCus_CellContentClick(object sender, DataGridViewCellEventArgs e)
+       
+        private void txtAddress_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvCus_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
             int rowindex = e.RowIndex;
             int columnindex = e.ColumnIndex;
-            if(columnindex==0)
+            if (columnindex == 0)
             {
                 txtCusID.Text = dgvCus.Rows[rowindex].Cells[2].Value.ToString();
                 txtCusName.Text = dgvCus.Rows[rowindex].Cells[3].Value.ToString();
                 txtCusType.Text = dgvCus.Rows[rowindex].Cells[4].Value.ToString();
-                 txtAddress.Text= dgvCus.Rows[rowindex].Cells[5].Value.ToString();
-               txtContact.Text = dgvCus.Rows[rowindex].Cells[6].Value.ToString();
+                txtAddress.Text = dgvCus.Rows[rowindex].Cells[5].Value.ToString();
+                txtContact.Text = dgvCus.Rows[rowindex].Cells[6].Value.ToString();
                 txtEmail.Text = dgvCus.Rows[rowindex].Cells[7].Value.ToString();
-              txtZoneID.Text = dgvCus.Rows[rowindex].Cells[8].Value.ToString();
-                
+                txtZoneID.Text = dgvCus.Rows[rowindex].Cells[8].Value.ToString();
+
                 FormEnable();
                 btnSave.Enabled = false;
-                
+                btnUpdate.Enabled = true;
+                btnDelete.Enabled = true;
+                btnClear.Enabled = true;
+
             }
-            else if(columnindex==1)
+            else if (columnindex == 1)
             {
                 string message = "Are You Sure To Delete  Zone " + txtCusName.Text + "?";
                 if (MessageBox.Show(message, "Delete Alert", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
@@ -283,11 +297,6 @@ namespace CashandCarry.Configuration
                     MessageBox.Show("No Record Deleted");
                 }
             }
-        }
-
-        private void txtAddress_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

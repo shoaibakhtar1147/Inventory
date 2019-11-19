@@ -18,5 +18,8 @@ namespace CashandCarry.Model
         public Nullable<int> Invoice_ { get; set; }
         public Nullable<decimal> ReturnAmount { get; set; }
         public Nullable<System.DateTime> ReturnDate { get; set; }
+        public Nullable<decimal> ReturnCash { get; set; }
+        public Nullable<decimal> TotalBill { get; set; }
+        public Nullable<int> CustomerID { get; set; }
     }
 }

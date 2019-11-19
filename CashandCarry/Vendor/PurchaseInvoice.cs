@@ -1,5 +1,6 @@
 ﻿using CashandCarry.BL;
 using CashandCarry.Model;
+using MetroFramework.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,7 +13,7 @@ using System.Windows.Forms;
 
 namespace CashandCarry.Vendor
 {
-    public partial class PurchaseInvoice : Form
+    public partial class PurchaseInvoice :MetroForm 
     {
         public PurchaseInvoice()
         {
@@ -41,7 +42,7 @@ namespace CashandCarry.Vendor
         {
            
             txtComID.Enabled = false;
-            txtContact.Enabled = false;
+            txtComContact.Enabled = false;
             txtTotalBill.Enabled = false;
             txtBillDiscount.Enabled = false;
             txtQuantity.Enabled = false;
@@ -274,33 +275,39 @@ namespace CashandCarry.Vendor
         private void btnSave_Click(object sender, EventArgs e)
         {
             PurchaseInvoiceBL objpur = new PurchaseInvoiceBL();
-            for(int i=0;i<dgvProduct.RowCount-1;i++)
+            for (int i = 0; i < dgvProduct.RowCount - 1; i++)
             {
                 objpur.ProductID = Convert.ToInt32(dgvProduct.Rows[i].Cells[1].Value.ToString());
-                objpur.Quantity = Convert.ToInt32(dgvProduct.Rows[i].Cells[5].Value.ToString());
+                objpur.Quantity = Convert.ToInt32(dgvProduct.Rows[i].Cells[6].Value.ToString());
                 objpur.ProdUpdate();
             }
-            PurchaseInvoiceBL objmas = new PurchaseInvoiceBL() 
+            PurchaseInvoiceBL obj = new PurchaseInvoiceBL()
             {
-                PInvoice=Convert.ToInt32(txtInvoiceID.Text),
-             companyID=Convert.ToInt32(txtComID.Text),
-             Discount=Convert.ToInt32(txtBillDiscount.Text),
-              PurchaseDate=DateTime.Parse(txtPurInvoiceDate.Text),
-               GrandTotal=Convert.ToInt32(txtGrandTotal.Text),
-               Payment=Convert.ToDecimal(txtTotalPay.Text),
-               DuePayment=Convert.ToDecimal(txtPayDue.Text)
+                DuePayment = Convert.ToDecimal(txtPayDue.Text),
+                companyID = Convert.ToInt32(txtComID.Text)
+            };
+            obj.UpdateDuePayment();
+            PurchaseInvoiceBL objmas = new PurchaseInvoiceBL()
+            {
+                PInvoice = Convert.ToInt32(txtInvoiceID.Text),
+                companyID = Convert.ToInt32(txtComID.Text),
+                Discount = Convert.ToInt32(txtBillDiscount.Text),
+                PurchaseDate = DateTime.Parse(txtPurInvoiceDate.Text),
+                GrandTotal = Convert.ToInt32(txtGrandTotal.Text),
+                Payment = Convert.ToDecimal(txtTotalPay.Text),
+                DuePayment = Convert.ToDecimal(txtPayDue.Text)
             };
 
             PurchaseInvoiceBL objDet = new PurchaseInvoiceBL();
-            for(int i=0;i<dgvProduct.RowCount-1;i++)
+            for (int i = 0; i < dgvProduct.RowCount - 1; i++)
             {
                 objDet.PInvoice = Convert.ToInt32(txtInvoiceID.Text);
                 objDet.ProductID = Convert.ToInt32(dgvProduct.Rows[i].Cells[1].Value.ToString());
                 objDet.companyID = Convert.ToInt32(dgvProduct.Rows[i].Cells[2].Value.ToString());
-                objDet.Quantity=Convert.ToInt32(dgvProduct.Rows[i].Cells[6].Value.ToString());
+                objDet.Quantity = Convert.ToInt32(dgvProduct.Rows[i].Cells[6].Value.ToString());
                 objDet.TotalAmount = Convert.ToInt32(dgvProduct.Rows[i].Cells[7].Value.ToString());
                 objDet.SaveDetail();
-                
+
             }
             objmas.SaveMaster();
         }

@@ -33,5 +33,11 @@ namespace CashandCarry.Sales
             FrmSaleReturn objReturn = new FrmSaleReturn();
             objReturn.ShowDialog();
         }
+
+        private void btnRecovery_Click(object sender, EventArgs e)
+        {
+            SaleRecovery obj = new SaleRecovery();
+            obj.ShowDialog();
+        }
     }
 }

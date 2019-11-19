@@ -42,6 +42,15 @@
     </FunctionImport>
     <EntitySet Name="Tbl_ReturnSaleDetail" EntityType="CashCarryModel.Tbl_ReturnSaleDetail" />
     <EntitySet Name="Tbl_ReturnSaleMaster" EntityType="CashCarryModel.Tbl_ReturnSaleMaster" />
+    <EntitySet Name="Tbl_PurchaseReturn_Detail" EntityType="CashCarryModel.Tbl_PurchaseReturn_Detail" />
+    <EntitySet Name="Tbl_PurchaseReturn_Master" EntityType="CashCarryModel.Tbl_PurchaseReturn_Master" />
+    <EntitySet Name="tbl_Employee_Salary" EntityType="CashCarryModel.tbl_Employee_Salary" />
+    <FunctionImport Name="SP_CusType_AddNew" ReturnType="Collection(Int32)">
+      <Parameter Name="CusTypeID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="Tbl_SaleRecovery" EntityType="CashCarryModel.Tbl_SaleRecovery" />
+    <EntitySet Name="View_Employee" EntityType="CashCarryModel.View_Employee" />
+    <EntitySet Name="tbl_Login_Type" EntityType="CashCarryModel.tbl_Login_Type" />
   </EntityContainer>
   <EntityType Name="tbl_Zone">
     <Key>
@@ -59,6 +68,7 @@
     <Property Name="Email" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
     <Property Name="Contact" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="DuePayment" Type="Decimal" Precision="18" Scale="2" />
   </EntityType>
   <ComplexType Name="SP_Zone_Search_Result">
     <Property Type="Int32" Name="ZoneID" Nullable="false" />
@@ -87,6 +97,9 @@
     <Property Name="Designation" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
     <Property Name="Gender" Type="Boolean" />
     <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Salary" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="AsignDate" Type="DateTime" Precision="3" />
+    <Property Name="LoginTypeID" Type="Int32" />
   </EntityType>
   <EntityType Name="tbl_Customer">
     <Key>
@@ -99,6 +112,7 @@
     <Property Name="Contact" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="Email" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="ZoneID" Type="Int32" />
+    <Property Name="DuePayment" Type="Decimal" Precision="18" Scale="2" />
   </EntityType>
   <EntityType Name="View_tbl_Customer">
     <Key>
@@ -111,6 +125,7 @@
     <Property Name="Contact" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="Email" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="ZoneName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="DuePayment" Type="Decimal" Precision="18" Scale="2" />
   </EntityType>
   <EntityType Name="tbl_Product">
     <Key>
@@ -155,7 +170,6 @@
     </Key>
     <Property Name="Invoice_" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="SaleDate" Type="DateTime" Precision="3" />
-    <Property Name="Amount" Type="Decimal" Precision="18" Scale="0" />
     <Property Name="TotalAmount" Type="Decimal" Precision="18" Scale="0" />
     <Property Name="CustomerID" Type="Int32" />
     <Property Name="Payment" Type="Decimal" Precision="18" Scale="2" />
@@ -173,8 +187,10 @@
     <Property Name="Date" Type="DateTime" Precision="3" />
     <Property Name="GrandTotal" Type="Decimal" Precision="18" Scale="0" />
     <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
-    <Property Name="BillAmount" Type="Decimal" Precision="18" Scale="0" />
     <Property Name="CustomerName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Payment" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="DuePayment" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="TotalDue" Type="Decimal" Precision="18" Scale="2" />
   </EntityType>
   <ComplexType Name="SP_SaleInvoice_Search_Result">
     <Property Type="Int32" Name="InvoiceNo" Nullable="false" />
@@ -227,6 +243,7 @@
     <Property Name="RInvoice" Type="Int32" />
     <Property Name="ProductID" Type="Int32" />
     <Property Name="Quantity" Type="Int32" />
+    <Property Name="Discount" Type="Decimal" Precision="18" Scale="2" />
     <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
   </EntityType>
   <EntityType Name="Tbl_ReturnSaleMaster">
@@ -237,5 +254,79 @@
     <Property Name="Invoice_" Type="Int32" />
     <Property Name="ReturnAmount" Type="Decimal" Precision="18" Scale="2" />
     <Property Name="ReturnDate" Type="DateTime" Precision="3" />
+    <Property Name="ReturnCash" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="TotalBill" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="CustomerID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Tbl_PurchaseReturn_Detail">
+    <Key>
+      <PropertyRef Name="PReturnDetailID" />
+    </Key>
+    <Property Name="PReturnDetailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PReturnID" Type="Int32" />
+    <Property Name="ProductID" Type="Int32" />
+    <Property Name="Quantity" Type="Int32" />
+    <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="Tbl_PurchaseReturn_Master">
+    <Key>
+      <PropertyRef Name="PReturnID" />
+    </Key>
+    <Property Name="PReturnID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CompanyID" Type="Int32" />
+    <Property Name="ReturnDate" Type="DateTime" Precision="3" />
+    <Property Name="ReturnCash" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="TotalAmount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="ReturnDue" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Discount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="PInvoice" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tbl_Employee_Salary">
+    <Key>
+      <PropertyRef Name="SalaryID" />
+    </Key>
+    <Property Name="SalaryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmployeeID" Type="Int32" />
+    <Property Name="Salary" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Status" Type="Boolean" />
+    <Property Name="ResginDate" Type="DateTime" Precision="3" />
+    <Property Name="SalaryDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Tbl_SaleRecovery">
+    <Key>
+      <PropertyRef Name="SRecoveryID" />
+    </Key>
+    <Property Name="SRecoveryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerID" Type="Int32" />
+    <Property Name="RInvoice" Type="Int32" />
+    <Property Name="ReturnCash" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="RecoveryDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="View_Employee">
+    <Key>
+      <PropertyRef Name="EmployeeID" />
+    </Key>
+    <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Fname" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Username" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Qualifiction" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="DOB" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Cnic" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Contact" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Gender" Type="Boolean" />
+    <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Salary" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="AsignDate" Type="DateTime" Precision="3" />
+    <Property Name="Designation" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="LoginType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tbl_Login_Type">
+    <Key>
+      <PropertyRef Name="LoginTypeID" />
+    </Key>
+    <Property Name="LoginTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LoginType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
   </EntityType>
 </Schema>

@@ -23,5 +23,11 @@ namespace CashandCarry.Purchase
             PurchaseInvoice objPur = new PurchaseInvoice();
             objPur.ShowDialog();
         }
+
+        private void btnSaleReturn_Click(object sender, EventArgs e)
+        {
+            FrmPurchaseReturn objRet = new FrmPurchaseReturn();
+            objRet.ShowDialog();
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using CashandCarry.FormReports;
+using CashandCarry.FrmMessageBox;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,13 +22,16 @@ namespace CashandCarry.Reports
         private void button4_Click(object sender, EventArgs e)
         {
             //FrmSaleReport obj = new FrmSaleReport();
-            FrmsalReport obj = new FrmsalReport();
-            obj.ShowDialog();
+           // FrmsalReport obj = new FrmsalReport();
+            
+            SaleMesage objmsg = new SaleMesage();
+            objmsg.ShowDialog();     
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            FrmPurReport objPur = new FrmPurReport();
+            //FrmPurReport objPur = new FrmPurReport();
+            PurchaseMesageBox objPur = new PurchaseMesageBox();
             objPur.ShowDialog();
         }
 

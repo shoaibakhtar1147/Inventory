@@ -21,5 +21,6 @@ namespace CashandCarry.Model
         public string Contact { get; set; }
         public string Email { get; set; }
         public string ZoneName { get; set; }
+        public Nullable<decimal> DuePayment { get; set; }
     }
 }

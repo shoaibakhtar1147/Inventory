@@ -1,5 +1,6 @@
 ﻿using CashandCarry.BL;
 using CashandCarry.Model;
+using MetroFramework.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,7 +13,7 @@ using System.Windows.Forms;
 
 namespace CashandCarry.Configuration
 {
-    public partial class frmProduct : Form
+    public partial class frmProduct : MetroForm
     {
         public frmProduct()
         {
@@ -148,51 +149,26 @@ namespace CashandCarry.Configuration
             return true;
         }
 
-        private void dgvProduct_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            int columnindex = e.ColumnIndex;
-            int rowindex = e.RowIndex;
-            if(columnindex==0)
-            {
-                txtProductID.Text = dgvProduct.Rows[rowindex].Cells[2].Value.ToString();
-                txtProdName.Text = dgvProduct.Rows[rowindex].Cells[3].Value.ToString();
-                txtProdCate.Text = dgvProduct.Rows[rowindex].Cells[4].Value.ToString();
-                txtComName.Text = dgvProduct.Rows[rowindex].Cells[5].Value.ToString();
-               
-                txtWeight.Text = dgvProduct.Rows[rowindex].Cells[6].Value.ToString();
-                txtRP.Text = dgvProduct.Rows[rowindex].Cells[7].Value.ToString();
-                txtPP.Text = dgvProduct.Rows[rowindex].Cells[8].Value.ToString();
-                FormEnable();
-            }
-            else if(columnindex==1)
-            {
-                ProductBL objPro = new ProductBL() 
-                {
-                 ProductID=Convert.ToInt32(dgvProduct.Rows[rowindex].Cells[2].Value)
-
-                };
-                objPro.Delete();
-                MessageBox.Show("Record Delete Successfull");
-                LoadData();
-            }
-        }
-
+        
         private void btnSearch_Click(object sender, EventArgs e)
         {
             if(txtSearch.Text==string.Empty)
             {
-                MessageBox.Show("Please Enter An Id");
+                MessageBox.Show("Please Enter An ID");
             }
-            ProductBL objPro = new ProductBL() 
+            else
             {
-            ProductID=Convert.ToInt32(txtSearch.Text)
-            };
-            var dt = objPro.Search();
-            if(dt != null)
-            {
-                dgvProduct.DataSource = dt;
-                btnUpdate.Enabled = true;
-                btnDelete.Enabled = true;
+                ProductBL objPro = new ProductBL()
+                {
+                    ProductID = Convert.ToInt32(txtSearch.Text)
+                };
+                var dt = objPro.Search();
+                if (dt != null)
+                {
+                    dgvProduct.DataSource = dt;
+                    btnUpdate.Enabled = true;
+                    btnDelete.Enabled = true;
+                }
             }
         }
 
@@ -239,6 +215,39 @@ namespace CashandCarry.Configuration
                 MessageBox.Show("Record Delete Successfull");
                 LoadData();
                 
+            }
+        }
+
+        private void dgvProduct_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
+            int columnindex = e.ColumnIndex;
+            int rowindex = e.RowIndex;
+            if (columnindex == 0)
+            {
+                txtProductID.Text = dgvProduct.Rows[rowindex].Cells[2].Value.ToString();
+                txtProdName.Text = dgvProduct.Rows[rowindex].Cells[3].Value.ToString();
+                txtProdCate.Text = dgvProduct.Rows[rowindex].Cells[4].Value.ToString();
+                txtComName.Text = dgvProduct.Rows[rowindex].Cells[5].Value.ToString();
+
+                txtWeight.Text = dgvProduct.Rows[rowindex].Cells[6].Value.ToString();
+                txtRP.Text = dgvProduct.Rows[rowindex].Cells[7].Value.ToString();
+                txtPP.Text = dgvProduct.Rows[rowindex].Cells[8].Value.ToString();
+                FormEnable();
+                btnUpdate.Enabled = true;
+                btnDelete.Enabled = true;
+                btnClear.Enabled = true;
+            }
+            else if (columnindex == 1)
+            {
+                ProductBL objPro = new ProductBL()
+                {
+                    ProductID = Convert.ToInt32(dgvProduct.Rows[rowindex].Cells[2].Value)
+
+                };
+                objPro.Delete();
+                MessageBox.Show("Record Delete Successfull");
+                LoadData();
             }
         }
       

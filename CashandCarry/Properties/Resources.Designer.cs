@@ -133,6 +133,16 @@ namespace CashandCarry.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap employee__4_ {
+            get {
+                object obj = ResourceManager.GetObject("employee (4)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap goods {
             get {
                 object obj = ResourceManager.GetObject("goods", resourceCulture);
@@ -206,6 +216,16 @@ namespace CashandCarry.Properties {
         internal static System.Drawing.Bitmap onboarding {
             get {
                 object obj = ResourceManager.GetObject("onboarding", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap payment {
+            get {
+                object obj = ResourceManager.GetObject("payment", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

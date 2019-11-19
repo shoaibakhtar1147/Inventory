@@ -44,6 +44,16 @@
       <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="MetroFramework">
+      <HintPath>..\packages\MetroFramework.RunTime.1.2.0.3\lib\net40-Client\MetroFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Design">
+      <HintPath>..\packages\MetroFramework.Design.1.2.0.3\lib\net40\MetroFramework.Design.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="MetroFramework.Fonts">
+      <HintPath>..\packages\MetroFramework.Fonts.1.2.0.3\lib\net40\MetroFramework.Fonts.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
     <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
     <Reference Include="System" />
@@ -66,12 +76,22 @@
     <Compile Include="BL\CategoryBL.cs" />
     <Compile Include="BL\CompanyBL.cs" />
     <Compile Include="BL\CustomerBL.cs" />
+    <Compile Include="BL\CusTypeBL.cs" />
     <Compile Include="BL\EmployeeBL.cs" />
+    <Compile Include="BL\EmpSalaryBL.cs" />
     <Compile Include="BL\ProductBL.cs" />
     <Compile Include="BL\PurchaseInvoiceBL.cs" />
+    <Compile Include="BL\PurchaseReturnBL.cs" />
     <Compile Include="BL\ReturnSaleBL.cs" />
     <Compile Include="BL\SaleInvoiceBL.cs" />
+    <Compile Include="BL\SaleRecoveryBL.cs" />
     <Compile Include="BL\ZoneBL.cs" />
+    <Compile Include="Configuration\FrmCustomerType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Configuration\FrmCustomerType.Designer.cs">
+      <DependentUpon>FrmCustomerType.cs</DependentUpon>
+    </Compile>
     <Compile Include="Configuration\FrmZone.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -80,6 +100,18 @@
     </Compile>
     <Compile Include="DAL\DB.cs" />
     <Compile Include="Design.cs" />
+    <Compile Include="Employee\FrmEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Employee\FrmEmployee.Designer.cs">
+      <DependentUpon>FrmEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Employee\FrmEmployeeSalary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Employee\FrmEmployeeSalary.Designer.cs">
+      <DependentUpon>FrmEmployeeSalary.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormReports\FrmComReport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,17 +136,41 @@
     <Compile Include="FormReports\FrmPurReport.Designer.cs">
       <DependentUpon>FrmPurReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormReports\FrmPurReturnReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormReports\FrmPurReturnReport.Designer.cs">
+      <DependentUpon>FrmPurReturnReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormReports\FrmSaleReport.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormReports\FrmSaleReport.Designer.cs">
       <DependentUpon>FrmSaleReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormReports\FrmsalReturn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormReports\FrmsalReturn.Designer.cs">
+      <DependentUpon>FrmsalReturn.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormReports\FrmsalReport.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormReports\FrmsalReport.Designer.cs">
       <DependentUpon>FrmsalReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMessageBox\PurchaseMesageBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMessageBox\PurchaseMesageBox.Designer.cs">
+      <DependentUpon>PurchaseMesageBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMessageBox\SaleMesage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMessageBox\SaleMesage.Designer.cs">
+      <DependentUpon>SaleMesage.cs</DependentUpon>
     </Compile>
     <Compile Include="Interface\IGeneric.cs" />
     <Compile Include="Configuration\frmCustomer.cs">
@@ -129,10 +185,10 @@
     <Compile Include="Configuration\frmCompany.Designer.cs">
       <DependentUpon>frmCompany.cs</DependentUpon>
     </Compile>
-    <Compile Include="Configuration\frmEmployeeRegistration.cs">
+    <Compile Include="Employee\frmEmployeeRegistration.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Configuration\frmEmployeeRegistration.Designer.cs">
+    <Compile Include="Employee\frmEmployeeRegistration.Designer.cs">
       <DependentUpon>frmEmployeeRegistration.cs</DependentUpon>
     </Compile>
     <Compile Include="Manager\frmHomePage.cs">
@@ -198,6 +254,12 @@
     <Compile Include="Model\tbl_employee.cs">
       <DependentUpon>CashCarry.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\tbl_Employee_Salary.cs">
+      <DependentUpon>CashCarry.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\tbl_Login_Type.cs">
+      <DependentUpon>CashCarry.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\tbl_Product.cs">
       <DependentUpon>CashCarry.tt</DependentUpon>
     </Compile>
@@ -205,6 +267,12 @@
       <DependentUpon>CashCarry.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Tbl_PurchaseMaster.cs">
+      <DependentUpon>CashCarry.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Tbl_PurchaseReturn_Detail.cs">
+      <DependentUpon>CashCarry.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Tbl_PurchaseReturn_Master.cs">
       <DependentUpon>CashCarry.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Tbl_ReturnSaleDetail.cs">
@@ -219,10 +287,16 @@
     <Compile Include="Model\tbl_SaleMAster.cs">
       <DependentUpon>CashCarry.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Tbl_SaleRecovery.cs">
+      <DependentUpon>CashCarry.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\tbl_Zone.cs">
       <DependentUpon>CashCarry.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\View_DetailSale.cs">
+      <DependentUpon>CashCarry.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\View_Employee.cs">
       <DependentUpon>CashCarry.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\View_tbl_Customer.cs">
@@ -242,13 +316,25 @@
     <Compile Include="Configuration\FrmConfiguration.Designer.cs">
       <DependentUpon>FrmConfiguration.cs</DependentUpon>
     </Compile>
-    <Compile Include="Reports\CompanyReport.cs">
+    <Compile Include="Reports\Company\CompanyGeneralReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CompanyGeneralReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Company\CompanyReport.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CompanyReport.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Reports\CustomerReport.cs">
+    <Compile Include="Reports\Customer\CustomerGeneralReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CustomerGeneralReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Customer\CustomerReport.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CustomerReport.rpt</DependentUpon>
@@ -258,6 +344,18 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ProductReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\PurchaseReturn\PurReturnByComReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PurReturnByComReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\PurchaseReturn\PurReturnGeneralReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PurReturnGeneralReport.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reports\Purchase\PurchaseGeneralReport.cs">
@@ -278,6 +376,24 @@
       <DependentUpon>PurchaseReportCom.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reports\SaleReturn\ReturnByCusReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReturnByCusReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\SaleReturn\SaleReturnGeneralReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SaleReturnGeneralReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\SaleReturn\SaleReturnReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SaleReturnReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reports\Sale\SaleByCusReport.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -289,6 +405,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SaleGeneralReport.rpt</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Sales\SaleRecovery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sales\SaleRecovery.Designer.cs">
+      <DependentUpon>SaleRecovery.cs</DependentUpon>
     </Compile>
     <Compile Include="Vendor\frmPurchase.cs">
       <SubType>Form</SubType>
@@ -346,6 +468,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Vendor\FrmPurchaseReturn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vendor\FrmPurchaseReturn.Designer.cs">
+      <DependentUpon>FrmPurchaseReturn.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vendor\PurchaseInvoice.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -358,11 +486,20 @@
     <EmbeddedResource Include="Configuration\frmCompany.resx">
       <DependentUpon>frmCompany.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Configuration\frmEmployeeRegistration.resx">
+    <EmbeddedResource Include="Configuration\FrmCustomerType.resx">
+      <DependentUpon>FrmCustomerType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Employee\frmEmployeeRegistration.resx">
       <DependentUpon>frmEmployeeRegistration.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Configuration\FrmZone.resx">
       <DependentUpon>FrmZone.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Employee\FrmEmployee.resx">
+      <DependentUpon>FrmEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Employee\FrmEmployeeSalary.resx">
+      <DependentUpon>FrmEmployeeSalary.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormReports\FrmComReport.resx">
       <DependentUpon>FrmComReport.cs</DependentUpon>
@@ -376,11 +513,23 @@
     <EmbeddedResource Include="FormReports\FrmPurReport.resx">
       <DependentUpon>FrmPurReport.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormReports\FrmPurReturnReport.resx">
+      <DependentUpon>FrmPurReturnReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormReports\FrmSaleReport.resx">
       <DependentUpon>FrmSaleReport.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormReports\FrmsalReturn.resx">
+      <DependentUpon>FrmsalReturn.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormReports\FrmsalReport.resx">
       <DependentUpon>FrmsalReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMessageBox\PurchaseMesageBox.resx">
+      <DependentUpon>PurchaseMesageBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMessageBox\SaleMesage.resx">
+      <DependentUpon>SaleMesage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Manager\frmHomePage.resx">
       <DependentUpon>frmHomePage.cs</DependentUpon>
@@ -397,17 +546,33 @@
     <EmbeddedResource Include="Configuration\ProductCategory.resx">
       <DependentUpon>ProductCategory.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\CompanyReport.rpt">
+    <EmbeddedResource Include="Reports\Company\CompanyGeneralReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CompanyGeneralReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Company\CompanyReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CompanyReport.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\CustomerReport.rpt">
+    <EmbeddedResource Include="Reports\Customer\CustomerGeneralReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CustomerGeneralReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Customer\CustomerReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CustomerReport.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\ProductReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ProductReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\PurchaseReturn\PurReturnByComReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PurReturnByComReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\PurchaseReturn\PurReturnGeneralReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PurReturnGeneralReport.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\Purchase\PurchaseGeneralReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -421,6 +586,18 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>PurchaseReportCom.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\SaleReturn\ReturnByCusReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReturnByCusReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\SaleReturn\SaleReturnGeneralReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>SaleReturnGeneralReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\SaleReturn\SaleReturnReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>SaleReturnReport.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\Sale\SaleByCusReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>SaleByCusReport.cs</LastGenOutput>
@@ -428,6 +605,9 @@
     <EmbeddedResource Include="Reports\Sale\SaleGeneralReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>SaleGeneralReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sales\SaleRecovery.resx">
+      <DependentUpon>SaleRecovery.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vendor\frmPurchase.resx">
       <DependentUpon>frmPurchase.cs</DependentUpon>
@@ -461,6 +641,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vendor\FrmPurchaseReturn.resx">
+      <DependentUpon>FrmPurchaseReturn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vendor\PurchaseInvoice.resx">
       <DependentUpon>PurchaseInvoice.cs</DependentUpon>
@@ -563,7 +746,11 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="MetroFramework.txt" />
+    <None Include="Resources\payment.png" />
+    <None Include="Resources\employee %284%29.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

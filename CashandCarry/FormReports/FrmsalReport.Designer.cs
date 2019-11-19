@@ -29,29 +29,19 @@
         private void InitializeComponent()
         {
             this.crptViewerSale = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtinvoiceNo = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.btnCusName = new System.Windows.Forms.Button();
-            this.txtCus = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.btnSearch = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtmaxdate = new System.Windows.Forms.DateTimePicker();
             this.txtMinDate = new System.Windows.Forms.DateTimePicker();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.txtCusID = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtContact = new System.Windows.Forms.MaskedTextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.txtCusName = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
+            this.txtmaxdate = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtCus = new System.Windows.Forms.TextBox();
+            this.btnCusName = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtinvoiceNo = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // crptViewerSale
@@ -61,12 +51,142 @@
             this.crptViewerSale.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.crptViewerSale.Cursor = System.Windows.Forms.Cursors.Default;
             this.crptViewerSale.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.crptViewerSale.Location = new System.Drawing.Point(0, 142);
+            this.crptViewerSale.Location = new System.Drawing.Point(23, 224);
+            this.crptViewerSale.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.crptViewerSale.Name = "crptViewerSale";
-            this.crptViewerSale.Size = new System.Drawing.Size(1142, 370);
+            this.crptViewerSale.Size = new System.Drawing.Size(1286, 381);
             this.crptViewerSale.TabIndex = 0;
             this.crptViewerSale.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
             this.crptViewerSale.Load += new System.EventHandler(this.crystalReportViewer1_Load);
+            // 
+            // txtMinDate
+            // 
+            this.txtMinDate.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMinDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.txtMinDate.Location = new System.Drawing.Point(187, 38);
+            this.txtMinDate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtMinDate.Name = "txtMinDate";
+            this.txtMinDate.Size = new System.Drawing.Size(171, 23);
+            this.txtMinDate.TabIndex = 60;
+            this.txtMinDate.Value = new System.DateTime(2019, 9, 1, 0, 0, 0, 0);
+            // 
+            // txtmaxdate
+            // 
+            this.txtmaxdate.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtmaxdate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.txtmaxdate.Location = new System.Drawing.Point(496, 38);
+            this.txtmaxdate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtmaxdate.Name = "txtmaxdate";
+            this.txtmaxdate.Size = new System.Drawing.Size(171, 23);
+            this.txtmaxdate.TabIndex = 61;
+            this.txtmaxdate.Value = new System.DateTime(2019, 9, 1, 0, 0, 0, 0);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label1.Location = new System.Drawing.Point(121, 44);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(44, 17);
+            this.label1.TabIndex = 62;
+            this.label1.Text = "From:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label2.Location = new System.Drawing.Point(444, 44);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(26, 17);
+            this.label2.TabIndex = 63;
+            this.label2.Text = "To:";
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
+            this.btnSearch.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSearch.FlatAppearance.BorderSize = 0;
+            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSearch.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearch.ForeColor = System.Drawing.Color.White;
+            this.btnSearch.Location = new System.Drawing.Point(768, 38);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(107, 23);
+            this.btnSearch.TabIndex = 64;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.UseVisualStyleBackColor = false;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label3.Location = new System.Drawing.Point(37, 96);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(92, 17);
+            this.label3.TabIndex = 65;
+            this.label3.Text = "Customer ID:";
+            // 
+            // txtCus
+            // 
+            this.txtCus.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCus.Location = new System.Drawing.Point(187, 92);
+            this.txtCus.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtCus.Name = "txtCus";
+            this.txtCus.Size = new System.Drawing.Size(171, 23);
+            this.txtCus.TabIndex = 66;
+            // 
+            // btnCusName
+            // 
+            this.btnCusName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
+            this.btnCusName.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCusName.FlatAppearance.BorderSize = 0;
+            this.btnCusName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCusName.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCusName.ForeColor = System.Drawing.Color.White;
+            this.btnCusName.Location = new System.Drawing.Point(768, 92);
+            this.btnCusName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnCusName.Name = "btnCusName";
+            this.btnCusName.Size = new System.Drawing.Size(107, 23);
+            this.btnCusName.TabIndex = 67;
+            this.btnCusName.Text = "Search";
+            this.btnCusName.UseVisualStyleBackColor = false;
+            this.btnCusName.Click += new System.EventHandler(this.btnCusName_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label4.Location = new System.Drawing.Point(37, 44);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(44, 17);
+            this.label4.TabIndex = 82;
+            this.label4.Text = "Date:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label6.Location = new System.Drawing.Point(394, 96);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(82, 17);
+            this.label6.TabIndex = 83;
+            this.label6.Text = "Invoice No:";
+            // 
+            // txtinvoiceNo
+            // 
+            this.txtinvoiceNo.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtinvoiceNo.Location = new System.Drawing.Point(496, 92);
+            this.txtinvoiceNo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtinvoiceNo.Name = "txtinvoiceNo";
+            this.txtinvoiceNo.Size = new System.Drawing.Size(171, 23);
+            this.txtinvoiceNo.TabIndex = 84;
             // 
             // groupBox1
             // 
@@ -82,243 +202,34 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.txtmaxdate);
             this.groupBox1.Controls.Add(this.txtMinDate);
-            this.groupBox1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.groupBox1.Location = new System.Drawing.Point(49, 23);
+            this.groupBox1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.groupBox1.Location = new System.Drawing.Point(23, 77);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(779, 113);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox1.Size = new System.Drawing.Size(909, 139);
             this.groupBox1.TabIndex = 80;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Sales Invoice";
             // 
-            // txtinvoiceNo
-            // 
-            this.txtinvoiceNo.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtinvoiceNo.Location = new System.Drawing.Point(425, 71);
-            this.txtinvoiceNo.Name = "txtinvoiceNo";
-            this.txtinvoiceNo.Size = new System.Drawing.Size(147, 23);
-            this.txtinvoiceNo.TabIndex = 84;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label6.Location = new System.Drawing.Point(338, 78);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(81, 16);
-            this.label6.TabIndex = 83;
-            this.label6.Text = "Invoice No:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label4.Location = new System.Drawing.Point(32, 36);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(42, 16);
-            this.label4.TabIndex = 82;
-            this.label4.Text = "Date:";
-            // 
-            // btnCusName
-            // 
-            this.btnCusName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
-            this.btnCusName.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCusName.FlatAppearance.BorderSize = 0;
-            this.btnCusName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCusName.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCusName.ForeColor = System.Drawing.Color.White;
-            this.btnCusName.Location = new System.Drawing.Point(658, 75);
-            this.btnCusName.Name = "btnCusName";
-            this.btnCusName.Size = new System.Drawing.Size(92, 23);
-            this.btnCusName.TabIndex = 67;
-            this.btnCusName.Text = "Search";
-            this.btnCusName.UseVisualStyleBackColor = false;
-            this.btnCusName.Click += new System.EventHandler(this.btnCusName_Click);
-            // 
-            // txtCus
-            // 
-            this.txtCus.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCus.Location = new System.Drawing.Point(160, 75);
-            this.txtCus.Name = "txtCus";
-            this.txtCus.Size = new System.Drawing.Size(147, 23);
-            this.txtCus.TabIndex = 66;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label3.Location = new System.Drawing.Point(32, 78);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(90, 16);
-            this.label3.TabIndex = 65;
-            this.label3.Text = "Customer ID:";
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
-            this.btnSearch.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSearch.FlatAppearance.BorderSize = 0;
-            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSearch.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearch.ForeColor = System.Drawing.Color.White;
-            this.btnSearch.Location = new System.Drawing.Point(658, 33);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(92, 23);
-            this.btnSearch.TabIndex = 64;
-            this.btnSearch.Text = "Search";
-            this.btnSearch.UseVisualStyleBackColor = false;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label2.Location = new System.Drawing.Point(393, 36);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(26, 16);
-            this.label2.TabIndex = 63;
-            this.label2.Text = "To:";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label1.Location = new System.Drawing.Point(104, 36);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(43, 16);
-            this.label1.TabIndex = 62;
-            this.label1.Text = "From:";
-            // 
-            // txtmaxdate
-            // 
-            this.txtmaxdate.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold);
-            this.txtmaxdate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.txtmaxdate.Location = new System.Drawing.Point(425, 29);
-            this.txtmaxdate.Name = "txtmaxdate";
-            this.txtmaxdate.Size = new System.Drawing.Size(147, 23);
-            this.txtmaxdate.TabIndex = 61;
-            this.txtmaxdate.Value = new System.DateTime(2019, 9, 1, 0, 0, 0, 0);
-            // 
-            // txtMinDate
-            // 
-            this.txtMinDate.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold);
-            this.txtMinDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.txtMinDate.Location = new System.Drawing.Point(160, 31);
-            this.txtMinDate.Name = "txtMinDate";
-            this.txtMinDate.Size = new System.Drawing.Size(147, 23);
-            this.txtMinDate.TabIndex = 60;
-            this.txtMinDate.Value = new System.DateTime(2019, 9, 1, 0, 0, 0, 0);
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(82)))), ((int)(((byte)(83)))));
-            this.panel2.Controls.Add(this.groupBox2);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1142, 10);
-            this.panel2.TabIndex = 81;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.txtCusID);
-            this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.txtContact);
-            this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Controls.Add(this.txtCusName);
-            this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.groupBox2.Location = new System.Drawing.Point(12, 158);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(302, 191);
-            this.groupBox2.TabIndex = 12;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Customer Details";
-            // 
-            // txtCusID
-            // 
-            this.txtCusID.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCusID.FormattingEnabled = true;
-            this.txtCusID.Items.AddRange(new object[] {
-            ""});
-            this.txtCusID.Location = new System.Drawing.Point(127, 60);
-            this.txtCusID.Name = "txtCusID";
-            this.txtCusID.Size = new System.Drawing.Size(148, 24);
-            this.txtCusID.TabIndex = 2;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label5.Location = new System.Drawing.Point(17, 63);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(90, 16);
-            this.label5.TabIndex = 23;
-            this.label5.Text = "Customer ID:";
-            // 
-            // txtContact
-            // 
-            this.txtContact.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtContact.Location = new System.Drawing.Point(127, 135);
-            this.txtContact.Mask = "0000-0000000";
-            this.txtContact.Name = "txtContact";
-            this.txtContact.Size = new System.Drawing.Size(147, 23);
-            this.txtContact.TabIndex = 2;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label9.Location = new System.Drawing.Point(17, 135);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(63, 16);
-            this.label9.TabIndex = 16;
-            this.label9.Text = "Contact:";
-            // 
-            // txtCusName
-            // 
-            this.txtCusName.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCusName.Location = new System.Drawing.Point(127, 99);
-            this.txtCusName.Name = "txtCusName";
-            this.txtCusName.Size = new System.Drawing.Size(147, 23);
-            this.txtCusName.TabIndex = 1;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label7.Location = new System.Drawing.Point(17, 99);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(51, 16);
-            this.label7.TabIndex = 0;
-            this.label7.Text = "Name:";
-            // 
             // FrmsalReport
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1142, 512);
-            this.Controls.Add(this.panel2);
+            this.BorderStyle = MetroFramework.Drawing.MetroBorderStyle.FixedSingle;
+            this.ClientSize = new System.Drawing.Size(1332, 630);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.crptViewerSale);
+            this.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FrmsalReport";
+            this.Padding = new System.Windows.Forms.Padding(23, 74, 23, 25);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Sale Report";
+            this.Text = "Sale Invoice Report";
             this.Load += new System.EventHandler(this.FrmsalReport_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -326,25 +237,17 @@
         #endregion
 
         private CrystalDecisions.Windows.Forms.CrystalReportViewer crptViewerSale;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button btnCusName;
-        private System.Windows.Forms.TextBox txtCus;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button btnSearch;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DateTimePicker txtmaxdate;
         private System.Windows.Forms.DateTimePicker txtMinDate;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.ComboBox txtCusID;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.MaskedTextBox txtContact;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox txtCusName;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txtinvoiceNo;
+        private System.Windows.Forms.DateTimePicker txtmaxdate;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtCus;
+        private System.Windows.Forms.Button btnCusName;
+        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtinvoiceNo;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
