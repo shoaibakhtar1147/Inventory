@@ -27,6 +27,7 @@
         <EntityTypeShape EntityType="CashCarryModel.Tbl_SaleRecovery" Width="1.5" PointX="10.375" PointY="6.75" />
         <EntityTypeShape EntityType="CashCarryModel.View_Employee" Width="1.5" PointX="10.375" PointY="9.75" />
         <EntityTypeShape EntityType="CashCarryModel.tbl_Login_Type" Width="1.5" PointX="5.375" PointY="11.75" />
+        <EntityTypeShape EntityType="CashCarryModel.tbl_PurchaseRemain" Width="1.5" PointX="12.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

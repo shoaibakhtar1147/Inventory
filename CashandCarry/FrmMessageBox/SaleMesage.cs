@@ -39,5 +39,12 @@ namespace CashandCarry.FrmMessageBox
             obj.ShowDialog();
          
         }
+
+        private void btnRecovery_Click(object sender, EventArgs e)
+        {
+            FrmRecoveryReport obj = new FrmRecoveryReport();
+            this.Hide();
+            obj.ShowDialog();
+        }
     }
 }

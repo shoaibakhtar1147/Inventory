@@ -49,6 +49,7 @@ namespace CashandCarry.Configuration
 
                 FormEnable();
                 txtCusType.Focus();
+                btnAddnew.Enabled = false;
             }
         }
 
@@ -88,6 +89,7 @@ namespace CashandCarry.Configuration
             objCus.Save();
             MessageBox.Show("Record Saved Successful");
             LoadData();
+            btnAddnew.Enabled = true;
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)

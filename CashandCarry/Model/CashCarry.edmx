@@ -116,6 +116,16 @@
           <Property Name="Payment" Type="decimal" Precision="18" Scale="2" />
           <Property Name="DuePayment" Type="decimal" Precision="18" Scale="2" />
         </EntityType>
+        <EntityType Name="tbl_PurchaseRemain">
+          <Key>
+            <PropertyRef Name="PRemainID" />
+          </Key>
+          <Property Name="PRemainID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyID" Type="int" />
+          <Property Name="PReturnID" Type="int" />
+          <Property Name="ReturnCash" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Date" Type="datetime" />
+        </EntityType>
         <EntityType Name="Tbl_PurchaseReturn_Detail">
           <Key>
             <PropertyRef Name="PReturnDetailID" />
@@ -301,6 +311,7 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
           <EntitySet Name="tbl_Product" EntityType="Self.tbl_Product" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_PurchaseDetail" EntityType="Self.Tbl_PurchaseDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_PurchaseMaster" EntityType="Self.Tbl_PurchaseMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_PurchaseRemain" EntityType="Self.tbl_PurchaseRemain" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_PurchaseReturn_Detail" EntityType="Self.Tbl_PurchaseReturn_Detail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_PurchaseReturn_Master" EntityType="Self.Tbl_PurchaseReturn_Master" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_ReturnSaleDetail" EntityType="Self.Tbl_ReturnSaleDetail" Schema="dbo" store:Type="Tables" />
@@ -424,6 +435,7 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
           <EntitySet Name="Tbl_SaleRecovery" EntityType="CashCarryModel.Tbl_SaleRecovery" />
           <EntitySet Name="View_Employee" EntityType="CashCarryModel.View_Employee" />
           <EntitySet Name="tbl_Login_Type" EntityType="CashCarryModel.tbl_Login_Type" />
+          <EntitySet Name="tbl_PurchaseRemain" EntityType="CashCarryModel.tbl_PurchaseRemain" />
         </EntityContainer>
         <EntityType Name="tbl_Zone">
           <Key>
@@ -701,6 +713,16 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
           </Key>
           <Property Name="LoginTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="LoginType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbl_PurchaseRemain">
+          <Key>
+            <PropertyRef Name="PRemainID" />
+          </Key>
+          <Property Name="PRemainID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyID" Type="Int32" />
+          <Property Name="PReturnID" Type="Int32" />
+          <Property Name="ReturnCash" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1019,6 +1041,17 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
               <MappingFragment StoreEntitySet="tbl_Login_Type">
                 <ScalarProperty Name="LoginType" ColumnName="LoginType" />
                 <ScalarProperty Name="LoginTypeID" ColumnName="LoginTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_PurchaseRemain">
+            <EntityTypeMapping TypeName="CashCarryModel.tbl_PurchaseRemain">
+              <MappingFragment StoreEntitySet="tbl_PurchaseRemain">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="ReturnCash" ColumnName="ReturnCash" />
+                <ScalarProperty Name="PReturnID" ColumnName="PReturnID" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="PRemainID" ColumnName="PRemainID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

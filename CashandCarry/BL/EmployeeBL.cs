@@ -29,32 +29,59 @@ namespace CashandCarry.BL
      public DateTime AsignDate { get; set; }
      public int LoginType { get; set; }
      public bool Status { get; set; }
+   
 
         public void Save()
         {
            using(var context= new CashCarryEntities3())
            {
-            
-                  tbl_employee objemp = new tbl_employee()
-                  {
-                     
-                      Name = Name,
-                      Fname = Fname,
-                      Gender = Gender,
-                      Password = Password,
-                      Qualifiction = Qualifiction,
-                      Username = Username,
-                      DOB = DOB,
-                      Designation = Designation,
-                      Contact = Contact,
-                      Cnic = Cnic,
-                      Address = Address,
-                      AsignDate = AsignDate,
-                      Salary = Salary,
-                      LoginTypeID = LoginType
-                  };
-                  context.tbl_employee.Add(objemp);
-                  context.SaveChanges();
+
+               if (Username == null && Password == null && LoginType == 0)
+               {
+                   tbl_employee objemp = new tbl_employee()
+                   {
+
+                       Name = Name,
+                       Fname = Fname,
+                       Gender = Gender,
+                       Password = null,
+                       Qualifiction = Qualifiction,
+                       Username = null,
+                       DOB = DOB,
+                       Designation = Designation,
+                       Contact = Contact,
+                       Cnic = Cnic,
+                       Address = Address,
+                       AsignDate = AsignDate,
+                       Salary = Salary,
+                       LoginTypeID = 0
+                   };
+                   context.tbl_employee.Add(objemp);
+                   context.SaveChanges();
+               }
+               else
+               {
+                   tbl_employee objemp = new tbl_employee()
+                   {
+
+                       Name = Name,
+                       Fname = Fname,
+                       Gender = Gender,
+                       Password = Password,
+                       Qualifiction = Qualifiction,
+                       Username = Username,
+                       DOB = DOB,
+                       Designation = Designation,
+                       Contact = Contact,
+                       Cnic = Cnic,
+                       Address = Address,
+                       AsignDate = AsignDate,
+                       Salary = Salary,
+                       LoginTypeID = LoginType
+                   };
+                   context.tbl_employee.Add(objemp);
+                   context.SaveChanges();
+               }
                
            }
 
@@ -118,12 +145,14 @@ namespace CashandCarry.BL
             }
         }
 
-        public List<View_Employee> Select()
+        public DataTable Select()
         {
-           using(var context=new CashCarryEntities3())
-            {
-                return context.View_Employee.ToList();
-            }
+           //using(var context=new CashCarryEntities3())
+           // {
+           //     return context.View_Employee.ToList();
+           // }
+            string spName = "SP_Employee_view";
+            return DB.SelectTableWithSP(spName, null);
         }
         public List<tbl_Login_Type> SelectLogin()
         {
@@ -132,5 +161,14 @@ namespace CashandCarry.BL
                 return context.tbl_Login_Type.ToList();
             }
         }
+
+        public tbl_employee ForLogin() 
+        {
+        using(var context=new CashCarryEntities3())
+        {
+            return context.tbl_employee.Where(a => a.Username == Username && a.Password == Password).SingleOrDefault();
+        }
+        }
+
     }
 }

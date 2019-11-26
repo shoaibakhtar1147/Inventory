@@ -111,6 +111,16 @@
     <Property Name="Payment" Type="decimal" Precision="18" Scale="2" />
     <Property Name="DuePayment" Type="decimal" Precision="18" Scale="2" />
   </EntityType>
+  <EntityType Name="tbl_PurchaseRemain">
+    <Key>
+      <PropertyRef Name="PRemainID" />
+    </Key>
+    <Property Name="PRemainID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CompanyID" Type="int" />
+    <Property Name="PReturnID" Type="int" />
+    <Property Name="ReturnCash" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Date" Type="datetime" />
+  </EntityType>
   <EntityType Name="Tbl_PurchaseReturn_Detail">
     <Key>
       <PropertyRef Name="PReturnDetailID" />
@@ -296,6 +306,7 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
     <EntitySet Name="tbl_Product" EntityType="Self.tbl_Product" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tbl_PurchaseDetail" EntityType="Self.Tbl_PurchaseDetail" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tbl_PurchaseMaster" EntityType="Self.Tbl_PurchaseMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_PurchaseRemain" EntityType="Self.tbl_PurchaseRemain" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tbl_PurchaseReturn_Detail" EntityType="Self.Tbl_PurchaseReturn_Detail" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tbl_PurchaseReturn_Master" EntityType="Self.Tbl_PurchaseReturn_Master" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tbl_ReturnSaleDetail" EntityType="Self.Tbl_ReturnSaleDetail" Schema="dbo" store:Type="Tables" />

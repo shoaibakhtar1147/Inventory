@@ -51,6 +51,7 @@
     <EntitySet Name="Tbl_SaleRecovery" EntityType="CashCarryModel.Tbl_SaleRecovery" />
     <EntitySet Name="View_Employee" EntityType="CashCarryModel.View_Employee" />
     <EntitySet Name="tbl_Login_Type" EntityType="CashCarryModel.tbl_Login_Type" />
+    <EntitySet Name="tbl_PurchaseRemain" EntityType="CashCarryModel.tbl_PurchaseRemain" />
   </EntityContainer>
   <EntityType Name="tbl_Zone">
     <Key>
@@ -328,5 +329,15 @@
     </Key>
     <Property Name="LoginTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="LoginType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tbl_PurchaseRemain">
+    <Key>
+      <PropertyRef Name="PRemainID" />
+    </Key>
+    <Property Name="PRemainID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CompanyID" Type="Int32" />
+    <Property Name="PReturnID" Type="Int32" />
+    <Property Name="ReturnCash" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
   </EntityType>
 </Schema>

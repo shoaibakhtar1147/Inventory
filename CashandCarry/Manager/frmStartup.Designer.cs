@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmStartup));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblUsername = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.btnEmployee = new System.Windows.Forms.Button();
             this.btnReport = new System.Windows.Forms.Button();
             this.btnPuchase = new System.Windows.Forms.Button();
@@ -45,6 +47,8 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
+            this.panel1.Controls.Add(this.lblUsername);
+            this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.btnEmployee);
             this.panel1.Controls.Add(this.btnReport);
             this.panel1.Controls.Add(this.btnPuchase);
@@ -57,6 +61,28 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(161, 588);
             this.panel1.TabIndex = 0;
+            // 
+            // lblUsername
+            // 
+            this.lblUsername.AutoSize = true;
+            this.lblUsername.Font = new System.Drawing.Font("Century Gothic", 12F);
+            this.lblUsername.Location = new System.Drawing.Point(27, 531);
+            this.lblUsername.Name = "lblUsername";
+            this.lblUsername.Size = new System.Drawing.Size(83, 21);
+            this.lblUsername.TabIndex = 9;
+            this.lblUsername.Text = "Welcome";
+            this.lblUsername.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 12F);
+            this.label1.Location = new System.Drawing.Point(27, 500);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(83, 21);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Welcome";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // btnEmployee
             // 
@@ -208,7 +234,6 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1124, 588);
             this.ControlBox = false;
             this.Controls.Add(this.pnlmain);
@@ -220,6 +245,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.frmStartup_Load);
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -236,5 +262,7 @@
         private System.Windows.Forms.Button btnReport;
         private System.Windows.Forms.Button btnPuchase;
         private System.Windows.Forms.Button btnEmployee;
+        private System.Windows.Forms.Label lblUsername;
+        private System.Windows.Forms.Label label1;
     }
 }

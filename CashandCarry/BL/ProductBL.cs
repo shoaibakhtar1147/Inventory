@@ -35,6 +35,7 @@ namespace CashandCarry.BL
                        weight=weight,
                         RetailPrice=RetailPrice,
                         TradePrice=TradePrice,
+                        Quantity=0
                 
                 };
                 context.tbl_Product.Add(objPro);

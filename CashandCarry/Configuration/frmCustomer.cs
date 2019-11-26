@@ -63,12 +63,14 @@ namespace CashandCarry.Configuration
             if(dt.Rows.Count>0)
             {
                 txtCusID.Text = Convert.ToString(dt.Rows[0]["CustomerID"]);
+                FormEnable();
+                LoadZoneID();
+                LoadCusType();
+                btnSave.Enabled = true;
+                txtCusName.Focus();
+                btnAddnew.Enabled = false;
             }
-            FormEnable();
-            LoadZoneID();
-            LoadCusType();
-            btnSave.Enabled = true;
-            txtCusName.Focus();
+           
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -158,7 +160,7 @@ namespace CashandCarry.Configuration
                 objcus.Save();
                 MessageBox.Show("Record Saved Successfull");
                 LoadData();
-               
+                btnAddnew.Enabled = true;
             }
             else
             {

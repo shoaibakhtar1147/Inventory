@@ -1,5 +1,7 @@
 ﻿using CashandCarry.BL;
 using CashandCarry.Model;
+using CashandCarry.Reports;
+using CashandCarry.Reports.EmployeeRpt;
 using MetroFramework.Forms;
 using System;
 using System.Collections.Generic;
@@ -76,6 +78,7 @@ namespace CashandCarry.Employee
               
                 FormEnable();
                 txtSearch.Focus();
+                btnAddnew.Enabled = false;
             }
            
         }
@@ -97,6 +100,7 @@ namespace CashandCarry.Employee
                 var dt = objEmp.Search();
                 if (dt.Count > 0)
                 {
+                  
                     dgvEmpSalary.DataSource = dt;
                     
                 }
@@ -113,7 +117,7 @@ namespace CashandCarry.Employee
             EmployeeBL objEmp = new EmployeeBL();
             var dt = objEmp.Select();
             dgvEmpSalary.Columns.Clear();
-            if (dt != null && dt.Count > 0)
+            if (dt != null && dt.Rows.Count > 0)
             {
                 DataGridViewImageColumn edit = new DataGridViewImageColumn();
                 edit.Image = Properties.Resources.edit;
@@ -160,6 +164,14 @@ namespace CashandCarry.Employee
                  objEMp.Status = false;   
                 }
             objEMp.Save();
+
+            EmpSalaryReport objrpt = new EmpSalaryReport();
+            objrpt.SetParameterValue("@SalaryID", txtSalaryID.Text);
+            rptViewer objview = new rptViewer();
+            objview.crptViewer.ReportSource = objrpt;
+            objview.WindowState = FormWindowState.Normal;
+            objview.ShowDialog();
+            btnAddnew.Enabled = true;
             }
 
         private void groupBox1_Enter(object sender, EventArgs e)

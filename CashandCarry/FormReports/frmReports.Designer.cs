@@ -48,6 +48,10 @@
             this.label5 = new System.Windows.Forms.Label();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.button4 = new System.Windows.Forms.Button();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.btnEmployee = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -58,6 +62,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            this.panel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.SuspendLayout();
             // 
             // panel3
@@ -300,6 +306,54 @@
             this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.panel6.Controls.Add(this.btnEmployee);
+            this.panel6.Controls.Add(this.label6);
+            this.panel6.Controls.Add(this.pictureBox6);
+            this.panel6.Location = new System.Drawing.Point(588, 292);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(165, 156);
+            this.panel6.TabIndex = 12;
+            // 
+            // btnEmployee
+            // 
+            this.btnEmployee.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
+            this.btnEmployee.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEmployee.FlatAppearance.BorderSize = 0;
+            this.btnEmployee.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEmployee.Font = new System.Drawing.Font("Century Schoolbook", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEmployee.ForeColor = System.Drawing.Color.White;
+            this.btnEmployee.Location = new System.Drawing.Point(33, 128);
+            this.btnEmployee.Name = "btnEmployee";
+            this.btnEmployee.Size = new System.Drawing.Size(98, 23);
+            this.btnEmployee.TabIndex = 10;
+            this.btnEmployee.Text = "Add";
+            this.btnEmployee.UseVisualStyleBackColor = false;
+            this.btnEmployee.Click += new System.EventHandler(this.btnEmployee_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Century Schoolbook", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label6.Location = new System.Drawing.Point(45, 14);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(74, 16);
+            this.label6.TabIndex = 9;
+            this.label6.Text = "Employee";
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Image = global::CashandCarry.Properties.Resources.onboarding;
+            this.pictureBox6.Location = new System.Drawing.Point(0, 39);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(165, 85);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox6.TabIndex = 3;
+            this.pictureBox6.TabStop = false;
+            // 
             // frmReports
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -307,6 +361,7 @@
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(965, 478);
             this.ControlBox = false;
+            this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel5);
@@ -329,6 +384,9 @@
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -355,5 +413,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Button btnProdReport;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Button btnEmployee;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.PictureBox pictureBox6;
     }
 }

@@ -59,6 +59,7 @@ namespace CashandCarry.Sales
                 SumCalculate();
                 btnSave.Enabled = true;
                 txtCusName.Focus();
+                btnNew.Enabled = false ;
 
 
 
@@ -181,21 +182,8 @@ namespace CashandCarry.Sales
         DataTable dt = new DataTable();
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            //SaleInvoiceBL objsale = new SaleInvoiceBL()
-            //{
-            //    InvoiceNo = Convert.ToInt32(txtInvoiceID.Text),
-
-            //    ProductID = Convert.ToInt32(txtProdID.Text),
-            //    Amount = Convert.ToDecimal(txtAmount.Text),
-            //    Quantity = Convert.ToInt32(txtQuantity.Text),
-            //    Discount = Convert.ToDecimal(txtDiscount.Text),
-            //    TotalAmount = Convert.ToDecimal(txtTotalAmount.Text)
-            //};
-            //objsale.SaveDetail();
-
+            
             DataRow dr = dt.NewRow();
-
-
             dr[1] = txtProdId.Text;
             dr[2] = txtProdName.Text;
             dr[3] = txtPrice.Text;
@@ -207,9 +195,11 @@ namespace CashandCarry.Sales
             ClearGroup();
             SumCalculate();
             txtTotalPay.Focus();
+             
 
 
-        }
+              }
+        
         private void SumCalculate()
         {
 
@@ -230,7 +220,7 @@ namespace CashandCarry.Sales
 
 
             SaleInvoiceBL objProd = new SaleInvoiceBL();
-            for (int i = 0; i < dgvProduct.RowCount - 1; i++)
+            for (int i = 0; i < dgvProduct.Rows.Count; i++)
             {
                 objProd.ProductID = Convert.ToInt32(dgvProduct.Rows[i].Cells[1].Value.ToString());
                 objProd.Quantity = Convert.ToInt32(dgvProduct.Rows[i].Cells[4].Value.ToString());
@@ -249,7 +239,7 @@ namespace CashandCarry.Sales
 
             SaleInvoiceBL objsale = new SaleInvoiceBL();
 
-            for (int i = 0; i < dgvProduct.RowCount - 1; i++)
+            for (int i = 0; i < dgvProduct.Rows.Count; i++)
             {
                 objsale.InvoiceNo = Convert.ToInt32(txtInvoiceID.Text);
                 objsale.ProductID = Convert.ToInt32(dgvProduct.Rows[i].Cells[1].Value.ToString());
@@ -258,8 +248,8 @@ namespace CashandCarry.Sales
                 objsale.TotalAmount = Convert.ToDecimal(dgvProduct.Rows[i].Cells[6].Value.ToString());
                 objsale.SaveDetail();
             }
-
             objmas.SaveMaster();
+
             SaleInvoiceBL objDue = new SaleInvoiceBL()
             {
                 CustomerID = Convert.ToInt32(txtCusId.Text),
@@ -267,14 +257,7 @@ namespace CashandCarry.Sales
             };
             objDue.UpdateDueSum();
 
-
-
-            //MessageBox.Show("Saved Successfull");
-
-
-
             saleInvoiceReport objSale = new saleInvoiceReport();
-
             rptViewer objview = new rptViewer();
             //objSale.SetDataSource =;
             objSale.SetParameterValue("@InvoiceNo", txtInvoiceID.Text);
@@ -290,10 +273,42 @@ namespace CashandCarry.Sales
             objview.crptViewer.ReportSource = objSale;
             objview.WindowState = FormWindowState.Normal;
             objview.ShowDialog();
+            ClearForm();
+            btnNew.Enabled = true;
         }
 
 
 
+        private void ClearForm()
+        {
+
+
+            foreach (Control c in groupBox1.Controls)
+            {
+                if (c is TextBox || c is ComboBox || c is MaskedTextBox)
+                {
+                    c.Text = "";
+                }
+
+            }
+            foreach (Control c in groupBox2.Controls)
+            {
+                if (c is TextBox || c is ComboBox || c is MaskedTextBox)
+                {
+                    c.Text = "";
+                }
+
+            }
+            foreach (Control c in groupBox5.Controls)
+            {
+                if (c is TextBox || c is ComboBox || c is MaskedTextBox)
+                {
+                    c.Text = "";
+                }
+
+            }
+            dgvProduct.DataSource = null;
+        }
 
 
         private void txtTotalPay_TextChanged(object sender, EventArgs e)
@@ -402,12 +417,12 @@ namespace CashandCarry.Sales
               
                 {
 
-                    if (txtProdName.Text == Convert.ToString(dgvProduct.Rows[0].Cells[2].Value) && txtPrice.Text == Convert.ToString(dgvProduct.Rows[0].Cells[3].Value))
+                    if (Convert.ToString(row.Cells[2].Value) == txtProdName.Text && Convert.ToString(row.Cells[3].Value) == txtPrice.Text)
                     {
 
-                        dgvProduct.Rows[0].Cells[4].Value = Convert.ToString(txtQuantity.Text);
-                        dgvProduct.Rows[0].Cells[5].Value = Convert.ToString(txtDiscount.Text);
-                        dgvProduct.Rows[0].Cells[6].Value = Convert.ToString(txtTotalAmount.Text);
+                       row.Cells[4].Value = Convert.ToString(Convert.ToInt32(txtQuantity.Text));
+                        row.Cells[5].Value = Convert.ToString(Convert.ToDecimal(txtDiscount.Text));
+                        row.Cells[6].Value = Convert.ToString(Convert.ToDecimal(txtTotalAmount.Text));
                         found = true;
                         SumCalculate();
                         ClearGroup();
@@ -415,12 +430,13 @@ namespace CashandCarry.Sales
 
 
                     }
-                    if (!found)
-                    {
-                        MessageBox.Show("Some Error Has Occur");
-
-                    }
+                   
                 }
+                if(!found)
+                {
+                    dgvProduct.Rows.Add(txtProdName.Text, txtPrice.Text, 1);
+                }
+              
 
         }
 
@@ -436,6 +452,26 @@ namespace CashandCarry.Sales
             txtGrandTotal.Clear();
 
         }
+
+        private void txtDiscount_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtTotalPay_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        
+
+        
 
     }
 }

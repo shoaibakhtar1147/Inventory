@@ -42,7 +42,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label1.Location = new System.Drawing.Point(65, 158);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(91, 19);
@@ -70,7 +70,7 @@
             // 
             this.lblpassword.AutoSize = true;
             this.lblpassword.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblpassword.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.lblpassword.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lblpassword.Location = new System.Drawing.Point(65, 214);
             this.lblpassword.Name = "lblpassword";
             this.lblpassword.Size = new System.Drawing.Size(84, 19);
@@ -120,7 +120,6 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(424, 467);
             this.ControlBox = false;
             this.Controls.Add(this.panel1);
@@ -131,10 +130,8 @@
             this.Controls.Add(this.txtusername);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.Name = "frmLogin";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.frmLogin_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

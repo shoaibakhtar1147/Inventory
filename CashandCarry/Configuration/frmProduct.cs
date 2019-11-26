@@ -92,6 +92,7 @@ namespace CashandCarry.Configuration
                 txtProdName.Focus();
                 LoadCategory();
                 LoadCompany();
+                btnAddnew.Enabled = false;
             }
            
         }
@@ -113,6 +114,7 @@ namespace CashandCarry.Configuration
                 objPro.Save();
                 MessageBox.Show("Product Saved Successfull");
                 LoadData();
+                btnAddnew.Enabled = true;
             }
             else
             {

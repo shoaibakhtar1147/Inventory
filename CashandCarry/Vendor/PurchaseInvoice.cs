@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace CashandCarry.Vendor
 {
-    public partial class PurchaseInvoice :MetroForm 
+    public partial class PurchaseInvoice : MetroForm
     {
         public PurchaseInvoice()
         {
@@ -28,19 +28,19 @@ namespace CashandCarry.Vendor
         private void LoadComp()
         {
             CompanyBL objCom = new CompanyBL();
-             List<tbl_Company> dt=objCom.Select();
-             txtCompanyName.DataSource = dt;
-             txtCompanyName.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-             txtCompanyName.AutoCompleteSource = AutoCompleteSource.ListItems;
-             txtCompanyName.DisplayMember = "CompanyName";
-             txtCompanyName.ValueMember = "CompanyID";
+            List<tbl_Company> dt = objCom.Select();
+            txtCompanyName.DataSource = dt;
+            txtCompanyName.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            txtCompanyName.AutoCompleteSource = AutoCompleteSource.ListItems;
+            txtCompanyName.DisplayMember = "CompanyName";
+            txtCompanyName.ValueMember = "CompanyID";
 
-            
+
 
         }
         private void FormDisable()
         {
-           
+
             txtComID.Enabled = false;
             txtComContact.Enabled = false;
             txtTotalBill.Enabled = false;
@@ -57,12 +57,12 @@ namespace CashandCarry.Vendor
             txtPrice.Enabled = false;
             txtPayMode.Enabled = false;
             txtInvoiceID.Enabled = false;
-           
+
             btnSave.Enabled = false;
-            
-           
+
+
             btnProdUpdate.Enabled = false;
-            btnRemove.Enabled = false;
+            //btnRemove.Enabled = false;
             btnAdd.Enabled = false;
             btnReset.Enabled = false;
             btnClear.Enabled = false;
@@ -76,39 +76,40 @@ namespace CashandCarry.Vendor
             txtCompanyName.Enabled = true;
             txtBillDiscount.Enabled = true;
             txtQuantity.Enabled = true;
-           
+
             txtProdName.Enabled = true;
             txtTotalPay.Enabled = true;
             btnProdUpdate.Enabled = true;
-            btnRemove.Enabled = true;
+           // btnRemove.Enabled = true;
             btnSave.Enabled = true;
             btnAdd.Enabled = true;
             btnReset.Enabled = true;
             btnClear.Enabled = true;
-            
+
         }
         private void PurchaseInvoice_Load(object sender, EventArgs e)
         {
             FormDisable();
             btnNew.Focus();
-           
+
         }
 
         private void btnNew_Click(object sender, EventArgs e)
         {
-            PurchaseInvoiceBL objPur = new PurchaseInvoiceBL(); 
-            DataTable dt=objPur.Addnew();
-            if(dt.Rows.Count>0)
+            PurchaseInvoiceBL objPur = new PurchaseInvoiceBL();
+            DataTable dt = objPur.Addnew();
+            if (dt.Rows.Count > 0)
             {
 
                 txtInvoiceID.Text = Convert.ToString(dt.Rows[0]["PInvoice"]);
                 FormEnable();
-            LoadComp();
-            LoadProd();
-            LoadGridProd();
-            txtCompanyName.Focus();
+                LoadComp();
+                LoadProd();
+                LoadGridProd();
+                txtCompanyName.Focus();
+                btnNew.Enabled = false;
             }
-           
+
         }
 
         private void LoadProd()
@@ -124,19 +125,19 @@ namespace CashandCarry.Vendor
 
         private void txtCompanyName_Leave(object sender, EventArgs e)
         {
-            if(txtCompanyName.Text==string.Empty)
+            if (txtCompanyName.Text == string.Empty)
             {
                 MessageBox.Show("Please Enter Company Name");
                 txtCompanyName.Focus();
             }
             else
             {
-                CompanyBL objCom = new CompanyBL() 
+                CompanyBL objCom = new CompanyBL()
                 {
-                 CompanyID=Convert.ToInt32(txtCompanyName.SelectedValue)
+                    CompanyID = Convert.ToInt32(txtCompanyName.SelectedValue)
                 };
                 var dt = objCom.Search();
-                if(dt != null)
+                if (dt != null)
                 {
                     txtComID.Text = Convert.ToString(dt[0].CompanyID);
                     txtComContact.Text = dt[0].Contact;
@@ -163,16 +164,16 @@ namespace CashandCarry.Vendor
                 if (dt != null)
                 {
                     txtProdID.Text = Convert.ToString(dt[0].ProductID);
-                    txtPrice.Text = Convert.ToString(dt[0].RetailPrice);
+                    txtPrice.Text = Convert.ToString(dt[0].TradePrice);
                     txtWeight.Text = dt[0].weight;
 
                 }
             }
         }
-        DataTable dt=new DataTable();
+        DataTable dt = new DataTable();
         private void LoadGridProd()
         {
-            
+
             dt.Columns.Add("SrNo").AutoIncrement = true;
             dt.Columns["SrNo"].AutoIncrementSeed = 1;
             dt.Columns["SrNo"].AutoIncrementStep = 1;
@@ -183,8 +184,8 @@ namespace CashandCarry.Vendor
             dt.Columns.Add("RetailPrice");
             dt.Columns.Add("Quantity");
             dt.Columns.Add("Amount");
-            
-           
+
+
             dgvProduct.DataSource = dt;
 
         }
@@ -192,7 +193,7 @@ namespace CashandCarry.Vendor
         {
             DataRow dr = dt.NewRow();
 
-            
+
             dr[1] = txtProdID.Text;
             dr[2] = txtComID.Text;
             dr[3] = txtCompanyName.Text;
@@ -204,6 +205,7 @@ namespace CashandCarry.Vendor
 
             SumCalculate();
             txtTotalBill.Focus();
+            ClearGroup();
         }
         private void SumCalculate()
         {
@@ -219,16 +221,16 @@ namespace CashandCarry.Vendor
 
         private void txtQuantity_Leave(object sender, EventArgs e)
         {
-             if (txtQuantity.Text == string.Empty)
+            if (txtQuantity.Text == string.Empty)
             {
                 MessageBox.Show("Please Enter Quantity");
                 txtQuantity.Focus();
             }
-             else if (txtQuantity.Text == "00" || txtQuantity.Text == "0")
-             {
-                 MessageBox.Show("Null Value Not Acceptable Please Enter Quantity");
-                 txtQuantity.Focus();
-             }
+            else if (txtQuantity.Text == "00" || txtQuantity.Text == "0")
+            {
+                MessageBox.Show("Null Value Not Acceptable Please Enter Quantity");
+                txtQuantity.Focus();
+            }
             int val = Convert.ToInt32(txtPrice.Text);
             int val1 = Convert.ToInt32(txtQuantity.Text);
             int val2 = val * val1;
@@ -275,7 +277,7 @@ namespace CashandCarry.Vendor
         private void btnSave_Click(object sender, EventArgs e)
         {
             PurchaseInvoiceBL objpur = new PurchaseInvoiceBL();
-            for (int i = 0; i < dgvProduct.RowCount - 1; i++)
+            for (int i = 0; i < dgvProduct.Rows.Count ; i++)
             {
                 objpur.ProductID = Convert.ToInt32(dgvProduct.Rows[i].Cells[1].Value.ToString());
                 objpur.Quantity = Convert.ToInt32(dgvProduct.Rows[i].Cells[6].Value.ToString());
@@ -299,7 +301,7 @@ namespace CashandCarry.Vendor
             };
 
             PurchaseInvoiceBL objDet = new PurchaseInvoiceBL();
-            for (int i = 0; i < dgvProduct.RowCount - 1; i++)
+            for (int i = 0; i < dgvProduct.Rows.Count ; i++)
             {
                 objDet.PInvoice = Convert.ToInt32(txtInvoiceID.Text);
                 objDet.ProductID = Convert.ToInt32(dgvProduct.Rows[i].Cells[1].Value.ToString());
@@ -310,18 +312,104 @@ namespace CashandCarry.Vendor
 
             }
             objmas.SaveMaster();
+            ClearForm();
+            btnNew.Enabled = true;
         }
 
+        private void ClearForm()
+        {
+
+
+            foreach (Control c in groupBox1.Controls)
+            {
+                if (c is TextBox || c is ComboBox || c is MaskedTextBox)
+                {
+                    c.Text = "";
+                }
+
+            }
+            foreach (Control c in groupBox3.Controls)
+            {
+                if (c is TextBox || c is ComboBox || c is MaskedTextBox)
+                {
+                    c.Text = "";
+                }
+
+            }
+            foreach (Control c in groupBox5.Controls)
+            {
+                if (c is TextBox || c is ComboBox || c is MaskedTextBox)
+                {
+                    c.Text = "";
+                }
+
+            }
+            dgvProduct.DataSource = null;
+        }
         private void btnReset_Click(object sender, EventArgs e)
         {
-             dgvProduct.DataSource = dt;
+            dgvProduct.DataSource = dt;
             dt.Rows.Clear();
             txtTotalBill.Clear();
             txtGrandTotal.Clear();
             txtBillDiscount.Clear();
         }
+
+        private void btnProdUpdate_Click(object sender, EventArgs e)
+        {
+            bool found = false;
+            if (dgvProduct.Rows.Count > 0)
+            {
+                foreach (DataGridViewRow row in dgvProduct.Rows)
+                {
+
+                    if (Convert.ToString(row.Cells[3].Value) == txtCompanyName.Text && Convert.ToString(row.Cells[4].Value) == txtProdName.Text && Convert.ToString(row.Cells[5].Value) == txtPrice.Text)
+                    {
+
+                        row.Cells[6].Value = Convert.ToString(Convert.ToInt32(txtQuantity.Text));
+                        row.Cells[7].Value = Convert.ToString(Convert.ToDecimal(txtAmount.Text));
+                        found = true;
+                        SumCalculate();
+                        ClearGroup();
+
+
+
+                    }
+
+                }
+                if (!found)
+                {
+                    dgvProduct.Rows.Add(txtProdName.Text, txtPrice.Text, 1);
+                }
+
+            }
         }
 
+        private void ClearGroup()
+        {
+            foreach (Control c in groupBox4.Controls)
+            {
+                if (c is TextBox || c is ComboBox)
+                {
+                    c.Text = "";
+                }
+
+            }
+        }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtQuantity_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+    }
       
        
        

@@ -28,10 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtLoginType = new System.Windows.Forms.ComboBox();
+            this.lblLoginType = new System.Windows.Forms.Label();
+            this.txtUsername = new System.Windows.Forms.TextBox();
+            this.lblUsername = new System.Windows.Forms.Label();
+            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.lblPassword = new System.Windows.Forms.Label();
+            this.txtAssignID = new System.Windows.Forms.CheckBox();
             this.txtAsignDate = new System.Windows.Forms.DateTimePicker();
             this.label15 = new System.Windows.Forms.Label();
             this.txtSalary = new System.Windows.Forms.TextBox();
@@ -67,13 +74,6 @@
             this.btnSearch = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dgvEmp = new System.Windows.Forms.DataGridView();
-            this.txtAssignID = new System.Windows.Forms.CheckBox();
-            this.txtLoginType = new System.Windows.Forms.ComboBox();
-            this.lblLoginType = new System.Windows.Forms.Label();
-            this.txtUsername = new System.Windows.Forms.TextBox();
-            this.lblUsername = new System.Windows.Forms.Label();
-            this.txtPassword = new System.Windows.Forms.TextBox();
-            this.lblPassword = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmp)).BeginInit();
@@ -120,9 +120,82 @@
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox1.Size = new System.Drawing.Size(825, 398);
-            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabIndex = 100;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Employee Registration";
+            // 
+            // txtLoginType
+            // 
+            this.txtLoginType.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.txtLoginType.FormattingEnabled = true;
+            this.txtLoginType.Location = new System.Drawing.Point(583, 358);
+            this.txtLoginType.Name = "txtLoginType";
+            this.txtLoginType.Size = new System.Drawing.Size(171, 25);
+            this.txtLoginType.TabIndex = 17;
+            // 
+            // lblLoginType
+            // 
+            this.lblLoginType.AutoSize = true;
+            this.lblLoginType.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLoginType.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblLoginType.Location = new System.Drawing.Point(467, 361);
+            this.lblLoginType.Name = "lblLoginType";
+            this.lblLoginType.Size = new System.Drawing.Size(79, 17);
+            this.lblLoginType.TabIndex = 32;
+            this.lblLoginType.Text = "Login Type:";
+            // 
+            // txtUsername
+            // 
+            this.txtUsername.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUsername.Location = new System.Drawing.Point(583, 267);
+            this.txtUsername.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtUsername.Name = "txtUsername";
+            this.txtUsername.Size = new System.Drawing.Size(171, 23);
+            this.txtUsername.TabIndex = 15;
+            // 
+            // lblUsername
+            // 
+            this.lblUsername.AutoSize = true;
+            this.lblUsername.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsername.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblUsername.Location = new System.Drawing.Point(467, 271);
+            this.lblUsername.Name = "lblUsername";
+            this.lblUsername.Size = new System.Drawing.Size(75, 17);
+            this.lblUsername.TabIndex = 31;
+            this.lblUsername.Text = "Username:";
+            // 
+            // txtPassword
+            // 
+            this.txtPassword.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPassword.Location = new System.Drawing.Point(583, 313);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.Size = new System.Drawing.Size(171, 23);
+            this.txtPassword.TabIndex = 16;
+            // 
+            // lblPassword
+            // 
+            this.lblPassword.AutoSize = true;
+            this.lblPassword.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPassword.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblPassword.Location = new System.Drawing.Point(467, 316);
+            this.lblPassword.Name = "lblPassword";
+            this.lblPassword.Size = new System.Drawing.Size(73, 17);
+            this.lblPassword.TabIndex = 30;
+            this.lblPassword.Text = "Password:";
+            // 
+            // txtAssignID
+            // 
+            this.txtAssignID.AutoSize = true;
+            this.txtAssignID.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.txtAssignID.Location = new System.Drawing.Point(583, 226);
+            this.txtAssignID.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtAssignID.Name = "txtAssignID";
+            this.txtAssignID.Size = new System.Drawing.Size(83, 21);
+            this.txtAssignID.TabIndex = 14;
+            this.txtAssignID.Text = "Assign ID";
+            this.txtAssignID.UseVisualStyleBackColor = true;
+            this.txtAssignID.CheckedChanged += new System.EventHandler(this.txtAssignID_CheckedChanged);
             // 
             // txtAsignDate
             // 
@@ -132,7 +205,7 @@
             this.txtAsignDate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtAsignDate.Name = "txtAsignDate";
             this.txtAsignDate.Size = new System.Drawing.Size(171, 23);
-            this.txtAsignDate.TabIndex = 26;
+            this.txtAsignDate.TabIndex = 5;
             // 
             // label15
             // 
@@ -152,7 +225,7 @@
             this.txtSalary.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtSalary.Name = "txtSalary";
             this.txtSalary.Size = new System.Drawing.Size(171, 23);
-            this.txtSalary.TabIndex = 24;
+            this.txtSalary.TabIndex = 12;
             // 
             // label14
             // 
@@ -183,7 +256,7 @@
             this.txtContact.Mask = "0000-0000000";
             this.txtContact.Name = "txtContact";
             this.txtContact.Size = new System.Drawing.Size(171, 23);
-            this.txtContact.TabIndex = 8;
+            this.txtContact.TabIndex = 6;
             // 
             // txtDOB
             // 
@@ -193,7 +266,7 @@
             this.txtDOB.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtDOB.Name = "txtDOB";
             this.txtDOB.Size = new System.Drawing.Size(171, 23);
-            this.txtDOB.TabIndex = 6;
+            this.txtDOB.TabIndex = 10;
             this.txtDOB.Value = new System.DateTime(1990, 1, 1, 0, 0, 0, 0);
             // 
             // rdfemale
@@ -205,7 +278,7 @@
             this.rdfemale.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.rdfemale.Name = "rdfemale";
             this.rdfemale.Size = new System.Drawing.Size(73, 21);
-            this.rdfemale.TabIndex = 11;
+            this.rdfemale.TabIndex = 9;
             this.rdfemale.TabStop = true;
             this.rdfemale.Text = "Female";
             this.rdfemale.UseVisualStyleBackColor = true;
@@ -219,7 +292,7 @@
             this.rdmale.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.rdmale.Name = "rdmale";
             this.rdmale.Size = new System.Drawing.Size(57, 21);
-            this.rdmale.TabIndex = 10;
+            this.rdmale.TabIndex = 8;
             this.rdmale.TabStop = true;
             this.rdmale.Text = "Male";
             this.rdmale.UseVisualStyleBackColor = true;
@@ -232,7 +305,7 @@
             this.txtAddress.Multiline = true;
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(171, 24);
-            this.txtAddress.TabIndex = 12;
+            this.txtAddress.TabIndex = 13;
             // 
             // label12
             // 
@@ -263,7 +336,7 @@
             this.txtDesig.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtDesig.Name = "txtDesig";
             this.txtDesig.Size = new System.Drawing.Size(171, 23);
-            this.txtDesig.TabIndex = 9;
+            this.txtDesig.TabIndex = 11;
             // 
             // label10
             // 
@@ -316,7 +389,7 @@
             this.txtname.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtname.Name = "txtname";
             this.txtname.Size = new System.Drawing.Size(171, 23);
-            this.txtname.TabIndex = 1;
+            this.txtname.TabIndex = 2;
             // 
             // label6
             // 
@@ -336,7 +409,7 @@
             this.txtFname.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtFname.Name = "txtFname";
             this.txtFname.Size = new System.Drawing.Size(171, 23);
-            this.txtFname.TabIndex = 2;
+            this.txtFname.TabIndex = 3;
             // 
             // label5
             // 
@@ -356,7 +429,7 @@
             this.txtQual.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtQual.Name = "txtQual";
             this.txtQual.Size = new System.Drawing.Size(171, 23);
-            this.txtQual.TabIndex = 5;
+            this.txtQual.TabIndex = 4;
             // 
             // label2
             // 
@@ -377,7 +450,7 @@
             this.txtEmpId.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtEmpId.Name = "txtEmpId";
             this.txtEmpId.Size = new System.Drawing.Size(171, 23);
-            this.txtEmpId.TabIndex = 18;
+            this.txtEmpId.TabIndex = 1;
             // 
             // label1
             // 
@@ -402,7 +475,7 @@
             this.btnSave.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(128, 42);
-            this.btnSave.TabIndex = 13;
+            this.btnSave.TabIndex = 18;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -419,7 +492,7 @@
             this.btnClear.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(128, 42);
-            this.btnClear.TabIndex = 15;
+            this.btnClear.TabIndex = 21;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = false;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
@@ -436,7 +509,7 @@
             this.btnUpdate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(128, 42);
-            this.btnUpdate.TabIndex = 14;
+            this.btnUpdate.TabIndex = 19;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = false;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
@@ -453,7 +526,7 @@
             this.btnDelete.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(128, 42);
-            this.btnDelete.TabIndex = 16;
+            this.btnDelete.TabIndex = 20;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
@@ -470,7 +543,7 @@
             this.btnAddnew.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnAddnew.Name = "btnAddnew";
             this.btnAddnew.Size = new System.Drawing.Size(128, 42);
-            this.btnAddnew.TabIndex = 17;
+            this.btnAddnew.TabIndex = 1;
             this.btnAddnew.Text = "New";
             this.btnAddnew.UseVisualStyleBackColor = false;
             this.btnAddnew.Click += new System.EventHandler(this.btnAddnew_Click);
@@ -483,7 +556,7 @@
             this.txtSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(110, 23);
-            this.txtSearch.TabIndex = 20;
+            this.txtSearch.TabIndex = 27;
             // 
             // label13
             // 
@@ -508,7 +581,7 @@
             this.btnSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(107, 28);
-            this.btnSearch.TabIndex = 21;
+            this.btnSearch.TabIndex = 28;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = false;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
@@ -521,111 +594,38 @@
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1090, 172);
-            this.panel1.TabIndex = 7;
+            this.panel1.TabIndex = 29;
             // 
             // dgvEmp
             // 
             this.dgvEmp.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvEmp.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvEmp.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.dgvEmp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvEmp.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvEmp.DefaultCellStyle = dataGridViewCellStyle11;
             this.dgvEmp.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvEmp.GridColor = System.Drawing.SystemColors.ActiveCaption;
             this.dgvEmp.Location = new System.Drawing.Point(0, 0);
             this.dgvEmp.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dgvEmp.Name = "dgvEmp";
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
-            this.dgvEmp.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.Black;
+            this.dgvEmp.RowsDefaultCellStyle = dataGridViewCellStyle12;
             this.dgvEmp.Size = new System.Drawing.Size(1090, 172);
-            this.dgvEmp.TabIndex = 5;
+            this.dgvEmp.TabIndex = 30;
             this.dgvEmp.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEmp_CellContentClick_2);
-            // 
-            // txtAssignID
-            // 
-            this.txtAssignID.AutoSize = true;
-            this.txtAssignID.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.txtAssignID.Location = new System.Drawing.Point(583, 226);
-            this.txtAssignID.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtAssignID.Name = "txtAssignID";
-            this.txtAssignID.Size = new System.Drawing.Size(83, 21);
-            this.txtAssignID.TabIndex = 27;
-            this.txtAssignID.Text = "Assign ID";
-            this.txtAssignID.UseVisualStyleBackColor = true;
-            this.txtAssignID.CheckedChanged += new System.EventHandler(this.txtAssignID_CheckedChanged);
-            // 
-            // txtLoginType
-            // 
-            this.txtLoginType.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.txtLoginType.FormattingEnabled = true;
-            this.txtLoginType.Location = new System.Drawing.Point(583, 358);
-            this.txtLoginType.Name = "txtLoginType";
-            this.txtLoginType.Size = new System.Drawing.Size(171, 25);
-            this.txtLoginType.TabIndex = 33;
-            // 
-            // lblLoginType
-            // 
-            this.lblLoginType.AutoSize = true;
-            this.lblLoginType.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLoginType.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblLoginType.Location = new System.Drawing.Point(467, 361);
-            this.lblLoginType.Name = "lblLoginType";
-            this.lblLoginType.Size = new System.Drawing.Size(79, 17);
-            this.lblLoginType.TabIndex = 32;
-            this.lblLoginType.Text = "Login Type:";
-            // 
-            // txtUsername
-            // 
-            this.txtUsername.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUsername.Location = new System.Drawing.Point(583, 267);
-            this.txtUsername.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(171, 23);
-            this.txtUsername.TabIndex = 28;
-            // 
-            // lblUsername
-            // 
-            this.lblUsername.AutoSize = true;
-            this.lblUsername.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsername.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblUsername.Location = new System.Drawing.Point(467, 271);
-            this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(75, 17);
-            this.lblUsername.TabIndex = 31;
-            this.lblUsername.Text = "Username:";
-            // 
-            // txtPassword
-            // 
-            this.txtPassword.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPassword.Location = new System.Drawing.Point(583, 313);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(171, 23);
-            this.txtPassword.TabIndex = 29;
-            // 
-            // lblPassword
-            // 
-            this.lblPassword.AutoSize = true;
-            this.lblPassword.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPassword.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblPassword.Location = new System.Drawing.Point(467, 316);
-            this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(73, 17);
-            this.lblPassword.TabIndex = 30;
-            this.lblPassword.Text = "Password:";
             // 
             // frmEmployeeRegistration
             // 

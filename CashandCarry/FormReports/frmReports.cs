@@ -53,6 +53,12 @@ namespace CashandCarry.Reports
             objpro.ShowDialog();
         }
 
+        private void btnEmployee_Click(object sender, EventArgs e)
+        {
+            FrmEmployeeReport obj = new FrmEmployeeReport();
+            obj.ShowDialog();
+        }
+
         
        
        

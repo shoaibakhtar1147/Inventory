@@ -315,5 +315,16 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="tbl_PurchaseRemain">
+      <EntityTypeMapping TypeName="CashCarryModel.tbl_PurchaseRemain">
+        <MappingFragment StoreEntitySet="tbl_PurchaseRemain">
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="ReturnCash" ColumnName="ReturnCash" />
+          <ScalarProperty Name="PReturnID" ColumnName="PReturnID" />
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+          <ScalarProperty Name="PRemainID" ColumnName="PRemainID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

@@ -73,17 +73,18 @@
             this.btnRecovery.TabIndex = 7;
             this.btnRecovery.Text = "Add";
             this.btnRecovery.UseVisualStyleBackColor = false;
+            this.btnRecovery.Click += new System.EventHandler(this.btnRecovery_Click);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Schoolbook", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label3.Location = new System.Drawing.Point(47, 13);
+            this.label3.Location = new System.Drawing.Point(41, 13);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(71, 16);
+            this.label3.Size = new System.Drawing.Size(82, 16);
             this.label3.TabIndex = 6;
-            this.label3.Text = "Recovery";
+            this.label3.Text = "Remaining";
             // 
             // pictureBox3
             // 

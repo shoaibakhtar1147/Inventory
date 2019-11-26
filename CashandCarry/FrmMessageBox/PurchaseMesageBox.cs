@@ -37,5 +37,12 @@ namespace CashandCarry.FrmMessageBox
         {
 
         }
+
+        private void btnRamaining_Click(object sender, EventArgs e)
+        {
+            FrmRemainingReport obj = new FrmRemainingReport();
+            this.Hide();
+            obj.ShowDialog();
+        }
     }
 }

@@ -29,5 +29,11 @@ namespace CashandCarry.Purchase
             FrmPurchaseReturn objRet = new FrmPurchaseReturn();
             objRet.ShowDialog();
         }
+
+        private void btnRecovery_Click(object sender, EventArgs e)
+        {
+            FrmPurRemaining obj = new FrmPurRemaining();
+            obj.ShowDialog();
+        }
     }
 }

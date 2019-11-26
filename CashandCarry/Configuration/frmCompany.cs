@@ -38,6 +38,7 @@ namespace CashandCarry.Configuration
             objCom.Save();
             MessageBox.Show("Record Saved Successfull");
             LoadData();
+            btnAddnew.Enabled = true;
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -177,10 +178,12 @@ namespace CashandCarry.Configuration
             if(dt.Rows.Count>0)
             {
                 txtComID.Text = Convert.ToString(dt.Rows[0]["CompanyID"]);
+                FormEnable();
+                btnSave.Enabled = true;
+                txtComName.Focus();
+                btnAddnew.Enabled = false;
             }
-            FormEnable();
-            btnSave.Enabled = true;
-            txtComName.Focus();
+          
         }
 
         private void btnClear_Click(object sender, EventArgs e)

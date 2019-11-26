@@ -32,6 +32,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnSaleReturn = new System.Windows.Forms.Button();
             this.btnSaleInvoice = new System.Windows.Forms.Button();
+            this.btnRecovery = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,12 +50,13 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel1.Controls.Add(this.btnRecovery);
             this.panel1.Controls.Add(this.btnSaleReturn);
             this.panel1.Controls.Add(this.btnSaleInvoice);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 81);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(412, 77);
+            this.panel1.Size = new System.Drawing.Size(494, 77);
             this.panel1.TabIndex = 32;
             // 
             // btnSaleReturn
@@ -65,7 +67,7 @@
             this.btnSaleReturn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSaleReturn.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSaleReturn.ForeColor = System.Drawing.Color.White;
-            this.btnSaleReturn.Location = new System.Drawing.Point(216, 24);
+            this.btnSaleReturn.Location = new System.Drawing.Point(194, 24);
             this.btnSaleReturn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSaleReturn.Name = "btnSaleReturn";
             this.btnSaleReturn.Size = new System.Drawing.Size(111, 28);
@@ -82,7 +84,7 @@
             this.btnSaleInvoice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSaleInvoice.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSaleInvoice.ForeColor = System.Drawing.Color.White;
-            this.btnSaleInvoice.Location = new System.Drawing.Point(85, 24);
+            this.btnSaleInvoice.Location = new System.Drawing.Point(51, 24);
             this.btnSaleInvoice.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSaleInvoice.Name = "btnSaleInvoice";
             this.btnSaleInvoice.Size = new System.Drawing.Size(111, 28);
@@ -91,11 +93,28 @@
             this.btnSaleInvoice.UseVisualStyleBackColor = false;
             this.btnSaleInvoice.Click += new System.EventHandler(this.btnSaleInvoice_Click_1);
             // 
+            // btnRecovery
+            // 
+            this.btnRecovery.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
+            this.btnRecovery.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRecovery.FlatAppearance.BorderSize = 0;
+            this.btnRecovery.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRecovery.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRecovery.ForeColor = System.Drawing.Color.White;
+            this.btnRecovery.Location = new System.Drawing.Point(333, 24);
+            this.btnRecovery.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnRecovery.Name = "btnRecovery";
+            this.btnRecovery.Size = new System.Drawing.Size(111, 28);
+            this.btnRecovery.TabIndex = 34;
+            this.btnRecovery.Text = "Sale Recovery";
+            this.btnRecovery.UseVisualStyleBackColor = false;
+            this.btnRecovery.Click += new System.EventHandler(this.btnRecovery_Click);
+            // 
             // SaleMesage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(412, 158);
+            this.ClientSize = new System.Drawing.Size(494, 158);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -117,5 +136,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnSaleReturn;
         private System.Windows.Forms.Button btnSaleInvoice;
+        private System.Windows.Forms.Button btnRecovery;
     }
 }

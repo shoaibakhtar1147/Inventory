@@ -80,13 +80,13 @@ namespace CashandCarry.Configuration
         {
             if(FormValidate() == true)
             {
-             
-              
+             if(txtAssignID.Checked==false)
+             {
                  bool Gender = rdmale.Checked ? true : false;
                  EmployeeBL objBL = new EmployeeBL()
                  {
-                     
-                    
+
+
                      Name = txtname.Text,
                      Fname = txtFname.Text,
                      Qualifiction = txtQual.Text,
@@ -98,14 +98,39 @@ namespace CashandCarry.Configuration
                      Gender = Gender,
                      AsignDate = Convert.ToDateTime(txtAsignDate.Text),
                      Salary = Convert.ToDecimal(txtSalary.Text),
-                     Password=txtPassword.Text,
-                     Username=txtUsername.Text,
-                     LoginType=Convert.ToInt32(txtLoginType.SelectedValue),
-                    
+                     
                  };
                  objBL.Save();
+
+
+                 
+             }
+              else if(txtAssignID.Checked== true)
+             {
+                 bool Gender = rdmale.Checked ? true : false;
+                 EmployeeBL objBL = new EmployeeBL()
+                 {
+
+                     Name = txtname.Text,
+                     Fname = txtFname.Text,
+                     Qualifiction = txtQual.Text,
+                     Cnic = txtCnic.Text,
+                     Address = txtAddress.Text,
+                     Contact = txtContact.Text,
+                     Designation = txtDesig.Text,
+                     DOB = txtDOB.Text,
+                     Gender = Gender,
+                     AsignDate = Convert.ToDateTime(txtAsignDate.Text),
+                     Salary = Convert.ToDecimal(txtSalary.Text),
+                     Password = txtPassword.Text,
+                     Username = txtUsername.Text,
+                     LoginType = Convert.ToInt32(txtLoginType.SelectedValue),
+                 };
+                 objBL.Save();
+             }
                  MessageBox.Show("Record Saved successfull");
                  LoadData();
+                 btnAddnew.Enabled = true;
              
             }
             else
@@ -180,6 +205,7 @@ namespace CashandCarry.Configuration
                 FormEnable();
                 btnSave.Enabled = true;
                    txtname.Focus();
+                   btnAddnew.Enabled = false;
                   
               
             }
@@ -239,7 +265,7 @@ namespace CashandCarry.Configuration
             EmployeeBL objEmp = new EmployeeBL();
             var dt = objEmp.Select();
             dgvEmp.Columns.Clear();
-            if(dt != null && dt.Count>0)
+            if(dt != null && dt.Rows.Count>0)
             {
                 DataGridViewImageColumn edit = new DataGridViewImageColumn();
                 edit.Image = Properties.Resources.edit;
@@ -281,28 +307,38 @@ namespace CashandCarry.Configuration
 
             if (columnindex == 0)
             {
+                txtAssignID.Checked = false;
                 txtEmpId.Text = dgvEmp.Rows[rowindex].Cells[2].Value.ToString();
                 txtname.Text = dgvEmp.Rows[rowindex].Cells[3].Value.ToString();
                 txtFname.Text = dgvEmp.Rows[rowindex].Cells[4].Value.ToString();
-                txtUsername.Text = dgvEmp.Rows[rowindex].Cells[5].Value.ToString();
-                txtPassword.Text = dgvEmp.Rows[rowindex].Cells[6].Value.ToString();
                 txtQual.Text = dgvEmp.Rows[rowindex].Cells[7].Value.ToString();
                 txtDOB.Text = dgvEmp.Rows[rowindex].Cells[8].Value.ToString();
                 txtCnic.Text = dgvEmp.Rows[rowindex].Cells[9].Value.ToString();
                 txtContact.Text = dgvEmp.Rows[rowindex].Cells[10].Value.ToString();
                 txtDesig.Text = dgvEmp.Rows[rowindex].Cells[11].Value.ToString();
-                string gender = dgvEmp.Rows[rowindex].Cells[12].Value.ToString();
-                if (gender == "True")
+                txtAddress.Text = dgvEmp.Rows[rowindex].Cells[12].Value.ToString();
+                txtSalary.Text = dgvEmp.Rows[rowindex].Cells[13].Value.ToString();
+                txtAsignDate.Text = dgvEmp.Rows[rowindex].Cells[14].Value.ToString();
+                if (!string.IsNullOrEmpty(dgvEmp.Rows[rowindex].Cells[15].Value.ToString()) && !string.IsNullOrEmpty(dgvEmp.Rows[rowindex].Cells[6].Value.ToString()))
+                {
+                    txtAssignID.Checked = true;
+                 txtPassword.Text = dgvEmp.Rows[rowindex].Cells[6].Value.ToString();
+                 txtUsername.Text = dgvEmp.Rows[rowindex].Cells[5].Value.ToString();
+                 txtLoginType.SelectedItem = dgvEmp.Rows[rowindex].Cells[15].Value.ToString();
+            }
+                
+                string gender = dgvEmp.Rows[rowindex].Cells[16].Value.ToString();
+                if (gender == "Male")
                 {
                     rdmale.Checked = true;
                 }
-                else
+                if(gender =="Female")
                 {
                     rdfemale.Checked = true;
                 }
-                txtAddress.Text = dgvEmp.Rows[rowindex].Cells[13].Value.ToString();
-                txtSalary.Text = dgvEmp.Rows[rowindex].Cells[14].Value.ToString();
-                txtAsignDate.Text = dgvEmp.Rows[rowindex].Cells[15].Value.ToString();
+               
+                
+                
                 FormEnable();
                 btnDelete.Enabled = true;
             }

@@ -178,6 +178,7 @@
             this.btnProdUpdate.TabIndex = 16;
             this.btnProdUpdate.Text = "Update";
             this.btnProdUpdate.UseVisualStyleBackColor = false;
+            this.btnProdUpdate.Click += new System.EventHandler(this.btnProdUpdate_Click);
             // 
             // btnRemove
             // 
@@ -494,6 +495,7 @@
             // 
             // dgvReturnItem
             // 
+            this.dgvReturnItem.AllowUserToAddRows = false;
             this.dgvReturnItem.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;

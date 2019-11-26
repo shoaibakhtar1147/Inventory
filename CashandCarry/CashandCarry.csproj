@@ -79,9 +79,11 @@
     <Compile Include="BL\CusTypeBL.cs" />
     <Compile Include="BL\EmployeeBL.cs" />
     <Compile Include="BL\EmpSalaryBL.cs" />
+    <Compile Include="BL\LoginInfoBL.cs" />
     <Compile Include="BL\ProductBL.cs" />
     <Compile Include="BL\PurchaseInvoiceBL.cs" />
     <Compile Include="BL\PurchaseReturnBL.cs" />
+    <Compile Include="BL\PurRemainBL.cs" />
     <Compile Include="BL\ReturnSaleBL.cs" />
     <Compile Include="BL\SaleInvoiceBL.cs" />
     <Compile Include="BL\SaleRecoveryBL.cs" />
@@ -124,6 +126,12 @@
     <Compile Include="FormReports\FrmCustomerReport.Designer.cs">
       <DependentUpon>FrmCustomerReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormReports\FrmEmployeeReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormReports\FrmEmployeeReport.Designer.cs">
+      <DependentUpon>FrmEmployeeReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormReports\FrmProductReport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -141,6 +149,18 @@
     </Compile>
     <Compile Include="FormReports\FrmPurReturnReport.Designer.cs">
       <DependentUpon>FrmPurReturnReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormReports\FrmRecoveryReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormReports\FrmRecoveryReport.Designer.cs">
+      <DependentUpon>FrmRecoveryReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormReports\FrmRemainingReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormReports\FrmRemainingReport.Designer.cs">
+      <DependentUpon>FrmRemainingReport.cs</DependentUpon>
     </Compile>
     <Compile Include="FormReports\FrmSaleReport.cs">
       <SubType>Form</SubType>
@@ -269,6 +289,9 @@
     <Compile Include="Model\Tbl_PurchaseMaster.cs">
       <DependentUpon>CashCarry.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\tbl_PurchaseRemain.cs">
+      <DependentUpon>CashCarry.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\Tbl_PurchaseReturn_Detail.cs">
       <DependentUpon>CashCarry.tt</DependentUpon>
     </Compile>
@@ -328,6 +351,18 @@
       <DependentUpon>CompanyReport.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reports\Company\PurRemainIDReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PurRemainIDReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Company\RemainByComIDReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RemainByComIDReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reports\Customer\CustomerGeneralReport.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -338,6 +373,30 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CustomerReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Customer\RecoveryByCusIDReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RecoveryByCusIDReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Customer\SaleRecoveryIDReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SaleRecoveryIDReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\EmployeeRpt\EmpAllSalaryReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EmpAllSalaryReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\EmployeeRpt\EmpSalaryReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EmpSalaryReport.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reports\ProductReport.cs">
@@ -356,6 +415,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>PurReturnGeneralReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\PurchaseReturn\PurReturnInvoiceReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PurReturnInvoiceReport.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reports\Purchase\PurchaseGeneralReport.cs">
@@ -474,6 +539,12 @@
     <Compile Include="Vendor\FrmPurchaseReturn.Designer.cs">
       <DependentUpon>FrmPurchaseReturn.cs</DependentUpon>
     </Compile>
+    <Compile Include="Vendor\FrmPurRemaining.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vendor\FrmPurRemaining.Designer.cs">
+      <DependentUpon>FrmPurRemaining.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vendor\PurchaseInvoice.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -507,6 +578,9 @@
     <EmbeddedResource Include="FormReports\FrmCustomerReport.resx">
       <DependentUpon>FrmCustomerReport.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormReports\FrmEmployeeReport.resx">
+      <DependentUpon>FrmEmployeeReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormReports\FrmProductReport.resx">
       <DependentUpon>FrmProductReport.cs</DependentUpon>
     </EmbeddedResource>
@@ -515,6 +589,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormReports\FrmPurReturnReport.resx">
       <DependentUpon>FrmPurReturnReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormReports\FrmRecoveryReport.resx">
+      <DependentUpon>FrmRecoveryReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormReports\FrmRemainingReport.resx">
+      <DependentUpon>FrmRemainingReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormReports\FrmSaleReport.resx">
       <DependentUpon>FrmSaleReport.cs</DependentUpon>
@@ -554,6 +634,14 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CompanyReport.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Company\PurRemainIDReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PurRemainIDReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Company\RemainByComIDReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RemainByComIDReport.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\Customer\CustomerGeneralReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CustomerGeneralReport.cs</LastGenOutput>
@@ -561,6 +649,22 @@
     <EmbeddedResource Include="Reports\Customer\CustomerReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CustomerReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Customer\RecoveryByCusIDReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RecoveryByCusIDReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Customer\SaleRecoveryIDReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>SaleRecoveryIDReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\EmployeeRpt\EmpAllSalaryReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>EmpAllSalaryReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\EmployeeRpt\EmpSalaryReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>EmpSalaryReport.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\ProductReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -573,6 +677,10 @@
     <EmbeddedResource Include="Reports\PurchaseReturn\PurReturnGeneralReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>PurReturnGeneralReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\PurchaseReturn\PurReturnInvoiceReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PurReturnInvoiceReport.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\Purchase\PurchaseGeneralReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -644,6 +752,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Vendor\FrmPurchaseReturn.resx">
       <DependentUpon>FrmPurchaseReturn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vendor\FrmPurRemaining.resx">
+      <DependentUpon>FrmPurRemaining.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vendor\PurchaseInvoice.resx">
       <DependentUpon>PurchaseInvoice.cs</DependentUpon>

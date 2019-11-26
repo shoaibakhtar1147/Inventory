@@ -79,6 +79,7 @@ namespace CashandCarry.Configuration
                
                     MessageBox.Show("Record Save Successfull");
                                loadData();
+                               btnAddnew.Enabled = true;
                 Clear();
             }
             else
@@ -101,6 +102,7 @@ namespace CashandCarry.Configuration
                 btnSave.Enabled = true;
                 txtZoneName.Enabled = true;
                 txtZoneName.Focus();
+                btnAddnew.Enabled = false;
             }
            
           

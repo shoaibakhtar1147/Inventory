@@ -61,7 +61,6 @@
             this.label14 = new System.Windows.Forms.Label();
             this.txtProdName = new System.Windows.Forms.ComboBox();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.btnProdUpdate = new System.Windows.Forms.Button();
             this.btnReset = new System.Windows.Forms.Button();
             this.txtTotalAmount = new System.Windows.Forms.TextBox();
             this.txtDiscount = new System.Windows.Forms.TextBox();
@@ -76,6 +75,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dgvProduct = new System.Windows.Forms.DataGridView();
+            this.btnProdUpdate = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -312,6 +312,7 @@
             this.txtTotalPay.TabIndex = 20;
             this.txtTotalPay.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtTotalPay.TextChanged += new System.EventHandler(this.txtTotalPay_TextChanged);
+            this.txtTotalPay.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTotalPay_KeyPress);
             // 
             // label18
             // 
@@ -496,22 +497,6 @@
             this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // btnProdUpdate
-            // 
-            this.btnProdUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
-            this.btnProdUpdate.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnProdUpdate.FlatAppearance.BorderSize = 0;
-            this.btnProdUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnProdUpdate.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnProdUpdate.ForeColor = System.Drawing.Color.White;
-            this.btnProdUpdate.Location = new System.Drawing.Point(353, 109);
-            this.btnProdUpdate.Name = "btnProdUpdate";
-            this.btnProdUpdate.Size = new System.Drawing.Size(108, 23);
-            this.btnProdUpdate.TabIndex = 11;
-            this.btnProdUpdate.Text = "Update";
-            this.btnProdUpdate.UseVisualStyleBackColor = false;
-            this.btnProdUpdate.Click += new System.EventHandler(this.btnProdUpdate_Click);
-            // 
             // btnReset
             // 
             this.btnReset.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
@@ -545,6 +530,7 @@
             this.txtDiscount.Size = new System.Drawing.Size(147, 23);
             this.txtDiscount.TabIndex = 5;
             this.txtDiscount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtDiscount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDiscount_KeyPress);
             this.txtDiscount.Leave += new System.EventHandler(this.txtDiscount_Leave);
             // 
             // txtAmount
@@ -653,12 +639,29 @@
             // 
             // dgvProduct
             // 
+            this.dgvProduct.AllowUserToAddRows = false;
             this.dgvProduct.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvProduct.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvProduct.Location = new System.Drawing.Point(0, 0);
             this.dgvProduct.Name = "dgvProduct";
             this.dgvProduct.Size = new System.Drawing.Size(672, 194);
             this.dgvProduct.TabIndex = 16;
+            // 
+            // btnProdUpdate
+            // 
+            this.btnProdUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
+            this.btnProdUpdate.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnProdUpdate.FlatAppearance.BorderSize = 0;
+            this.btnProdUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnProdUpdate.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProdUpdate.ForeColor = System.Drawing.Color.White;
+            this.btnProdUpdate.Location = new System.Drawing.Point(353, 109);
+            this.btnProdUpdate.Name = "btnProdUpdate";
+            this.btnProdUpdate.Size = new System.Drawing.Size(108, 23);
+            this.btnProdUpdate.TabIndex = 11;
+            this.btnProdUpdate.Text = "Update";
+            this.btnProdUpdate.UseVisualStyleBackColor = false;
+            this.btnProdUpdate.Click += new System.EventHandler(this.btnProdUpdate_Click);
             // 
             // FrmSaleInvoice
             // 
@@ -715,7 +718,6 @@
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Button btnProdUpdate;
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.TextBox txtTotalAmount;
         private System.Windows.Forms.TextBox txtDiscount;
@@ -741,6 +743,7 @@
         private System.Windows.Forms.TextBox txtQuantity;
         private System.Windows.Forms.TextBox txtProdId;
         private System.Windows.Forms.DataGridView dgvProduct;
+        private System.Windows.Forms.Button btnProdUpdate;
 
     }
 }

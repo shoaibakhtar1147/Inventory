@@ -23,18 +23,18 @@ namespace CashandCarry.Vendor
         {
             FormDisable();
         }
-       
+
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            PurchaseInvoiceBL objPur = new PurchaseInvoiceBL() 
+            PurchaseInvoiceBL objPur = new PurchaseInvoiceBL()
             {
-            
-             PInvoice=Convert.ToInt32(txtInvoiceID.Text)
+
+                PInvoice = Convert.ToInt32(txtInvoiceID.Text)
             };
             DataTable dt = objPur.Search();
             dgvProduct.Columns.Clear();
-            if(dt!= null && dt.Rows.Count>0)
+            if (dt != null && dt.Rows.Count > 0)
             {
                 DataGridViewImageColumn edit = new DataGridViewImageColumn();
                 edit.Image = Properties.Resources.edit;
@@ -44,7 +44,7 @@ namespace CashandCarry.Vendor
                 dgvProduct.Columns.Add(edit);
                 dgvProduct.DataSource = dt;
                 dgvProduct.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-               
+
 
             }
             else
@@ -55,9 +55,9 @@ namespace CashandCarry.Vendor
 
         private void dgvProduct_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            int columnindex=e.ColumnIndex;
-            int rowindex=e.RowIndex;
-            if(columnindex==0)
+            int columnindex = e.ColumnIndex;
+            int rowindex = e.RowIndex;
+            if (columnindex == 0)
             {
                 txtComID.Text = dgvProduct.Rows[rowindex].Cells[3].Value.ToString();
                 txtComName.Text = dgvProduct.Rows[rowindex].Cells[4].Value.ToString();
@@ -89,11 +89,11 @@ namespace CashandCarry.Vendor
             txtTotalBill.Enabled = false;
             btnSave.Enabled = false;
             btnSearch.Enabled = false;
-           
+
             txtProdID.Enabled = false;
-           
+
             btnProdUpdate.Enabled = false;
-            btnRemove.Enabled = false;
+
             btnAdd.Enabled = false;
             btnReset.Enabled = false;
             btnClear.Enabled = false;
@@ -108,12 +108,12 @@ namespace CashandCarry.Vendor
             txtInvoiceID.Enabled = true;
             txtQuantity.Enabled = true;
             btnProdUpdate.Enabled = true;
-            btnRemove.Enabled = true;
+
             btnAdd.Enabled = true;
             btnSearch.Enabled = true;
             btnReset.Enabled = true;
             txtReturnCash.Enabled = true;
-           
+
             txtProdName.Enabled = true;
             txtBalance.Enabled = true;
             btnSave.Enabled = true;
@@ -124,23 +124,24 @@ namespace CashandCarry.Vendor
         {
             PurchaseReturnBL objAdd = new PurchaseReturnBL();
             DataTable dt = objAdd.Addnew();
-            if(dt.Rows.Count>0)
+            if (dt.Rows.Count > 0)
             {
                 txtReturnID.Text = Convert.ToString(dt.Rows[0]["PReturnID"]);
                 FormEnable();
                 txtInvoiceID.Focus();
                 LoadGridProd();
+                btnNew.Enabled = false;
             }
         }
 
         private void txtProdName_Leave(object sender, EventArgs e)
         {
-            ProductBL objPro = new ProductBL() 
+            ProductBL objPro = new ProductBL()
             {
-            ProductName=txtProdName.Text
+                ProductName = txtProdName.Text
             };
             var dt = objPro.SearchByName();
-            if(dt.Count>0)
+            if (dt.Count > 0)
             {
                 txtProdID.Text = Convert.ToString(dt[0].ProductID);
                 txtPrice.Text = Convert.ToString(dt[0].TradePrice);
@@ -152,12 +153,12 @@ namespace CashandCarry.Vendor
         {
             CompanyBL objCOm = new CompanyBL()
             {
-                CompanyID=Convert.ToInt32(txtComID.Text)
+                CompanyID = Convert.ToInt32(txtComID.Text)
             };
             var dt = objCOm.Search();
-            if(dt.Count>0)
+            if (dt.Count > 0)
             {
-                txtPayDue.Text =Convert.ToString(dt[0].DuePayment);
+                txtPayDue.Text = Convert.ToString(dt[0].DuePayment);
             }
         }
 
@@ -178,7 +179,7 @@ namespace CashandCarry.Vendor
         }
         private void LoadGridProd()
         {
-            
+
             dt.Columns.Add("SrNo").AutoIncrement = true;
             dt.Columns["SrNo"].AutoIncrementSeed = 1;
             dt.Columns["SrNo"].AutoIncrementStep = 1;
@@ -197,21 +198,23 @@ namespace CashandCarry.Vendor
         DataTable dt = new DataTable();
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            
+
             DataRow dr = dt.NewRow();
             dr[1] = txtProdID.Text;
             dr[2] = txtProdName.Text;
             dr[3] = txtComID.Text;
-            dr[4] = txtComName.Text; 
+            dr[4] = txtComName.Text;
             dr[5] = txtPrice.Text;
             dr[6] = txtQuantity.Text;
             dr[7] = txtAmount.Text;
             dt.Rows.Add(dr);
             SumCalculate();
             txtReturnCash.Focus();
-
+            ClearGroup();
 
         }
+      
+
 
         private void SumCalculate()
         {
@@ -255,7 +258,7 @@ namespace CashandCarry.Vendor
                 decimal total = Convert.ToDecimal(txtGrandTotal.Text);
                 decimal Due = Convert.ToDecimal(txtReturnCash.Text);
                 decimal result = Due - total;
-              txtBalance.Text = result.ToString();
+                txtBalance.Text = result.ToString();
             }
         }
 
@@ -284,7 +287,7 @@ namespace CashandCarry.Vendor
             };
             objDue.UpdateDuePayment();
             PurchaseReturnBL objUp = new PurchaseReturnBL();
-            for (int i = 0; i < dgvReturnItem.RowCount - 1; i++)
+            for (int i = 0; i < dgvReturnItem.Rows.Count; i++)
             {
                 objUp.Amount = Convert.ToDecimal(dgvReturnItem.Rows[0].Cells[7].Value.ToString());
                 objUp.PInvoice = Convert.ToInt32(txtInvoiceID.Text);
@@ -303,7 +306,7 @@ namespace CashandCarry.Vendor
 
             PurchaseReturnBL objUpdate = new PurchaseReturnBL();
             {
-                for (int i = 0; i < dgvReturnItem.RowCount - 1; i++)
+                for (int i = 0; i < dgvReturnItem.Rows.Count; i++)
                 {
                     objUpdate.ProductID = Convert.ToInt32(dgvReturnItem.Rows[i].Cells[1].Value.ToString());
                     objUpdate.Quantity = Convert.ToInt32(dgvReturnItem.Rows[i].Cells[6].Value.ToString());
@@ -313,7 +316,7 @@ namespace CashandCarry.Vendor
             }
             PurchaseReturnBL objDetail = new PurchaseReturnBL();
             {
-                for (int i = 0; i < dgvReturnItem.RowCount - 1; i++)
+                for (int i = 0; i < dgvReturnItem.Rows.Count; i++)
                 {
                     objDetail.PReturnID = Convert.ToInt32(txtReturnID.Text);
                     objDetail.ProductID = Convert.ToInt32(dgvReturnItem.Rows[i].Cells[1].Value.ToString());
@@ -322,6 +325,17 @@ namespace CashandCarry.Vendor
                     objDetail.SaveDetail();
 
                 }
+            }
+            if (txtBalance.Text != "0.00")
+            {
+                PurRemainBL objPurc = new PurRemainBL()
+                {
+                    CompanyID = Convert.ToInt32(txtComID.Text),
+                    ReturnCash = Convert.ToDecimal(txtBalance.Text),
+                    Date = Convert.ToDateTime(txtReturnDate.Text),
+                    PReturnID = Convert.ToInt32(txtReturnID.Text)
+                };
+                objPurc.Save();
             }
             PurchaseReturnBL objMas = new PurchaseReturnBL()
             {
@@ -335,20 +349,103 @@ namespace CashandCarry.Vendor
 
             };
             objMas.SaveMaster();
-          //  DesignClear(this);
-            
+            ClearForm();
+            btnNew.Enabled = true;
+            //  DesignClear(this);
+
+        }
+        private void ClearForm()
+        {
+             
+        
+            foreach (Control c in groupBox1.Controls )
+            {
+                if (c is TextBox || c is ComboBox || c is MaskedTextBox)
+                {
+                    c.Text = "";
+                }
+
+            }
+            foreach (Control c in groupBox3.Controls)
+            {
+                if (c is TextBox || c is ComboBox || c is MaskedTextBox)
+                {
+                    c.Text = "";
+                }
+
+            }
+            foreach (Control c in groupBox5.Controls)
+            {
+                if (c is TextBox || c is ComboBox || c is MaskedTextBox)
+                {
+                    c.Text = "";
+                }
+
+            }
+            foreach (Control c in groupBox7.Controls)
+            {
+                if (c is TextBox || c is ComboBox ||c is MaskedTextBox)
+                {
+                    c.Text = "";
+                }
+
+            }
+            dgvProduct.DataSource = null;
+            dgvReturnItem.DataSource = null;
         }
 
-        //public void DesignClear(Form frm)
-        //{
-        //    foreach (Control ctr in frm.Controls)
-        //    {
-        //        if (ctr is GroupBox)
-        //        {
-        //            ctr.Text = "";
-        //        }
+        private void btnProdUpdate_Click(object sender, EventArgs e)
+        {
+            bool found = false;
+            if (dgvProduct.Rows.Count > 0)
+            {
+                foreach (DataGridViewRow row in dgvReturnItem.Rows)
+                {
 
-        //    }
-        //}
+                    if (Convert.ToString(row.Cells[2].Value) == txtProdName.Text && Convert.ToString(row.Cells[5].Value) == txtPrice.Text)
+                    {
+
+                        row.Cells[6].Value = Convert.ToString(Convert.ToInt32(txtQuantity.Text));
+                        row.Cells[7].Value = Convert.ToString(Convert.ToDecimal(txtAmount.Text));
+                        found = true;
+                        SumCalculate();
+                        ClearGroup();
+
+
+
+                    }
+
+                }
+                if (!found)
+                {
+                    dgvProduct.Rows.Add(txtProdName.Text, txtPrice.Text, 1);
+                }
+
+            }
+        }
+
+        private void ClearGroup()
+        {
+            foreach (Control c in groupBox4.Controls)
+            {
+                if (c is TextBox || c is ComboBox)
+                {
+                    c.Text = "";
+                }
+
+            }
+
+            //public void DesignClear(Form frm)
+            //{
+            //    foreach (Control ctr in frm.Controls)
+            //    {
+            //        if (ctr is GroupBox)
+            //        {
+            //            ctr.Text = "";
+            //        }
+
+            //    }
+            //}
+        }
     }
 }

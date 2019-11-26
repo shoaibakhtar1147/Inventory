@@ -40,6 +40,14 @@ namespace CashandCarry.FormReports
                 PurReturnByComReport objRep = new PurReturnByComReport();
                 objRep.SetParameterValue("@ComID", txtComname.Text);
                 crptViewerPurchaseReturn.ReportSource = objRep;
+                crptViewerPurchaseReturn.RefreshReport();
+            }
+            else if(!string.IsNullOrEmpty(txtInvoice.Text))
+            {
+                PurReturnInvoiceReport objret = new PurReturnInvoiceReport();
+                objret.SetParameterValue("@PReturnID", txtInvoice.Text);
+                crptViewerPurchaseReturn.ReportSource = objret;
+                crptViewerPurchaseReturn.RefreshReport();
             }
         }
     }

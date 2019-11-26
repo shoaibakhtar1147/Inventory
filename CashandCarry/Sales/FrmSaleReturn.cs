@@ -144,6 +144,7 @@ namespace CashandCarry.Sales
                 txtReturnID.Text = Convert.ToString(dt.Rows[0]["RInvoice"]);
                 FormEnable();
                 txtInvoiceID.Focus();
+                btnNew.Enabled = false ;
             }
             
         }
@@ -273,7 +274,7 @@ namespace CashandCarry.Sales
         private void btnSave_Click(object sender, EventArgs e)
         {
             ReturnSaleBL objUp = new ReturnSaleBL();
-            for (int i = 0; i < dgvReturnItem.RowCount - 1; i++)
+            for (int i = 0; i < dgvReturnItem.Rows.Count; i++)
             {
                 objUp.TotalAmount = Convert.ToDecimal(dgvReturnItem.Rows[0].Cells[7].Value.ToString());
                 objUp.Invoiceno = Convert.ToInt32(txtInvoiceID.Text);
@@ -306,7 +307,7 @@ namespace CashandCarry.Sales
                 CustomerID=Convert.ToInt32(txtCusID.Text)
             };
             ReturnSaleBL objDetail = new ReturnSaleBL();
-            for (int i = 0; i < dgvReturnItem.RowCount - 1; i++)
+            for (int i = 0; i < dgvReturnItem.Rows.Count ; i++)
             {
 
                 objDetail.RInvoice = Convert.ToInt32(txtReturnID.Text);
@@ -359,9 +360,50 @@ namespace CashandCarry.Sales
             objView.crptViewer.ReportSource = objRep;
             objView.WindowState = FormWindowState.Normal;
             objView.ShowDialog();
+            ClearForm();
+            btnNew.Enabled = true;
           
 
 
+        }
+        private void ClearForm()
+        {
+
+
+            foreach (Control c in groupBox1.Controls)
+            {
+                if (c is TextBox || c is ComboBox || c is MaskedTextBox)
+                {
+                    c.Text = "";
+                }
+
+            }
+            foreach (Control c in groupBox3.Controls)
+            {
+                if (c is TextBox || c is ComboBox || c is MaskedTextBox)
+                {
+                    c.Text = "";
+                }
+
+            }
+            foreach (Control c in groupBox4.Controls)
+            {
+                if (c is TextBox || c is ComboBox || c is MaskedTextBox)
+                {
+                    c.Text = "";
+                }
+
+            }
+            foreach (Control c in groupBox7.Controls)
+            {
+                if (c is TextBox || c is ComboBox || c is MaskedTextBox)
+                {
+                    c.Text = "";
+                }
+
+            }
+            dgvProduct.DataSource = null;
+            dgvReturnItem.DataSource = null;
         }
 
         private void txtReturnPay_TextChanged(object sender, EventArgs e)
@@ -474,6 +516,36 @@ namespace CashandCarry.Sales
         private void groupBox2_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnProdUpdate_Click(object sender, EventArgs e)
+        {
+            bool found = false;
+            if (dgvProduct.Rows.Count > 0)
+            {
+                foreach (DataGridViewRow row in dgvReturnItem.Rows)
+                {
+
+                    if (Convert.ToString(row.Cells[3].Value) == txtProdName.Text && Convert.ToString(row.Cells[4].Value) == txtPrice.Text)
+                    {
+
+                        row.Cells[5].Value = Convert.ToString(Convert.ToInt32(txtQuantity.Text));
+                        row.Cells[7].Value = Convert.ToString(Convert.ToDecimal(txtTotalAmount.Text));
+                        found = true;
+                        SumCalculate();
+                        ClearGroup();
+
+
+
+                    }
+
+                }
+                if (!found)
+                {
+                    dgvProduct.Rows.Add(txtProdName.Text, txtPrice.Text, 1);
+                }
+
+            }
         }
     }
 }

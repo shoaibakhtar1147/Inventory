@@ -46,7 +46,6 @@
             this.txtProdName = new System.Windows.Forms.ComboBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnProdUpdate = new System.Windows.Forms.Button();
-            this.btnRemove = new System.Windows.Forms.Button();
             this.btnReset = new System.Windows.Forms.Button();
             this.txtAmount = new System.Windows.Forms.TextBox();
             this.txtQuantity = new System.Windows.Forms.TextBox();
@@ -230,7 +229,6 @@
             this.groupBox4.Controls.Add(this.txtProdName);
             this.groupBox4.Controls.Add(this.btnAdd);
             this.groupBox4.Controls.Add(this.btnProdUpdate);
-            this.groupBox4.Controls.Add(this.btnRemove);
             this.groupBox4.Controls.Add(this.btnReset);
             this.groupBox4.Controls.Add(this.txtAmount);
             this.groupBox4.Controls.Add(this.txtQuantity);
@@ -312,21 +310,7 @@
             this.btnProdUpdate.TabIndex = 11;
             this.btnProdUpdate.Text = "Update";
             this.btnProdUpdate.UseVisualStyleBackColor = false;
-            // 
-            // btnRemove
-            // 
-            this.btnRemove.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
-            this.btnRemove.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnRemove.FlatAppearance.BorderSize = 0;
-            this.btnRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRemove.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRemove.ForeColor = System.Drawing.Color.White;
-            this.btnRemove.Location = new System.Drawing.Point(353, 143);
-            this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(108, 23);
-            this.btnRemove.TabIndex = 12;
-            this.btnRemove.Text = "Remove";
-            this.btnRemove.UseVisualStyleBackColor = false;
+            this.btnProdUpdate.Click += new System.EventHandler(this.btnProdUpdate_Click);
             // 
             // btnReset
             // 
@@ -361,6 +345,7 @@
             this.txtQuantity.Size = new System.Drawing.Size(147, 23);
             this.txtQuantity.TabIndex = 4;
             this.txtQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQuantity_KeyPress);
             this.txtQuantity.Leave += new System.EventHandler(this.txtQuantity_Leave);
             // 
             // label12
@@ -609,6 +594,8 @@
             // 
             // dgvProduct
             // 
+            this.dgvProduct.AllowUserToAddRows = false;
+            this.dgvProduct.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvProduct.Location = new System.Drawing.Point(0, 0);
             this.dgvProduct.Name = "dgvProduct";
             this.dgvProduct.Size = new System.Drawing.Size(672, 262);
@@ -723,7 +710,6 @@
         private System.Windows.Forms.ComboBox txtProdName;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnProdUpdate;
-        private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.TextBox txtAmount;
         private System.Windows.Forms.TextBox txtQuantity;

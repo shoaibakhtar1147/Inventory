@@ -1,9 +1,11 @@
-﻿using CashandCarry.Configuration;
+﻿using CashandCarry.BL;
+using CashandCarry.Configuration;
 using CashandCarry.Configuration;
 using CashandCarry.Employee;
 using CashandCarry.Purchase;
 using CashandCarry.Reports;
 using CashandCarry.Sales;
+using MetroFramework.Forms;
 using System;
 using System.Windows.Forms;
 
@@ -32,6 +34,7 @@ namespace CashandCarry
         {
             frmHomePage objHome = new frmHomePage();
             ShowForm(objHome);
+            lblUsername.Text = LoginInfoBL.Name;
         }
 
         private void btnHome_Click(object sender, EventArgs e)

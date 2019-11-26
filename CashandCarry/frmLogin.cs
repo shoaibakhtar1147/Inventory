@@ -8,10 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using MetroFramework.Forms;
+using CashandCarry.BL;
 
 namespace CashandCarry
 {
-    public partial class frmLogin : Form
+    public partial class frmLogin : MetroForm
     {
         public frmLogin()
         {
@@ -34,28 +36,32 @@ namespace CashandCarry
         {
             try
             {
-                string constring = @"Data Source=SHOAIB-PC\SQLEXPRESS;Database=CashCarry;integrated security=true;";
-                SqlConnection con = new SqlConnection(constring);
-                string query = "select * from tbl_Login where Username='" + txtusername.Text + "' and Password='" + txtpassword.Text + "'";
-                SqlCommand cmd = new SqlCommand(query, con);
-                SqlDataAdapter adt = new SqlDataAdapter(cmd);
-                DataSet ds = new DataSet();
-                adt.Fill(ds);
-                DataTable dt = ds.Tables[0];
-                if (dt != null && dt.Rows.Count > 0)
+              
+                EmployeeBL objemp = new EmployeeBL() 
                 {
-                    int LoginType = Convert.ToInt32(dt.Rows[0]["LoginType"]);
+                Username=txtusername.Text,
+                Password=txtpassword.Text
+                };
+                var dt = objemp.ForLogin();
+                if (dt != null )
+                {
+                    int LoginType = Convert.ToInt32(dt.LoginTypeID);
+                    string Name = Convert.ToString(dt.Name);
+                    Properties.Settings.Default.Name = Name;
+                    LoginInfoBL.Name = Convert.ToString(dt.Name);
                     this.Hide();
                     if (LoginType == 1)
                     {
                         frmStartup objstart = new frmStartup();
                         objstart.Show();
                     }
-                    else
-                    {
-                        MessageBox.Show("Invalid Information", "Altert");
-                    }
+                    
 
+                }
+                else
+                {
+                    MessageBox.Show("Invalid Username Or Password ", "Altert");
+                    txtpassword.Clear();
                 }
 
 

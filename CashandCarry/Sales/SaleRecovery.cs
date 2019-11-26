@@ -1,4 +1,6 @@
 ﻿using CashandCarry.BL;
+using CashandCarry.Reports;
+using CashandCarry.Reports.Customer;
 using MetroFramework.Forms;
 using System;
 using System.Collections.Generic;
@@ -52,6 +54,7 @@ namespace CashandCarry.Sales
             CustomerID=Convert.ToInt32(txtSearch.Text)
             };
             var dt = objRec.Search();
+            dgvSaleRecovery.Columns.Clear();
             if(dt.Count>0)
             {
                 DataGridViewImageColumn edit = new DataGridViewImageColumn();
@@ -62,6 +65,10 @@ namespace CashandCarry.Sales
                 dgvSaleRecovery.Columns.Add(edit); 
                 dgvSaleRecovery.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 dgvSaleRecovery.DataSource = dt;
+            }
+            else
+            {
+                MessageBox.Show("Record Not Found Or Invalid Record");
             }
         }
 
@@ -108,7 +115,14 @@ namespace CashandCarry.Sales
                 DuePayment = Convert.ToDecimal(txtReturnCash.Text)
             };
             objRet.UpdateDueSub();
-           
+
+            SaleRecoveryIDReport objrpt = new SaleRecoveryIDReport();
+            objrpt.SetParameterValue("@RecoveryID", txtSRecoveryID.Text);
+            rptViewer objView = new rptViewer();
+            objView.crptViewer.ReportSource = objrpt;
+            //objView.crptViewer.RefreshReport();
+            objView.WindowState = FormWindowState.Normal;
+            objView.ShowDialog();
             
         }
     }

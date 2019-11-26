@@ -28,17 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtSRecoveryID = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtRecoveryDate = new System.Windows.Forms.DateTimePicker();
+            this.label15 = new System.Windows.Forms.Label();
+            this.txtReturnCash = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtDuePayment = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.txtCusID = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtCusName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtDuePayment = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtReturnCash = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnAddnew = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -46,11 +50,7 @@
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.txtRecoveryDate = new System.Windows.Forms.DateTimePicker();
-            this.label15 = new System.Windows.Forms.Label();
             this.btnClear = new System.Windows.Forms.Button();
-            this.txtSRecoveryID = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSaleRecovery)).BeginInit();
@@ -80,6 +80,87 @@
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Customer Recovery";
+            // 
+            // txtSRecoveryID
+            // 
+            this.txtSRecoveryID.Enabled = false;
+            this.txtSRecoveryID.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSRecoveryID.Location = new System.Drawing.Point(238, 44);
+            this.txtSRecoveryID.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.txtSRecoveryID.Name = "txtSRecoveryID";
+            this.txtSRecoveryID.Size = new System.Drawing.Size(171, 23);
+            this.txtSRecoveryID.TabIndex = 36;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label5.Location = new System.Drawing.Point(90, 54);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(88, 17);
+            this.label5.TabIndex = 35;
+            this.label5.Text = "Recovery ID:";
+            // 
+            // txtRecoveryDate
+            // 
+            this.txtRecoveryDate.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.txtRecoveryDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.txtRecoveryDate.Location = new System.Drawing.Point(238, 279);
+            this.txtRecoveryDate.Name = "txtRecoveryDate";
+            this.txtRecoveryDate.Size = new System.Drawing.Size(171, 23);
+            this.txtRecoveryDate.TabIndex = 34;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label15.Location = new System.Drawing.Point(90, 284);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(44, 17);
+            this.label15.TabIndex = 33;
+            this.label15.Text = "Date:";
+            // 
+            // txtReturnCash
+            // 
+            this.txtReturnCash.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtReturnCash.Location = new System.Drawing.Point(238, 234);
+            this.txtReturnCash.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.txtReturnCash.Name = "txtReturnCash";
+            this.txtReturnCash.Size = new System.Drawing.Size(171, 23);
+            this.txtReturnCash.TabIndex = 5;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label4.Location = new System.Drawing.Point(90, 238);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(101, 17);
+            this.label4.TabIndex = 31;
+            this.label4.Text = "Cash Amount:";
+            // 
+            // txtDuePayment
+            // 
+            this.txtDuePayment.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDuePayment.Location = new System.Drawing.Point(238, 184);
+            this.txtDuePayment.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.txtDuePayment.Name = "txtDuePayment";
+            this.txtDuePayment.Size = new System.Drawing.Size(171, 23);
+            this.txtDuePayment.TabIndex = 30;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label2.Location = new System.Drawing.Point(90, 188);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(99, 17);
+            this.label2.TabIndex = 29;
+            this.label2.Text = "Due Payment:";
             // 
             // txtCusID
             // 
@@ -122,46 +203,6 @@
             this.label1.TabIndex = 25;
             this.label1.Text = "Name:";
             // 
-            // txtDuePayment
-            // 
-            this.txtDuePayment.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDuePayment.Location = new System.Drawing.Point(238, 184);
-            this.txtDuePayment.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.txtDuePayment.Name = "txtDuePayment";
-            this.txtDuePayment.Size = new System.Drawing.Size(171, 23);
-            this.txtDuePayment.TabIndex = 30;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label2.Location = new System.Drawing.Point(90, 188);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(99, 17);
-            this.label2.TabIndex = 29;
-            this.label2.Text = "Due Payment:";
-            // 
-            // txtReturnCash
-            // 
-            this.txtReturnCash.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtReturnCash.Location = new System.Drawing.Point(238, 234);
-            this.txtReturnCash.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.txtReturnCash.Name = "txtReturnCash";
-            this.txtReturnCash.Size = new System.Drawing.Size(171, 23);
-            this.txtReturnCash.TabIndex = 5;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label4.Location = new System.Drawing.Point(90, 238);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(101, 17);
-            this.label4.TabIndex = 31;
-            this.label4.Text = "Cash Amount:";
-            // 
             // btnSave
             // 
             this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
@@ -175,7 +216,7 @@
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(149, 52);
             this.btnSave.TabIndex = 6;
-            this.btnSave.Text = "Save";
+            this.btnSave.Text = "Print";
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
@@ -209,22 +250,22 @@
             // dgvSaleRecovery
             // 
             this.dgvSaleRecovery.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvSaleRecovery.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvSaleRecovery.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvSaleRecovery.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSaleRecovery.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvSaleRecovery.GridColor = System.Drawing.SystemColors.ActiveCaption;
             this.dgvSaleRecovery.Location = new System.Drawing.Point(0, 0);
             this.dgvSaleRecovery.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dgvSaleRecovery.Name = "dgvSaleRecovery";
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
-            this.dgvSaleRecovery.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            this.dgvSaleRecovery.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvSaleRecovery.Size = new System.Drawing.Size(813, 138);
             this.dgvSaleRecovery.TabIndex = 4;
             this.dgvSaleRecovery.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSaleRecovery_CellContentClick);
@@ -266,26 +307,6 @@
             this.label13.TabIndex = 53;
             this.label13.Text = "Search:";
             // 
-            // txtRecoveryDate
-            // 
-            this.txtRecoveryDate.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.txtRecoveryDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.txtRecoveryDate.Location = new System.Drawing.Point(238, 279);
-            this.txtRecoveryDate.Name = "txtRecoveryDate";
-            this.txtRecoveryDate.Size = new System.Drawing.Size(171, 23);
-            this.txtRecoveryDate.TabIndex = 34;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label15.Location = new System.Drawing.Point(90, 284);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(44, 17);
-            this.label15.TabIndex = 33;
-            this.label15.Text = "Date:";
-            // 
             // btnClear
             // 
             this.btnClear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
@@ -301,27 +322,6 @@
             this.btnClear.TabIndex = 7;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = false;
-            // 
-            // txtSRecoveryID
-            // 
-            this.txtSRecoveryID.Enabled = false;
-            this.txtSRecoveryID.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSRecoveryID.Location = new System.Drawing.Point(238, 44);
-            this.txtSRecoveryID.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.txtSRecoveryID.Name = "txtSRecoveryID";
-            this.txtSRecoveryID.Size = new System.Drawing.Size(171, 23);
-            this.txtSRecoveryID.TabIndex = 36;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label5.Location = new System.Drawing.Point(90, 54);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(88, 17);
-            this.label5.TabIndex = 35;
-            this.label5.Text = "Recovery ID:";
             // 
             // SaleRecovery
             // 

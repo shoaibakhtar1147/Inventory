@@ -33,6 +33,7 @@ namespace CashandCarry.Configuration
                     MessageBox.Show("Saved Successfull");
                     LoadData();
                     Clear();
+                    btnAddnew.Enabled = true;
                 
                 }
             else
@@ -98,6 +99,7 @@ namespace CashandCarry.Configuration
                 btnSave.Enabled = true;
                 txtCategory.Enabled = true;
                 txtCategory.Focus();
+                btnAddnew.Enabled = false;
 
             }
         }
