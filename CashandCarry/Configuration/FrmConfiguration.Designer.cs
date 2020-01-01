@@ -29,10 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmConfiguration));
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.btnZone = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.btnCust = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -53,8 +49,10 @@
             this.label5 = new System.Windows.Forms.Label();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.btnCusType = new System.Windows.Forms.Button();
-            this.panel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.btnZone = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel4.SuspendLayout();
@@ -65,55 +63,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            this.panel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.SuspendLayout();
-            // 
-            // panel6
-            // 
-            this.panel6.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.panel6.Controls.Add(this.btnZone);
-            this.panel6.Controls.Add(this.label6);
-            this.panel6.Controls.Add(this.pictureBox6);
-            this.panel6.Location = new System.Drawing.Point(378, 292);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(165, 156);
-            this.panel6.TabIndex = 9;
-            // 
-            // btnZone
-            // 
-            this.btnZone.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
-            this.btnZone.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnZone.FlatAppearance.BorderSize = 0;
-            this.btnZone.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnZone.Font = new System.Drawing.Font("Century Schoolbook", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnZone.ForeColor = System.Drawing.Color.White;
-            this.btnZone.Location = new System.Drawing.Point(33, 128);
-            this.btnZone.Name = "btnZone";
-            this.btnZone.Size = new System.Drawing.Size(98, 23);
-            this.btnZone.TabIndex = 11;
-            this.btnZone.Text = "Add";
-            this.btnZone.UseVisualStyleBackColor = false;
-            this.btnZone.Click += new System.EventHandler(this.btnZone_Click);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Century Schoolbook", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label6.Location = new System.Drawing.Point(62, 14);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(41, 16);
-            this.label6.TabIndex = 10;
-            this.label6.Text = "Zone";
-            // 
-            // pictureBox6
-            // 
-            this.pictureBox6.Image = global::CashandCarry.Properties.Resources.time;
-            this.pictureBox6.Location = new System.Drawing.Point(0, 39);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(165, 85);
-            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox6.TabIndex = 4;
-            this.pictureBox6.TabStop = false;
             // 
             // btnCust
             // 
@@ -244,7 +196,7 @@
             this.panel8.Controls.Add(this.btnProduct);
             this.panel8.Controls.Add(this.label3);
             this.panel8.Controls.Add(this.pictureBox3);
-            this.panel8.Location = new System.Drawing.Point(588, 292);
+            this.panel8.Location = new System.Drawing.Point(170, 292);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(165, 156);
             this.panel8.TabIndex = 7;
@@ -292,7 +244,7 @@
             this.panel9.Controls.Add(this.btnCategory);
             this.panel9.Controls.Add(this.label4);
             this.panel9.Controls.Add(this.pictureBox4);
-            this.panel9.Location = new System.Drawing.Point(170, 292);
+            this.panel9.Location = new System.Drawing.Point(378, 292);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(165, 156);
             this.panel9.TabIndex = 6;
@@ -355,6 +307,54 @@
             this.btnCusType.UseVisualStyleBackColor = false;
             this.btnCusType.Click += new System.EventHandler(this.btnCusType_Click);
             // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.panel6.Controls.Add(this.btnZone);
+            this.panel6.Controls.Add(this.label6);
+            this.panel6.Controls.Add(this.pictureBox6);
+            this.panel6.Location = new System.Drawing.Point(588, 292);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(165, 156);
+            this.panel6.TabIndex = 10;
+            // 
+            // btnZone
+            // 
+            this.btnZone.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
+            this.btnZone.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnZone.FlatAppearance.BorderSize = 0;
+            this.btnZone.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnZone.Font = new System.Drawing.Font("Century Schoolbook", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnZone.ForeColor = System.Drawing.Color.White;
+            this.btnZone.Location = new System.Drawing.Point(33, 128);
+            this.btnZone.Name = "btnZone";
+            this.btnZone.Size = new System.Drawing.Size(98, 23);
+            this.btnZone.TabIndex = 11;
+            this.btnZone.Text = "Add";
+            this.btnZone.UseVisualStyleBackColor = false;
+            this.btnZone.Click += new System.EventHandler(this.btnZone_Click_1);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Century Schoolbook", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label6.Location = new System.Drawing.Point(62, 14);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(41, 16);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "Zone";
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Image = global::CashandCarry.Properties.Resources.time;
+            this.pictureBox6.Location = new System.Drawing.Point(0, 39);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(165, 85);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox6.TabIndex = 4;
+            this.pictureBox6.TabStop = false;
+            // 
             // FrmConfiguration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -362,18 +362,15 @@
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(965, 478);
             this.ControlBox = false;
+            this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel9);
             this.Controls.Add(this.panel8);
-            this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Name = "FrmConfiguration";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmConfiguration_Load);
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -389,16 +386,15 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.PictureBox pictureBox6;
-        private System.Windows.Forms.Button btnZone;
         private System.Windows.Forms.Button btnCust;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
@@ -419,6 +415,10 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.Button btnCusType;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Button btnZone;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.PictureBox pictureBox6;
 
     }
 }

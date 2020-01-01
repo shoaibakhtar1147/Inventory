@@ -83,6 +83,11 @@ namespace CashandCarry
             ShowForm(obj);
         }
 
+        private void pnlmain_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
        
        
         

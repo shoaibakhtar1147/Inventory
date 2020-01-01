@@ -165,6 +165,7 @@ namespace CashandCarry.Vendor
                 {
                     txtProdID.Text = Convert.ToString(dt[0].ProductID);
                     txtPrice.Text = Convert.ToString(dt[0].TradePrice);
+                    lblQuantity.Text = Convert.ToString(dt[0].Quantity);
                     txtWeight.Text = dt[0].weight;
 
                 }
@@ -231,10 +232,13 @@ namespace CashandCarry.Vendor
                 MessageBox.Show("Null Value Not Acceptable Please Enter Quantity");
                 txtQuantity.Focus();
             }
-            int val = Convert.ToInt32(txtPrice.Text);
-            int val1 = Convert.ToInt32(txtQuantity.Text);
-            int val2 = val * val1;
-            txtAmount.Text = val2.ToString();
+           else
+            {
+                int val = Convert.ToInt32(txtPrice.Text);
+                int val1 = Convert.ToInt32(txtQuantity.Text);
+                int val2 = val * val1;
+                txtAmount.Text = val2.ToString();
+            }
         }
 
         private void txtBillDiscount_Leave(object sender, EventArgs e)
@@ -266,9 +270,9 @@ namespace CashandCarry.Vendor
             }
             else
             {
-                int val = Convert.ToInt32(txtGrandTotal.Text);
-                int val1 = Convert.ToInt32(txtTotalPay.Text);
-                int val2 = val - val1;
+                decimal val = Convert.ToDecimal(txtGrandTotal.Text);
+                decimal val1 = Convert.ToDecimal(txtTotalPay.Text);
+                decimal val2 = val - val1;
                 txtPayDue.Text = val2.ToString();
 
             }

@@ -29,18 +29,18 @@ namespace CashandCarry.BL
             }
         }
 
-        public void Delete()
-        {
-           using(var context=new CashCarryEntities3())
-           {
-               var result = context.tbl_Category.Where(a => a.CategoryID == CategoryID).SingleOrDefault();
-               if(result != null)
-               {
-                   context.tbl_Category.Remove(result);
-                   context.SaveChanges();
-               }
-           }
-        }
+        //public void Delete()
+        //{
+        //   using(var context=new CashCarryEntities3())
+        //   {
+        //       var result = context.tbl_Category.Where(a => a.CategoryID == CategoryID).SingleOrDefault();
+        //       if(result != null)
+        //       {
+        //           context.tbl_Category.Remove(result);
+        //           context.SaveChanges();
+        //       }
+        //   }
+        //}
 
         public void Update()
         {

@@ -52,12 +52,7 @@ namespace CashandCarry.Configuration
             objCus.ShowDialog();
         }
 
-        private void btnZone_Click(object sender, EventArgs e)
-        {
-            FrmZone objZon = new FrmZone();
-            objZon.ShowDialog();
-        }
-
+       
         private void FrmConfiguration_Load(object sender, EventArgs e)
         {
 
@@ -67,6 +62,12 @@ namespace CashandCarry.Configuration
         {
             FrmCustomerType obj = new FrmCustomerType();
             obj.ShowDialog();
+        }
+
+        private void btnZone_Click_1(object sender, EventArgs e)
+        {
+            FrmZone objZon = new FrmZone();
+            objZon.ShowDialog();
         }
 
        

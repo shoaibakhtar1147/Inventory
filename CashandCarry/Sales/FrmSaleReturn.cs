@@ -255,7 +255,6 @@ namespace CashandCarry.Sales
             dr[7] = txtTotalAmount.Text;
             dt.Rows.Add(dr);
             txtReturnCash.Focus();
-           
             SumCalculate();
            ClearGroup();
         }
@@ -263,7 +262,7 @@ namespace CashandCarry.Sales
         {
 
             decimal sum = 0;
-            for (int i = 0; i<dgvReturnItem.Rows.Count-1; ++i)
+            for (int i = 0; i<dgvReturnItem.Rows.Count; ++i)
             {
                 sum += Convert.ToDecimal(dgvReturnItem.Rows[i].Cells[7].Value);
             }
@@ -273,27 +272,27 @@ namespace CashandCarry.Sales
        
         private void btnSave_Click(object sender, EventArgs e)
         {
-            ReturnSaleBL objUp = new ReturnSaleBL();
-            for (int i = 0; i < dgvReturnItem.Rows.Count; i++)
-            {
-                objUp.TotalAmount = Convert.ToDecimal(dgvReturnItem.Rows[0].Cells[7].Value.ToString());
-                objUp.Invoiceno = Convert.ToInt32(txtInvoiceID.Text);
-                objUp.Quantity = Convert.ToInt32(dgvReturnItem.Rows[0].Cells[5].Value.ToString());
-                objUp.ProductID = Convert.ToInt32(dgvReturnItem.Rows[0].Cells[2].Value.ToString());
-                objUp.UpdateInvoice();
-            }
-            ReturnSaleBL obj2 = new ReturnSaleBL()
-            {
-                Invoiceno = Convert.ToInt32(txtInvoiceID.Text),
-                TotalBill = Convert.ToDecimal(txtTotalBill.Text)
-                  
-            };
-            obj2.UpdateInvoice();
-            
+        //    ReturnSaleBL objUp = new ReturnSaleBL();
+        //    for (int i = 0; i < dgvReturnItem.Rows.Count; i++)
+        //    {
+        //        objUp.TotalAmount = Convert.ToDecimal(dgvReturnItem.Rows[0].Cells[7].Value.ToString());
+        //        objUp.Invoiceno = Convert.ToInt32(txtInvoiceID.Text);
+        //        objUp.Quantity = Convert.ToInt32(dgvReturnItem.Rows[0].Cells[5].Value.ToString());
+        //        objUp.ProductID = Convert.ToInt32(dgvReturnItem.Rows[0].Cells[2].Value.ToString());
+        //        objUp.UpdateInvoice();
+        //    }
+        //    ReturnSaleBL obj2 = new ReturnSaleBL()
+        //    {
+        //        Invoiceno = Convert.ToInt32(txtInvoiceID.Text),
+        //        TotalBill = Convert.ToDecimal(txtTotalBill.Text)
+
+        //    };
+        //    obj2.UpdateInvoice();
+        
             ReturnSaleBL objProd = new ReturnSaleBL() 
             {
-             ProductID=Convert.ToInt32(txtProdID.Text),
-              Quantity=Convert.ToInt32(txtQuantity.Text)
+             ProductID=Convert.ToInt32(dgvReturnItem.Rows[0].Cells[2].Value.ToString()),
+             Quantity = Convert.ToInt32(dgvReturnItem.Rows[0].Cells[5].Value.ToString())
             };
             objProd.UpdateProd();
 
@@ -425,9 +424,10 @@ namespace CashandCarry.Sales
             int columnindex = e.ColumnIndex;
             if(columnindex==0)
             {
-                txtCusName.Text = dgvProduct.Rows[rowindex].Cells[2].Value.ToString();
-                txtProdName.Text = dgvProduct.Rows[rowindex].Cells[4].Value.ToString();
-                txtDiscount.Text = dgvProduct.Rows[rowindex].Cells[7].Value.ToString();
+                txtCusName.Text = dgvProduct.Rows[rowindex].Cells[1].Value.ToString();
+                txtProdName.Text = dgvProduct.Rows[rowindex].Cells[3].Value.ToString();
+                txtDiscount.Text = dgvProduct.Rows[rowindex].Cells[6].Value.ToString();
+                lblQuantity.Text=dgvProduct.Rows[rowindex].Cells[5].Value.ToString();
                 FormEnable();
                 txtCusName.Focus();
                
@@ -546,6 +546,11 @@ namespace CashandCarry.Sales
                 }
 
             }
+        }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -132,6 +132,12 @@
     <Compile Include="FormReports\FrmEmployeeReport.Designer.cs">
       <DependentUpon>FrmEmployeeReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormReports\FrmOperaterForReports.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormReports\FrmOperaterForReports.Designer.cs">
+      <DependentUpon>FrmOperaterForReports.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormReports\FrmProductReport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -216,6 +222,12 @@
     </Compile>
     <Compile Include="Manager\frmHomePage.Designer.cs">
       <DependentUpon>frmHomePage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manager\FrmOperater.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Manager\FrmOperater.Designer.cs">
+      <DependentUpon>FrmOperater.cs</DependentUpon>
     </Compile>
     <Compile Include="Manager\frmStartup.cs">
       <SubType>Form</SubType>
@@ -581,6 +593,9 @@
     <EmbeddedResource Include="FormReports\FrmEmployeeReport.resx">
       <DependentUpon>FrmEmployeeReport.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormReports\FrmOperaterForReports.resx">
+      <DependentUpon>FrmOperaterForReports.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormReports\FrmProductReport.resx">
       <DependentUpon>FrmProductReport.cs</DependentUpon>
     </EmbeddedResource>
@@ -613,6 +628,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Manager\frmHomePage.resx">
       <DependentUpon>frmHomePage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Manager\FrmOperater.resx">
+      <DependentUpon>FrmOperater.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Manager\frmStartup.resx">
       <DependentUpon>frmStartup.cs</DependentUpon>
@@ -788,7 +806,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\home.png" />

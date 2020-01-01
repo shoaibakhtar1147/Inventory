@@ -64,7 +64,7 @@ namespace CashandCarry.Vendor
                 txtComContact.Text = dgvProduct.Rows[rowindex].Cells[5].Value.ToString();
                 txtProdName.Text = dgvProduct.Rows[rowindex].Cells[7].Value.ToString();
                 txtBillDiscount.Text = dgvProduct.Rows[rowindex].Cells[11].Value.ToString();
-
+                lblQuantity.Text = dgvProduct.Rows[rowindex].Cells[9].Value.ToString();
                 txtProdName.Focus();
             }
         }
@@ -286,23 +286,23 @@ namespace CashandCarry.Vendor
                 CompanyID = Convert.ToInt32(txtComID.Text)
             };
             objDue.UpdateDuePayment();
-            PurchaseReturnBL objUp = new PurchaseReturnBL();
-            for (int i = 0; i < dgvReturnItem.Rows.Count; i++)
-            {
-                objUp.Amount = Convert.ToDecimal(dgvReturnItem.Rows[0].Cells[7].Value.ToString());
-                objUp.PInvoice = Convert.ToInt32(txtInvoiceID.Text);
-                objUp.Quantity = Convert.ToInt32(dgvReturnItem.Rows[0].Cells[6].Value.ToString());
-                objUp.ProductID = Convert.ToInt32(dgvReturnItem.Rows[0].Cells[1].Value.ToString());
-                objUp.UpdatePInvoice();
-            }
-            PurchaseReturnBL obj2 = new PurchaseReturnBL()
-            {
+            //PurchaseReturnBL objUp = new PurchaseReturnBL();
+            //for (int i = 0; i < dgvReturnItem.Rows.Count; i++)
+            //{
+            //    objUp.Amount = Convert.ToDecimal(dgvReturnItem.Rows[0].Cells[7].Value.ToString());
+            //    objUp.PInvoice = Convert.ToInt32(txtInvoiceID.Text);
+            //    objUp.Quantity = Convert.ToInt32(dgvReturnItem.Rows[0].Cells[6].Value.ToString());
+            //    objUp.ProductID = Convert.ToInt32(dgvReturnItem.Rows[0].Cells[1].Value.ToString());
+            //    objUp.UpdatePInvoice();
+            //}
+            //PurchaseReturnBL obj2 = new PurchaseReturnBL()
+            //{
 
-                GrandTotal = Convert.ToDecimal(txtGrandTotal.Text),
-                PInvoice = Convert.ToInt32(txtInvoiceID.Text)
+            //    GrandTotal = Convert.ToDecimal(txtGrandTotal.Text),
+            //    PInvoice = Convert.ToInt32(txtInvoiceID.Text)
 
-            };
-            obj2.UpdatePInvoice();
+            //};
+            //obj2.UpdatePInvoice();
 
             PurchaseReturnBL objUpdate = new PurchaseReturnBL();
             {

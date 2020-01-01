@@ -33,7 +33,9 @@ namespace CashandCarry.BL
                   Address=Address,
                    Contact=Contact,
                     Email=Email,
-                     ZoneID=ZoneID
+                     ZoneID=ZoneID,
+                     DuePayment=0
+
                };
                context.tbl_Customer.Add(objCus);
                context.SaveChanges();

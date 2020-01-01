@@ -32,18 +32,31 @@ namespace CashandCarry.Configuration
                 objcate.Save();
                     MessageBox.Show("Saved Successfull");
                     LoadData();
-                    Clear();
+                    ClearGroup();
                     btnAddnew.Enabled = true;
-                
+                              
                 }
             else
             {
                 MessageBox.Show("Some Error Occur");
             }   
             }
-            
-        
-        
+
+
+        private void ClearGroup()
+        {
+            foreach (Control c in groupBox1.Controls)
+            {
+                if (c is TextBox || c is ComboBox || c is MaskedTextBox)
+                {
+                    c.Text = "";
+                }
+
+            }
+        }
+ 
+
+
         private void LoadData()
         {
             CategoryBL objCate = new CategoryBL();
@@ -72,15 +85,11 @@ namespace CashandCarry.Configuration
             txtCategory.Enabled = false;
             txtCategoryID.Enabled = false;
             btnSave.Enabled = false;
-            btnDelete.Enabled = false;
+            //btnDelete.Enabled = false;
             btnUpdate.Enabled = false;
         }
-        private void Clear()
-        {
-            txtSearch.Clear();
-            txtCategoryID.Clear();
-            txtCategory.Clear();
-        }
+        
+        
         private void ProductCategory_Load(object sender, EventArgs e)
         {
            
@@ -120,11 +129,12 @@ namespace CashandCarry.Configuration
               CategoryID=Convert.ToInt32(txtSearch.Text)
              };
                ojcate.Update();
-                MessageBox.Show("Record Updated");    
+                MessageBox.Show("Record Updated");
+                ClearGroup();
                  
 
                 LoadData();
-                Clear(); 
+                
                
                  }
             else
@@ -150,7 +160,7 @@ namespace CashandCarry.Configuration
                     dgvCategory.DataSource = dt;
                     txtCategory.Enabled = true;
                     btnUpdate.Enabled = true;
-                    btnDelete.Enabled = true;
+                   // btnDelete.Enabled = true;
 
                 }
             }
@@ -161,25 +171,27 @@ namespace CashandCarry.Configuration
            
                 
         }
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            string message="Are You Sure To Delete  Category"+txtCategory.Text+"?";
-            if(MessageBox.Show(message,"Delete Alert",MessageBoxButtons.YesNo,MessageBoxIcon.Warning)==DialogResult.Yes)
-            {
-                CategoryBL objCate = new CategoryBL() 
-                {
-                 CategoryID=Convert.ToInt32(txtSearch.Text)
-                };
-                objCate.Delete();
+        //private void btnDelete_Click(object sender, EventArgs e)
+        //{
+        //    string message="Are You Sure To Delete Product Category"+txtCategory.Text+"?";
+        //    if(MessageBox.Show(message,"Delete Alert",MessageBoxButtons.YesNo,MessageBoxIcon.Warning)==DialogResult.Yes)
+        //    {
+        //        CategoryBL objCate = new CategoryBL() 
+        //        {
+        //         CategoryID=Convert.ToInt32(txtSearch.Text)
+        //        };
+        //        objCate.Delete();
                
-                    MessageBox.Show("Record Delete Successfull");
-                    LoadData();  
-            }
-            else
-            {
-                MessageBox.Show("No Record Deleted");
-            }
-        }
+        //            MessageBox.Show("Record Delete Successfull");
+        //            LoadData();
+        //            ClearGroup();
+            
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("No Record Deleted");
+        //    }
+        //}
         private void lbminimize_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -200,16 +212,22 @@ namespace CashandCarry.Configuration
                 btnUpdate.Enabled = true;
                 txtCategory.Enabled = true;
             }
-            else if(columnindex==1)
-            {
-                CategoryBL objcate = new CategoryBL()
-                {
-                    CategoryID=Convert.ToInt32(dgvCategory.Rows[rowindex].Cells[2].Value)
-                };
-                objcate.Delete();
-                MessageBox.Show("Deleted Successfully");
-                LoadData();
-            }
+            //else if(columnindex==1)
+            //{
+            //     string message = "Are You Sure To Delete  Porduct Category " +txtCategory.Text + "?";
+            //    if (MessageBox.Show(message, "Delete Alert", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            //    {
+
+            //        CategoryBL objcate = new CategoryBL()
+            //        {
+            //            CategoryID = Convert.ToInt32(dgvCategory.Rows[rowindex].Cells[2].Value)
+            //        };
+            //        objcate.Delete();
+            //        MessageBox.Show("Deleted Successfully");
+            //        LoadData();
+            //        ClearGroup();
+            //    }
+            //}
         }
     }
 }

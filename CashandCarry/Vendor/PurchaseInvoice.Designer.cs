@@ -41,7 +41,9 @@
             this.txtComID = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.lblQuantity = new System.Windows.Forms.Label();
             this.txtWeight = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.txtProdName = new System.Windows.Forms.ComboBox();
             this.btnAdd = new System.Windows.Forms.Button();
@@ -224,7 +226,9 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.lblQuantity);
             this.groupBox4.Controls.Add(this.txtWeight);
+            this.groupBox4.Controls.Add(this.label5);
             this.groupBox4.Controls.Add(this.label14);
             this.groupBox4.Controls.Add(this.txtProdName);
             this.groupBox4.Controls.Add(this.btnAdd);
@@ -248,6 +252,16 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Product Info";
             // 
+            // lblQuantity
+            // 
+            this.lblQuantity.AutoSize = true;
+            this.lblQuantity.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblQuantity.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblQuantity.Location = new System.Drawing.Point(423, 178);
+            this.lblQuantity.Name = "lblQuantity";
+            this.lblQuantity.Size = new System.Drawing.Size(0, 17);
+            this.lblQuantity.TabIndex = 116;
+            // 
             // txtWeight
             // 
             this.txtWeight.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -256,6 +270,17 @@
             this.txtWeight.Size = new System.Drawing.Size(147, 23);
             this.txtWeight.TabIndex = 30;
             this.txtWeight.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label5.Location = new System.Drawing.Point(350, 178);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(47, 17);
+            this.label5.TabIndex = 115;
+            this.label5.Text = "Stock:";
             // 
             // label14
             // 
@@ -741,5 +766,7 @@
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.ComboBox txtCompanyName;
+        private System.Windows.Forms.Label lblQuantity;
+        private System.Windows.Forms.Label label5;
     }
 }

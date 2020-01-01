@@ -90,6 +90,19 @@ namespace CashandCarry.Configuration
             MessageBox.Show("Record Saved Successful");
             LoadData();
             btnAddnew.Enabled = true;
+            ClearGroup();
+        }
+
+        private void ClearGroup()
+        {
+            foreach (Control c in groupBox1.Controls)
+            {
+                if (c is TextBox || c is ComboBox || c is MaskedTextBox)
+                {
+                    c.Text = "";
+                }
+
+            }
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -109,11 +122,13 @@ namespace CashandCarry.Configuration
                 obJCus.Update();
                 MessageBox.Show("Update Successful");
                 LoadData();
+               
             }
             else
             {
                 MessageBox.Show("Customer Type Not Updated");
             }
+            ClearGroup();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)

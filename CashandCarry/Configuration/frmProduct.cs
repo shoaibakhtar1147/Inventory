@@ -120,6 +120,19 @@ namespace CashandCarry.Configuration
             {
                 MessageBox.Show("Some Fields Are Missing Or Error Occur");
             }
+            ClearGroup();
+        }
+
+        private void ClearGroup()
+        {
+            foreach (Control c in groupBox1.Controls)
+            {
+                if (c is TextBox || c is ComboBox||c is MaskedTextBox)
+                {
+                    c.Text = "";
+                }
+
+            }
         }
 
         private void LoadData()
@@ -201,6 +214,7 @@ namespace CashandCarry.Configuration
             {
                 MessageBox.Show("Product Not Update");
             }
+            ClearGroup();
 
         }
 
@@ -229,16 +243,19 @@ namespace CashandCarry.Configuration
             {
                 txtProductID.Text = dgvProduct.Rows[rowindex].Cells[2].Value.ToString();
                 txtProdName.Text = dgvProduct.Rows[rowindex].Cells[3].Value.ToString();
-                txtProdCate.Text = dgvProduct.Rows[rowindex].Cells[4].Value.ToString();
-                txtComName.Text = dgvProduct.Rows[rowindex].Cells[5].Value.ToString();
-
                 txtWeight.Text = dgvProduct.Rows[rowindex].Cells[6].Value.ToString();
+                txtComName.Text = dgvProduct.Rows[rowindex].Cells[5].Value.ToString();
+                txtProdCate.Text = dgvProduct.Rows[rowindex].Cells[4].Value.ToString();
+                
+
+                
                 txtRP.Text = dgvProduct.Rows[rowindex].Cells[7].Value.ToString();
                 txtPP.Text = dgvProduct.Rows[rowindex].Cells[8].Value.ToString();
                 FormEnable();
                 btnUpdate.Enabled = true;
                 btnDelete.Enabled = true;
                 btnClear.Enabled = true;
+               
             }
             else if (columnindex == 1)
             {

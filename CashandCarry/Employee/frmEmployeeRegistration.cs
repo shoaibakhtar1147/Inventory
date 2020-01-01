@@ -29,6 +29,17 @@ namespace CashandCarry.Configuration
             
         }
 
+        private void ClearGroup()
+        {
+            foreach (Control c in groupBox1.Controls)
+            {
+                if (c is TextBox || c is ComboBox||c is MaskedTextBox)
+                {
+                    c.Text = "";
+                }
+
+            }
+        }
         private void FormEnable()
         {
             txtFname.Enabled = true;
@@ -101,6 +112,7 @@ namespace CashandCarry.Configuration
                      
                  };
                  objBL.Save();
+                 ClearGroup();
 
 
                  
@@ -180,7 +192,7 @@ namespace CashandCarry.Configuration
                 objEmp.Update();
                MessageBox.Show("Employee Record Updated");
                 LoadData();
-                
+                ClearGroup();
             }
             else
             {
@@ -291,7 +303,9 @@ namespace CashandCarry.Configuration
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-
+            ClearGroup();
+            dgvEmp.DataSource = null;
+            txtSearch.Clear();
         }
 
         private void label14_Click(object sender, EventArgs e)

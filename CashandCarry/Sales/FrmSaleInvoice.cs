@@ -321,9 +321,9 @@ namespace CashandCarry.Sales
             }
             else
             {
-                int val = Convert.ToInt32(txtGrandTotal.Text);
-                int val1 = Convert.ToInt32(txtTotalPay.Text);
-                int val2 = val - val1;
+                decimal val = Convert.ToDecimal(txtGrandTotal.Text);
+                decimal val1 = Convert.ToDecimal(txtTotalPay.Text);
+                decimal val2 = val - val1;
                 txtDuePay.Text = val2.ToString();
 
             }
@@ -396,6 +396,7 @@ namespace CashandCarry.Sales
                 {
                     txtProdId.Text = Convert.ToString(dt[0].ProductID);
                     txtPrice.Text = Convert.ToString(dt[0].RetailPrice);
+                    lblQuantity.Text = Convert.ToString(dt[0].Quantity);
                     txtWeight.Text = dt[0].weight;
 
 
@@ -467,6 +468,11 @@ namespace CashandCarry.Sales
             {
                 e.Handled = true;
             }
+        }
+
+        private void dgvProduct_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
 
         

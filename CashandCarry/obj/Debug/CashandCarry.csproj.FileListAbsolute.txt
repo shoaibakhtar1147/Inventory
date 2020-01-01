@@ -77,3 +77,5 @@ C:\Users\ARSALAN COMPUTER LAB\Documents\GitHub\Inventory\CashandCarry\obj\Debug\
 C:\Users\ARSALAN COMPUTER LAB\Documents\GitHub\Inventory\CashandCarry\obj\Debug\CashandCarry.FormReports.FrmEmployeeReport.resources
 C:\Users\ARSALAN COMPUTER LAB\Documents\GitHub\Inventory\CashandCarry\obj\Debug\CashandCarry.FormReports.FrmRecoveryReport.resources
 C:\Users\ARSALAN COMPUTER LAB\Documents\GitHub\Inventory\CashandCarry\obj\Debug\CashandCarry.FormReports.FrmRemainingReport.resources
+C:\Users\ARSALAN COMPUTER LAB\Documents\GitHub\Inventory\CashandCarry\obj\Debug\CashandCarry.Manager.FrmOperater.resources
+C:\Users\ARSALAN COMPUTER LAB\Documents\GitHub\Inventory\CashandCarry\obj\Debug\CashandCarry.FormReports.FrmOperaterForReports.resources

@@ -93,11 +93,7 @@ namespace CashandCarry.Configuration
             }
         }
 
-        private void Clear()
-        {
-            throw new NotImplementedException();
-        }
-
+        
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             if (txtSearch.Text == string.Empty)
@@ -125,7 +121,9 @@ namespace CashandCarry.Configuration
 
 
                 LoadData();
-               // Clear();
+                ClearGroup();
+                // Clear();
+
             }
             else
             {
@@ -161,15 +159,29 @@ namespace CashandCarry.Configuration
                 MessageBox.Show("Record Saved Successfull");
                 LoadData();
                 btnAddnew.Enabled = true;
+                ClearGroup();
             }
             else
             {
                 MessageBox.Show("Some Error Occur No Record Save");
             }
         }
+
+        private void ClearGroup()
+        {
+            foreach (Control c in groupBox1.Controls)
+            {
+                if (c is TextBox || c is ComboBox||c is MaskedTextBox)
+                {
+                    c.Text = "";
+                }
+
+            }
+        }
+
         private bool FormValidate()
         {
-            if (txtCusName.Text==""||txtCusType.Text==""||txtEmail.Text==""||txtContact.MaskCompleted==false||txtAddress.Text==""||txtZoneID.Text=="") return false;
+            if (txtCusName.Text==""||txtCusType.Text==""||txtContact.MaskCompleted==false||txtAddress.Text==""||txtZoneID.Text=="") return false;
             return true;
         }
         private void LoadZoneID()
@@ -282,17 +294,17 @@ namespace CashandCarry.Configuration
             }
             else if (columnindex == 1)
             {
-                string message = "Are You Sure To Delete  Zone " + txtCusName.Text + "?";
+                string message = "Are You Sure To Delete  Customer " + txtCusName.Text + "?";
                 if (MessageBox.Show(message, "Delete Alert", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
                     CustomerBL objCus = new CustomerBL()
                     {
-                        CustomerID = Convert.ToInt32(txtSearch.Text)
+                        CustomerID = Convert.ToInt32(dgvCus.Rows[rowindex].Cells[2].Value.ToString())
                     };
                     objCus.Delete();
                     MessageBox.Show("Record Delete Successfull");
                     LoadData();
-                    Clear();
+                    
                 }
                 else
                 {

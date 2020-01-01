@@ -56,12 +56,18 @@ namespace CashandCarry.Configuration
             }
             
         }
-        private void Clear()
+        private void ClearGroup()
         {
-            txtZoneID.Clear();
-            txtZoneName.Clear();
-            txtSearch.Clear();
+            foreach (Control c in groupBox1.Controls)
+            {
+                if (c is TextBox || c is ComboBox || c is MaskedTextBox)
+                {
+                    c.Text = "";
+                }
+
+            }
         }
+
         private bool FormValidate()
         {
             if (txtZoneName.Text == "") return false;
@@ -80,7 +86,7 @@ namespace CashandCarry.Configuration
                     MessageBox.Show("Record Save Successfull");
                                loadData();
                                btnAddnew.Enabled = true;
-                Clear();
+                               ClearGroup();
             }
             else
             {
@@ -125,11 +131,12 @@ namespace CashandCarry.Configuration
                 };
                  objCate.Update();
                     MessageBox.Show("Zone Update Successfull");
+                    ClearGroup();
 
                 
                 
                 loadData();
-                Clear();
+                
             }
             else
             {
@@ -177,7 +184,7 @@ namespace CashandCarry.Configuration
                 objCate.Delete(); 
                 MessageBox.Show("Record Delete Successfull");
                     loadData();
-                    Clear();  
+                    ClearGroup(); 
             }
             else
             {

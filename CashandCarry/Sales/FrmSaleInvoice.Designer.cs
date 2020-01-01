@@ -54,6 +54,8 @@
             this.btnClear = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.lblQuantity = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
             this.txtProdId = new System.Windows.Forms.TextBox();
             this.txtQuantity = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
@@ -61,6 +63,7 @@
             this.label14 = new System.Windows.Forms.Label();
             this.txtProdName = new System.Windows.Forms.ComboBox();
             this.btnAdd = new System.Windows.Forms.Button();
+            this.btnProdUpdate = new System.Windows.Forms.Button();
             this.btnReset = new System.Windows.Forms.Button();
             this.txtTotalAmount = new System.Windows.Forms.TextBox();
             this.txtDiscount = new System.Windows.Forms.TextBox();
@@ -75,7 +78,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dgvProduct = new System.Windows.Forms.DataGridView();
-            this.btnProdUpdate = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -386,6 +388,8 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.lblQuantity);
+            this.groupBox3.Controls.Add(this.label15);
             this.groupBox3.Controls.Add(this.txtProdId);
             this.groupBox3.Controls.Add(this.txtQuantity);
             this.groupBox3.Controls.Add(this.label21);
@@ -415,6 +419,27 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Product Info";
             this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
+            // 
+            // lblQuantity
+            // 
+            this.lblQuantity.AutoSize = true;
+            this.lblQuantity.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblQuantity.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblQuantity.Location = new System.Drawing.Point(423, 173);
+            this.lblQuantity.Name = "lblQuantity";
+            this.lblQuantity.Size = new System.Drawing.Size(0, 17);
+            this.lblQuantity.TabIndex = 114;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label15.Location = new System.Drawing.Point(350, 173);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(47, 17);
+            this.label15.TabIndex = 113;
+            this.label15.Text = "Stock:";
             // 
             // txtProdId
             // 
@@ -496,6 +521,22 @@
             this.btnAdd.Text = "Add To Cart";
             this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // btnProdUpdate
+            // 
+            this.btnProdUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
+            this.btnProdUpdate.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnProdUpdate.FlatAppearance.BorderSize = 0;
+            this.btnProdUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnProdUpdate.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProdUpdate.ForeColor = System.Drawing.Color.White;
+            this.btnProdUpdate.Location = new System.Drawing.Point(353, 109);
+            this.btnProdUpdate.Name = "btnProdUpdate";
+            this.btnProdUpdate.Size = new System.Drawing.Size(108, 23);
+            this.btnProdUpdate.TabIndex = 11;
+            this.btnProdUpdate.Text = "Update";
+            this.btnProdUpdate.UseVisualStyleBackColor = false;
+            this.btnProdUpdate.Click += new System.EventHandler(this.btnProdUpdate_Click);
             // 
             // btnReset
             // 
@@ -646,22 +687,7 @@
             this.dgvProduct.Name = "dgvProduct";
             this.dgvProduct.Size = new System.Drawing.Size(672, 194);
             this.dgvProduct.TabIndex = 16;
-            // 
-            // btnProdUpdate
-            // 
-            this.btnProdUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
-            this.btnProdUpdate.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnProdUpdate.FlatAppearance.BorderSize = 0;
-            this.btnProdUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnProdUpdate.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnProdUpdate.ForeColor = System.Drawing.Color.White;
-            this.btnProdUpdate.Location = new System.Drawing.Point(353, 109);
-            this.btnProdUpdate.Name = "btnProdUpdate";
-            this.btnProdUpdate.Size = new System.Drawing.Size(108, 23);
-            this.btnProdUpdate.TabIndex = 11;
-            this.btnProdUpdate.Text = "Update";
-            this.btnProdUpdate.UseVisualStyleBackColor = false;
-            this.btnProdUpdate.Click += new System.EventHandler(this.btnProdUpdate_Click);
+            this.dgvProduct.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProduct_CellContentClick);
             // 
             // FrmSaleInvoice
             // 
@@ -744,6 +770,8 @@
         private System.Windows.Forms.TextBox txtProdId;
         private System.Windows.Forms.DataGridView dgvProduct;
         private System.Windows.Forms.Button btnProdUpdate;
+        private System.Windows.Forms.Label lblQuantity;
+        private System.Windows.Forms.Label label15;
 
     }
 }

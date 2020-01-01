@@ -10,6 +10,7 @@ using System.Data.SqlClient;
 using System.Windows.Forms;
 using MetroFramework.Forms;
 using CashandCarry.BL;
+using CashandCarry.Manager;
 
 namespace CashandCarry
 {
@@ -55,7 +56,11 @@ namespace CashandCarry
                         frmStartup objstart = new frmStartup();
                         objstart.Show();
                     }
-                    
+                    else if(LoginType == 2)
+                    {
+                        FrmOperater objope=new FrmOperater();
+                        objope.Show();
+                    }
 
                 }
                 else

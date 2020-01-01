@@ -39,6 +39,20 @@ namespace CashandCarry.Configuration
             MessageBox.Show("Record Saved Successfull");
             LoadData();
             btnAddnew.Enabled = true;
+            ClearGroup();
+        }
+        
+        
+        private void ClearGroup()
+        {
+            foreach (Control c in groupBox1.Controls)
+            {
+                if (c is TextBox || c is ComboBox||c is MaskedTextBox)
+                {
+                    c.Text = "";
+                }
+
+            }
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -61,6 +75,7 @@ namespace CashandCarry.Configuration
                  };
                  objCom.Update();
                  MessageBox.Show("Record Updated Successfull");
+                 ClearGroup();
              }
             else
              {

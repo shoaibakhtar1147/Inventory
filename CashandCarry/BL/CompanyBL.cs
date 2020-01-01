@@ -27,7 +27,8 @@ namespace CashandCarry.BL
                  CompanyName=CompanyName,
                   Contact=Contact,
                    Email=Email,
-                   Address=Address
+                   Address=Address,
+                   DuePayment=0
                 };
                 context.tbl_Company.Add(obj);
                 context.SaveChanges();
