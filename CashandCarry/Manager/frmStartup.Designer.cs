@@ -32,8 +32,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblUsername = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.pnlmain = new System.Windows.Forms.Panel();
             this.btnEmployee = new System.Windows.Forms.Button();
             this.btnReport = new System.Windows.Forms.Button();
             this.btnPuchase = new System.Windows.Forms.Button();
@@ -41,6 +39,8 @@
             this.btnSales = new System.Windows.Forms.Button();
             this.btnConfiguration = new System.Windows.Forms.Button();
             this.btnHome = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.pnlmain = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -83,24 +83,6 @@
             this.label1.TabIndex = 8;
             this.label1.Text = "Welcome";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(82)))), ((int)(((byte)(83)))));
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(161, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(963, 10);
-            this.panel2.TabIndex = 1;
-            // 
-            // pnlmain
-            // 
-            this.pnlmain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlmain.Location = new System.Drawing.Point(161, 10);
-            this.pnlmain.Name = "pnlmain";
-            this.pnlmain.Size = new System.Drawing.Size(963, 578);
-            this.pnlmain.TabIndex = 2;
-            this.pnlmain.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlmain_Paint);
             // 
             // btnEmployee
             // 
@@ -166,7 +148,7 @@
             this.btnLogOut.ForeColor = System.Drawing.Color.White;
             this.btnLogOut.Image = global::CashandCarry.Properties.Resources.icons8_logout_rounded_up_24;
             this.btnLogOut.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLogOut.Location = new System.Drawing.Point(0, 304);
+            this.btnLogOut.Location = new System.Drawing.Point(0, 306);
             this.btnLogOut.Name = "btnLogOut";
             this.btnLogOut.Size = new System.Drawing.Size(161, 40);
             this.btnLogOut.TabIndex = 6;
@@ -231,6 +213,24 @@
             this.btnHome.UseVisualStyleBackColor = false;
             this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
             // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(82)))), ((int)(((byte)(83)))));
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(161, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(963, 10);
+            this.panel2.TabIndex = 1;
+            // 
+            // pnlmain
+            // 
+            this.pnlmain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlmain.Location = new System.Drawing.Point(161, 10);
+            this.pnlmain.Name = "pnlmain";
+            this.pnlmain.Size = new System.Drawing.Size(963, 578);
+            this.pnlmain.TabIndex = 2;
+            this.pnlmain.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlmain_Paint);
+            // 
             // frmStartup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -244,6 +244,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmStartup";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmStartup_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

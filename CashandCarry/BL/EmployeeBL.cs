@@ -145,6 +145,14 @@ namespace CashandCarry.BL
             }
         }
 
+        public List<tbl_employee> SearchByDesig()
+        {
+            using(var context=new CashCarryEntities3())
+            {
+                return context.tbl_employee.Where(a => a.Designation == "Salesman").ToList();
+            }
+        }
+
         public DataTable Select()
         {
            //using(var context=new CashCarryEntities3())

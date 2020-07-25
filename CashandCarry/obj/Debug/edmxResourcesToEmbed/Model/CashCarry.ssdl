@@ -88,6 +88,8 @@
     <Property Name="RetailPrice" Type="decimal" Precision="18" Scale="0" />
     <Property Name="TradePrice" Type="decimal" Precision="18" Scale="0" />
     <Property Name="Quantity" Type="int" />
+    <Property Name="Ctn" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="PiecePerCtn" Type="int" />
   </EntityType>
   <EntityType Name="Tbl_PurchaseDetail">
     <Key>
@@ -98,6 +100,8 @@
     <Property Name="ProductID" Type="int" />
     <Property Name="Quantity" Type="int" />
     <Property Name="TotalAmount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Ctn" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="frieght" Type="decimal" Precision="18" Scale="2" />
   </EntityType>
   <EntityType Name="Tbl_PurchaseMaster">
     <Key>
@@ -130,6 +134,7 @@
     <Property Name="ProductID" Type="int" />
     <Property Name="Quantity" Type="int" />
     <Property Name="Amount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Ctn" Type="decimal" Precision="18" Scale="2" />
   </EntityType>
   <EntityType Name="Tbl_PurchaseReturn_Master">
     <Key>
@@ -144,6 +149,21 @@
     <Property Name="Discount" Type="decimal" Precision="18" Scale="2" />
     <Property Name="PInvoice" Type="int" />
   </EntityType>
+  <EntityType Name="Tbl_PurTransaction">
+    <Key>
+      <PropertyRef Name="PTId" />
+    </Key>
+    <Property Name="PTId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CompanyID" Type="int" />
+    <Property Name="PInvoice" Type="int" />
+    <Property Name="PRemainID" Type="int" />
+    <Property Name="Credit" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Debit" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Date" Type="datetime" />
+    <Property Name="Balance" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Description" Type="varchar(max)" />
+    <Property Name="PReturnID" Type="int" />
+  </EntityType>
   <EntityType Name="Tbl_ReturnSaleDetail">
     <Key>
       <PropertyRef Name="RDetailID" />
@@ -154,6 +174,7 @@
     <Property Name="Quantity" Type="int" />
     <Property Name="Discount" Type="decimal" Precision="18" Scale="2" />
     <Property Name="Amount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Ctn" Type="decimal" Precision="18" Scale="2" />
   </EntityType>
   <EntityType Name="Tbl_ReturnSaleMaster">
     <Key>
@@ -177,6 +198,7 @@
     <Property Name="Quantity" Type="int" />
     <Property Name="Discount" Type="decimal" Precision="18" Scale="2" />
     <Property Name="TotalAmount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Ctn" Type="decimal" Precision="18" Scale="2" />
   </EntityType>
   <EntityType Name="tbl_SaleMAster">
     <Key>
@@ -188,6 +210,7 @@
     <Property Name="CustomerID" Type="int" />
     <Property Name="Payment" Type="decimal" Precision="18" Scale="2" />
     <Property Name="DuePayment" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="OrderBy" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="Tbl_SaleRecovery">
     <Key>
@@ -198,6 +221,22 @@
     <Property Name="RInvoice" Type="int" />
     <Property Name="ReturnCash" Type="decimal" Precision="18" Scale="2" />
     <Property Name="RecoveryDate" Type="datetime" />
+    <Property Name="RecoveryBatchNo" Type="int" />
+  </EntityType>
+  <EntityType Name="Tbl_SaleTransaction">
+    <Key>
+      <PropertyRef Name="STId" />
+    </Key>
+    <Property Name="STId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CustomerID" Type="int" />
+    <Property Name="Invoice#" Type="int" />
+    <Property Name="SRecoveryID" Type="int" />
+    <Property Name="Credit" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Debit" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Date" Type="datetime" />
+    <Property Name="Balance" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Description" Type="varchar(max)" />
+    <Property Name="RInvoice" Type="int" />
   </EntityType>
   <EntityType Name="tbl_Zone">
     <Key>
@@ -207,45 +246,67 @@
     <Property Name="ZoneName" Type="varchar" MaxLength="20" />
   </EntityType>
   <!--Errors Found During Generation:
-warning 6002: The table/view 'CashCarry.dbo.View_DetailSale' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-  <EntityType Name="View_DetailSale">
+warning 6002: The table/view 'CashCarry.dbo.View_DetailPurchase' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="View_DetailPurchase">
     <Key>
+      <PropertyRef Name="Sr#" />
       <PropertyRef Name="InvoiceNo" />
+      <PropertyRef Name="CompanyID" />
     </Key>
+    <Property Name="Sr#" Type="int" Nullable="false" />
     <Property Name="InvoiceNo" Type="int" Nullable="false" />
-    <Property Name="CustomerName" Type="varchar" MaxLength="30" />
+    <Property Name="CompanyID" Type="int" Nullable="false" />
+    <Property Name="CompanyName" Type="varchar" MaxLength="100" />
+    <Property Name="Contact" Type="varchar" MaxLength="20" />
     <Property Name="Date" Type="datetime" />
     <Property Name="ProductName" Type="varchar" MaxLength="30" />
-    <Property Name="RetailPrice" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="TradePrice" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Ctn" Type="decimal" Precision="18" Scale="2" />
     <Property Name="Quantity" Type="int" />
-    <Property Name="Discount" Type="decimal" Precision="18" Scale="2" />
     <Property Name="Amount" Type="decimal" Precision="18" Scale="2" />
-    <Property Name="GrandTotal" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Discount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="GrandTotal" Type="decimal" Precision="18" Scale="2" />
     <Property Name="Payment" Type="decimal" Precision="18" Scale="2" />
-    <Property Name="DuePayment" Type="decimal" Precision="18" Scale="2" />
-    <Property Name="TotalDue" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Balance" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="New Balance" Type="decimal" Precision="18" Scale="2" />
   </EntityType>
   <!--Errors Found During Generation:
-warning 6002: The table/view 'CashCarry.dbo.View_Employee' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-  <EntityType Name="View_Employee">
+warning 6002: The table/view 'CashCarry.dbo.View_PurLedger' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="View_PurLedger">
     <Key>
-      <PropertyRef Name="EmployeeID" />
+      <PropertyRef Name="PTId" />
     </Key>
-    <Property Name="EmployeeID" Type="int" Nullable="false" />
-    <Property Name="Name" Type="varchar" MaxLength="30" />
-    <Property Name="Fname" Type="varchar" MaxLength="30" />
-    <Property Name="Username" Type="varchar" MaxLength="20" />
-    <Property Name="Password" Type="varchar" MaxLength="20" />
-    <Property Name="Qualifiction" Type="varchar" MaxLength="10" />
-    <Property Name="DOB" Type="varchar" MaxLength="10" />
-    <Property Name="Cnic" Type="varchar" MaxLength="20" />
+    <Property Name="PTId" Type="int" Nullable="false" />
+    <Property Name="CompanyID" Type="int" />
+    <Property Name="CompanyName" Type="varchar" MaxLength="100" />
     <Property Name="Contact" Type="varchar" MaxLength="20" />
-    <Property Name="Gender" Type="bit" />
-    <Property Name="Address" Type="varchar" MaxLength="100" />
-    <Property Name="Salary" Type="decimal" Precision="18" Scale="2" />
-    <Property Name="AsignDate" Type="datetime" />
-    <Property Name="Designation" Type="varchar" MaxLength="15" />
-    <Property Name="LoginType" Type="varchar" MaxLength="20" />
+    <Property Name="PInvoice" Type="int" />
+    <Property Name="PRemainID" Type="int" />
+    <Property Name="PReturnID" Type="int" />
+    <Property Name="Credit" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Debit" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Date" Type="datetime" />
+    <Property Name="Balance" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Description" Type="varchar(max)" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'CashCarry.dbo.View_SaleLedger' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="View_SaleLedger">
+    <Key>
+      <PropertyRef Name="STId" />
+    </Key>
+    <Property Name="STId" Type="int" Nullable="false" />
+    <Property Name="CustomerID" Type="int" />
+    <Property Name="Name" Type="varchar" MaxLength="30" />
+    <Property Name="Contact" Type="varchar" MaxLength="20" />
+    <Property Name="InvoiceNo" Type="int" />
+    <Property Name="RecoveryId" Type="int" />
+    <Property Name="RInvoice" Type="int" />
+    <Property Name="Credit" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Debit" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Date" Type="datetime" />
+    <Property Name="Balance" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Description" Type="varchar(max)" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'CashCarry.dbo.View_tbl_Customer' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -275,7 +336,9 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
     <Property Name="weight" Type="varchar" MaxLength="20" />
     <Property Name="RetailPrice" Type="decimal" Precision="18" Scale="0" />
     <Property Name="PurchasePrice" Type="decimal" Precision="18" Scale="0" />
-    <Property Name="Quantity" Type="int" />
+    <Property Name="PiecePerCtn" Type="int" />
+    <Property Name="Ctn" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Piece" Type="int" />
   </EntityType>
   <Function Name="SP_Cate_AddNew" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="CategoryID" Type="int" Mode="In" />
@@ -309,46 +372,65 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
     <EntitySet Name="tbl_PurchaseRemain" EntityType="Self.tbl_PurchaseRemain" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tbl_PurchaseReturn_Detail" EntityType="Self.Tbl_PurchaseReturn_Detail" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tbl_PurchaseReturn_Master" EntityType="Self.Tbl_PurchaseReturn_Master" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_PurTransaction" EntityType="Self.Tbl_PurTransaction" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tbl_ReturnSaleDetail" EntityType="Self.Tbl_ReturnSaleDetail" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tbl_ReturnSaleMaster" EntityType="Self.Tbl_ReturnSaleMaster" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_Saledetail" EntityType="Self.tbl_Saledetail" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_SaleMAster" EntityType="Self.tbl_SaleMAster" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tbl_SaleRecovery" EntityType="Self.Tbl_SaleRecovery" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_SaleTransaction" EntityType="Self.Tbl_SaleTransaction" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_Zone" EntityType="Self.tbl_Zone" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="View_DetailSale" EntityType="Self.View_DetailSale" store:Type="Views" store:Schema="dbo">
+    <EntitySet Name="View_DetailPurchase" EntityType="Self.View_DetailPurchase" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
-    [View_DetailSale].[InvoiceNo] AS [InvoiceNo], 
-    [View_DetailSale].[CustomerName] AS [CustomerName], 
-    [View_DetailSale].[Date] AS [Date], 
-    [View_DetailSale].[ProductName] AS [ProductName], 
-    [View_DetailSale].[RetailPrice] AS [RetailPrice], 
-    [View_DetailSale].[Quantity] AS [Quantity], 
-    [View_DetailSale].[Discount] AS [Discount], 
-    [View_DetailSale].[Amount] AS [Amount], 
-    [View_DetailSale].[GrandTotal] AS [GrandTotal], 
-    [View_DetailSale].[Payment] AS [Payment], 
-    [View_DetailSale].[DuePayment] AS [DuePayment], 
-    [View_DetailSale].[TotalDue] AS [TotalDue]
-    FROM [dbo].[View_DetailSale] AS [View_DetailSale]</DefiningQuery>
+    [View_DetailPurchase].[Sr#] AS [Sr#], 
+    [View_DetailPurchase].[InvoiceNo] AS [InvoiceNo], 
+    [View_DetailPurchase].[CompanyID] AS [CompanyID], 
+    [View_DetailPurchase].[CompanyName] AS [CompanyName], 
+    [View_DetailPurchase].[Contact] AS [Contact], 
+    [View_DetailPurchase].[Date] AS [Date], 
+    [View_DetailPurchase].[ProductName] AS [ProductName], 
+    [View_DetailPurchase].[TradePrice] AS [TradePrice], 
+    [View_DetailPurchase].[Ctn] AS [Ctn], 
+    [View_DetailPurchase].[Quantity] AS [Quantity], 
+    [View_DetailPurchase].[Amount] AS [Amount], 
+    [View_DetailPurchase].[Discount] AS [Discount], 
+    [View_DetailPurchase].[GrandTotal] AS [GrandTotal], 
+    [View_DetailPurchase].[Payment] AS [Payment], 
+    [View_DetailPurchase].[Balance] AS [Balance], 
+    [View_DetailPurchase].[New Balance] AS [New Balance]
+    FROM [dbo].[View_DetailPurchase] AS [View_DetailPurchase]</DefiningQuery>
     </EntitySet>
-    <EntitySet Name="View_Employee" EntityType="Self.View_Employee" store:Type="Views" store:Schema="dbo">
+    <EntitySet Name="View_PurLedger" EntityType="Self.View_PurLedger" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
-    [View_Employee].[EmployeeID] AS [EmployeeID], 
-    [View_Employee].[Name] AS [Name], 
-    [View_Employee].[Fname] AS [Fname], 
-    [View_Employee].[Username] AS [Username], 
-    [View_Employee].[Password] AS [Password], 
-    [View_Employee].[Qualifiction] AS [Qualifiction], 
-    [View_Employee].[DOB] AS [DOB], 
-    [View_Employee].[Cnic] AS [Cnic], 
-    [View_Employee].[Contact] AS [Contact], 
-    [View_Employee].[Gender] AS [Gender], 
-    [View_Employee].[Address] AS [Address], 
-    [View_Employee].[Salary] AS [Salary], 
-    [View_Employee].[AsignDate] AS [AsignDate], 
-    [View_Employee].[Designation] AS [Designation], 
-    [View_Employee].[LoginType] AS [LoginType]
-    FROM [dbo].[View_Employee] AS [View_Employee]</DefiningQuery>
+    [View_PurLedger].[PTId] AS [PTId], 
+    [View_PurLedger].[CompanyID] AS [CompanyID], 
+    [View_PurLedger].[CompanyName] AS [CompanyName], 
+    [View_PurLedger].[Contact] AS [Contact], 
+    [View_PurLedger].[PInvoice] AS [PInvoice], 
+    [View_PurLedger].[PRemainID] AS [PRemainID], 
+    [View_PurLedger].[PReturnID] AS [PReturnID], 
+    [View_PurLedger].[Credit] AS [Credit], 
+    [View_PurLedger].[Debit] AS [Debit], 
+    [View_PurLedger].[Date] AS [Date], 
+    [View_PurLedger].[Balance] AS [Balance], 
+    [View_PurLedger].[Description] AS [Description]
+    FROM [dbo].[View_PurLedger] AS [View_PurLedger]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="View_SaleLedger" EntityType="Self.View_SaleLedger" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [View_SaleLedger].[STId] AS [STId], 
+    [View_SaleLedger].[CustomerID] AS [CustomerID], 
+    [View_SaleLedger].[Name] AS [Name], 
+    [View_SaleLedger].[Contact] AS [Contact], 
+    [View_SaleLedger].[InvoiceNo] AS [InvoiceNo], 
+    [View_SaleLedger].[RecoveryId] AS [RecoveryId], 
+    [View_SaleLedger].[RInvoice] AS [RInvoice], 
+    [View_SaleLedger].[Credit] AS [Credit], 
+    [View_SaleLedger].[Debit] AS [Debit], 
+    [View_SaleLedger].[Date] AS [Date], 
+    [View_SaleLedger].[Balance] AS [Balance], 
+    [View_SaleLedger].[Description] AS [Description]
+    FROM [dbo].[View_SaleLedger] AS [View_SaleLedger]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="View_tbl_Customer" EntityType="Self.View_tbl_Customer" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
@@ -371,7 +453,9 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
     [View_tbl_Product].[weight] AS [weight], 
     [View_tbl_Product].[RetailPrice] AS [RetailPrice], 
     [View_tbl_Product].[PurchasePrice] AS [PurchasePrice], 
-    [View_tbl_Product].[Quantity] AS [Quantity]
+    [View_tbl_Product].[PiecePerCtn] AS [PiecePerCtn], 
+    [View_tbl_Product].[Ctn] AS [Ctn], 
+    [View_tbl_Product].[Piece] AS [Piece]
     FROM [dbo].[View_tbl_Product] AS [View_tbl_Product]</DefiningQuery>
     </EntitySet>
   </EntityContainer>

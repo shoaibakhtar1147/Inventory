@@ -12,19 +12,23 @@ namespace CashandCarry.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class View_DetailSale
+    public partial class View_DetailPurchase
     {
+        public int Sr_ { get; set; }
         public int InvoiceNo { get; set; }
-        public string ProductName { get; set; }
-        public Nullable<decimal> RetailPrice { get; set; }
-        public Nullable<int> Quantity { get; set; }
-        public Nullable<decimal> Discount { get; set; }
+        public int CompanyID { get; set; }
+        public string CompanyName { get; set; }
+        public string Contact { get; set; }
         public Nullable<System.DateTime> Date { get; set; }
-        public Nullable<decimal> GrandTotal { get; set; }
+        public string ProductName { get; set; }
+        public Nullable<decimal> TradePrice { get; set; }
+        public Nullable<decimal> Ctn { get; set; }
+        public Nullable<int> Quantity { get; set; }
         public Nullable<decimal> Amount { get; set; }
-        public string CustomerName { get; set; }
+        public Nullable<decimal> Discount { get; set; }
+        public Nullable<decimal> GrandTotal { get; set; }
         public Nullable<decimal> Payment { get; set; }
-        public Nullable<decimal> DuePayment { get; set; }
-        public Nullable<decimal> TotalDue { get; set; }
+        public Nullable<decimal> Balance { get; set; }
+        public Nullable<decimal> New_Balance { get; set; }
     }
 }

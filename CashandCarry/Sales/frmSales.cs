@@ -39,5 +39,14 @@ namespace CashandCarry.Sales
             SaleRecovery obj = new SaleRecovery();
             obj.ShowDialog();
         }
+
+        private void btnSaleLedger_Click(object sender, EventArgs e)
+        {
+            FrmSaleLedger obj = new FrmSaleLedger();
+            obj.ShowDialog();
+             
+        }
+
+        
     }
 }

@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\ARSALAN COMPUTER LAB\Documents\GitHub\Inventory\CashandCarry\Model\CashCarry.edmx'. 
+﻿// T4 code generation is enabled for model 'G:\C#\Inventory\CashandCarry\Model\CashCarry.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

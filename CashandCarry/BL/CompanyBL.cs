@@ -79,6 +79,13 @@ namespace CashandCarry.BL
             }
         }
 
+        public List<tbl_Company> SearchByName()
+        {
+            using (var context = new CashCarryEntities3())
+            {
+                return context.tbl_Company.Where(a => a.CompanyName== CompanyName).ToList();
+            }
+        }
         public List<tbl_Company> Select()
         {
             using(var context= new CashCarryEntities3())

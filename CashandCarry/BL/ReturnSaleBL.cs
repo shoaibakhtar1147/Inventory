@@ -27,6 +27,7 @@ namespace CashandCarry.BL
         public decimal TotalBill { get; set; }
         public DateTime mindate { get; set; }
         public DateTime maxdate { get; set; }
+        public decimal Ctn { get; set; }
 
         public void  SaveDetail()
         {
@@ -37,6 +38,7 @@ namespace CashandCarry.BL
                  RInvoice=RInvoice,
                    ProductID=ProductID,
                     Quantity=Quantity,
+                    Ctn=Ctn,
                      Discount=Discount,
                      Amount=Amount
                 };

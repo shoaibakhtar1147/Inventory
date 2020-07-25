@@ -20,6 +20,8 @@ namespace CashandCarry.BL
        public int CompanyID{get;set;}
        public decimal RetailPrice{get;set;}
         public decimal TradePrice{get;set;}
+        public decimal Ctn { get; set; }
+        public int PiecePerCtn {get;set;}
 
 
         public void Save()
@@ -35,7 +37,9 @@ namespace CashandCarry.BL
                        weight=weight,
                         RetailPrice=RetailPrice,
                         TradePrice=TradePrice,
-                        Quantity=0
+                        Quantity=0,
+                        PiecePerCtn=PiecePerCtn,
+                        Ctn=0
                 
                 };
                 context.tbl_Product.Add(objPro);
@@ -70,6 +74,7 @@ namespace CashandCarry.BL
                        result.weight=weight;
                         result.RetailPrice=RetailPrice;
                         result.TradePrice = TradePrice;
+                        result.PiecePerCtn = PiecePerCtn;
                         context.SaveChanges();
                 }
             }

@@ -66,6 +66,7 @@ namespace CashandCarry.Configuration
             btnUpdate.Enabled = false;
             btnClear.Enabled = false;
             btnDelete.Enabled = false;
+            txtPieCtn.Enabled = false;
           
            
         }
@@ -77,7 +78,7 @@ namespace CashandCarry.Configuration
             txtProdName.Enabled = true;
             txtRP.Enabled = true;
             txtWeight.Enabled = true;
-          
+            txtPieCtn.Enabled = true;
         }
 
         private void btnAddnew_Click(object sender, EventArgs e)
@@ -204,6 +205,7 @@ namespace CashandCarry.Configuration
                     weight = txtWeight.Text,
                     CategoryID = Convert.ToInt32(txtProdCate.SelectedValue),
                     CompanyID = Convert.ToInt32(txtComName.SelectedValue),
+                    PiecePerCtn=Convert.ToInt32(txtPieCtn.Text)
                    
                 };
                 objPro.Update();
@@ -251,6 +253,7 @@ namespace CashandCarry.Configuration
                 
                 txtRP.Text = dgvProduct.Rows[rowindex].Cells[7].Value.ToString();
                 txtPP.Text = dgvProduct.Rows[rowindex].Cells[8].Value.ToString();
+                txtPieCtn.Text = dgvProduct.Rows[rowindex].Cells[9].Value.ToString();
                 FormEnable();
                 btnUpdate.Enabled = true;
                 btnDelete.Enabled = true;

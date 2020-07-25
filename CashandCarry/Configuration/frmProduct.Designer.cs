@@ -55,6 +55,8 @@
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
+            this.txtPieCtn = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProduct)).BeginInit();
@@ -62,6 +64,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtPieCtn);
+            this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.txtProductID);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.txtComName);
@@ -386,6 +390,26 @@
             this.label13.TabIndex = 35;
             this.label13.Text = "Search:";
             // 
+            // txtPieCtn
+            // 
+            this.txtPieCtn.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPieCtn.Location = new System.Drawing.Point(616, 244);
+            this.txtPieCtn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtPieCtn.Name = "txtPieCtn";
+            this.txtPieCtn.Size = new System.Drawing.Size(171, 23);
+            this.txtPieCtn.TabIndex = 14;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label7.Location = new System.Drawing.Point(461, 248);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(73, 17);
+            this.label7.TabIndex = 13;
+            this.label7.Text = "Piece/Ctn";
+            // 
             // frmProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -446,5 +470,7 @@
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.DataGridView dgvProduct;
+        private System.Windows.Forms.TextBox txtPieCtn;
+        private System.Windows.Forms.Label label7;
     }
 }

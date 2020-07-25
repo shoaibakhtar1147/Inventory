@@ -27,20 +27,41 @@ namespace CashandCarry.BL
         public decimal TotalBill { get; set; }
         public decimal Payment { get; set; }
         public decimal DuePayment { get; set; }
+        public decimal Ctn { get; set; }
+        public decimal frieght { get; set; }
 
         public void SaveDetail()
         {
             using(var context=new CashCarryEntities3())
             {
-                Tbl_PurchaseDetail objpur = new Tbl_PurchaseDetail() 
+                if(frieght != 0)
                 {
-                   PInvoice=PInvoice,
-                    ProductID=ProductID,
-                     Quantity=Quantity,
-                      TotalAmount=TotalAmount
-                };
-                context.Tbl_PurchaseDetail.Add(objpur);
-                context.SaveChanges();
+                    Tbl_PurchaseDetail objpur = new Tbl_PurchaseDetail()
+                    {
+                        PInvoice = PInvoice,
+                        ProductID = ProductID,
+                        Quantity = Quantity,
+                        TotalAmount = TotalAmount,
+                        Ctn = Ctn,
+                        frieght=frieght
+                    };
+                    context.Tbl_PurchaseDetail.Add(objpur);
+                    context.SaveChanges();
+                }
+                else
+                {
+                    Tbl_PurchaseDetail objpur = new Tbl_PurchaseDetail()
+                    {
+                        PInvoice = PInvoice,
+                        ProductID = ProductID,
+                        Quantity = Quantity,
+                        TotalAmount = TotalAmount,
+                        Ctn = Ctn,
+                        frieght = 0
+                    };
+                    context.Tbl_PurchaseDetail.Add(objpur);
+                    context.SaveChanges();
+                }
             }
         }
         public  void SaveMaster()
@@ -81,6 +102,15 @@ namespace CashandCarry.BL
             return DB.ExecuteNonQueryWithSP(SpName, prm);
         }
 
+        public int CtnUpdate()
+        {
+            string spName = "SP_Ctn_Update";
+            SqlParameter[] prm = new SqlParameter[3];
+            prm[0] = new SqlParameter("@ProductID", ProductID);
+            prm[1] = new SqlParameter("@Ctn", Ctn);
+            prm[2] = new SqlParameter("@Action", 2);
+            return DB.ExecuteNonQueryWithSP(spName, prm);
+        }
         public int Update()
         {
             throw new NotImplementedException();
@@ -93,6 +123,14 @@ namespace CashandCarry.BL
             prm[0] = new SqlParameter("@PInvoice", PInvoice);
             return DB.SelectTableWithSP(spName, null);
             
+        }
+
+        public List<View_DetailPurchase> search()
+        {
+            using(var context=new CashCarryEntities3())
+            {
+                return context.View_DetailPurchase.Where(m => m.InvoiceNo == PInvoice).ToList();
+            }
         }
 
         public DataTable Search()

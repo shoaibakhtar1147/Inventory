@@ -33,12 +33,10 @@ namespace CashandCarry.Model
         public virtual DbSet<tbl_CustomerTypes> tbl_CustomerTypes { get; set; }
         public virtual DbSet<tbl_employee> tbl_employee { get; set; }
         public virtual DbSet<tbl_Customer> tbl_Customer { get; set; }
-        public virtual DbSet<View_tbl_Customer> View_tbl_Customer { get; set; }
         public virtual DbSet<tbl_Product> tbl_Product { get; set; }
         public virtual DbSet<View_tbl_Product> View_tbl_Product { get; set; }
         public virtual DbSet<tbl_Saledetail> tbl_Saledetail { get; set; }
         public virtual DbSet<tbl_SaleMAster> tbl_SaleMAster { get; set; }
-        public virtual DbSet<View_DetailSale> View_DetailSale { get; set; }
         public virtual DbSet<Tbl_PurchaseDetail> Tbl_PurchaseDetail { get; set; }
         public virtual DbSet<Tbl_PurchaseMaster> Tbl_PurchaseMaster { get; set; }
         public virtual DbSet<Tbl_ReturnSaleDetail> Tbl_ReturnSaleDetail { get; set; }
@@ -46,10 +44,15 @@ namespace CashandCarry.Model
         public virtual DbSet<Tbl_PurchaseReturn_Detail> Tbl_PurchaseReturn_Detail { get; set; }
         public virtual DbSet<Tbl_PurchaseReturn_Master> Tbl_PurchaseReturn_Master { get; set; }
         public virtual DbSet<tbl_Employee_Salary> tbl_Employee_Salary { get; set; }
-        public virtual DbSet<Tbl_SaleRecovery> Tbl_SaleRecovery { get; set; }
-        public virtual DbSet<View_Employee> View_Employee { get; set; }
         public virtual DbSet<tbl_Login_Type> tbl_Login_Type { get; set; }
         public virtual DbSet<tbl_PurchaseRemain> tbl_PurchaseRemain { get; set; }
+        public virtual DbSet<Tbl_SaleRecovery> Tbl_SaleRecovery { get; set; }
+        public virtual DbSet<View_tbl_Customer> View_tbl_Customer { get; set; }
+        public virtual DbSet<Tbl_SaleTransaction> Tbl_SaleTransaction { get; set; }
+        public virtual DbSet<Tbl_PurTransaction> Tbl_PurTransaction { get; set; }
+        public virtual DbSet<View_PurLedger> View_PurLedger { get; set; }
+        public virtual DbSet<View_SaleLedger> View_SaleLedger { get; set; }
+        public virtual DbSet<View_DetailPurchase> View_DetailPurchase { get; set; }
     
         public virtual ObjectResult<Nullable<int>> SP_Cate_AddNew(Nullable<int> categoryID)
         {

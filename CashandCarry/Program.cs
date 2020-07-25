@@ -17,7 +17,7 @@ namespace CashandCarry
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Spscreen());
+            Application.Run(new frmStartup());
         }
     }
 }

@@ -30,12 +30,13 @@ namespace CashandCarry.Sales
         {
             txtCusID.Enabled = false;
             txtCusName.Enabled = false;
-            txtDuePayment.Enabled = false;
+            txtPreBalance.Enabled = false;
             txtRecoveryDate.Enabled = false;
             txtReturnCash.Enabled = false;
             btnSave.Enabled = false;
             btnClear.Enabled = false;
             btnSearch.Enabled = false;
+            txtNewBalance.Enabled = false;
             txtSearch.Enabled = false;
         }
         private void FormEnable()
@@ -80,7 +81,7 @@ namespace CashandCarry.Sales
             {
                 txtCusID.Text = dgvSaleRecovery.Rows[rowindex].Cells[1].Value.ToString();
                 txtCusName.Text = dgvSaleRecovery.Rows[rowindex].Cells[2].Value.ToString();
-                txtDuePayment.Text = dgvSaleRecovery.Rows[rowindex].Cells[8].Value.ToString();
+                txtPreBalance.Text = dgvSaleRecovery.Rows[rowindex].Cells[8].Value.ToString();
             }
         }
 
@@ -104,17 +105,46 @@ namespace CashandCarry.Sales
             {
                  CustomerID=Convert.ToInt32(txtCusID.Text),
                   ReturnCash=Convert.ToDecimal(txtReturnCash.Text),
-                   RecoveryDate=Convert.ToDateTime(txtRecoveryDate.Text)
+                   RecoveryDate=Convert.ToDateTime(txtRecoveryDate.Text),
+                  
 
             };
             objRec.Save();
 
-            ReturnSaleBL objRet = new ReturnSaleBL() 
-            {
-              CustomerID = Convert.ToInt32(txtCusID.Text),
-                DuePayment = Convert.ToDecimal(txtReturnCash.Text)
-            };
-            objRet.UpdateDueSub();
+            SaleLedgerBL objLedger = new SaleLedgerBL();
+            
+            
+           if(string.IsNullOrEmpty(txtDescription.Text))
+           {
+               objLedger.CustomerID = Convert.ToInt32(txtCusID.Text);
+               objLedger.SRecoveryID = Convert.ToInt32(txtSRecoveryID.Text);
+            
+            objLedger.Credit=0;
+            objLedger.Debit=Convert.ToDecimal(txtReturnCash.Text);
+            objLedger.Date=Convert.ToDateTime(txtRecoveryDate.Text);
+            objLedger.Balance=Convert.ToDecimal(txtNewBalance.Text);
+            objLedger.Description = "Debit";
+           }
+           else
+           {
+               objLedger.CustomerID = Convert.ToInt32(txtCusID.Text);
+               objLedger.SRecoveryID = Convert.ToInt32(txtSRecoveryID.Text);
+            
+               objLedger.Credit = 0;
+               objLedger.Debit = Convert.ToDecimal(txtReturnCash.Text);
+               objLedger.Date = Convert.ToDateTime(txtRecoveryDate.Text);
+               objLedger.Balance = Convert.ToDecimal(txtNewBalance.Text);
+               objLedger.Description = txtDescription.Text;
+           }
+            objLedger.Save();
+
+            //ReturnSaleBL objRet = new ReturnSaleBL() 
+            //{
+            //  CustomerID = Convert.ToInt32(txtCusID.Text),
+            //    DuePayment = Convert.ToDecimal(txtReturnCash.Text)
+            //};
+            //objRet.UpdateDueSub();
+            (new SaleLedgerBL()).UpdateBalance(objLedger.Balance,objLedger.CustomerID);
 
             SaleRecoveryIDReport objrpt = new SaleRecoveryIDReport();
             objrpt.SetParameterValue("@RecoveryID", txtSRecoveryID.Text);
@@ -124,6 +154,17 @@ namespace CashandCarry.Sales
             objView.WindowState = FormWindowState.Normal;
             objView.ShowDialog();
             
+        }
+
+        private void txtReturnCash_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtReturnCash.Text)) 
+            {
+                decimal pre = Convert.ToDecimal(txtPreBalance.Text);
+                decimal cash = Convert.ToDecimal(txtReturnCash.Text);
+                decimal bal = pre - cash;
+                txtNewBalance.Text = bal.ToString();
+            }
         }
     }
 }

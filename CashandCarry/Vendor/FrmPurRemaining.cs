@@ -32,7 +32,7 @@ namespace CashandCarry.Vendor
             txtComID.Enabled = false;
             txtComName.Enabled = false;
             txtDate.Enabled = false;
-            txtDuePayment.Enabled = false;
+            txtPreBalance.Enabled = false;
             txtReturnCash.Enabled = false;
             txtSearch.Enabled = false;
             btnSearch.Enabled = false;
@@ -96,7 +96,7 @@ namespace CashandCarry.Vendor
             {
                 txtComID.Text = dgvPurRemain.Rows[rowindex].Cells[1].Value.ToString();
                 txtComName.Text = dgvPurRemain.Rows[rowindex].Cells[2].Value.ToString();
-                txtDuePayment.Text = dgvPurRemain.Rows[rowindex].Cells[6].Value.ToString();
+                txtPreBalance.Text = dgvPurRemain.Rows[rowindex].Cells[6].Value.ToString();
                 txtReturnCash.Focus();
             }
         }
@@ -111,12 +111,36 @@ namespace CashandCarry.Vendor
             };
             objPur.Save();
 
-            PurchaseReturnBL obj = new PurchaseReturnBL() 
-            { 
-             CompanyID=Convert.ToInt32(txtComID.Text),
-             DuePayment =Convert.ToDecimal(txtReturnCash.Text)
-            };
-            obj.UpdateDuePayment();
+            PurchaseLedgerBL objLedger = new PurchaseLedgerBL();
+            if (string.IsNullOrEmpty(txtDescription.Text))
+            {
+                objLedger.PRemainID = Convert.ToInt32(txtRemainID.Text);
+                objLedger.CompanyID = Convert.ToInt32(txtComID.Text);
+                objLedger.Credit = 0;
+                objLedger.Debit = Convert.ToDecimal(txtReturnCash.Text);
+                objLedger.Date = Convert.ToDateTime(txtDate.Text);
+                objLedger.Balance = Convert.ToDecimal(txtNewBalance.Text);
+                objLedger.Description = "Credit";
+            }
+            else
+            {
+                
+                objLedger.PRemainID = Convert.ToInt32(txtRemainID.Text);
+                objLedger.CompanyID = Convert.ToInt32(txtComID.Text);
+                objLedger.Credit = 0;
+                objLedger.Debit = Convert.ToDecimal(txtReturnCash.Text);
+                objLedger.Date = Convert.ToDateTime(txtDate.Text);
+                objLedger.Balance = Convert.ToDecimal(txtNewBalance.Text);
+                objLedger.Description = txtDescription.Text;
+            }
+            objLedger.save();
+            (new PurchaseLedgerBL()).UpdateBalance(objLedger.Balance,objLedger.CompanyID); 
+            //PurchaseReturnBL obj = new PurchaseReturnBL() 
+            //{ 
+            // CompanyID=Convert.ToInt32(txtComID.Text),
+            // DuePayment =Convert.ToDecimal(txtReturnCash.Text)
+            //};
+            //obj.UpdateDuePayment();
             MessageBox.Show("Payment Paid "+ txtReturnCash.Text);
 
             PurRemainIDReport objrpt = new PurRemainIDReport();

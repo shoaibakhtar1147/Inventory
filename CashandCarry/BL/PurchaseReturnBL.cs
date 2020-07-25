@@ -25,6 +25,7 @@ namespace CashandCarry.BL
           public decimal DuePayment { get; set; }
           public int PInvoice { get; set; }
           public decimal GrandTotal { get; set; }
+          public decimal Ctn { get; set; }
 
         public void SaveDetail()
           {
@@ -35,7 +36,8 @@ namespace CashandCarry.BL
                  PReturnID=PReturnID,
                  ProductID=ProductID,
                  Quantity=Quantity,
-                  Amount=Amount
+                  Amount=Amount,
+                  Ctn=Ctn
                 
                 };
                 context.Tbl_PurchaseReturn_Detail.Add(objDetail);
@@ -81,7 +83,16 @@ namespace CashandCarry.BL
             prm[2] = new SqlParameter("@Action", 1);
             return DB.ExecuteNonQueryWithSP(SpName, prm);
         }
-    
+
+            public int CtnUpdate()
+            {
+                string spName = "SP_Ctn_Update";
+                SqlParameter[] prm = new SqlParameter[3];
+                prm[0] = new SqlParameter("@ProductID", ProductID);
+                prm[1] = new SqlParameter("@Ctn", Ctn);
+                prm[2] = new SqlParameter("@Action", 1);
+                return DB.ExecuteNonQueryWithSP(spName, prm);
+            }
         public DataTable Addnew()
         {
             string spName = "SP_PReturn_AddNew";

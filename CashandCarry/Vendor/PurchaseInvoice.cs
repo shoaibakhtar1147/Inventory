@@ -8,6 +8,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -55,7 +56,8 @@ namespace CashandCarry.Vendor
             txtPrice.Enabled = false;
             txtAmount.Enabled = false;
             txtPrice.Enabled = false;
-            txtPayMode.Enabled = false;
+            txtPreBalance.Enabled = false;
+            txtnewBalance.Enabled = false;
             txtInvoiceID.Enabled = false;
 
             btnSave.Enabled = false;
@@ -67,6 +69,12 @@ namespace CashandCarry.Vendor
             btnReset.Enabled = false;
             btnClear.Enabled = false;
             txtWeight.Enabled = false;
+            lblfrieghtCtn.Hide();
+            txtfrieghtCtn.Hide();
+            lblfrieghtQuan.Hide();
+            txtfrieghtQuan.Hide();
+            txtCtn.Enabled = false;
+            ChkFrieghtOrder.Enabled = false;
             txtComContact.Enabled = false;
         }
 
@@ -76,8 +84,9 @@ namespace CashandCarry.Vendor
             txtCompanyName.Enabled = true;
             txtBillDiscount.Enabled = true;
             txtQuantity.Enabled = true;
-
+            txtCtn.Enabled = true;
             txtProdName.Enabled = true;
+            ChkFrieghtOrder.Enabled = true;
             txtTotalPay.Enabled = true;
             btnProdUpdate.Enabled = true;
            // btnRemove.Enabled = true;
@@ -141,6 +150,7 @@ namespace CashandCarry.Vendor
                 {
                     txtComID.Text = Convert.ToString(dt[0].CompanyID);
                     txtComContact.Text = dt[0].Contact;
+                    txtPreBalance.Text = Convert.ToString(dt[0].DuePayment);
                 }
 
             }
@@ -166,6 +176,8 @@ namespace CashandCarry.Vendor
                     txtProdID.Text = Convert.ToString(dt[0].ProductID);
                     txtPrice.Text = Convert.ToString(dt[0].TradePrice);
                     lblQuantity.Text = Convert.ToString(dt[0].Quantity);
+                    lblCtn.Text = Convert.ToString(dt[0].Ctn);
+                    lblPieCtn.Text = Convert.ToString(dt[0].PiecePerCtn);
                     txtWeight.Text = dt[0].weight;
 
                 }
@@ -184,6 +196,9 @@ namespace CashandCarry.Vendor
             dt.Columns.Add("ProductName");
             dt.Columns.Add("RetailPrice");
             dt.Columns.Add("Quantity");
+            dt.Columns.Add("Ctn");
+            dt.Columns.Add("Frieght Order");
+            dt.Columns.Add("Total Ctn");
             dt.Columns.Add("Amount");
 
 
@@ -200,8 +215,32 @@ namespace CashandCarry.Vendor
             dr[3] = txtCompanyName.Text;
             dr[4] = txtProdName.Text;
             dr[5] = txtPrice.Text;
-            dr[6] = txtQuantity.Text;
-            dr[7] = txtAmount.Text;
+            if(!string.IsNullOrEmpty(txtfrieghtQuan.Text))
+            {
+                int quan = Convert.ToInt32(txtQuantity.Text);
+                int frieQuan=Convert.ToInt32(txtfrieghtQuan.Text);
+                dr[6] =quan +frieQuan;
+            }
+            else
+            {
+                dr[6] = txtQuantity.Text;
+            }
+            
+            dr[7] = txtCtn.Text;
+            
+            if(!string.IsNullOrEmpty(txtfrieghtCtn.Text))
+            {
+                dr[8] = txtfrieghtCtn.Text;
+                decimal ctn = Convert.ToDecimal(txtCtn.Text);
+                decimal frieCtn = Convert.ToDecimal(txtfrieghtCtn.Text);
+                dr[9] = ctn + frieCtn;
+            }
+            else
+            {
+                dr[8] = 0;
+                dr[9] = txtCtn.Text;
+            }
+            dr[10] = txtAmount.Text;
             dt.Rows.Add(dr);
 
             SumCalculate();
@@ -214,7 +253,7 @@ namespace CashandCarry.Vendor
             int sum = 0;
             for (int i = 0; i < dgvProduct.Rows.Count; ++i)
             {
-                sum += Convert.ToInt32(dgvProduct.Rows[i].Cells[7].Value);
+                sum += Convert.ToInt32(dgvProduct.Rows[i].Cells[10].Value);
             }
             txtTotalBill.Text = sum.ToString();
 
@@ -253,7 +292,7 @@ namespace CashandCarry.Vendor
             {
                 int Bill = Convert.ToInt32(txtTotalBill.Text);
 
-                int val2 = (Bill / 100) * Convert.ToInt32(txtBillDiscount.Text);
+                int val2 = Convert.ToInt32(txtBillDiscount.Text);
                 int val3 = Bill - val2;
                 txtGrandTotal.Text = val3.ToString();
 
@@ -262,37 +301,52 @@ namespace CashandCarry.Vendor
 
         private void txtTotalPay_TextChanged(object sender, EventArgs e)
         {
-            if (txtTotalPay.Text == string.Empty)
-            {
-                txtTotalPay.Text = "0";
-                MessageBox.Show("Please Enter Payments");
-                txtTotalPay.Focus();
-            }
-            else
+            //if (txtTotalPay.Text == string.Empty)
+            //{
+            //    txtTotalPay.Text = "0";
+            //    MessageBox.Show("Please Enter Payments");
+            //    txtTotalPay.Focus();
+            //}
+            if(!string.IsNullOrEmpty(txtTotalPay.Text))
             {
                 decimal val = Convert.ToDecimal(txtGrandTotal.Text);
                 decimal val1 = Convert.ToDecimal(txtTotalPay.Text);
                 decimal val2 = val - val1;
                 txtPayDue.Text = val2.ToString();
 
+                decimal prebal = Convert.ToDecimal(txtPreBalance.Text);
+                txtnewBalance.Text = (prebal + val2).ToString();
             }
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
             PurchaseInvoiceBL objpur = new PurchaseInvoiceBL();
-            for (int i = 0; i < dgvProduct.Rows.Count ; i++)
+            for (int i = 0; i < dgvProduct.Rows.Count; i++)
             {
                 objpur.ProductID = Convert.ToInt32(dgvProduct.Rows[i].Cells[1].Value.ToString());
                 objpur.Quantity = Convert.ToInt32(dgvProduct.Rows[i].Cells[6].Value.ToString());
                 objpur.ProdUpdate();
             }
-            PurchaseInvoiceBL obj = new PurchaseInvoiceBL()
+            PurchaseInvoiceBL objCtn = new PurchaseInvoiceBL();
+            for(int i=0;i<dgvProduct.Rows.Count;i++)
             {
-                DuePayment = Convert.ToDecimal(txtPayDue.Text),
-                companyID = Convert.ToInt32(txtComID.Text)
-            };
-            obj.UpdateDuePayment();
+
+                    
+                    objCtn.ProductID = Convert.ToInt32(dgvProduct.Rows[i].Cells[1].Value.ToString());
+                    objCtn.Ctn = Convert.ToInt32(dgvProduct.Rows[i].Cells[9].Value.ToString());
+                    objCtn.CtnUpdate();
+
+
+                
+            }
+            //PurchaseInvoiceBL obj = new PurchaseInvoiceBL()
+            //{
+            //    DuePayment = Convert.ToDecimal(txtPayDue.Text),
+            //    companyID = Convert.ToInt32(txtComID.Text)
+            //};
+            //obj.UpdateDuePayment();
+            
             PurchaseInvoiceBL objmas = new PurchaseInvoiceBL()
             {
                 PInvoice = Convert.ToInt32(txtInvoiceID.Text),
@@ -309,14 +363,26 @@ namespace CashandCarry.Vendor
             {
                 objDet.PInvoice = Convert.ToInt32(txtInvoiceID.Text);
                 objDet.ProductID = Convert.ToInt32(dgvProduct.Rows[i].Cells[1].Value.ToString());
-                objDet.companyID = Convert.ToInt32(dgvProduct.Rows[i].Cells[2].Value.ToString());
                 objDet.Quantity = Convert.ToInt32(dgvProduct.Rows[i].Cells[6].Value.ToString());
-                objDet.TotalAmount = Convert.ToInt32(dgvProduct.Rows[i].Cells[7].Value.ToString());
+                objDet.frieght = Convert.ToDecimal(dgvProduct.Rows[i].Cells[8].Value.ToString());
+                objDet.Ctn = Convert.ToDecimal(dgvProduct.Rows[i].Cells[9].Value.ToString());
+                objDet.TotalAmount = Convert.ToInt32(dgvProduct.Rows[i].Cells[10].Value.ToString());
                 objDet.SaveDetail();
 
             }
             objmas.SaveMaster();
+            PurchaseLedgerBL objLedger=new PurchaseLedgerBL();
+            objLedger.PInvoice=Convert.ToInt32(txtInvoiceID.Text);
+            objLedger.CompanyID=Convert.ToInt32(txtComID.Text);
+            objLedger.Credit=Convert.ToDecimal(txtPayDue.Text);
+            objLedger.Debit=0;
+            objLedger.Date=Convert.ToDateTime(txtPurInvoiceDate.Text);
+            objLedger.Balance=Convert.ToDecimal(txtnewBalance.Text);
+            objLedger.Description="Debit";
+            objLedger.save();
+            (new PurchaseLedgerBL()).UpdateBalance(objLedger.Balance, objLedger.CompanyID);
             ClearForm();
+            ChkFrieghtOrder.Checked = false;
             btnNew.Enabled = true;
         }
 
@@ -371,7 +437,7 @@ namespace CashandCarry.Vendor
                     {
 
                         row.Cells[6].Value = Convert.ToString(Convert.ToInt32(txtQuantity.Text));
-                        row.Cells[7].Value = Convert.ToString(Convert.ToDecimal(txtAmount.Text));
+                        row.Cells[10].Value = Convert.ToString(Convert.ToDecimal(txtAmount.Text));
                         found = true;
                         SumCalculate();
                         ClearGroup();
@@ -412,7 +478,77 @@ namespace CashandCarry.Vendor
             {
                 e.Handled = true;
             }
+            if(Regex.IsMatch(txtQuantity.Text,@"\. \d\d"))
+            {
+                e.Handled = true;
+            }
         }
+
+        private void maskedTextBox1_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtCtn_TextChanged(object sender, EventArgs e)
+        {
+            if(!string.IsNullOrEmpty(txtCtn.Text))
+            {
+                decimal ctn = Convert.ToDecimal(txtCtn.Text);
+                int piePerCtn = Convert.ToInt32(lblPieCtn.Text);
+
+                txtQuantity.Text = (ctn * piePerCtn).ToString();
+
+            }
+        }
+
+        private void ChkFrieghtOrder_CheckedChanged(object sender, EventArgs e)
+        {
+            if(ChkFrieghtOrder.Checked==true)
+            {
+                lblfrieghtCtn.Visible = true;
+                txtfrieghtCtn.Visible = true;
+                lblfrieghtQuan.Visible = true;
+                txtfrieghtQuan.Visible = true;
+
+            }
+            else if(ChkFrieghtOrder.Checked==false)
+            {
+                lblfrieghtCtn.Hide();
+                txtfrieghtCtn.Hide();
+                lblfrieghtQuan.Hide();
+                txtfrieghtQuan.Hide();
+            }
+        }
+
+        private void txtfrieghtCtn_TextChanged(object sender, EventArgs e)
+        {
+            if(!string.IsNullOrEmpty(txtfrieghtCtn.Text))
+            {
+                decimal ctn = Convert.ToDecimal(txtfrieghtCtn.Text);
+                int piePerCtn = Convert.ToInt32(lblPieCtn.Text);
+
+                int result=Convert.ToInt32(ctn * piePerCtn);
+                txtfrieghtQuan.Text = result.ToString();
+
+            }
+        }
+
+       
+        //private void txtQuantity_TextChanged(object sender, EventArgs e)
+        //{
+        //    if(!string.IsNullOrEmpty(txtQuantity.Text))
+        //    {
+        //        decimal quan = Convert.ToInt32(txtQuantity.Text);
+        //        decimal piePerCtn = Convert.ToInt32(lblPieCtn.Text);
+        //        decimal result = quan / piePerCtn;
+        //        txtCtn.Text = result.ToString();
+        //    }
+        //}
     }
       
        

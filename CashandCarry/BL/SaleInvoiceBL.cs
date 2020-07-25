@@ -29,6 +29,8 @@ namespace CashandCarry.BL
         public decimal TotalBill { get; set; }
         public decimal Payment { get; set; }
         public decimal DuePayment { get; set; }
+        public decimal Ctn { get; set; }
+        public string OrderBy { get; set; }
 
         public void SaveDetail()
         {
@@ -41,6 +43,7 @@ namespace CashandCarry.BL
                     ProductID = ProductID,
                     Discount = Discount,
                     Quantity = Quantity,
+                    Ctn=Ctn,
                     TotalAmount = TotalAmount
                 };
                 context.tbl_Saledetail.Add(objsale);
@@ -60,7 +63,8 @@ namespace CashandCarry.BL
                      CustomerID=CustomerID,
                     TotalAmount = GrandTotal,
                      Payment=Payment,
-                     DuePayment=DuePayment
+                     DuePayment=DuePayment,
+                     OrderBy=OrderBy
                      
                 };
                 context.tbl_SaleMAster.Add(objMas);
@@ -98,6 +102,7 @@ namespace CashandCarry.BL
             return DB.SelectTableWithSP(spName, prm);
         }
 
+       
         //public DataTable SelectByDate()
         //{
         //    String spName = "SP_SaleMas_DateDiff";

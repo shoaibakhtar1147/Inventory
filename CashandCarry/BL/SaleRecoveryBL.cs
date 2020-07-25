@@ -16,8 +16,10 @@ namespace CashandCarry.BL
         public int SRecoveryID { get; set; }
         public Decimal ReturnCash {  get; set; }
         public DateTime RecoveryDate { get; set; }
-        public int RInvoice { get; set; } 
-
+        public int RInvoice { get; set; }
+        public decimal Balance { get; set; }
+        public int BatchNo { get; set; }
+        public int EmployeeID { get; set; }
 
         public void Save()
         {
@@ -35,7 +37,8 @@ namespace CashandCarry.BL
                         CustomerID = CustomerID,
                         RecoveryDate = RecoveryDate,
                         ReturnCash = ReturnCash,
-                        RInvoice=RInvoice
+                        RInvoice=RInvoice,
+                        
                     };
                     context.Tbl_SaleRecovery.Add(objRec2);
                     context.SaveChanges();
@@ -47,6 +50,7 @@ namespace CashandCarry.BL
                             CustomerID = CustomerID,
                             RecoveryDate = RecoveryDate,
                             ReturnCash = ReturnCash
+
 
                         };
                         context.Tbl_SaleRecovery.Add(objRec);

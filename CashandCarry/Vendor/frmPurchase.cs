@@ -35,5 +35,11 @@ namespace CashandCarry.Purchase
             FrmPurRemaining obj = new FrmPurRemaining();
             obj.ShowDialog();
         }
+
+        private void btnSuppLedger_Click(object sender, EventArgs e)
+        {
+            FrmPurchaseLedger obj = new FrmPurchaseLedger();
+            obj.ShowDialog();
+        }
     }
 }

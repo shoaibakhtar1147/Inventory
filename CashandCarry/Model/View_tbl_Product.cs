@@ -21,6 +21,8 @@ namespace CashandCarry.Model
         public string weight { get; set; }
         public Nullable<decimal> RetailPrice { get; set; }
         public Nullable<decimal> PurchasePrice { get; set; }
-        public Nullable<int> Quantity { get; set; }
+        public Nullable<int> PiecePerCtn { get; set; }
+        public Nullable<decimal> Ctn { get; set; }
+        public Nullable<int> Piece { get; set; }
     }
 }

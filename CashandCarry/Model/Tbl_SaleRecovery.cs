@@ -19,5 +19,6 @@ namespace CashandCarry.Model
         public Nullable<int> RInvoice { get; set; }
         public Nullable<decimal> ReturnCash { get; set; }
         public Nullable<System.DateTime> RecoveryDate { get; set; }
+        public Nullable<int> RecoveryBatchNo { get; set; }
     }
 }

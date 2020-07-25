@@ -56,14 +56,32 @@ namespace CashandCarry.Sales
                 FormEnable();
                 //LoadSaleDetail();
                 LoadGridProd();
+                LoadSalesman();
                 SumCalculate();
                 btnSave.Enabled = true;
-                txtCusName.Focus();
+                txtSalesman.Focus();
                 btnNew.Enabled = false ;
 
 
 
             }
+        }
+
+        private void LoadSalesman()
+        {
+
+            EmployeeBL objEmp = new EmployeeBL();
+            var dt = objEmp.SearchByDesig();
+            if(dt != null)
+            {
+                txtSalesman.DataSource = dt;
+                txtSalesman.AutoCompleteMode = AutoCompleteMode.Suggest;
+                txtSalesman.AutoCompleteSource = AutoCompleteSource.ListItems;
+                txtSalesman.DisplayMember = "Name";
+                txtSalesman.ValueMember = "Designation";
+           
+            }
+            
         }
         private void FormDisable()
         {
@@ -76,19 +94,22 @@ namespace CashandCarry.Sales
             txtInvoiceDate.Enabled = false;
             txtDuePay.Enabled = false;
             txtProdName.Enabled = false;
+            txtSalesman.Enabled = false;
             txtProdId.Enabled = false;
+            txtCtn.Enabled = false;
             txtTotalPay.Enabled = false;
             txtPrice.Enabled = false;
             txtAmount.Enabled = false;
             txtPrice.Enabled = false;
-            txtPayMode.Enabled = false;
+            
             txtInvoiceID.Enabled = false;
             txtTotalAmount.Enabled = false;
             btnSave.Enabled = false;
-
+            txtPreBalance.Enabled = false;
+            txtnewBalance.Enabled = false;
 
             btnProdUpdate.Enabled = false;
-
+            
             btnAdd.Enabled = false;
             btnReset.Enabled = false;
             btnClear.Enabled = false;
@@ -101,12 +122,11 @@ namespace CashandCarry.Sales
             txtCusName.Enabled = true;
             txtDiscount.Enabled = true;
 
-            txtQuantity.Enabled = true;
+            
             txtDiscount.Enabled = true;
             txtTotalPay.Enabled = true;
-
+            txtSalesman.Enabled = true;
             btnProdUpdate.Enabled = true;
-
             btnAdd.Enabled = true;
             btnReset.Enabled = true;
         }
@@ -140,14 +160,14 @@ namespace CashandCarry.Sales
             if (txtDiscount.Text == string.Empty)
             {
                 txtDiscount.Text = "0";
-                int vl = Convert.ToInt32(txtAmount.Text);
+                decimal vl = Convert.ToDecimal(txtAmount.Text);
                 txtTotalAmount.Text = vl.ToString();
             }
             else
             {
-                int val1 = Convert.ToInt32(txtAmount.Text);
-                int val = ((val1 / 100) * Convert.ToInt32(txtDiscount.Text));
-                int val2 = val1 - val;
+                decimal val1 = Convert.ToDecimal(txtAmount.Text);
+                decimal val = Convert.ToDecimal(txtDiscount.Text);
+                decimal val2 = val1 - val;
                 txtTotalAmount.Text = val2.ToString();
             }
 
@@ -161,6 +181,7 @@ namespace CashandCarry.Sales
             dt.Columns.Add("ProductID");
             dt.Columns.Add("ProductName");
             dt.Columns.Add("RetailPrice");
+            dt.Columns.Add("Ctn");
             dt.Columns.Add("Quantity");
             dt.Columns.Add("Discount");
             dt.Columns.Add("TotalAmount");
@@ -187,14 +208,23 @@ namespace CashandCarry.Sales
             dr[1] = txtProdId.Text;
             dr[2] = txtProdName.Text;
             dr[3] = txtPrice.Text;
-            dr[4] = txtQuantity.Text;
-            dr[5] = txtDiscount.Text;
-            dr[6] = txtTotalAmount.Text;
+            dr[4] = txtCtn.Text;
+            dr[5] = txtQuantity.Text;
+            dr[6] = txtDiscount.Text;
+            dr[7] = txtTotalAmount.Text;
             dt.Rows.Add(dr);
             // MessageBox.Show("Product Saved Successfull");
             ClearGroup();
             SumCalculate();
-            txtTotalPay.Focus();
+            ChkCtn.Focus();
+            if(ChkCtn.Checked==true)
+            {
+                ChkCtn.Checked = false;
+            }
+            else if(ChkPiece.Checked==true)
+            {
+                ChkPiece.Checked = false;
+            }
              
 
 
@@ -203,10 +233,10 @@ namespace CashandCarry.Sales
         private void SumCalculate()
         {
 
-            int sum = 0;
+            decimal sum = 0;
             for (int i = 0; i < dgvProduct.Rows.Count; ++i)
             {
-                sum += Convert.ToInt32(dgvProduct.Rows[i].Cells[6].Value);
+                sum += Convert.ToDecimal(dgvProduct.Rows[i].Cells[7].Value);
             }
             txtGrandTotal.Text= sum.ToString();
 
@@ -223,10 +253,20 @@ namespace CashandCarry.Sales
             for (int i = 0; i < dgvProduct.Rows.Count; i++)
             {
                 objProd.ProductID = Convert.ToInt32(dgvProduct.Rows[i].Cells[1].Value.ToString());
-                objProd.Quantity = Convert.ToInt32(dgvProduct.Rows[i].Cells[4].Value.ToString());
+                objProd.Quantity = Convert.ToInt32(dgvProduct.Rows[i].Cells[5].Value.ToString());
                 objProd.UpdateProd();
 
             }
+
+            PurchaseReturnBL objCtn = new PurchaseReturnBL();
+            for (int i = 0; i < dgvProduct.Rows.Count; i++)
+            {
+                objCtn.ProductID = Convert.ToInt32(dgvProduct.Rows[i].Cells[1].Value.ToString());
+                objCtn.Ctn = Convert.ToDecimal(dgvProduct.Rows[i].Cells[4].Value.ToString());
+                objCtn.CtnUpdate();
+            }
+
+
             SaleInvoiceBL objmas = new SaleInvoiceBL()
             {
 
@@ -234,7 +274,8 @@ namespace CashandCarry.Sales
                 GrandTotal = Convert.ToDecimal(txtGrandTotal.Text),
                 CustomerID = Convert.ToInt32(txtCusId.Text),
                 Payment = Convert.ToDecimal(txtTotalPay.Text),
-                DuePayment = Convert.ToDecimal(txtDuePay.Text)
+                DuePayment = Convert.ToDecimal(txtDuePay.Text),
+                OrderBy=txtSalesman.Text
             };
 
             SaleInvoiceBL objsale = new SaleInvoiceBL();
@@ -243,19 +284,36 @@ namespace CashandCarry.Sales
             {
                 objsale.InvoiceNo = Convert.ToInt32(txtInvoiceID.Text);
                 objsale.ProductID = Convert.ToInt32(dgvProduct.Rows[i].Cells[1].Value.ToString());
-                objsale.Quantity = Convert.ToInt32(dgvProduct.Rows[i].Cells[4].Value.ToString());
-                objsale.Discount = Convert.ToDecimal(dgvProduct.Rows[i].Cells[5].Value.ToString());
-                objsale.TotalAmount = Convert.ToDecimal(dgvProduct.Rows[i].Cells[6].Value.ToString());
+                objsale.Ctn = Convert.ToDecimal(dgvProduct.Rows[i].Cells[4].Value.ToString());
+                objsale.Quantity = Convert.ToInt32(dgvProduct.Rows[i].Cells[5].Value.ToString());
+                objsale.Discount = Convert.ToDecimal(dgvProduct.Rows[i].Cells[6].Value.ToString());
+                objsale.TotalAmount = Convert.ToDecimal(dgvProduct.Rows[i].Cells[7].Value.ToString());
                 objsale.SaveDetail();
             }
             objmas.SaveMaster();
 
-            SaleInvoiceBL objDue = new SaleInvoiceBL()
-            {
-                CustomerID = Convert.ToInt32(txtCusId.Text),
-                DuePayment = Convert.ToDecimal(txtDuePay.Text)
-            };
-            objDue.UpdateDueSum();
+           
+            //SaleInvoiceBL objDue = new SaleInvoiceBL()
+            //{
+            //    CustomerID = Convert.ToInt32(txtCusId.Text),
+            //    DuePayment = Convert.ToDecimal(txtnewBalance.Text)
+            //};
+            //objDue.UpdateDueSum();
+           
+            SaleLedgerBL objLedger = new SaleLedgerBL(); 
+            
+            objLedger.Invoiceno=Convert.ToInt32(txtInvoiceID.Text);
+            objLedger.CustomerID=Convert.ToInt32(txtCusId.Text);
+            objLedger.Credit=Convert.ToDecimal(txtDuePay.Text);
+            objLedger.Debit = 0;
+            
+
+
+            objLedger.Date=Convert.ToDateTime(txtInvoiceDate.Text);
+            objLedger.Balance=Convert.ToDecimal(txtnewBalance.Text);
+            objLedger.Description = "Credit";
+            objLedger.Save();
+            (new SaleLedgerBL()).UpdateBalance(objLedger.Balance, objLedger.CustomerID);
 
             saleInvoiceReport objSale = new saleInvoiceReport();
             rptViewer objview = new rptViewer();
@@ -313,20 +371,25 @@ namespace CashandCarry.Sales
 
         private void txtTotalPay_TextChanged(object sender, EventArgs e)
         {
-            if (txtTotalPay.Text == string.Empty)
-            {
-                txtTotalPay.Text = "0";
-                MessageBox.Show("Please Enter Payments");
-                txtTotalPay.Focus();
-            }
-            else
+            //if (txtTotalPay.Text == string.Empty)
+            //{
+            //    txtTotalPay.Text = "0.00";
+            //    MessageBox.Show("Please Enter Payments");
+            //    txtTotalPay.Focus();
+            //}
+
+           
+            if(!string.IsNullOrEmpty(txtTotalPay.Text))
             {
                 decimal val = Convert.ToDecimal(txtGrandTotal.Text);
                 decimal val1 = Convert.ToDecimal(txtTotalPay.Text);
                 decimal val2 = val - val1;
+               
+                
                 txtDuePay.Text = val2.ToString();
-
-            }
+                decimal prebal = Convert.ToDecimal(txtPreBalance.Text);
+                txtnewBalance.Text = (prebal + val2).ToString();
+           }
 
         }
 
@@ -344,7 +407,7 @@ namespace CashandCarry.Sales
 
 
             }
-            else
+            else if(ChkPiece.Checked==true)
             {
 
                 int val1 = Convert.ToInt32(txtPrice.Text);
@@ -375,6 +438,7 @@ namespace CashandCarry.Sales
             {
                 txtCusId.Text = Convert.ToString(dt[0].CustomerID);
                 txtContact.Text = dt[0].Contact;
+                txtPreBalance.Text = Convert.ToString(dt[0].DuePayment);
             }
         }
 
@@ -398,6 +462,9 @@ namespace CashandCarry.Sales
                     txtPrice.Text = Convert.ToString(dt[0].RetailPrice);
                     lblQuantity.Text = Convert.ToString(dt[0].Quantity);
                     txtWeight.Text = dt[0].weight;
+                    lblCtn.Text = Convert.ToString(dt[0].Ctn);
+                    lblPiePerCtn.Text = Convert.ToString(dt[0].PiecePerCtn);
+
 
 
                 }
@@ -463,7 +530,7 @@ namespace CashandCarry.Sales
         }
 
         private void txtTotalPay_KeyPress(object sender, KeyPressEventArgs e)
-        {
+            {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
@@ -475,6 +542,75 @@ namespace CashandCarry.Sales
 
         }
 
+        private void txtTotalPay_Leave(object sender, EventArgs e)
+        {
+            // if (txtTotalPay.Text == string.Empty)
+            //{
+            //    txtTotalPay.Text = "0.00";
+            //    MessageBox.Show("Please Enter Payments");
+            //    txtTotalPay.Focus();
+            //}
+            btnSave.Focus();
+        }
+
+        private void txtCtn_Leave(object sender, EventArgs e)
+        {
+            if(ChkCtn.Checked==true)
+            {
+                decimal ctn = Convert.ToDecimal(txtCtn.Text);
+                decimal retailPrice = Convert.ToDecimal(txtPrice.Text);
+                decimal result = Convert.ToDecimal(ctn * retailPrice);
+                txtAmount.Text = result.ToString();
+            }
+        }
+
+        private void txtCtn_TextChanged(object sender, EventArgs e)
+        {
+            if (ChkCtn.Checked == true &&!string.IsNullOrEmpty(txtCtn.Text))
+            {
+                
+                decimal Ctn = Convert.ToDecimal(txtCtn.Text);
+                int piePerCtn = Convert.ToInt32(lblPiePerCtn.Text);
+                int result = Convert.ToInt32(Ctn * piePerCtn);
+                txtQuantity.Text = result.ToString();
+            }
+        }
+
+        private void ChkCtn_CheckedChanged(object sender, EventArgs e)
+        {
+            if(ChkCtn.Checked==true)
+            {
+                txtCtn.Enabled = true;
+            }
+        }
+
+        private void txtQuantity_TextChanged(object sender, EventArgs e)
+        {
+            if(ChkPiece.Checked==true &&!string.IsNullOrEmpty(txtQuantity.Text))
+            {
+                decimal Quan = Convert.ToDecimal(txtQuantity.Text);
+                int piePerCtn = Convert.ToInt32(lblPiePerCtn.Text);
+                decimal result = Convert.ToDecimal(Quan / piePerCtn);
+                txtCtn.Text = result.ToString();
+            }
+        }
+
+        private void ChkPiece_CheckedChanged(object sender, EventArgs e)
+        {
+            if(ChkPiece.Checked==true)
+            {
+                txtQuantity.Enabled = true;
+            }
+        }
+
+        private void txtSalesman_Leave(object sender, EventArgs e)
+        {
+            txtCusName.Focus();
+        }
+
+      
+
+       
         
 
         
