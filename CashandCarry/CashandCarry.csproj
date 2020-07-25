@@ -518,6 +518,12 @@
     <Compile Include="Sales\SaleRecovery.Designer.cs">
       <DependentUpon>SaleRecovery.cs</DependentUpon>
     </Compile>
+    <Compile Include="Sales\SaleRecoveryDgv.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sales\SaleRecoveryDgv.Designer.cs">
+      <DependentUpon>SaleRecoveryDgv.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vendor\frmPurchase.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -780,6 +786,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Sales\SaleRecovery.resx">
       <DependentUpon>SaleRecovery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sales\SaleRecoveryDgv.resx">
+      <DependentUpon>SaleRecoveryDgv.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vendor\frmPurchase.resx">
       <DependentUpon>frmPurchase.cs</DependentUpon>

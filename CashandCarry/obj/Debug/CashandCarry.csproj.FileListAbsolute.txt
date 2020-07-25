@@ -134,3 +134,4 @@ G:\C#\Inventory\CashandCarry\obj\Debug\CashandCarry.Vendor.PurchaseInvoice.resou
 G:\C#\Inventory\CashandCarry\obj\Debug\CashandCarry.csproj.GenerateResource.Cache
 G:\C#\Inventory\CashandCarry\obj\Debug\CashandCarry.Sales.FrmSaleLedger.resources
 G:\C#\Inventory\CashandCarry\obj\Debug\CashandCarry.Vendor.FrmPurchaseLedger.resources
+G:\C#\Inventory\CashandCarry\obj\Debug\CashandCarry.Sales.SaleRecoveryDgv.resources
