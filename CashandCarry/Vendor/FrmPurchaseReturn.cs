@@ -287,6 +287,7 @@ namespace CashandCarry.Vendor
                 decimal result = Due - total;
                 txtBalance.Text = result.ToString();
             }
+            btnSave.Focus();
         }
 
         private void txtBalance_Leave(object sender, EventArgs e)
@@ -537,9 +538,9 @@ namespace CashandCarry.Vendor
             }
             if (txtCtn.Text != string.Empty)
             {
-                int val1 = Convert.ToInt32(txtPrice.Text);
+                decimal val1 = Convert.ToDecimal(txtPrice.Text);
                 int val2 = Convert.ToInt32(txtQuantity.Text);
-                int val3 = val1 * val2;
+                int val3 = Convert.ToInt32(val1 * val2);
                 txtAmount.Text = val3.ToString();
             }
 

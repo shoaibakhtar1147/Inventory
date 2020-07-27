@@ -53,6 +53,7 @@ namespace CashandCarry.Model
         public virtual DbSet<View_PurLedger> View_PurLedger { get; set; }
         public virtual DbSet<View_SaleLedger> View_SaleLedger { get; set; }
         public virtual DbSet<View_DetailPurchase> View_DetailPurchase { get; set; }
+        public virtual DbSet<tbl_Expense> tbl_Expense { get; set; }
     
         public virtual ObjectResult<Nullable<int>> SP_Cate_AddNew(Nullable<int> categoryID)
         {

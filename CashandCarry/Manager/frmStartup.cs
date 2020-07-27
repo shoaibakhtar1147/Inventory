@@ -2,6 +2,7 @@
 using CashandCarry.Configuration;
 using CashandCarry.Configuration;
 using CashandCarry.Employee;
+using CashandCarry.Expense;
 using CashandCarry.Purchase;
 using CashandCarry.Reports;
 using CashandCarry.Sales;
@@ -86,6 +87,12 @@ namespace CashandCarry
         private void pnlmain_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void btnExpense_Click(object sender, EventArgs e)
+        {
+            frmExpense objExp = new frmExpense();
+            ShowForm(objExp);
         }
 
        

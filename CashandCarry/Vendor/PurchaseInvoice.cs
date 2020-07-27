@@ -140,13 +140,20 @@ namespace CashandCarry.Vendor
 
         private void LoadProd()
         {
-            ProductBL objPro = new ProductBL();
-            List<View_tbl_Product> dt = objPro.Select();
-            txtProdName.DataSource = dt;
-            txtProdName.AutoCompleteSource = AutoCompleteSource.ListItems;
-            txtProdName.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            txtProdName.DisplayMember = "ProductName";
-            txtProdName.ValueMember = "ProductID";
+            ProductBL objPro = new ProductBL() 
+            {
+             Company=txtCompanyName.Text
+            };
+            List<View_tbl_Product> dt = objPro.SearchByComp();
+            if(dt != null)
+            {
+                txtProdName.DataSource = dt;
+                txtProdName.AutoCompleteSource = AutoCompleteSource.ListItems;
+                txtProdName.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                txtProdName.DisplayMember = "ProductName";
+                txtProdName.ValueMember = "ProductID";
+            }
+            
         }
 
         private void txtCompanyName_Leave(object sender, EventArgs e)
@@ -257,7 +264,7 @@ namespace CashandCarry.Vendor
                 dr[8] = 0;
                 dr[9] = txtCtn.Text;
             }
-            dr[10] = txtAmount.Text;
+            dr[10] = Convert.ToDecimal(txtAmount.Text);
             dt.Rows.Add(dr);
 
             SumCalculate();
@@ -267,10 +274,10 @@ namespace CashandCarry.Vendor
         private void SumCalculate()
         {
 
-            int sum = 0;
+            decimal sum = 0;
             for (int i = 0; i < dgvProduct.Rows.Count; ++i)
             {
-                sum += Convert.ToInt32(dgvProduct.Rows[i].Cells[10].Value);
+                sum += Convert.ToDecimal(dgvProduct.Rows[i].Cells[10].Value);
             }
             txtTotalBill.Text = sum.ToString();
 
@@ -285,8 +292,8 @@ namespace CashandCarry.Vendor
         {
             if (txtBillDiscount.Text == string.Empty)
             {
-                txtBillDiscount.Text = "0";
-                int Bill = Convert.ToInt32(txtTotalBill.Text);
+                txtBillDiscount.Text = "0.00";
+                decimal Bill = Convert.ToDecimal(txtTotalBill.Text);
                 txtGrandTotal.Text = Bill.ToString();
             }
             else
@@ -518,6 +525,7 @@ namespace CashandCarry.Vendor
                 txtfrieghtCtn.Visible = true;
                 lblfrieghtQuan.Visible = true;
                 txtfrieghtQuan.Visible = true;
+                txtfrieghtCtn.Focus();
 
             }
             else if(ChkFrieghtOrder.Checked==false)
@@ -556,9 +564,9 @@ namespace CashandCarry.Vendor
             }
             else
             {
-                int val = Convert.ToInt32(txtPrice.Text);
-                int val1 = Convert.ToInt32(txtCtn.Text);
-                int val2 = val * val1;
+                decimal val = Convert.ToDecimal(txtPrice.Text);
+                decimal val1 = Convert.ToDecimal(txtCtn.Text);
+                decimal val2 = val * val1;
                 txtAmount.Text = val2.ToString();
             }
         }
@@ -567,6 +575,11 @@ namespace CashandCarry.Vendor
         {
             frmProduct objpro = new frmProduct();
             objpro.ShowDialog();
+        }
+
+        private void txtfrieghtQuan_Leave(object sender, EventArgs e)
+        {
+            btnAdd.Focus();
         }
 
        

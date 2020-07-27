@@ -74,6 +74,17 @@
           <Property Name="ResginDate" Type="datetime" />
           <Property Name="SalaryDate" Type="datetime" />
         </EntityType>
+        <EntityType Name="tbl_Expense">
+          <Key>
+            <PropertyRef Name="ExId" />
+          </Key>
+          <Property Name="ExId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ExType" Type="varchar(max)" />
+          <Property Name="ExName" Type="varchar(max)" />
+          <Property Name="Description" Type="varchar(max)" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
         <EntityType Name="tbl_Login_Type">
           <Key>
             <PropertyRef Name="LoginTypeID" />
@@ -371,6 +382,7 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
           <EntitySet Name="tbl_CustomerTypes" EntityType="Self.tbl_CustomerTypes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_employee" EntityType="Self.tbl_employee" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_Employee_Salary" EntityType="Self.tbl_Employee_Salary" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Expense" EntityType="Self.tbl_Expense" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_Login_Type" EntityType="Self.tbl_Login_Type" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_Product" EntityType="Self.tbl_Product" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_PurchaseDetail" EntityType="Self.Tbl_PurchaseDetail" Schema="dbo" store:Type="Tables" />
@@ -525,6 +537,7 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
           <EntitySet Name="View_PurLedger" EntityType="CashCarryModel.View_PurLedger" />
           <EntitySet Name="View_SaleLedger" EntityType="CashCarryModel.View_SaleLedger" />
           <EntitySet Name="View_DetailPurchase" EntityType="CashCarryModel.View_DetailPurchase" />
+          <EntitySet Name="tbl_Expense" EntityType="CashCarryModel.tbl_Expense" />
         </EntityContainer>
         <EntityType Name="tbl_Zone">
           <Key>
@@ -874,6 +887,17 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
           <Property Name="Balance" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="New_Balance" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="frieght" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="tbl_Expense">
+          <Key>
+            <PropertyRef Name="ExId" />
+          </Key>
+          <Property Name="ExId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ExType" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ExName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1266,6 +1290,18 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
                 <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
                 <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
                 <ScalarProperty Name="Sr_" ColumnName="Sr#" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Expense">
+            <EntityTypeMapping TypeName="CashCarryModel.tbl_Expense">
+              <MappingFragment StoreEntitySet="tbl_Expense">
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ExName" ColumnName="ExName" />
+                <ScalarProperty Name="ExType" ColumnName="ExType" />
+                <ScalarProperty Name="ExId" ColumnName="ExId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

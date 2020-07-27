@@ -69,6 +69,17 @@
     <Property Name="ResginDate" Type="datetime" />
     <Property Name="SalaryDate" Type="datetime" />
   </EntityType>
+  <EntityType Name="tbl_Expense">
+    <Key>
+      <PropertyRef Name="ExId" />
+    </Key>
+    <Property Name="ExId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ExType" Type="varchar(max)" />
+    <Property Name="ExName" Type="varchar(max)" />
+    <Property Name="Description" Type="varchar(max)" />
+    <Property Name="Date" Type="datetime" />
+    <Property Name="Amount" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
   <EntityType Name="tbl_Login_Type">
     <Key>
       <PropertyRef Name="LoginTypeID" />
@@ -366,6 +377,7 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
     <EntitySet Name="tbl_CustomerTypes" EntityType="Self.tbl_CustomerTypes" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_employee" EntityType="Self.tbl_employee" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_Employee_Salary" EntityType="Self.tbl_Employee_Salary" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Expense" EntityType="Self.tbl_Expense" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_Login_Type" EntityType="Self.tbl_Login_Type" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_Product" EntityType="Self.tbl_Product" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tbl_PurchaseDetail" EntityType="Self.Tbl_PurchaseDetail" Schema="dbo" store:Type="Tables" />

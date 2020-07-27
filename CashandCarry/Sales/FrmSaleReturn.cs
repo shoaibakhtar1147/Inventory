@@ -121,7 +121,7 @@ namespace CashandCarry.Sales
                 this.dgvProduct.Columns["Total Balance"].Visible = false;
                 this.dgvProduct.Columns["GrandTotal"].Visible = false;
                 this.dgvProduct.Columns["Payment"].Visible = false;
-                //this.dgvProduct.Columns[""]
+                this.dgvProduct.Columns["Code"].Visible = false;
                 dgvProduct.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                
             }

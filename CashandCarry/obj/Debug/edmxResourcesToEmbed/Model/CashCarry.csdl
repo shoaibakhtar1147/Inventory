@@ -55,6 +55,7 @@
     <EntitySet Name="View_PurLedger" EntityType="CashCarryModel.View_PurLedger" />
     <EntitySet Name="View_SaleLedger" EntityType="CashCarryModel.View_SaleLedger" />
     <EntitySet Name="View_DetailPurchase" EntityType="CashCarryModel.View_DetailPurchase" />
+    <EntitySet Name="tbl_Expense" EntityType="CashCarryModel.tbl_Expense" />
   </EntityContainer>
   <EntityType Name="tbl_Zone">
     <Key>
@@ -404,5 +405,16 @@
     <Property Name="Balance" Type="Decimal" Precision="18" Scale="2" />
     <Property Name="New_Balance" Type="Decimal" Precision="18" Scale="2" />
     <Property Name="frieght" Type="Decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="tbl_Expense">
+    <Key>
+      <PropertyRef Name="ExId" />
+    </Key>
+    <Property Name="ExId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ExType" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ExName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
+    <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
   </EntityType>
 </Schema>

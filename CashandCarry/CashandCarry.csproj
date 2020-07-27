@@ -79,6 +79,7 @@
     <Compile Include="BL\CusTypeBL.cs" />
     <Compile Include="BL\EmployeeBL.cs" />
     <Compile Include="BL\EmpSalaryBL.cs" />
+    <Compile Include="BL\ExpenseBL.cs" />
     <Compile Include="BL\LoginInfoBL.cs" />
     <Compile Include="BL\ProductBL.cs" />
     <Compile Include="BL\PurchaseInvoiceBL.cs" />
@@ -116,6 +117,18 @@
     <Compile Include="Employee\FrmEmployeeSalary.Designer.cs">
       <DependentUpon>FrmEmployeeSalary.cs</DependentUpon>
     </Compile>
+    <Compile Include="Expense\FrmAddExpense.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Expense\FrmAddExpense.Designer.cs">
+      <DependentUpon>FrmAddExpense.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Expense\frmExpense.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Expense\frmExpense.Designer.cs">
+      <DependentUpon>frmExpense.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormReports\FrmComReport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,6 +146,12 @@
     </Compile>
     <Compile Include="FormReports\FrmEmployeeReport.Designer.cs">
       <DependentUpon>FrmEmployeeReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormReports\FrmExpenseReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormReports\FrmExpenseReport.Designer.cs">
+      <DependentUpon>FrmExpenseReport.cs</DependentUpon>
     </Compile>
     <Compile Include="FormReports\FrmOperaterForReports.cs">
       <SubType>Form</SubType>
@@ -291,6 +310,9 @@
     <Compile Include="Model\tbl_Employee_Salary.cs">
       <DependentUpon>CashCarry.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\tbl_Expense.cs">
+      <DependentUpon>CashCarry.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\tbl_Login_Type.cs">
       <DependentUpon>CashCarry.tt</DependentUpon>
     </Compile>
@@ -420,6 +442,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>EmpSalaryReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Expense\ExpenseReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ExpenseReport.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reports\ProductReport.cs">
@@ -625,6 +653,12 @@
     <EmbeddedResource Include="Employee\FrmEmployeeSalary.resx">
       <DependentUpon>FrmEmployeeSalary.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Expense\FrmAddExpense.resx">
+      <DependentUpon>FrmAddExpense.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Expense\frmExpense.resx">
+      <DependentUpon>frmExpense.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormReports\FrmComReport.resx">
       <DependentUpon>FrmComReport.cs</DependentUpon>
     </EmbeddedResource>
@@ -633,6 +667,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormReports\FrmEmployeeReport.resx">
       <DependentUpon>FrmEmployeeReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormReports\FrmExpenseReport.resx">
+      <DependentUpon>FrmExpenseReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormReports\FrmOperaterForReports.resx">
       <DependentUpon>FrmOperaterForReports.cs</DependentUpon>
@@ -724,6 +761,10 @@
     <EmbeddedResource Include="Reports\EmployeeRpt\EmpSalaryReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>EmpSalaryReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Expense\ExpenseReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ExpenseReport.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\ProductReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

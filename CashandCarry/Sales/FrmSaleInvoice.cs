@@ -231,7 +231,7 @@ namespace CashandCarry.Sales
             // MessageBox.Show("Product Saved Successfull");
             ClearGroup();
             SumCalculate();
-            ChkCtn.Focus();
+            ChkComplete.Focus();
             if(ChkCtn.Checked==true)
             {
                 ChkCtn.Checked = false;
@@ -573,10 +573,18 @@ namespace CashandCarry.Sales
         {
             if(ChkCtn.Checked==true)
             {
-                decimal ctn = Convert.ToDecimal(txtCtn.Text);
-                decimal retailPrice = Convert.ToDecimal(txtPrice.Text);
-                decimal result = Convert.ToDecimal(ctn * retailPrice);
-                txtAmount.Text = result.ToString();
+                if(!string.IsNullOrEmpty(txtCtn.Text))
+                {
+                    decimal ctn = Convert.ToDecimal(txtCtn.Text);
+                    decimal retailPrice = Convert.ToDecimal(txtPrice.Text);
+                    decimal result = Convert.ToDecimal(ctn * retailPrice);
+                    txtAmount.Text = result.ToString();
+                }
+                else
+                {
+                    txtCtn.Text = "0.00";
+                    txtAmount.Text = "0.00";
+                }
             }
         }
 
@@ -597,6 +605,11 @@ namespace CashandCarry.Sales
             if(ChkCtn.Checked==true)
             {
                 txtCtn.Enabled = true;
+                ChkPiece.Checked = false;
+            }
+            else if (ChkCtn.Checked != true)
+            {
+                txtCtn.Enabled = false;
             }
         }
 
@@ -616,12 +629,29 @@ namespace CashandCarry.Sales
             if(ChkPiece.Checked==true)
             {
                 txtQuantity.Enabled = true;
+                ChkCtn.Checked = false;
+            }
+            else if(ChkPiece.Checked !=true)
+            {
+                txtQuantity.Enabled = false;
             }
         }
 
         private void txtSalesman_Leave(object sender, EventArgs e)
         {
             txtCusName.Focus();
+        }
+
+        private void ChkComplete_CheckedChanged(object sender, EventArgs e)
+        {
+            if(ChkComplete.Checked==true)
+            {
+                txtTotalPay.Focus();
+            }
+            else if(ChkComplete.Checked !=true)
+            {
+                ChkCtn.Focus();
+            }
         }
 
       

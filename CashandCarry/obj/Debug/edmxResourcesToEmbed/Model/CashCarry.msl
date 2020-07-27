@@ -389,5 +389,17 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Expense">
+      <EntityTypeMapping TypeName="CashCarryModel.tbl_Expense">
+        <MappingFragment StoreEntitySet="tbl_Expense">
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ExName" ColumnName="ExName" />
+          <ScalarProperty Name="ExType" ColumnName="ExType" />
+          <ScalarProperty Name="ExId" ColumnName="ExId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

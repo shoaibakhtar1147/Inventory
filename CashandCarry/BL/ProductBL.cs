@@ -22,6 +22,7 @@ namespace CashandCarry.BL
         public decimal TradePrice{get;set;}
         public decimal Ctn { get; set; }
         public int PiecePerCtn {get;set;}
+        public string Company { get; set; }
 
 
         public void Save()
@@ -103,6 +104,13 @@ namespace CashandCarry.BL
             using (var context = new CashCarryEntities3())
             {
                 return context.tbl_Product.Where(a => a.ProductName == ProductName).ToList();
+            }
+        }
+        public List<View_tbl_Product> SearchByComp()
+        {
+            using (var context = new CashCarryEntities3())
+            {
+                return context.View_tbl_Product.Where(a => a.Company == Company).ToList();
             }
         }
         public List<View_tbl_Product> Select()

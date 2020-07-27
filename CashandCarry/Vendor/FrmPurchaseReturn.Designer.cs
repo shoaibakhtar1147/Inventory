@@ -236,7 +236,7 @@
             this.txtComName.Location = new System.Drawing.Point(131, 72);
             this.txtComName.Name = "txtComName";
             this.txtComName.Size = new System.Drawing.Size(148, 25);
-            this.txtComName.TabIndex = 24;
+            this.txtComName.TabIndex = 5;
             this.txtComName.Leave += new System.EventHandler(this.txtComName_Leave);
             // 
             // label2
@@ -350,7 +350,7 @@
             this.txtCtn.Location = new System.Drawing.Point(138, 144);
             this.txtCtn.Name = "txtCtn";
             this.txtCtn.Size = new System.Drawing.Size(147, 23);
-            this.txtCtn.TabIndex = 112;
+            this.txtCtn.TabIndex = 7;
             this.txtCtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtCtn.TextChanged += new System.EventHandler(this.txtCtn_TextChanged);
             this.txtCtn.Leave += new System.EventHandler(this.txtCtn_Leave);
@@ -424,7 +424,7 @@
             this.txtProdName.Location = new System.Drawing.Point(138, 65);
             this.txtProdName.Name = "txtProdName";
             this.txtProdName.Size = new System.Drawing.Size(147, 23);
-            this.txtProdName.TabIndex = 111;
+            this.txtProdName.TabIndex = 6;
             this.txtProdName.Leave += new System.EventHandler(this.txtProdName_Leave);
             // 
             // label8
@@ -449,7 +449,7 @@
             this.btnAdd.Location = new System.Drawing.Point(353, 68);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(108, 23);
-            this.btnAdd.TabIndex = 114;
+            this.btnAdd.TabIndex = 8;
             this.btnAdd.Text = "Add To Cart";
             this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
@@ -465,7 +465,7 @@
             this.btnProdUpdate.Location = new System.Drawing.Point(353, 104);
             this.btnProdUpdate.Name = "btnProdUpdate";
             this.btnProdUpdate.Size = new System.Drawing.Size(108, 23);
-            this.btnProdUpdate.TabIndex = 11;
+            this.btnProdUpdate.TabIndex = 10;
             this.btnProdUpdate.Text = "Update";
             this.btnProdUpdate.UseVisualStyleBackColor = false;
             this.btnProdUpdate.Click += new System.EventHandler(this.btnProdUpdate_Click);
@@ -481,7 +481,7 @@
             this.btnReset.Location = new System.Drawing.Point(353, 32);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(108, 23);
-            this.btnReset.TabIndex = 13;
+            this.btnReset.TabIndex = 9;
             this.btnReset.Text = "Reset";
             this.btnReset.UseVisualStyleBackColor = false;
             // 
@@ -646,7 +646,7 @@
             this.txtBillDiscount.Location = new System.Drawing.Point(131, 68);
             this.txtBillDiscount.Name = "txtBillDiscount";
             this.txtBillDiscount.Size = new System.Drawing.Size(142, 23);
-            this.txtBillDiscount.TabIndex = 115;
+            this.txtBillDiscount.TabIndex = 11;
             this.txtBillDiscount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtBillDiscount.Leave += new System.EventHandler(this.txtBillDiscount_Leave);
             // 
@@ -709,7 +709,7 @@
             this.txtReturnCash.Location = new System.Drawing.Point(131, 138);
             this.txtReturnCash.Name = "txtReturnCash";
             this.txtReturnCash.Size = new System.Drawing.Size(142, 23);
-            this.txtReturnCash.TabIndex = 116;
+            this.txtReturnCash.TabIndex = 12;
             this.txtReturnCash.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtReturnCash.TextChanged += new System.EventHandler(this.txtReturnCash_TextChanged);
             this.txtReturnCash.Leave += new System.EventHandler(this.txtReturnCash_Leave);
@@ -855,7 +855,7 @@
             this.btnSave.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(128, 42);
-            this.btnSave.TabIndex = 27;
+            this.btnSave.TabIndex = 13;
             this.btnSave.Text = "Save + Print";
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
