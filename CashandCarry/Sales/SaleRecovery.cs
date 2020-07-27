@@ -24,6 +24,21 @@ namespace CashandCarry.Sales
         private void SaleRecovery_Load(object sender, EventArgs e)
         {
             FormDisable();
+            GridDesign();
+        }
+
+        private void GridDesign()
+        {
+            dgvSaleRecovery.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(238, 239, 249);
+            dgvSaleRecovery.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgvSaleRecovery.DefaultCellStyle.SelectionBackColor = Color.DarkTurquoise;
+            dgvSaleRecovery.DefaultCellStyle.SelectionForeColor = Color.WhiteSmoke;
+            dgvSaleRecovery.BackgroundColor = Color.White;
+
+            dgvSaleRecovery.EnableHeadersVisualStyles = false;
+            dgvSaleRecovery.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dgvSaleRecovery.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(20, 25, 72);
+            dgvSaleRecovery.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
         }
 
         private void FormDisable()

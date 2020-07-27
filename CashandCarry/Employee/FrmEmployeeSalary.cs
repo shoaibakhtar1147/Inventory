@@ -24,10 +24,25 @@ namespace CashandCarry.Employee
 
         private void FrmEmployeeSalary_Load(object sender, EventArgs e)
         {
+            GridDesign();
             lblResignDate.Hide();
             txtResignDate.Hide();
             FormDisable();
             LoadData();
+        }
+
+        private void GridDesign()
+        {
+            dgvEmpSalary.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(238, 239, 249);
+            dgvEmpSalary.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgvEmpSalary.DefaultCellStyle.SelectionBackColor = Color.DarkTurquoise;
+            dgvEmpSalary.DefaultCellStyle.SelectionForeColor = Color.WhiteSmoke;
+            dgvEmpSalary.BackgroundColor = Color.White;
+
+            dgvEmpSalary.EnableHeadersVisualStyles = false;
+            dgvEmpSalary.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dgvEmpSalary.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(20, 25, 72);
+            dgvEmpSalary.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
         }
 
         private void txtResign_CheckedChanged(object sender, EventArgs e)

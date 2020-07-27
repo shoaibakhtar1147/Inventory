@@ -22,6 +22,36 @@ namespace CashandCarry.Vendor
         private void FrmPurchaseReturn_Load(object sender, EventArgs e)
         {
             FormDisable();
+            GridDesignProd();
+            GridDesignReturn();
+        }
+
+        private void GridDesignReturn()
+        {
+            dgvReturnItem.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(238, 239, 249);
+            dgvReturnItem.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgvReturnItem.DefaultCellStyle.SelectionBackColor = Color.DarkTurquoise;
+            dgvReturnItem.DefaultCellStyle.SelectionForeColor = Color.WhiteSmoke;
+            dgvReturnItem.BackgroundColor = Color.White;
+
+            dgvReturnItem.EnableHeadersVisualStyles = false;
+            dgvReturnItem.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dgvReturnItem.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(20, 25, 72);
+            dgvReturnItem.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+        }
+
+        private void GridDesignProd()
+        {
+            dgvProduct.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(238, 239, 249);
+            dgvProduct.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgvProduct.DefaultCellStyle.SelectionBackColor = Color.DarkTurquoise;
+            dgvProduct.DefaultCellStyle.SelectionForeColor = Color.WhiteSmoke;
+            dgvProduct.BackgroundColor = Color.White;
+
+            dgvProduct.EnableHeadersVisualStyles = false;
+            dgvProduct.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dgvProduct.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(20, 25, 72);
+            dgvProduct.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
         }
 
 

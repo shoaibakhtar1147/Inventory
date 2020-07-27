@@ -33,6 +33,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.dgvEmpSalary = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtSalaryID = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtResignDate = new System.Windows.Forms.DateTimePicker();
             this.lblResignDate = new System.Windows.Forms.Label();
@@ -51,8 +53,6 @@
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtSalaryID = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmpSalary)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -70,10 +70,11 @@
             // 
             // dgvEmpSalary
             // 
+            this.dgvEmpSalary.AllowUserToAddRows = false;
             this.dgvEmpSalary.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -118,6 +119,27 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Employee Salary";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label2.Location = new System.Drawing.Point(86, 44);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(66, 17);
+            this.label2.TabIndex = 57;
+            this.label2.Text = "Salary ID:";
+            // 
+            // txtSalaryID
+            // 
+            this.txtSalaryID.Enabled = false;
+            this.txtSalaryID.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSalaryID.Location = new System.Drawing.Point(202, 41);
+            this.txtSalaryID.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtSalaryID.Name = "txtSalaryID";
+            this.txtSalaryID.Size = new System.Drawing.Size(171, 23);
+            this.txtSalaryID.TabIndex = 58;
             // 
             // label1
             // 
@@ -331,27 +353,6 @@
             this.label13.Size = new System.Drawing.Size(55, 17);
             this.label13.TabIndex = 61;
             this.label13.Text = "Search:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label2.Location = new System.Drawing.Point(86, 44);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(66, 17);
-            this.label2.TabIndex = 57;
-            this.label2.Text = "Salary ID:";
-            // 
-            // txtSalaryID
-            // 
-            this.txtSalaryID.Enabled = false;
-            this.txtSalaryID.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSalaryID.Location = new System.Drawing.Point(202, 41);
-            this.txtSalaryID.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtSalaryID.Name = "txtSalaryID";
-            this.txtSalaryID.Size = new System.Drawing.Size(171, 23);
-            this.txtSalaryID.TabIndex = 58;
             // 
             // FrmEmployeeSalary
             // 

@@ -1,4 +1,5 @@
 ﻿using CashandCarry.BL;
+using CashandCarry.Configuration;
 using CashandCarry.Model;
 using MetroFramework.Forms;
 using System;
@@ -50,6 +51,7 @@ namespace CashandCarry.Vendor
             txtCompanyName.Enabled = false;
             txtPurInvoiceDate.Enabled = false;
             txtPayDue.Enabled = false;
+            txtQuantity.Enabled = false;
             txtProdName.Enabled = false;
             txtProdID.Enabled = false;
             txtTotalPay.Enabled = false;
@@ -83,7 +85,7 @@ namespace CashandCarry.Vendor
 
             txtCompanyName.Enabled = true;
             txtBillDiscount.Enabled = true;
-            txtQuantity.Enabled = true;
+           // txtQuantity.Enabled = true;
             txtCtn.Enabled = true;
             txtProdName.Enabled = true;
             ChkFrieghtOrder.Enabled = true;
@@ -99,8 +101,23 @@ namespace CashandCarry.Vendor
         private void PurchaseInvoice_Load(object sender, EventArgs e)
         {
             FormDisable();
+            GridDesign();
             btnNew.Focus();
 
+        }
+
+        private void GridDesign()
+        {
+            dgvProduct.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(238, 239, 249);
+            dgvProduct.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgvProduct.DefaultCellStyle.SelectionBackColor = Color.DarkTurquoise;
+            dgvProduct.DefaultCellStyle.SelectionForeColor = Color.WhiteSmoke;
+            dgvProduct.BackgroundColor = Color.White;
+
+            dgvProduct.EnableHeadersVisualStyles = false;
+            dgvProduct.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dgvProduct.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(20, 25, 72);
+            dgvProduct.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
         }
 
         private void btnNew_Click(object sender, EventArgs e)
@@ -174,8 +191,8 @@ namespace CashandCarry.Vendor
                 if (dt != null)
                 {
                     txtProdID.Text = Convert.ToString(dt[0].ProductID);
-                    txtPrice.Text = Convert.ToString(dt[0].TradePrice);
-                    lblQuantity.Text = Convert.ToString(dt[0].Quantity);
+                    txtPrice.Text = Convert.ToString(dt[0].RetailPrice);
+                    lblQuantity.Text = Convert.ToString(dt[0].Piece);
                     lblCtn.Text = Convert.ToString(dt[0].Ctn);
                     lblPieCtn.Text = Convert.ToString(dt[0].PiecePerCtn);
                     txtWeight.Text = dt[0].weight;
@@ -261,23 +278,7 @@ namespace CashandCarry.Vendor
 
         private void txtQuantity_Leave(object sender, EventArgs e)
         {
-            if (txtQuantity.Text == string.Empty)
-            {
-                MessageBox.Show("Please Enter Quantity");
-                txtQuantity.Focus();
-            }
-            else if (txtQuantity.Text == "00" || txtQuantity.Text == "0")
-            {
-                MessageBox.Show("Null Value Not Acceptable Please Enter Quantity");
-                txtQuantity.Focus();
-            }
-           else
-            {
-                int val = Convert.ToInt32(txtPrice.Text);
-                int val1 = Convert.ToInt32(txtQuantity.Text);
-                int val2 = val * val1;
-                txtAmount.Text = val2.ToString();
-            }
+            
         }
 
         private void txtBillDiscount_Leave(object sender, EventArgs e)
@@ -290,11 +291,14 @@ namespace CashandCarry.Vendor
             }
             else
             {
-                int Bill = Convert.ToInt32(txtTotalBill.Text);
+                //int Bill = Convert.ToInt32(txtTotalBill.Text);
 
-                int val2 = Convert.ToInt32(txtBillDiscount.Text);
-                int val3 = Bill - val2;
-                txtGrandTotal.Text = val3.ToString();
+                //int val2 = Convert.ToInt32(txtBillDiscount.Text);
+                //int val3 = Bill - val2;
+                decimal bill = Convert.ToDecimal(txtTotalBill.Text);
+                decimal billDiscount=Convert.ToDecimal(txtBillDiscount.Text);
+                decimal result = (bill / 100) * billDiscount;
+                txtGrandTotal.Text = result.ToString();
 
             }
         }
@@ -536,6 +540,33 @@ namespace CashandCarry.Vendor
                 txtfrieghtQuan.Text = result.ToString();
 
             }
+        }
+
+        private void txtCtn_Leave(object sender, EventArgs e)
+        {
+            if (txtCtn.Text == string.Empty)
+            {
+                MessageBox.Show("Please Enter Quantity");
+                txtCtn.Focus();
+            }
+            else if (txtCtn.Text == "00" || txtCtn.Text == "0")
+            {
+                MessageBox.Show("Null Value Not Acceptable Please Enter Quantity");
+                txtCtn.Focus();
+            }
+            else
+            {
+                int val = Convert.ToInt32(txtPrice.Text);
+                int val1 = Convert.ToInt32(txtCtn.Text);
+                int val2 = val * val1;
+                txtAmount.Text = val2.ToString();
+            }
+        }
+
+        private void btnPrice_Click(object sender, EventArgs e)
+        {
+            frmProduct objpro = new frmProduct();
+            objpro.ShowDialog();
         }
 
        

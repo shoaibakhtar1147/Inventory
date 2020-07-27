@@ -85,8 +85,8 @@
     <Property Name="weight" Type="varchar" MaxLength="20" />
     <Property Name="CategoryID" Type="int" />
     <Property Name="CompanyID" Type="int" />
-    <Property Name="RetailPrice" Type="decimal" Precision="18" Scale="0" />
-    <Property Name="TradePrice" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="RetailPrice" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="TradePrice" Type="decimal" Precision="18" Scale="2" />
     <Property Name="Quantity" Type="int" />
     <Property Name="Ctn" Type="decimal" Precision="18" Scale="0" />
     <Property Name="PiecePerCtn" Type="int" />
@@ -263,6 +263,7 @@ warning 6002: The table/view 'CashCarry.dbo.View_DetailPurchase' does not have a
     <Property Name="TradePrice" Type="decimal" Precision="18" Scale="0" />
     <Property Name="Ctn" Type="decimal" Precision="18" Scale="2" />
     <Property Name="Quantity" Type="int" />
+    <Property Name="frieght" Type="decimal" Precision="18" Scale="2" />
     <Property Name="Amount" Type="decimal" Precision="18" Scale="2" />
     <Property Name="Discount" Type="decimal" Precision="18" Scale="2" />
     <Property Name="GrandTotal" Type="decimal" Precision="18" Scale="2" />
@@ -392,6 +393,7 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
     [View_DetailPurchase].[TradePrice] AS [TradePrice], 
     [View_DetailPurchase].[Ctn] AS [Ctn], 
     [View_DetailPurchase].[Quantity] AS [Quantity], 
+    [View_DetailPurchase].[frieght] AS [frieght], 
     [View_DetailPurchase].[Amount] AS [Amount], 
     [View_DetailPurchase].[Discount] AS [Discount], 
     [View_DetailPurchase].[GrandTotal] AS [GrandTotal], 

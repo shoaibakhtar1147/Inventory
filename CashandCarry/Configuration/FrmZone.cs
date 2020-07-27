@@ -95,8 +95,24 @@ namespace CashandCarry.Configuration
         }
         private void FrmZone_Load(object sender, EventArgs e)
         {
+            
             FormDisable();
+            GridDesign();
             loadData();
+        }
+
+        private void GridDesign()
+        {
+            dgvZone.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(238, 239, 249);
+            dgvZone.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgvZone.DefaultCellStyle.SelectionBackColor = Color.DarkTurquoise;
+            dgvZone.DefaultCellStyle.SelectionForeColor = Color.WhiteSmoke;
+            dgvZone.BackgroundColor = Color.White;
+
+            dgvZone.EnableHeadersVisualStyles = false;
+            dgvZone.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dgvZone.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(20, 25, 72);
+            dgvZone.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
         }
         private void btnAddnew_Click(object sender, EventArgs e)
         {

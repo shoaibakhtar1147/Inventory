@@ -24,9 +24,24 @@ namespace CashandCarry.Configuration
 
         private void frmEmployeeRegistration_Load(object sender, EventArgs e)
         {
+            GridDesign();
             FormDisable();
             LoadData();
             
+        }
+
+        private void GridDesign()
+        {
+            dgvEmp.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(238, 239, 249);
+            dgvEmp.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgvEmp.DefaultCellStyle.SelectionBackColor = Color.DarkTurquoise;
+            dgvEmp.DefaultCellStyle.SelectionForeColor = Color.WhiteSmoke;
+            dgvEmp.BackgroundColor = Color.White;
+
+            dgvEmp.EnableHeadersVisualStyles = false;
+            dgvEmp.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dgvEmp.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(20, 25, 72);
+            dgvEmp.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
         }
 
         private void ClearGroup()

@@ -22,7 +22,22 @@ namespace CashandCarry.Configuration
         private void FrmCustomerType_Load(object sender, EventArgs e)
         {
             LoadData();
+            GridDesign();
             FormDisable();
+        }
+
+        private void GridDesign()
+        {
+            dgvCusType.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(238, 239, 249);
+            dgvCusType.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgvCusType.DefaultCellStyle.SelectionBackColor = Color.DarkTurquoise;
+            dgvCusType.DefaultCellStyle.SelectionForeColor = Color.WhiteSmoke;
+            dgvCusType.BackgroundColor = Color.White;
+
+            dgvCusType.EnableHeadersVisualStyles = false;
+            dgvCusType.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dgvCusType.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(20, 25, 72);
+            dgvCusType.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
         }
 
         private void FormDisable()

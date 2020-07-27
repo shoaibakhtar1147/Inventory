@@ -369,6 +369,7 @@
     <EntitySetMapping Name="View_DetailPurchase">
       <EntityTypeMapping TypeName="CashCarryModel.View_DetailPurchase">
         <MappingFragment StoreEntitySet="View_DetailPurchase">
+          <ScalarProperty Name="frieght" ColumnName="frieght" />
           <ScalarProperty Name="New_Balance" ColumnName="New Balance" />
           <ScalarProperty Name="Balance" ColumnName="Balance" />
           <ScalarProperty Name="Payment" ColumnName="Payment" />

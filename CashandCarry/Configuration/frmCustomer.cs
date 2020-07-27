@@ -22,10 +22,25 @@ namespace CashandCarry.Configuration
 
         private void frmCustomer_Load(object sender, EventArgs e)
         {
-            txtCusName.Focus();
             
+            txtCusName.Focus();
             LoadData();
+            GridDesign();
             FormDisable();
+        }
+
+        private void GridDesign()
+        {
+            dgvCus.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(238, 239, 249);
+            dgvCus.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgvCus.DefaultCellStyle.SelectionBackColor = Color.DarkTurquoise;
+            dgvCus.DefaultCellStyle.SelectionForeColor = Color.WhiteSmoke;
+            dgvCus.BackgroundColor = Color.White;
+
+            dgvCus.EnableHeadersVisualStyles = false;
+            dgvCus.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dgvCus.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(20, 25, 72);
+            dgvCus.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
         }
 
         private void FormDisable()

@@ -67,10 +67,7 @@ namespace CashandCarry.BL
                 var result = context.tbl_Product.Where(a => a.ProductID == ProductID).SingleOrDefault();
                 if(result != null)
                 {
-                     result.ProductName=ProductName;
-                   result.CategoryID=CategoryID;
-                    result.CompanyID=CompanyID;
-                    
+                     result.ProductName=ProductName;   
                        result.weight=weight;
                         result.RetailPrice=RetailPrice;
                         result.TradePrice = TradePrice;
@@ -94,11 +91,11 @@ namespace CashandCarry.BL
             prm[0] = new SqlParameter("@ProductID", ProductID);
             return DB.SelectTableWithSP(spName, prm);
         }
-        public List<tbl_Product> Search()
+        public List<View_tbl_Product> Search()
         {
            using(var context=new CashCarryEntities3())
            {
-               return context.tbl_Product.Where(a => a.ProductID == ProductID).ToList();
+               return context.View_tbl_Product.Where(a => a.ProductID == ProductID).ToList();
            }
         }
         public List<tbl_Product> SearchByName()

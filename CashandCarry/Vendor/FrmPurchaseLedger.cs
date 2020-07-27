@@ -23,7 +23,21 @@ namespace CashandCarry.Vendor
 
         private void FrmPurchaseLedger_Load(object sender, EventArgs e)
         {
+            GridDesign();
+        }
 
+        private void GridDesign()
+        {
+            dgvCompany.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(238, 239, 249);
+            dgvCompany.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgvCompany.DefaultCellStyle.SelectionBackColor = Color.DarkTurquoise;
+            dgvCompany.DefaultCellStyle.SelectionForeColor = Color.WhiteSmoke;
+            dgvCompany.BackgroundColor = Color.White;
+
+            dgvCompany.EnableHeadersVisualStyles = false;
+            dgvCompany.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dgvCompany.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(20, 25, 72);
+            dgvCompany.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
         }
 
         private void btnSearch_Click(object sender, EventArgs e)

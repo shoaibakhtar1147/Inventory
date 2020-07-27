@@ -127,8 +127,8 @@
     <Property Name="weight" MaxLength="20" FixedLength="false" Unicode="false" Type="String" />
     <Property Name="CategoryID" Type="Int32" />
     <Property Name="CompanyID" Type="Int32" />
-    <Property Name="RetailPrice" Precision="18" Scale="0" Type="Decimal" />
-    <Property Name="TradePrice" Precision="18" Scale="0" Type="Decimal" />
+    <Property Name="RetailPrice" Precision="18" Scale="2" Type="Decimal" />
+    <Property Name="TradePrice" Precision="18" Scale="2" Type="Decimal" />
     <Property Name="Quantity" Type="Int32" />
     <Property Name="Ctn" Type="Decimal" Precision="18" Scale="0" />
     <Property Name="PiecePerCtn" Type="Int32" />
@@ -403,5 +403,6 @@
     <Property Name="Payment" Type="Decimal" Precision="18" Scale="2" />
     <Property Name="Balance" Type="Decimal" Precision="18" Scale="2" />
     <Property Name="New_Balance" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="frieght" Type="Decimal" Precision="18" Scale="2" />
   </EntityType>
 </Schema>

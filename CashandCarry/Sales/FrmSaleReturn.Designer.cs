@@ -33,6 +33,14 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.ChkPiece = new System.Windows.Forms.CheckBox();
+            this.ChkCtn = new System.Windows.Forms.CheckBox();
+            this.txtCtn = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.lblPiePerCtn = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.lblCtn = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
             this.lblQuantity = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.txtProdName = new System.Windows.Forms.TextBox();
@@ -88,14 +96,6 @@
             this.label20 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dgvProduct = new System.Windows.Forms.DataGridView();
-            this.label19 = new System.Windows.Forms.Label();
-            this.lblCtn = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.lblPiePerCtn = new System.Windows.Forms.Label();
-            this.txtCtn = new System.Windows.Forms.TextBox();
-            this.label23 = new System.Windows.Forms.Label();
-            this.ChkPiece = new System.Windows.Forms.CheckBox();
-            this.ChkCtn = new System.Windows.Forms.CheckBox();
             this.groupBox3.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -146,6 +146,96 @@
             this.groupBox3.TabIndex = 51;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Product Details";
+            // 
+            // ChkPiece
+            // 
+            this.ChkPiece.AutoSize = true;
+            this.ChkPiece.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ChkPiece.Location = new System.Drawing.Point(138, 35);
+            this.ChkPiece.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.ChkPiece.Name = "ChkPiece";
+            this.ChkPiece.Size = new System.Drawing.Size(70, 24);
+            this.ChkPiece.TabIndex = 7;
+            this.ChkPiece.Text = "Piece";
+            this.ChkPiece.UseVisualStyleBackColor = true;
+            this.ChkPiece.CheckedChanged += new System.EventHandler(this.ChkPiece_CheckedChanged);
+            // 
+            // ChkCtn
+            // 
+            this.ChkCtn.AutoSize = true;
+            this.ChkCtn.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ChkCtn.Location = new System.Drawing.Point(52, 35);
+            this.ChkCtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.ChkCtn.Name = "ChkCtn";
+            this.ChkCtn.Size = new System.Drawing.Size(54, 24);
+            this.ChkCtn.TabIndex = 6;
+            this.ChkCtn.Text = "Ctn";
+            this.ChkCtn.UseVisualStyleBackColor = true;
+            this.ChkCtn.CheckedChanged += new System.EventHandler(this.ChkCtn_CheckedChanged);
+            // 
+            // txtCtn
+            // 
+            this.txtCtn.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCtn.Location = new System.Drawing.Point(138, 183);
+            this.txtCtn.Name = "txtCtn";
+            this.txtCtn.Size = new System.Drawing.Size(147, 23);
+            this.txtCtn.TabIndex = 9;
+            this.txtCtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtCtn.TextChanged += new System.EventHandler(this.txtCtn_TextChanged);
+            this.txtCtn.Leave += new System.EventHandler(this.txtCtn_Leave);
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label23.Location = new System.Drawing.Point(28, 186);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(36, 17);
+            this.label23.TabIndex = 122;
+            this.label23.Text = "Ctn:";
+            // 
+            // lblPiePerCtn
+            // 
+            this.lblPiePerCtn.AutoSize = true;
+            this.lblPiePerCtn.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPiePerCtn.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblPiePerCtn.Location = new System.Drawing.Point(423, 173);
+            this.lblPiePerCtn.Name = "lblPiePerCtn";
+            this.lblPiePerCtn.Size = new System.Drawing.Size(0, 17);
+            this.lblPiePerCtn.TabIndex = 120;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label22.Location = new System.Drawing.Point(350, 174);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(57, 17);
+            this.label22.TabIndex = 119;
+            this.label22.Text = "Pie/Ctn";
+            // 
+            // lblCtn
+            // 
+            this.lblCtn.AutoSize = true;
+            this.lblCtn.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCtn.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblCtn.Location = new System.Drawing.Point(423, 199);
+            this.lblCtn.Name = "lblCtn";
+            this.lblCtn.Size = new System.Drawing.Size(0, 17);
+            this.lblCtn.TabIndex = 118;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label19.Location = new System.Drawing.Point(350, 199);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(36, 17);
+            this.label19.TabIndex = 117;
+            this.label19.Text = "Ctn:";
             // 
             // lblQuantity
             // 
@@ -553,7 +643,7 @@
             this.dgvReturnItem.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -793,9 +883,10 @@
             // 
             // dgvProduct
             // 
+            this.dgvProduct.AllowUserToAddRows = false;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -818,96 +909,6 @@
             this.dgvProduct.Size = new System.Drawing.Size(672, 142);
             this.dgvProduct.TabIndex = 4;
             this.dgvProduct.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProduct_CellContentClick_2);
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label19.Location = new System.Drawing.Point(350, 199);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(36, 17);
-            this.label19.TabIndex = 117;
-            this.label19.Text = "Ctn:";
-            // 
-            // lblCtn
-            // 
-            this.lblCtn.AutoSize = true;
-            this.lblCtn.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCtn.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblCtn.Location = new System.Drawing.Point(423, 199);
-            this.lblCtn.Name = "lblCtn";
-            this.lblCtn.Size = new System.Drawing.Size(0, 17);
-            this.lblCtn.TabIndex = 118;
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label22.Location = new System.Drawing.Point(350, 174);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(57, 17);
-            this.label22.TabIndex = 119;
-            this.label22.Text = "Pie/Ctn";
-            // 
-            // lblPiePerCtn
-            // 
-            this.lblPiePerCtn.AutoSize = true;
-            this.lblPiePerCtn.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPiePerCtn.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblPiePerCtn.Location = new System.Drawing.Point(423, 173);
-            this.lblPiePerCtn.Name = "lblPiePerCtn";
-            this.lblPiePerCtn.Size = new System.Drawing.Size(0, 17);
-            this.lblPiePerCtn.TabIndex = 120;
-            // 
-            // txtCtn
-            // 
-            this.txtCtn.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCtn.Location = new System.Drawing.Point(138, 183);
-            this.txtCtn.Name = "txtCtn";
-            this.txtCtn.Size = new System.Drawing.Size(147, 23);
-            this.txtCtn.TabIndex = 9;
-            this.txtCtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtCtn.TextChanged += new System.EventHandler(this.txtCtn_TextChanged);
-            this.txtCtn.Leave += new System.EventHandler(this.txtCtn_Leave);
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label23.Location = new System.Drawing.Point(28, 186);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(36, 17);
-            this.label23.TabIndex = 122;
-            this.label23.Text = "Ctn:";
-            // 
-            // ChkPiece
-            // 
-            this.ChkPiece.AutoSize = true;
-            this.ChkPiece.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ChkPiece.Location = new System.Drawing.Point(138, 35);
-            this.ChkPiece.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.ChkPiece.Name = "ChkPiece";
-            this.ChkPiece.Size = new System.Drawing.Size(70, 24);
-            this.ChkPiece.TabIndex = 7;
-            this.ChkPiece.Text = "Piece";
-            this.ChkPiece.UseVisualStyleBackColor = true;
-            this.ChkPiece.CheckedChanged += new System.EventHandler(this.ChkPiece_CheckedChanged);
-            // 
-            // ChkCtn
-            // 
-            this.ChkCtn.AutoSize = true;
-            this.ChkCtn.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ChkCtn.Location = new System.Drawing.Point(52, 35);
-            this.ChkCtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.ChkCtn.Name = "ChkCtn";
-            this.ChkCtn.Size = new System.Drawing.Size(54, 24);
-            this.ChkCtn.TabIndex = 6;
-            this.ChkCtn.Text = "Ctn";
-            this.ChkCtn.UseVisualStyleBackColor = true;
-            this.ChkCtn.CheckedChanged += new System.EventHandler(this.ChkCtn_CheckedChanged);
             // 
             // FrmSaleReturn
             // 

@@ -28,9 +28,23 @@ namespace CashandCarry.Configuration
         private void frmProduct_Load(object sender, EventArgs e)
         {
             FormDisable();
-           
+            GridDesign();
             LoadData();
 
+        }
+
+        private void GridDesign()
+        {
+            dgvProduct.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(238, 239, 249);
+            dgvProduct.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgvProduct.DefaultCellStyle.SelectionBackColor = Color.DarkTurquoise;
+            dgvProduct.DefaultCellStyle.SelectionForeColor = Color.WhiteSmoke;
+            dgvProduct.BackgroundColor = Color.White;
+
+            dgvProduct.EnableHeadersVisualStyles = false;
+            dgvProduct.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dgvProduct.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(20, 25, 72);
+            dgvProduct.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
         }
         private void LoadCategory()
         {
@@ -110,6 +124,7 @@ namespace CashandCarry.Configuration
                     weight=txtWeight.Text,
                       CategoryID=Convert.ToInt32(txtProdCate.SelectedValue),
                        CompanyID=Convert.ToInt32(txtComName.SelectedValue),
+                       PiecePerCtn=Convert.ToInt32(txtPieCtn.Text)
                         
                 };
                 objPro.Save();
@@ -190,11 +205,11 @@ namespace CashandCarry.Configuration
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            if(txtSearch.Text==string.Empty)
-            {
-                MessageBox.Show("Please Select A Product ID ");
-            }
-            else if (MessageBox.Show("Are You Sure To Update Product?", "UpdateAlert", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+            //if(txtSearch.Text==string.Empty)
+            //{
+            //    MessageBox.Show("Please Select A Product ID ");
+            //}
+             if (MessageBox.Show("Are You Sure To Update Product?", "UpdateAlert", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
             {
                 ProductBL objPro = new ProductBL()
                 {
@@ -203,8 +218,6 @@ namespace CashandCarry.Configuration
                     TradePrice = Convert.ToDecimal(txtPP.Text),
                     RetailPrice = Convert.ToDecimal(txtRP.Text),
                     weight = txtWeight.Text,
-                    CategoryID = Convert.ToInt32(txtProdCate.SelectedValue),
-                    CompanyID = Convert.ToInt32(txtComName.SelectedValue),
                     PiecePerCtn=Convert.ToInt32(txtPieCtn.Text)
                    
                 };

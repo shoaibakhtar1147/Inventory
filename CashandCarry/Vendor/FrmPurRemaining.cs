@@ -24,6 +24,21 @@ namespace CashandCarry.Vendor
         private void FrmPurRemaining_Load(object sender, EventArgs e)
         {
             FormDisable();
+            GridDesign();
+        }
+
+        private void GridDesign()
+        {
+            dgvPurRemain.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(238, 239, 249);
+            dgvPurRemain.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgvPurRemain.DefaultCellStyle.SelectionBackColor = Color.DarkTurquoise;
+            dgvPurRemain.DefaultCellStyle.SelectionForeColor = Color.WhiteSmoke;
+            dgvPurRemain.BackgroundColor = Color.White;
+
+            dgvPurRemain.EnableHeadersVisualStyles = false;
+            dgvPurRemain.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dgvPurRemain.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(20, 25, 72);
+            dgvPurRemain.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
         }
 
         private void FormDisable()

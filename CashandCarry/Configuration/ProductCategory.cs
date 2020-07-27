@@ -95,8 +95,23 @@ namespace CashandCarry.Configuration
            
            
             LoadData();
+            GridDesign();
             txtSearch.Focus();
             frmDisable();
+        }
+
+        private void GridDesign()
+        {
+            dgvCategory.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(238, 239, 249);
+            dgvCategory.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgvCategory.DefaultCellStyle.SelectionBackColor = Color.DarkTurquoise;
+            dgvCategory.DefaultCellStyle.SelectionForeColor = Color.WhiteSmoke;
+            dgvCategory.BackgroundColor = Color.White;
+
+            dgvCategory.EnableHeadersVisualStyles = false;
+            dgvCategory.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dgvCategory.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(20, 25, 72);
+            dgvCategory.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
         }
         private void btnAddnew_Click(object sender, EventArgs e)
         {

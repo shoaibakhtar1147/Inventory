@@ -24,10 +24,25 @@ namespace CashandCarry.Sales
 
         private void FrmSaleInvoice_Load(object sender, EventArgs e)
         {
+            GridDesign();
             FormDisable();
             txtCusId.Focus();
 
 
+        }
+
+        private void GridDesign()
+        {
+            dgvProduct.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(238, 239, 249);
+            dgvProduct.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgvProduct.DefaultCellStyle.SelectionBackColor = Color.DarkTurquoise;
+            dgvProduct.DefaultCellStyle.SelectionForeColor = Color.WhiteSmoke;
+            dgvProduct.BackgroundColor = Color.White;
+
+            dgvProduct.EnableHeadersVisualStyles = false;
+            dgvProduct.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dgvProduct.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(20, 25, 72);
+            dgvProduct.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
         }
 
 
@@ -410,9 +425,10 @@ namespace CashandCarry.Sales
             else if(ChkPiece.Checked==true)
             {
 
-                int val1 = Convert.ToInt32(txtPrice.Text);
-                int val2 = Convert.ToInt32(txtQuantity.Text);
-                int val3 = val1 * val2;
+                decimal val1 = Convert.ToDecimal(txtPrice.Text);                
+                decimal val2 = Convert.ToDecimal(txtQuantity.Text);
+                int piePerCtn = Convert.ToInt32(lblPiePerCtn.Text);
+                decimal val3 = (val1/piePerCtn) * val2;
                 txtAmount.Text = val3.ToString();
             }
         }
@@ -455,12 +471,12 @@ namespace CashandCarry.Sales
                 {
                     ProductID = Convert.ToInt32(txtProdName.SelectedValue)
                 };
-                List<tbl_Product> dt = objPro.Search();
+                List<View_tbl_Product> dt = objPro.Search();
                 if (dt != null)
                 {
                     txtProdId.Text = Convert.ToString(dt[0].ProductID);
                     txtPrice.Text = Convert.ToString(dt[0].RetailPrice);
-                    lblQuantity.Text = Convert.ToString(dt[0].Quantity);
+                    lblQuantity.Text = Convert.ToString(dt[0].Piece);
                     txtWeight.Text = dt[0].weight;
                     lblCtn.Text = Convert.ToString(dt[0].Ctn);
                     lblPiePerCtn.Text = Convert.ToString(dt[0].PiecePerCtn);
