@@ -26,21 +26,28 @@ namespace CashandCarry.FormReports
         {
             
             CustomerReport objCus = new CustomerReport();
+            rptViewer objView = new rptViewer();
             if (!string.IsNullOrEmpty(txtSearch.Text))
             {
                 objCus.SetParameterValue("@CustomerID", txtSearch.Text);
-                //CustomerBL objCust = new CustomerBL()
-                //{
-                //    CustomerID = Convert.ToInt32(txtSearch.Text),
-                    
-                //};
-                //DataTable dt = objCust.SelectByCus();
-                //if (dt.Rows.Count>0)
-                //{
-                //    objCus.SetDataSource(dt);
-                   
-                //}
-                crptViewerCus.ReportSource = objCus;
+                CustomerBL objBL = new CustomerBL()
+                {
+                    CustomerID = Convert.ToInt32(txtSearch.Text),
+
+                };
+                var dt = objBL.SelectByCus();
+                if (dt != null)
+                {
+                    objCus.SetDataSource(dt);
+                    objView.crptViewer.ReportSource = objCus;
+                    objView.WindowState = FormWindowState.Maximized;
+                    objView.ShowDialog();
+                }
+                //crptViewerCus.ReportSource = objCus;
+                else
+                {
+                    MessageBox.Show("No Record Found");
+                }
                 txtSearch.Clear();
             }
             else
@@ -57,6 +64,8 @@ namespace CashandCarry.FormReports
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
+           
+
             //LoadReport();
             //PrintDialog printDialog = new PrintDialog();
             //if(printDialog.ShowDialog()==DialogResult.OK)
@@ -67,6 +76,7 @@ namespace CashandCarry.FormReports
             //    reportDocument.PrintToPrinter(printDialog.PrinterSettings.Copies, printDialog.PrinterSettings.Collate,printDialog.PrinterSettings.FromPage,printDialog.PrinterSettings.ToPage);
 
             //}
+
         }
 
         private void FrmCustomerReport_Load(object sender, EventArgs e)
@@ -77,8 +87,21 @@ namespace CashandCarry.FormReports
         private void btnAllRecord_Click(object sender, EventArgs e)
         {
             CustomerGeneralReport objCus = new CustomerGeneralReport();
-            objCus.SetParameterValue("@CustomerID", null);
-            crptViewerCus.ReportSource = objCus;
+            rptViewer objView = new rptViewer();
+            CustomerBL objBL = new CustomerBL();
+            var dt = objBL.SelectAllCus();
+            if(dt != null)
+            {
+                objCus.SetDataSource(dt);
+                objView.crptViewer.ReportSource = objCus;
+                objView.WindowState = FormWindowState.Maximized;
+                objView.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("No Record Found");
+            }
+            //crptViewerCus.ReportSource = objCus;
         }
 
        

@@ -67,11 +67,21 @@ namespace CashandCarry.BL
             return DB.SelectTableWithSP(spName, prm);
         }
 
-        public System.Data.DataTable Search()
+        public DataTable SearchByRemainID()
         {
-            throw new NotImplementedException();
+            string spName = "SP_PurRemain_RemainID";
+            SqlParameter[] prm = new SqlParameter[1];
+            prm[0] = new SqlParameter("@RemainID", PRemainID);
+            return DB.SelectTableWithSP(spName,prm);
         }
 
+        public DataTable SearchByComID()
+        {
+            string spName = "SP_PurRemain_RemainID";
+            SqlParameter[] prm = new SqlParameter[1];
+            prm[0] = new SqlParameter("@ComID", CompanyID);
+            return DB.SelectTableWithSP(spName, prm);
+        }
         public System.Data.DataTable Select()
         {
             throw new NotImplementedException();

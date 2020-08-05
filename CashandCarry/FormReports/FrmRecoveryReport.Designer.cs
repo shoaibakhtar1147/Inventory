@@ -34,7 +34,6 @@
             this.btnCusName = new System.Windows.Forms.Button();
             this.txtCusID = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.crptViewerRecovery = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -114,26 +113,12 @@
             this.label3.TabIndex = 65;
             this.label3.Text = "Customer ID:";
             // 
-            // crptViewerRecovery
-            // 
-            this.crptViewerRecovery.ActiveViewIndex = -1;
-            this.crptViewerRecovery.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.crptViewerRecovery.Cursor = System.Windows.Forms.Cursors.Default;
-            this.crptViewerRecovery.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.crptViewerRecovery.Location = new System.Drawing.Point(20, 189);
-            this.crptViewerRecovery.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.crptViewerRecovery.Name = "crptViewerRecovery";
-            this.crptViewerRecovery.Size = new System.Drawing.Size(1045, 381);
-            this.crptViewerRecovery.TabIndex = 84;
-            this.crptViewerRecovery.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
-            // 
             // FrmRecoveryReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = MetroFramework.Drawing.MetroBorderStyle.FixedSingle;
-            this.ClientSize = new System.Drawing.Size(1085, 590);
-            this.Controls.Add(this.crptViewerRecovery);
+            this.ClientSize = new System.Drawing.Size(961, 260);
             this.Controls.Add(this.groupBox1);
             this.Name = "FrmRecoveryReport";
             this.Text = "Sale Recovery";
@@ -152,6 +137,5 @@
         private System.Windows.Forms.Button btnCusName;
         private System.Windows.Forms.TextBox txtCusID;
         private System.Windows.Forms.Label label3;
-        private CrystalDecisions.Windows.Forms.CrystalReportViewer crptViewerRecovery;
     }
 }

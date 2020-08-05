@@ -140,21 +140,21 @@ namespace CashandCarry.BL
             prm[0] = new SqlParameter("@PInvoice", PInvoice);
             return DB.SelectTableWithSP(spName,prm);
         }
-        //public DataTable SelectByDate()
-        //{
-        //    string spName = "SP_Purchase_DateDiff";
-        //    SqlParameter[] prm = new SqlParameter[2];
-        //    prm[0] = new SqlParameter("@mindate", mindate);
-        //    prm[1] = new SqlParameter("@maxdate", maxdate);
-        //    return DB.SelectTableWithSP(spName, prm);
-        //}
-        //public DataTable SelectByCompany()
-        //{
-        //    string spName = "SP_Purchase_ByCom";
-        //    SqlParameter[] prm = new SqlParameter[1];
-        //    prm[0] = new SqlParameter("@CompanyID", companyID);
-        //    return DB.SelectTableWithSP(spName, prm);
-        //}
+        public DataTable SelectByDate()
+        {
+            string spName = "SP_Purchase_DateDiff";
+            SqlParameter[] prm = new SqlParameter[2];
+            prm[0] = new SqlParameter("@mindate", mindate);
+            prm[1] = new SqlParameter("@maxdate", maxdate);
+            return DB.SelectTableWithSP(spName, prm);
+        }
+        public DataTable SelectByCompany()
+        {
+            string spName = "SP_Purchase_ByCom";
+            SqlParameter[] prm = new SqlParameter[1];
+            prm[0] = new SqlParameter("@CompanyID", companyID);
+            return DB.SelectTableWithSP(spName, prm);
+        }
         public DataTable Select()
         {
             throw new NotImplementedException();

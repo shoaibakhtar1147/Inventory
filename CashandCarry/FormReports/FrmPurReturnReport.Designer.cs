@@ -40,7 +40,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtmaxdate = new System.Windows.Forms.DateTimePicker();
             this.txtMinDate = new System.Windows.Forms.DateTimePicker();
-            this.crptViewerPurchaseReturn = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -67,7 +66,7 @@
             this.groupBox1.Size = new System.Drawing.Size(909, 139);
             this.groupBox1.TabIndex = 82;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Purchase Return Invoice";
+            this.groupBox1.Text = "Purchase Return";
             // 
             // txtInvoice
             // 
@@ -198,27 +197,12 @@
             this.txtMinDate.TabIndex = 60;
             this.txtMinDate.Value = new System.DateTime(2019, 9, 1, 0, 0, 0, 0);
             // 
-            // crptViewerPurchaseReturn
-            // 
-            this.crptViewerPurchaseReturn.ActiveViewIndex = -1;
-            this.crptViewerPurchaseReturn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.crptViewerPurchaseReturn.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.crptViewerPurchaseReturn.Cursor = System.Windows.Forms.Cursors.Default;
-            this.crptViewerPurchaseReturn.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.crptViewerPurchaseReturn.Location = new System.Drawing.Point(20, 229);
-            this.crptViewerPurchaseReturn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.crptViewerPurchaseReturn.Name = "crptViewerPurchaseReturn";
-            this.crptViewerPurchaseReturn.Size = new System.Drawing.Size(1292, 381);
-            this.crptViewerPurchaseReturn.TabIndex = 83;
-            this.crptViewerPurchaseReturn.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
-            // 
             // FrmPurReturnReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = MetroFramework.Drawing.MetroBorderStyle.FixedSingle;
-            this.ClientSize = new System.Drawing.Size(1332, 630);
-            this.Controls.Add(this.crptViewerPurchaseReturn);
+            this.ClientSize = new System.Drawing.Size(961, 260);
             this.Controls.Add(this.groupBox1);
             this.Name = "FrmPurReturnReport";
             this.Text = "Purchase Return Report";
@@ -243,6 +227,5 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker txtmaxdate;
         private System.Windows.Forms.DateTimePicker txtMinDate;
-        private CrystalDecisions.Windows.Forms.CrystalReportViewer crptViewerPurchaseReturn;
     }
 }

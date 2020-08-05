@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.crptViewerSale = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.txtMinDate = new System.Windows.Forms.DateTimePicker();
             this.txtmaxdate = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
@@ -44,21 +43,6 @@
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // crptViewerSale
-            // 
-            this.crptViewerSale.ActiveViewIndex = -1;
-            this.crptViewerSale.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.crptViewerSale.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.crptViewerSale.Cursor = System.Windows.Forms.Cursors.Default;
-            this.crptViewerSale.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.crptViewerSale.Location = new System.Drawing.Point(23, 224);
-            this.crptViewerSale.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.crptViewerSale.Name = "crptViewerSale";
-            this.crptViewerSale.Size = new System.Drawing.Size(1286, 381);
-            this.crptViewerSale.TabIndex = 0;
-            this.crptViewerSale.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
-            this.crptViewerSale.Load += new System.EventHandler(this.crystalReportViewer1_Load);
-            // 
             // txtMinDate
             // 
             this.txtMinDate.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -67,7 +51,7 @@
             this.txtMinDate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtMinDate.Name = "txtMinDate";
             this.txtMinDate.Size = new System.Drawing.Size(171, 23);
-            this.txtMinDate.TabIndex = 60;
+            this.txtMinDate.TabIndex = 1;
             this.txtMinDate.Value = new System.DateTime(2019, 9, 1, 0, 0, 0, 0);
             // 
             // txtmaxdate
@@ -78,7 +62,7 @@
             this.txtmaxdate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtmaxdate.Name = "txtmaxdate";
             this.txtmaxdate.Size = new System.Drawing.Size(171, 23);
-            this.txtmaxdate.TabIndex = 61;
+            this.txtmaxdate.TabIndex = 2;
             this.txtmaxdate.Value = new System.DateTime(2019, 9, 1, 0, 0, 0, 0);
             // 
             // label1
@@ -115,8 +99,8 @@
             this.btnSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(107, 23);
-            this.btnSearch.TabIndex = 64;
-            this.btnSearch.Text = "Search";
+            this.btnSearch.TabIndex = 3;
+            this.btnSearch.Text = "Print";
             this.btnSearch.UseVisualStyleBackColor = false;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
@@ -138,7 +122,7 @@
             this.txtCus.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtCus.Name = "txtCus";
             this.txtCus.Size = new System.Drawing.Size(171, 23);
-            this.txtCus.TabIndex = 66;
+            this.txtCus.TabIndex = 4;
             // 
             // btnCusName
             // 
@@ -152,8 +136,8 @@
             this.btnCusName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnCusName.Name = "btnCusName";
             this.btnCusName.Size = new System.Drawing.Size(107, 23);
-            this.btnCusName.TabIndex = 67;
-            this.btnCusName.Text = "Search";
+            this.btnCusName.TabIndex = 6;
+            this.btnCusName.Text = "Print";
             this.btnCusName.UseVisualStyleBackColor = false;
             this.btnCusName.Click += new System.EventHandler(this.btnCusName_Click);
             // 
@@ -186,7 +170,7 @@
             this.txtinvoiceNo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtinvoiceNo.Name = "txtinvoiceNo";
             this.txtinvoiceNo.Size = new System.Drawing.Size(171, 23);
-            this.txtinvoiceNo.TabIndex = 84;
+            this.txtinvoiceNo.TabIndex = 5;
             // 
             // groupBox1
             // 
@@ -218,14 +202,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = MetroFramework.Drawing.MetroBorderStyle.FixedSingle;
-            this.ClientSize = new System.Drawing.Size(1332, 630);
+            this.ClientSize = new System.Drawing.Size(961, 260);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.crptViewerSale);
             this.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FrmsalReport";
             this.Padding = new System.Windows.Forms.Padding(23, 74, 23, 25);
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Sale Invoice Report";
             this.Load += new System.EventHandler(this.FrmsalReport_Load);
             this.groupBox1.ResumeLayout(false);
@@ -236,7 +218,6 @@
 
         #endregion
 
-        private CrystalDecisions.Windows.Forms.CrystalReportViewer crptViewerSale;
         private System.Windows.Forms.DateTimePicker txtMinDate;
         private System.Windows.Forms.DateTimePicker txtmaxdate;
         private System.Windows.Forms.Label label1;

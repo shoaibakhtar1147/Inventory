@@ -26,6 +26,8 @@ namespace CashandCarry.BL
           public int PInvoice { get; set; }
           public decimal GrandTotal { get; set; }
           public decimal Ctn { get; set; }
+          public DateTime minDate { get; set; }
+          public DateTime maxDate { get; set; }
 
         public void SaveDetail()
           {
@@ -121,11 +123,30 @@ namespace CashandCarry.BL
             return DB.ExecuteNonQueryWithSP(SpName, prm);
         }
 
-        public System.Data.DataTable Search()
+        public DataTable SearchByDateDiff()
         {
-            throw new NotImplementedException();
+            string spName = "SP_PurReturn_DateDiff";
+            SqlParameter[] prm = new SqlParameter[2];
+            prm[0] = new SqlParameter("@MinDate", minDate);
+            prm[1] = new SqlParameter("@MaxDate", maxDate);
+            return DB.SelectTableWithSP(spName, prm);
         }
 
+        public DataTable SearchByComId()
+        {
+            string spName = "SP_PurReturn_ByCom";
+            SqlParameter[] prm = new SqlParameter[1];
+            prm[0] = new SqlParameter("@ComID", CompanyID);
+            return DB.SelectTableWithSP(spName, prm);
+        }
+
+        public DataTable SearchByInovice()
+        {
+            string spName = "SP_PurReturn_Invoice";
+            SqlParameter[] prm = new SqlParameter[1];
+            prm[0] = new SqlParameter("@PReturnID", PReturnID);
+            return DB.SelectTableWithSP(spName, prm);
+        }
         public System.Data.DataTable Select()
         {
             throw new NotImplementedException();

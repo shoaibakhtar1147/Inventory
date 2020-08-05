@@ -12,16 +12,11 @@ namespace CashandCarry.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class tbl_Customer
+    public partial class View_SubZone
     {
-        public int CustomerID { get; set; }
-        public string Name { get; set; }
-        public Nullable<int> CusTypeID { get; set; }
-        public string Address { get; set; }
-        public string Contact { get; set; }
-        public string Email { get; set; }
+        public int SubRouteId { get; set; }
+        public string SubRouteName { get; set; }
         public Nullable<int> ZoneID { get; set; }
-        public Nullable<decimal> DuePayment { get; set; }
-        public Nullable<int> SubRouteId { get; set; }
+        public string ZoneName { get; set; }
     }
 }

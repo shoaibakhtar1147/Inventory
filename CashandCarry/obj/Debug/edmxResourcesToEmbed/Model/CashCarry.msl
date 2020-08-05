@@ -63,6 +63,7 @@
     <EntitySetMapping Name="tbl_Customer">
       <EntityTypeMapping TypeName="CashCarryModel.tbl_Customer">
         <MappingFragment StoreEntitySet="tbl_Customer">
+          <ScalarProperty Name="SubRouteId" ColumnName="SubRouteId" />
           <ScalarProperty Name="DuePayment" ColumnName="DuePayment" />
           <ScalarProperty Name="ZoneID" ColumnName="ZoneID" />
           <ScalarProperty Name="Email" ColumnName="Email" />
@@ -284,20 +285,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="View_tbl_Customer">
-      <EntityTypeMapping TypeName="CashCarryModel.View_tbl_Customer">
-        <MappingFragment StoreEntitySet="View_tbl_Customer">
-          <ScalarProperty Name="DuePayment" ColumnName="DuePayment" />
-          <ScalarProperty Name="ZoneName" ColumnName="ZoneName" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="Contact" ColumnName="Contact" />
-          <ScalarProperty Name="Address" ColumnName="Address" />
-          <ScalarProperty Name="CusType" ColumnName="CusType" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Tbl_SaleTransaction">
       <EntityTypeMapping TypeName="CashCarryModel.Tbl_SaleTransaction">
         <MappingFragment StoreEntitySet="Tbl_SaleTransaction">
@@ -398,6 +385,40 @@
           <ScalarProperty Name="ExName" ColumnName="ExName" />
           <ScalarProperty Name="ExType" ColumnName="ExType" />
           <ScalarProperty Name="ExId" ColumnName="ExId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_SubZone">
+      <EntityTypeMapping TypeName="CashCarryModel.Tbl_SubZone">
+        <MappingFragment StoreEntitySet="Tbl_SubZone">
+          <ScalarProperty Name="ZoneID" ColumnName="ZoneID" />
+          <ScalarProperty Name="SubRouteName" ColumnName="SubRouteName" />
+          <ScalarProperty Name="SubRouteId" ColumnName="SubRouteId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="View_tbl_Customer">
+      <EntityTypeMapping TypeName="CashCarryModel.View_tbl_Customer">
+        <MappingFragment StoreEntitySet="View_tbl_Customer">
+          <ScalarProperty Name="DuePayment" ColumnName="DuePayment" />
+          <ScalarProperty Name="SubRouteName" ColumnName="SubRouteName" />
+          <ScalarProperty Name="ZoneName" ColumnName="ZoneName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Contact" ColumnName="Contact" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="CusType" ColumnName="CusType" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="View_SubZone">
+      <EntityTypeMapping TypeName="CashCarryModel.View_SubZone">
+        <MappingFragment StoreEntitySet="View_SubZone">
+          <ScalarProperty Name="ZoneName" ColumnName="ZoneName" />
+          <ScalarProperty Name="ZoneID" ColumnName="ZoneID" />
+          <ScalarProperty Name="SubRouteName" ColumnName="SubRouteName" />
+          <ScalarProperty Name="SubRouteId" ColumnName="SubRouteId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

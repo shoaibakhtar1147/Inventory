@@ -92,6 +92,12 @@ namespace CashandCarry.BL
             prm[0] = new SqlParameter("@ProductID", ProductID);
             return DB.SelectTableWithSP(spName, prm);
         }
+
+        public DataTable SearchByPRodCom()
+        {
+            string spName = "SP_Search_Product";
+            return DB.SelectTableWithSP(spName, null);
+        }
         public List<View_tbl_Product> Search()
         {
            using(var context=new CashCarryEntities3())

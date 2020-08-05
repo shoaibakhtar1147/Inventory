@@ -1,4 +1,6 @@
-﻿using CashandCarry.Reports.EmployeeRpt;
+﻿using CashandCarry.BL;
+using CashandCarry.Reports;
+using CashandCarry.Reports.EmployeeRpt;
 using MetroFramework.Forms;
 using System;
 using System.Collections.Generic;
@@ -29,14 +31,49 @@ namespace CashandCarry.FormReports
             if(!string.IsNullOrEmpty(txtsalaryID.Text))
             {
                 EmpSalaryReport objrpt = new EmpSalaryReport();
+                rptViewer objView = new rptViewer();
                 objrpt.SetParameterValue("@SalaryID", txtsalaryID.Text);
-                crptViewerEmp.ReportSource = objrpt;
+                EmpSalaryBL objBL = new EmpSalaryBL() 
+                {
+                SalaryID=Convert.ToInt32(txtsalaryID.Text)
+                };
+                var dt = objBL.SalaryIDSelect();
+                if(dt != null)
+                {
+                    objrpt.SetDataSource(dt);
+                    objView.crptViewer.ReportSource = objrpt;
+                    objView.WindowState = FormWindowState.Maximized;
+                    objView.ShowDialog();
+                }
+                
+                else
+                {
+                    MessageBox.Show("No Record Found");
+                }
+                //crptViewerEmp.ReportSource = objrpt;
             }
             else if(!string.IsNullOrEmpty(txtEmpID.Text))
             {
                 EmpAllSalaryReport obj = new EmpAllSalaryReport();
+                rptViewer objView = new rptViewer();
                 obj.SetParameterValue("@EmployeeID", txtEmpID.Text);
-                crptViewerEmp.ReportSource = obj;
+                EmpSalaryBL objBL = new EmpSalaryBL() 
+                {
+                EmployeeID=Convert.ToInt32(txtEmpID.Text)
+                };
+                var dt = objBL.EmployeeIDSelect();
+                if(dt != null)
+                {
+                    obj.SetDataSource(dt);
+                    objView.crptViewer.ReportSource = obj;
+                    objView.WindowState = FormWindowState.Maximized;
+                    objView.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("No Record Found");
+                }
+                //crptViewerEmp.ReportSource = obj;
             }
         }
     }

@@ -32,7 +32,8 @@
             this.btnComName = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.crptViewerCom = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnAllRecord
@@ -43,7 +44,7 @@
             this.btnAllRecord.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAllRecord.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAllRecord.ForeColor = System.Drawing.Color.White;
-            this.btnAllRecord.Location = new System.Drawing.Point(954, 117);
+            this.btnAllRecord.Location = new System.Drawing.Point(528, 43);
             this.btnAllRecord.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnAllRecord.Name = "btnAllRecord";
             this.btnAllRecord.Size = new System.Drawing.Size(107, 23);
@@ -60,7 +61,7 @@
             this.btnComName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnComName.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnComName.ForeColor = System.Drawing.Color.White;
-            this.btnComName.Location = new System.Drawing.Point(786, 117);
+            this.btnComName.Location = new System.Drawing.Point(375, 43);
             this.btnComName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnComName.Name = "btnComName";
             this.btnComName.Size = new System.Drawing.Size(107, 23);
@@ -73,7 +74,7 @@
             // 
             this.txtSearch.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSearch.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtSearch.Location = new System.Drawing.Point(596, 117);
+            this.txtSearch.Location = new System.Drawing.Point(185, 43);
             this.txtSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(171, 23);
@@ -84,45 +85,46 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label3.Location = new System.Drawing.Point(447, 121);
+            this.label3.Location = new System.Drawing.Point(37, 45);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(94, 17);
             this.label3.TabIndex = 85;
             this.label3.Text = "Company ID:";
             // 
-            // crptViewerCom
+            // groupBox1
             // 
-            this.crptViewerCom.ActiveViewIndex = -1;
-            this.crptViewerCom.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.crptViewerCom.Cursor = System.Windows.Forms.Cursors.Default;
-            this.crptViewerCom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.crptViewerCom.Location = new System.Drawing.Point(23, 184);
-            this.crptViewerCom.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.crptViewerCom.Name = "crptViewerCom";
-            this.crptViewerCom.Size = new System.Drawing.Size(1039, 381);
-            this.crptViewerCom.TabIndex = 89;
-            this.crptViewerCom.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
+            this.groupBox1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.groupBox1.Controls.Add(this.btnAllRecord);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.btnComName);
+            this.groupBox1.Controls.Add(this.txtSearch);
+            this.groupBox1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.groupBox1.Location = new System.Drawing.Point(23, 77);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox1.Size = new System.Drawing.Size(909, 94);
+            this.groupBox1.TabIndex = 89;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Company Report";
             // 
             // FrmComReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = MetroFramework.Drawing.MetroBorderStyle.FixedSingle;
-            this.ClientSize = new System.Drawing.Size(1085, 590);
-            this.Controls.Add(this.crptViewerCom);
-            this.Controls.Add(this.btnAllRecord);
-            this.Controls.Add(this.btnComName);
-            this.Controls.Add(this.txtSearch);
-            this.Controls.Add(this.label3);
+            this.ClientSize = new System.Drawing.Size(961, 260);
+            this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FrmComReport";
             this.Padding = new System.Windows.Forms.Padding(23, 74, 23, 25);
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Company Report";
             this.Load += new System.EventHandler(this.FrmComReport_Load);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -132,6 +134,6 @@
         private System.Windows.Forms.Button btnComName;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Label label3;
-        private CrystalDecisions.Windows.Forms.CrystalReportViewer crptViewerCom;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }

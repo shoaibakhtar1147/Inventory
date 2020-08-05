@@ -30,6 +30,7 @@
     <Property Name="Email" Type="varchar" MaxLength="20" />
     <Property Name="ZoneID" Type="int" />
     <Property Name="DuePayment" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="SubRouteId" Type="int" />
   </EntityType>
   <EntityType Name="tbl_CustomerTypes">
     <Key>
@@ -249,6 +250,14 @@
     <Property Name="Description" Type="varchar(max)" />
     <Property Name="RInvoice" Type="int" />
   </EntityType>
+  <EntityType Name="Tbl_SubZone">
+    <Key>
+      <PropertyRef Name="SubRouteId" />
+    </Key>
+    <Property Name="SubRouteId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SubRouteName" Type="varchar(max)" />
+    <Property Name="ZoneID" Type="int" />
+  </EntityType>
   <EntityType Name="tbl_Zone">
     <Key>
       <PropertyRef Name="ZoneID" />
@@ -321,6 +330,17 @@ warning 6002: The table/view 'CashCarry.dbo.View_SaleLedger' does not have a pri
     <Property Name="Description" Type="varchar(max)" />
   </EntityType>
   <!--Errors Found During Generation:
+warning 6002: The table/view 'CashCarry.dbo.View_SubZone' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="View_SubZone">
+    <Key>
+      <PropertyRef Name="SubRouteId" />
+    </Key>
+    <Property Name="SubRouteId" Type="int" Nullable="false" />
+    <Property Name="SubRouteName" Type="varchar(max)" />
+    <Property Name="ZoneID" Type="int" />
+    <Property Name="ZoneName" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <!--Errors Found During Generation:
 warning 6002: The table/view 'CashCarry.dbo.View_tbl_Customer' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="View_tbl_Customer">
     <Key>
@@ -333,6 +353,7 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Customer' does not have a p
     <Property Name="Contact" Type="varchar" MaxLength="20" />
     <Property Name="Email" Type="varchar" MaxLength="20" />
     <Property Name="ZoneName" Type="varchar" MaxLength="20" />
+    <Property Name="SubRouteName" Type="varchar(max)" />
     <Property Name="DuePayment" Type="decimal" Precision="18" Scale="2" />
   </EntityType>
   <!--Errors Found During Generation:
@@ -392,6 +413,7 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
     <EntitySet Name="tbl_SaleMAster" EntityType="Self.tbl_SaleMAster" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tbl_SaleRecovery" EntityType="Self.Tbl_SaleRecovery" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tbl_SaleTransaction" EntityType="Self.Tbl_SaleTransaction" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_SubZone" EntityType="Self.Tbl_SubZone" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_Zone" EntityType="Self.tbl_Zone" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="View_DetailPurchase" EntityType="Self.View_DetailPurchase" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
@@ -446,6 +468,14 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
     [View_SaleLedger].[Description] AS [Description]
     FROM [dbo].[View_SaleLedger] AS [View_SaleLedger]</DefiningQuery>
     </EntitySet>
+    <EntitySet Name="View_SubZone" EntityType="Self.View_SubZone" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [View_SubZone].[SubRouteId] AS [SubRouteId], 
+    [View_SubZone].[SubRouteName] AS [SubRouteName], 
+    [View_SubZone].[ZoneID] AS [ZoneID], 
+    [View_SubZone].[ZoneName] AS [ZoneName]
+    FROM [dbo].[View_SubZone] AS [View_SubZone]</DefiningQuery>
+    </EntitySet>
     <EntitySet Name="View_tbl_Customer" EntityType="Self.View_tbl_Customer" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
     [View_tbl_Customer].[CustomerID] AS [CustomerID], 
@@ -455,6 +485,7 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
     [View_tbl_Customer].[Contact] AS [Contact], 
     [View_tbl_Customer].[Email] AS [Email], 
     [View_tbl_Customer].[ZoneName] AS [ZoneName], 
+    [View_tbl_Customer].[SubRouteName] AS [SubRouteName], 
     [View_tbl_Customer].[DuePayment] AS [DuePayment]
     FROM [dbo].[View_tbl_Customer] AS [View_tbl_Customer]</DefiningQuery>
     </EntitySet>

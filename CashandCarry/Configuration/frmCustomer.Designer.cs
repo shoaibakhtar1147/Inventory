@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -56,6 +56,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dgvCus = new System.Windows.Forms.DataGridView();
+            this.txtSubZone = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtPreBalance = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCus)).BeginInit();
@@ -127,7 +131,7 @@
             this.btnDelete.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(128, 42);
-            this.btnDelete.TabIndex = 12;
+            this.btnDelete.TabIndex = 14;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
@@ -144,7 +148,7 @@
             this.btnUpdate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(128, 42);
-            this.btnUpdate.TabIndex = 11;
+            this.btnUpdate.TabIndex = 13;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = false;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
@@ -161,7 +165,7 @@
             this.btnClear.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(128, 42);
-            this.btnClear.TabIndex = 13;
+            this.btnClear.TabIndex = 15;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = false;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
@@ -178,13 +182,17 @@
             this.btnSave.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(128, 42);
-            this.btnSave.TabIndex = 10;
+            this.btnSave.TabIndex = 12;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtPreBalance);
+            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.txtSubZone);
+            this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.txtEmail);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.txtCusType);
@@ -213,18 +221,18 @@
             // txtEmail
             // 
             this.txtEmail.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmail.Location = new System.Drawing.Point(591, 172);
+            this.txtEmail.Location = new System.Drawing.Point(551, 98);
             this.txtEmail.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(199, 23);
-            this.txtEmail.TabIndex = 8;
+            this.txtEmail.TabIndex = 6;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label6.Location = new System.Drawing.Point(476, 180);
+            this.label6.Location = new System.Drawing.Point(436, 106);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(47, 17);
             this.label6.TabIndex = 30;
@@ -234,28 +242,29 @@
             // 
             this.txtCusType.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCusType.FormattingEnabled = true;
-            this.txtCusType.Location = new System.Drawing.Point(195, 172);
+            this.txtCusType.Location = new System.Drawing.Point(551, 187);
             this.txtCusType.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtCusType.Name = "txtCusType";
             this.txtCusType.Size = new System.Drawing.Size(199, 25);
-            this.txtCusType.TabIndex = 5;
+            this.txtCusType.TabIndex = 10;
             // 
             // txtZoneID
             // 
             this.txtZoneID.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtZoneID.FormattingEnabled = true;
-            this.txtZoneID.Location = new System.Drawing.Point(591, 55);
+            this.txtZoneID.Location = new System.Drawing.Point(195, 143);
             this.txtZoneID.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtZoneID.Name = "txtZoneID";
             this.txtZoneID.Size = new System.Drawing.Size(199, 25);
-            this.txtZoneID.TabIndex = 6;
+            this.txtZoneID.TabIndex = 7;
+            this.txtZoneID.Leave += new System.EventHandler(this.txtZoneID_Leave);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label4.Location = new System.Drawing.Point(476, 60);
+            this.label4.Location = new System.Drawing.Point(68, 146);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(87, 17);
             this.label4.TabIndex = 28;
@@ -266,7 +275,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label2.Location = new System.Drawing.Point(68, 178);
+            this.label2.Location = new System.Drawing.Point(424, 190);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(107, 17);
             this.label2.TabIndex = 25;
@@ -296,12 +305,12 @@
             // txtContact
             // 
             this.txtContact.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtContact.Location = new System.Drawing.Point(591, 114);
+            this.txtContact.Location = new System.Drawing.Point(195, 101);
             this.txtContact.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtContact.Mask = "0000-0000000";
             this.txtContact.Name = "txtContact";
             this.txtContact.Size = new System.Drawing.Size(199, 23);
-            this.txtContact.TabIndex = 7;
+            this.txtContact.TabIndex = 5;
             // 
             // txtAddress
             // 
@@ -311,7 +320,7 @@
             this.txtAddress.Multiline = true;
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(595, 77);
-            this.txtAddress.TabIndex = 9;
+            this.txtAddress.TabIndex = 11;
             this.txtAddress.TextChanged += new System.EventHandler(this.txtAddress_TextChanged);
             // 
             // label12
@@ -330,7 +339,7 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label9.Location = new System.Drawing.Point(476, 117);
+            this.label9.Location = new System.Drawing.Point(68, 104);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(67, 17);
             this.label9.TabIndex = 10;
@@ -339,7 +348,7 @@
             // txtCusName
             // 
             this.txtCusName.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCusName.Location = new System.Drawing.Point(195, 114);
+            this.txtCusName.Location = new System.Drawing.Point(551, 57);
             this.txtCusName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtCusName.Name = "txtCusName";
             this.txtCusName.Size = new System.Drawing.Size(199, 23);
@@ -350,7 +359,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label1.Location = new System.Drawing.Point(68, 117);
+            this.label1.Location = new System.Drawing.Point(436, 60);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(52, 17);
             this.label1.TabIndex = 0;
@@ -370,33 +379,75 @@
             // 
             this.dgvCus.AllowUserToAddRows = false;
             this.dgvCus.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCus.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCus.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvCus.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvCus.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvCus.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgvCus.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvCus.GridColor = System.Drawing.SystemColors.ActiveCaption;
             this.dgvCus.Location = new System.Drawing.Point(0, 0);
             this.dgvCus.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dgvCus.Name = "dgvCus";
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            this.dgvCus.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+            this.dgvCus.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvCus.Size = new System.Drawing.Size(1090, 193);
-            this.dgvCus.TabIndex = 15;
+            this.dgvCus.TabIndex = 16;
             this.dgvCus.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCus_CellContentClick_1);
+            // 
+            // txtSubZone
+            // 
+            this.txtSubZone.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSubZone.FormattingEnabled = true;
+            this.txtSubZone.Location = new System.Drawing.Point(551, 143);
+            this.txtSubZone.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtSubZone.Name = "txtSubZone";
+            this.txtSubZone.Size = new System.Drawing.Size(199, 25);
+            this.txtSubZone.TabIndex = 8;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label5.Location = new System.Drawing.Point(436, 146);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(70, 17);
+            this.label5.TabIndex = 32;
+            this.label5.Text = "Sub Zone:";
+            // 
+            // txtPreBalance
+            // 
+            this.txtPreBalance.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPreBalance.Location = new System.Drawing.Point(195, 187);
+            this.txtPreBalance.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtPreBalance.Name = "txtPreBalance";
+            this.txtPreBalance.Size = new System.Drawing.Size(199, 23);
+            this.txtPreBalance.TabIndex = 9;
+            this.txtPreBalance.Leave += new System.EventHandler(this.txtPreBalance_Leave);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label7.Location = new System.Drawing.Point(68, 190);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(88, 17);
+            this.label7.TabIndex = 33;
+            this.label7.Text = "Pre Balance:";
             // 
             // frmCustomer
             // 
@@ -457,5 +508,9 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView dgvCus;
+        private System.Windows.Forms.ComboBox txtSubZone;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtPreBalance;
+        private System.Windows.Forms.Label label7;
     }
 }

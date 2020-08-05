@@ -30,36 +30,58 @@ namespace CashandCarry.FormReports
         private void btnComName_Click(object sender, EventArgs e)
         {
             CompanyReport objcom = new CompanyReport();
-
+            rptViewer objView = new rptViewer();
             if(!String.IsNullOrEmpty(txtSearch.Text))
             {
                 objcom.SetParameterValue("@ComID", txtSearch.Text);
             }
-            //CompanyBL obj = new CompanyBL() 
-            //{
-            //CompanyID=Convert.ToInt32(txtSearch.Text)
-            //};
-            //var dt = obj.Search();
-            //if(dt.Count>0)
-            //{
-            //    objcom.SetDataSource(dt);
-               
-            //}
-            crptViewerCom.ReportSource = objcom;
+            CompanyBL obj = new CompanyBL()
+            {
+                CompanyID = Convert.ToInt32(txtSearch.Text)
+            };
+            var dt = obj.SelectComId();
+            if (dt !=null)
+            {
+                objcom.SetDataSource(dt);
+                objView.crptViewer.ReportSource = objcom;
+                objView.WindowState = FormWindowState.Maximized;
+                objView.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("No Record Found");
+            }
+            //crptViewerCom.ReportSource = objcom;
+            txtSearch.Clear();
         }
 
         private void btnAllRecord_Click(object sender, EventArgs e)
         {
             CompanyGeneralReport objCom = new CompanyGeneralReport();
-            objCom.SetParameterValue("@ComID", null);
+            rptViewer objView = new rptViewer();
+            CompanyBL objBL = new CompanyBL();
+            var dt = objBL.SelectAllCom();
+            if(dt != null)
+            {
+                objCom.SetDataSource(dt);
+                objView.crptViewer.ReportSource = objCom;
+                objView.WindowState = FormWindowState.Maximized;
+                objView.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("No Record Found");
+            }
+
+            //objCom.SetParameterValue("@ComID", null);
             //CompanyBL obj = new CompanyBL();
             //var dt = obj.Select();
-            //if(dt.Count>0)
+            //if (dt.Count > 0)
             //{
             //    objCom.SetDataSource(dt);
-               
+
             //}
-            crptViewerCom.ReportSource = objCom;
+           // crptViewerCom.ReportSource = objCom;
 
         }
 

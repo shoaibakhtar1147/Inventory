@@ -78,6 +78,16 @@ namespace CashandCarry.BL
             return DB.SelectTableWithSP(spName, prm);
                 
         }
+
+        public DataTable EmployeeIDSelect()
+        {
+            string spName = "SP_Employee_AllSalary";
+            SqlParameter[] prm = new SqlParameter[2];
+            prm[0] = new SqlParameter("@EmployeeID", EmployeeID);
+            prm[1] = new SqlParameter("@Action", 2);
+            return DB.SelectTableWithSP(spName, prm);
+
+        }
         public System.Data.DataTable Search()
         {
             throw new NotImplementedException();

@@ -1,4 +1,6 @@
-﻿using CashandCarry.Reports.Customer;
+﻿using CashandCarry.BL;
+using CashandCarry.Reports;
+using CashandCarry.Reports.Customer;
 using MetroFramework.Forms;
 using System;
 using System.Collections.Generic;
@@ -29,14 +31,54 @@ namespace CashandCarry.FormReports
             if(!string.IsNullOrEmpty(txtRecoveryID.Text))
             {
                 SaleRecoveryIDReport objrpt = new SaleRecoveryIDReport();
+                rptViewer objView = new rptViewer();
                 objrpt.SetParameterValue("@RecoveryID", txtRecoveryID.Text);
-                crptViewerRecovery.ReportSource = objrpt;
+                SaleRecoveryBL objBl = new SaleRecoveryBL()
+                {
+                    SRecoveryID = Convert.ToInt32(txtRecoveryID.Text)
+                };
+                var dt = objBl.SearchByRecoveryID();
+                if (dt != null)
+                {
+                    objrpt.SetDataSource(dt);
+                    objView.crptViewer.ReportSource = objrpt;
+                    objView.WindowState = FormWindowState.Maximized;
+                    objView.ShowDialog();
+                    txtRecoveryID.Clear();
+                }
+                else
+                {
+                    MessageBox.Show("No Record Found");
+                }
+                
+                
+                //crptViewerRecovery.ReportSource = objrpt;
             }
             else if(!string.IsNullOrEmpty(txtCusID.Text))
             {
                 RecoveryByCusIDReport objCus = new RecoveryByCusIDReport();
+                rptViewer objView = new rptViewer();
                 objCus.SetParameterValue("@CustomerID", txtCusID.Text);
-                crptViewerRecovery.ReportSource = objCus;
+                
+
+                 SaleRecoveryBL objBL = new SaleRecoveryBL() 
+                {
+                CustomerID=Convert.ToInt32(txtCusID.Text)
+                };
+                var dt = objBL.SearchByCusID();
+                if(dt != null)
+                {
+                    objCus.SetDataSource(dt);
+                    objView.crptViewer.ReportSource = objCus;
+                    objView.WindowState = FormWindowState.Maximized;
+                    objView.ShowDialog();
+                    txtCusID.Clear();
+                }
+                //crptViewerRecovery.ReportSource = objCus;
+                else
+                {
+                    MessageBox.Show("No Record Found");
+                }
             }
         }
     }

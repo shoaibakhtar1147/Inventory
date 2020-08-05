@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.crptViewerEmp = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtsalaryID = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -37,19 +36,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // crptViewerEmp
-            // 
-            this.crptViewerEmp.ActiveViewIndex = -1;
-            this.crptViewerEmp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.crptViewerEmp.Cursor = System.Windows.Forms.Cursors.Default;
-            this.crptViewerEmp.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.crptViewerEmp.Location = new System.Drawing.Point(20, 189);
-            this.crptViewerEmp.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.crptViewerEmp.Name = "crptViewerEmp";
-            this.crptViewerEmp.Size = new System.Drawing.Size(1045, 381);
-            this.crptViewerEmp.TabIndex = 2;
-            this.crptViewerEmp.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
             // 
             // groupBox1
             // 
@@ -132,9 +118,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = MetroFramework.Drawing.MetroBorderStyle.FixedSingle;
-            this.ClientSize = new System.Drawing.Size(1085, 590);
+            this.ClientSize = new System.Drawing.Size(961, 260);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.crptViewerEmp);
             this.Name = "FrmEmployeeReport";
             this.Text = "Employee Report";
             this.Load += new System.EventHandler(this.FrmEmployeeReport_Load);
@@ -146,7 +131,6 @@
 
         #endregion
 
-        private CrystalDecisions.Windows.Forms.CrystalReportViewer crptViewerEmp;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox txtsalaryID;
         private System.Windows.Forms.Label label6;

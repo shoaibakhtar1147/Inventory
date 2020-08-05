@@ -34,7 +34,6 @@
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtComID = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.crptViewerRemain = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -114,25 +113,11 @@
             this.label3.TabIndex = 65;
             this.label3.Text = "Company ID:";
             // 
-            // crptViewerRemain
-            // 
-            this.crptViewerRemain.ActiveViewIndex = -1;
-            this.crptViewerRemain.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.crptViewerRemain.Cursor = System.Windows.Forms.Cursors.Default;
-            this.crptViewerRemain.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.crptViewerRemain.Location = new System.Drawing.Point(20, 189);
-            this.crptViewerRemain.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.crptViewerRemain.Name = "crptViewerRemain";
-            this.crptViewerRemain.Size = new System.Drawing.Size(1045, 381);
-            this.crptViewerRemain.TabIndex = 85;
-            this.crptViewerRemain.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
-            // 
             // FrmRemainingReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1085, 590);
-            this.Controls.Add(this.crptViewerRemain);
+            this.ClientSize = new System.Drawing.Size(961, 260);
             this.Controls.Add(this.groupBox1);
             this.Name = "FrmRemainingReport";
             this.Text = "Purchase Remaining";
@@ -151,6 +136,5 @@
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.TextBox txtComID;
         private System.Windows.Forms.Label label3;
-        private CrystalDecisions.Windows.Forms.CrystalReportViewer crptViewerRemain;
     }
 }

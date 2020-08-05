@@ -1,4 +1,5 @@
-﻿using CashandCarry.Reports;
+﻿using CashandCarry.BL;
+using CashandCarry.Reports;
 using CashandCarry.Reports.Company;
 using MetroFramework.Forms;
 using System;
@@ -30,14 +31,50 @@ namespace CashandCarry.FormReports
             if(!string.IsNullOrEmpty(txtRemainID.Text))
             {
                 PurRemainIDReport objrpt = new PurRemainIDReport();
+                rptViewer objView = new rptViewer();
                 objrpt.SetParameterValue("@RemainID", txtRemainID.Text);
-                crptViewerRemain.ReportSource = objrpt;
+                PurRemainBL objBl = new PurRemainBL() 
+                {
+                PRemainID=Convert.ToInt32(txtRemainID.Text)
+                };
+                var dt = objBl.SearchByRemainID();
+                if(dt != null)
+                {
+                    objrpt.SetDataSource(dt);
+                    objView.crptViewer.ReportSource = objrpt;
+                    objView.WindowState = FormWindowState.Maximized;
+                    objView.ShowDialog();
+
+                }
+                else
+                {
+                    MessageBox.Show("No Record Found");
+                }
+                //crptViewerRemain.ReportSource = objrpt;
             }
             else if(!string.IsNullOrEmpty(txtComID.Text))
             {
                 RemainByComIDReport objCom = new RemainByComIDReport();
+                rptViewer objView = new rptViewer();
                 objCom.SetParameterValue("@ComID", txtComID.Text);
-                crptViewerRemain.ReportSource = objCom;
+                PurRemainBL objBL = new PurRemainBL() 
+                {
+                CompanyID=Convert.ToInt32(txtComID.Text)
+                };
+                var dt = objBL.SearchByComID();
+                if(dt !=null)
+                {
+                    objCom.SetDataSource(dt);
+                    objView.crptViewer.ReportSource = objCom;
+                    objView.WindowState = FormWindowState.Maximized;
+                    objView.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("No Record Found");
+                }
+                
+                //crptViewerRemain.ReportSource = objCom;
             }
 
             else

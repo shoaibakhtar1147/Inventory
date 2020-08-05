@@ -90,12 +90,19 @@
     <Compile Include="BL\SaleInvoiceBL.cs" />
     <Compile Include="BL\SaleLedgerBL.cs" />
     <Compile Include="BL\SaleRecoveryBL.cs" />
+    <Compile Include="BL\SubZoneBL.cs" />
     <Compile Include="BL\ZoneBL.cs" />
     <Compile Include="Configuration\FrmCustomerType.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Configuration\FrmCustomerType.Designer.cs">
       <DependentUpon>FrmCustomerType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Configuration\frmSubZone.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Configuration\frmSubZone.Designer.cs">
+      <DependentUpon>frmSubZone.cs</DependentUpon>
     </Compile>
     <Compile Include="Configuration\FrmZone.cs">
       <SubType>Form</SubType>
@@ -355,6 +362,9 @@
     <Compile Include="Model\Tbl_SaleTransaction.cs">
       <DependentUpon>CashCarry.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Tbl_SubZone.cs">
+      <DependentUpon>CashCarry.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\tbl_Zone.cs">
       <DependentUpon>CashCarry.tt</DependentUpon>
     </Compile>
@@ -365,6 +375,9 @@
       <DependentUpon>CashCarry.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\View_SaleLedger.cs">
+      <DependentUpon>CashCarry.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\View_SubZone.cs">
       <DependentUpon>CashCarry.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\View_tbl_Customer.cs">
@@ -640,6 +653,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Configuration\FrmCustomerType.resx">
       <DependentUpon>FrmCustomerType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Configuration\frmSubZone.resx">
+      <DependentUpon>frmSubZone.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Employee\frmEmployeeRegistration.resx">
       <DependentUpon>frmEmployeeRegistration.cs</DependentUpon>

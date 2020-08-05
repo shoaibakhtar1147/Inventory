@@ -121,20 +121,20 @@ namespace CashandCarry.BL
             prm[2] = new SqlParameter("@prmtype", 2);
             return DB.ExecuteNonQueryWithSP(spName, prm);
             }
-        //public DataTable SelectByCus()
-        //    {
-        //        string spName = "SP_Return_ByCus";
-        //        SqlParameter[] prm = new SqlParameter[1];
-        //        prm[0] = new SqlParameter("@CusID", CustomerID);
-        //        return DB.SelectTableWithSP(spName, prm);
-        //    }
-        //public DataTable SelectDateDiff()
-        //{
-        //    string spName = "SP_SaleReturn_DateDiff";
-        //    SqlParameter[] prm = new SqlParameter[2];
-        //    prm[0] = new SqlParameter("@MinDate", mindate);
-        //    prm[1] = new SqlParameter("@MaxDate", maxdate);
-        //    return DB.SelectTableWithSP(spName, prm);
-        //}
+            public DataTable SelectByCus()
+            {
+                string spName = "SP_Return_ByCus";
+                SqlParameter[] prm = new SqlParameter[1];
+                prm[0] = new SqlParameter("@CusID", CustomerID);
+                return DB.SelectTableWithSP(spName, prm);
+            }
+            public DataTable SelectDateDiff()
+            {
+                string spName = "SP_SaleReturn_DateDiff";
+                SqlParameter[] prm = new SqlParameter[2];
+                prm[0] = new SqlParameter("@MinDate", mindate);
+                prm[1] = new SqlParameter("@MaxDate", maxdate);
+                return DB.SelectTableWithSP(spName, prm);
+            }
     }
 }

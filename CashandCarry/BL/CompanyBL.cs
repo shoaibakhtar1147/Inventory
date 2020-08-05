@@ -71,6 +71,20 @@ namespace CashandCarry.BL
             return DB.SelectTableWithSP(spName, prm);
         }
 
+        public DataTable SelectComId() 
+        {
+            string spName = "SPSelectCom";
+            SqlParameter[] prm = new SqlParameter[1];
+            prm[0] = new SqlParameter("@ComID", CompanyID);
+            return DB.SelectTableWithSP(spName, prm);
+        }
+
+        public DataTable SelectAllCom()
+        {
+            string spName = "SPSelectCom";           
+            return DB.SelectTableWithSP(spName, null);
+        }
+
         public List<tbl_Company> Search()
         {
             using(var context=new CashCarryEntities3())

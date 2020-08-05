@@ -40,7 +40,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtmaxdate = new System.Windows.Forms.DateTimePicker();
             this.txtMinDate = new System.Windows.Forms.DateTimePicker();
-            this.crptViewerReturn = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -198,31 +197,14 @@
             this.txtMinDate.TabIndex = 60;
             this.txtMinDate.Value = new System.DateTime(2019, 9, 1, 0, 0, 0, 0);
             // 
-            // crptViewerReturn
-            // 
-            this.crptViewerReturn.ActiveViewIndex = -1;
-            this.crptViewerReturn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.crptViewerReturn.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.crptViewerReturn.Cursor = System.Windows.Forms.Cursors.Default;
-            this.crptViewerReturn.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.crptViewerReturn.Location = new System.Drawing.Point(20, 229);
-            this.crptViewerReturn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.crptViewerReturn.Name = "crptViewerReturn";
-            this.crptViewerReturn.Size = new System.Drawing.Size(1292, 381);
-            this.crptViewerReturn.TabIndex = 82;
-            this.crptViewerReturn.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
-            this.crptViewerReturn.Load += new System.EventHandler(this.crptViewerSale_Load);
-            // 
             // FrmsalReturn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = MetroFramework.Drawing.MetroBorderStyle.FixedSingle;
-            this.ClientSize = new System.Drawing.Size(1332, 630);
-            this.Controls.Add(this.crptViewerReturn);
+            this.ClientSize = new System.Drawing.Size(961, 260);
             this.Controls.Add(this.groupBox1);
             this.Name = "FrmsalReturn";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Sale Return Report";
             this.Load += new System.EventHandler(this.FrmSaleReturn_Load);
             this.groupBox1.ResumeLayout(false);
@@ -245,6 +227,5 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker txtmaxdate;
         private System.Windows.Forms.DateTimePicker txtMinDate;
-        private CrystalDecisions.Windows.Forms.CrystalReportViewer crptViewerReturn;
     }
 }

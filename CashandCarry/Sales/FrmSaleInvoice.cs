@@ -654,6 +654,18 @@ namespace CashandCarry.Sales
             }
         }
 
+        private void ChkComplete_Leave(object sender, EventArgs e)
+        {
+            if (ChkComplete.Checked == true)
+            {
+                txtTotalPay.Focus();
+            }
+            else if (ChkComplete.Checked != true)
+            {
+                ChkCtn.Focus();
+            }
+        }
+
       
 
        

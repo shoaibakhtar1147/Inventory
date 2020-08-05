@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.crptViewerPurchase = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtInvoice = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -43,20 +42,6 @@
             this.txtMinDate = new System.Windows.Forms.DateTimePicker();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // crptViewerPurchase
-            // 
-            this.crptViewerPurchase.ActiveViewIndex = -1;
-            this.crptViewerPurchase.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.crptViewerPurchase.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.crptViewerPurchase.Cursor = System.Windows.Forms.Cursors.Default;
-            this.crptViewerPurchase.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.crptViewerPurchase.Location = new System.Drawing.Point(23, 224);
-            this.crptViewerPurchase.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.crptViewerPurchase.Name = "crptViewerPurchase";
-            this.crptViewerPurchase.Size = new System.Drawing.Size(1286, 381);
-            this.crptViewerPurchase.TabIndex = 1;
-            this.crptViewerPurchase.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
             // 
             // groupBox1
             // 
@@ -217,9 +202,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = MetroFramework.Drawing.MetroBorderStyle.FixedSingle;
-            this.ClientSize = new System.Drawing.Size(1332, 630);
+            this.ClientSize = new System.Drawing.Size(961, 260);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.crptViewerPurchase);
             this.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FrmPurReport";
@@ -235,7 +219,6 @@
 
         #endregion
 
-        private CrystalDecisions.Windows.Forms.CrystalReportViewer crptViewerPurchase;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnCusName;

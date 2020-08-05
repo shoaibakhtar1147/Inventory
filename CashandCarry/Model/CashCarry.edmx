@@ -35,6 +35,7 @@
           <Property Name="Email" Type="varchar" MaxLength="20" />
           <Property Name="ZoneID" Type="int" />
           <Property Name="DuePayment" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="SubRouteId" Type="int" />
         </EntityType>
         <EntityType Name="tbl_CustomerTypes">
           <Key>
@@ -254,6 +255,14 @@
           <Property Name="Description" Type="varchar(max)" />
           <Property Name="RInvoice" Type="int" />
         </EntityType>
+        <EntityType Name="Tbl_SubZone">
+          <Key>
+            <PropertyRef Name="SubRouteId" />
+          </Key>
+          <Property Name="SubRouteId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SubRouteName" Type="varchar(max)" />
+          <Property Name="ZoneID" Type="int" />
+        </EntityType>
         <EntityType Name="tbl_Zone">
           <Key>
             <PropertyRef Name="ZoneID" />
@@ -326,6 +335,17 @@ warning 6002: The table/view 'CashCarry.dbo.View_SaleLedger' does not have a pri
           <Property Name="Description" Type="varchar(max)" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6002: The table/view 'CashCarry.dbo.View_SubZone' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_SubZone">
+          <Key>
+            <PropertyRef Name="SubRouteId" />
+          </Key>
+          <Property Name="SubRouteId" Type="int" Nullable="false" />
+          <Property Name="SubRouteName" Type="varchar(max)" />
+          <Property Name="ZoneID" Type="int" />
+          <Property Name="ZoneName" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'CashCarry.dbo.View_tbl_Customer' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="View_tbl_Customer">
           <Key>
@@ -338,6 +358,7 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Customer' does not have a p
           <Property Name="Contact" Type="varchar" MaxLength="20" />
           <Property Name="Email" Type="varchar" MaxLength="20" />
           <Property Name="ZoneName" Type="varchar" MaxLength="20" />
+          <Property Name="SubRouteName" Type="varchar(max)" />
           <Property Name="DuePayment" Type="decimal" Precision="18" Scale="2" />
         </EntityType>
         <!--Errors Found During Generation:
@@ -397,6 +418,7 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
           <EntitySet Name="tbl_SaleMAster" EntityType="Self.tbl_SaleMAster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_SaleRecovery" EntityType="Self.Tbl_SaleRecovery" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_SaleTransaction" EntityType="Self.Tbl_SaleTransaction" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_SubZone" EntityType="Self.Tbl_SubZone" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_Zone" EntityType="Self.tbl_Zone" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="View_DetailPurchase" EntityType="Self.View_DetailPurchase" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -451,6 +473,14 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
     [View_SaleLedger].[Description] AS [Description]
     FROM [dbo].[View_SaleLedger] AS [View_SaleLedger]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="View_SubZone" EntityType="Self.View_SubZone" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_SubZone].[SubRouteId] AS [SubRouteId], 
+    [View_SubZone].[SubRouteName] AS [SubRouteName], 
+    [View_SubZone].[ZoneID] AS [ZoneID], 
+    [View_SubZone].[ZoneName] AS [ZoneName]
+    FROM [dbo].[View_SubZone] AS [View_SubZone]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="View_tbl_Customer" EntityType="Self.View_tbl_Customer" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [View_tbl_Customer].[CustomerID] AS [CustomerID], 
@@ -460,6 +490,7 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
     [View_tbl_Customer].[Contact] AS [Contact], 
     [View_tbl_Customer].[Email] AS [Email], 
     [View_tbl_Customer].[ZoneName] AS [ZoneName], 
+    [View_tbl_Customer].[SubRouteName] AS [SubRouteName], 
     [View_tbl_Customer].[DuePayment] AS [DuePayment]
     FROM [dbo].[View_tbl_Customer] AS [View_tbl_Customer]</DefiningQuery>
           </EntitySet>
@@ -531,13 +562,15 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
           <EntitySet Name="tbl_Login_Type" EntityType="CashCarryModel.tbl_Login_Type" />
           <EntitySet Name="tbl_PurchaseRemain" EntityType="CashCarryModel.tbl_PurchaseRemain" />
           <EntitySet Name="Tbl_SaleRecovery" EntityType="CashCarryModel.Tbl_SaleRecovery" />
-          <EntitySet Name="View_tbl_Customer" EntityType="CashCarryModel.View_tbl_Customer" />
           <EntitySet Name="Tbl_SaleTransaction" EntityType="CashCarryModel.Tbl_SaleTransaction" />
           <EntitySet Name="Tbl_PurTransaction" EntityType="CashCarryModel.Tbl_PurTransaction" />
           <EntitySet Name="View_PurLedger" EntityType="CashCarryModel.View_PurLedger" />
           <EntitySet Name="View_SaleLedger" EntityType="CashCarryModel.View_SaleLedger" />
           <EntitySet Name="View_DetailPurchase" EntityType="CashCarryModel.View_DetailPurchase" />
           <EntitySet Name="tbl_Expense" EntityType="CashCarryModel.tbl_Expense" />
+          <EntitySet Name="Tbl_SubZone" EntityType="CashCarryModel.Tbl_SubZone" />
+          <EntitySet Name="View_tbl_Customer" EntityType="CashCarryModel.View_tbl_Customer" />
+          <EntitySet Name="View_SubZone" EntityType="CashCarryModel.View_SubZone" />
         </EntityContainer>
         <EntityType Name="tbl_Zone">
           <Key>
@@ -600,6 +633,7 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
           <Property Name="Email" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="ZoneID" Type="Int32" />
           <Property Name="DuePayment" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="SubRouteId" Type="Int32" />
         </EntityType>
         <EntityType Name="tbl_Product">
           <Key>
@@ -787,19 +821,6 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
           <Property Name="RecoveryDate" Type="DateTime" Precision="3" />
           <Property Name="RecoveryBatchNo" Type="Int32" />
         </EntityType>
-        <EntityType Name="View_tbl_Customer">
-          <Key>
-            <PropertyRef Name="CustomerID" />
-          </Key>
-          <Property Name="CustomerID" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="CusType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Contact" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="Email" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="ZoneName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="DuePayment" Type="Decimal" Precision="18" Scale="2" />
-        </EntityType>
         <EntityType Name="Tbl_SaleTransaction">
           <Key>
             <PropertyRef Name="STId" />
@@ -899,6 +920,37 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
           <Property Name="Date" Type="DateTime" Precision="3" />
           <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
         </EntityType>
+        <EntityType Name="Tbl_SubZone">
+          <Key>
+            <PropertyRef Name="SubRouteId" />
+          </Key>
+          <Property Name="SubRouteId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SubRouteName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ZoneID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="View_tbl_Customer">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="CusType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Contact" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ZoneName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SubRouteName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DuePayment" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="View_SubZone">
+          <Key>
+            <PropertyRef Name="SubRouteId" />
+          </Key>
+          <Property Name="SubRouteId" Type="Int32" Nullable="false" />
+          <Property Name="SubRouteName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ZoneID" Type="Int32" />
+          <Property Name="ZoneName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -967,6 +1019,7 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
           <EntitySetMapping Name="tbl_Customer">
             <EntityTypeMapping TypeName="CashCarryModel.tbl_Customer">
               <MappingFragment StoreEntitySet="tbl_Customer">
+                <ScalarProperty Name="SubRouteId" ColumnName="SubRouteId" />
                 <ScalarProperty Name="DuePayment" ColumnName="DuePayment" />
                 <ScalarProperty Name="ZoneID" ColumnName="ZoneID" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
@@ -1188,20 +1241,6 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="View_tbl_Customer">
-            <EntityTypeMapping TypeName="CashCarryModel.View_tbl_Customer">
-              <MappingFragment StoreEntitySet="View_tbl_Customer">
-                <ScalarProperty Name="DuePayment" ColumnName="DuePayment" />
-                <ScalarProperty Name="ZoneName" ColumnName="ZoneName" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Contact" ColumnName="Contact" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="CusType" ColumnName="CusType" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Tbl_SaleTransaction">
             <EntityTypeMapping TypeName="CashCarryModel.Tbl_SaleTransaction">
               <MappingFragment StoreEntitySet="Tbl_SaleTransaction">
@@ -1302,6 +1341,40 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
                 <ScalarProperty Name="ExName" ColumnName="ExName" />
                 <ScalarProperty Name="ExType" ColumnName="ExType" />
                 <ScalarProperty Name="ExId" ColumnName="ExId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_SubZone">
+            <EntityTypeMapping TypeName="CashCarryModel.Tbl_SubZone">
+              <MappingFragment StoreEntitySet="Tbl_SubZone">
+                <ScalarProperty Name="ZoneID" ColumnName="ZoneID" />
+                <ScalarProperty Name="SubRouteName" ColumnName="SubRouteName" />
+                <ScalarProperty Name="SubRouteId" ColumnName="SubRouteId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_tbl_Customer">
+            <EntityTypeMapping TypeName="CashCarryModel.View_tbl_Customer">
+              <MappingFragment StoreEntitySet="View_tbl_Customer">
+                <ScalarProperty Name="DuePayment" ColumnName="DuePayment" />
+                <ScalarProperty Name="SubRouteName" ColumnName="SubRouteName" />
+                <ScalarProperty Name="ZoneName" ColumnName="ZoneName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="CusType" ColumnName="CusType" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_SubZone">
+            <EntityTypeMapping TypeName="CashCarryModel.View_SubZone">
+              <MappingFragment StoreEntitySet="View_SubZone">
+                <ScalarProperty Name="ZoneName" ColumnName="ZoneName" />
+                <ScalarProperty Name="ZoneID" ColumnName="ZoneID" />
+                <ScalarProperty Name="SubRouteName" ColumnName="SubRouteName" />
+                <ScalarProperty Name="SubRouteId" ColumnName="SubRouteId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

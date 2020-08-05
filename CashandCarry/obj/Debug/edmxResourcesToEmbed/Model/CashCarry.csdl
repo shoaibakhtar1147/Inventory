@@ -49,13 +49,15 @@
     <EntitySet Name="tbl_Login_Type" EntityType="CashCarryModel.tbl_Login_Type" />
     <EntitySet Name="tbl_PurchaseRemain" EntityType="CashCarryModel.tbl_PurchaseRemain" />
     <EntitySet Name="Tbl_SaleRecovery" EntityType="CashCarryModel.Tbl_SaleRecovery" />
-    <EntitySet Name="View_tbl_Customer" EntityType="CashCarryModel.View_tbl_Customer" />
     <EntitySet Name="Tbl_SaleTransaction" EntityType="CashCarryModel.Tbl_SaleTransaction" />
     <EntitySet Name="Tbl_PurTransaction" EntityType="CashCarryModel.Tbl_PurTransaction" />
     <EntitySet Name="View_PurLedger" EntityType="CashCarryModel.View_PurLedger" />
     <EntitySet Name="View_SaleLedger" EntityType="CashCarryModel.View_SaleLedger" />
     <EntitySet Name="View_DetailPurchase" EntityType="CashCarryModel.View_DetailPurchase" />
     <EntitySet Name="tbl_Expense" EntityType="CashCarryModel.tbl_Expense" />
+    <EntitySet Name="Tbl_SubZone" EntityType="CashCarryModel.Tbl_SubZone" />
+    <EntitySet Name="View_tbl_Customer" EntityType="CashCarryModel.View_tbl_Customer" />
+    <EntitySet Name="View_SubZone" EntityType="CashCarryModel.View_SubZone" />
   </EntityContainer>
   <EntityType Name="tbl_Zone">
     <Key>
@@ -118,6 +120,7 @@
     <Property Name="Email" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="ZoneID" Type="Int32" />
     <Property Name="DuePayment" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="SubRouteId" Type="Int32" />
   </EntityType>
   <EntityType Name="tbl_Product">
     <Key>
@@ -305,19 +308,6 @@
     <Property Name="RecoveryDate" Type="DateTime" Precision="3" />
     <Property Name="RecoveryBatchNo" Type="Int32" />
   </EntityType>
-  <EntityType Name="View_tbl_Customer">
-    <Key>
-      <PropertyRef Name="CustomerID" />
-    </Key>
-    <Property Name="CustomerID" Type="Int32" Nullable="false" />
-    <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-    <Property Name="CusType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="Contact" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="Email" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="ZoneName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="DuePayment" Type="Decimal" Precision="18" Scale="2" />
-  </EntityType>
   <EntityType Name="Tbl_SaleTransaction">
     <Key>
       <PropertyRef Name="STId" />
@@ -416,5 +406,36 @@
     <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="Date" Type="DateTime" Precision="3" />
     <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="Tbl_SubZone">
+    <Key>
+      <PropertyRef Name="SubRouteId" />
+    </Key>
+    <Property Name="SubRouteId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SubRouteName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ZoneID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="View_tbl_Customer">
+    <Key>
+      <PropertyRef Name="CustomerID" />
+    </Key>
+    <Property Name="CustomerID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="CusType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Contact" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="ZoneName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="SubRouteName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="DuePayment" Type="Decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="View_SubZone">
+    <Key>
+      <PropertyRef Name="SubRouteId" />
+    </Key>
+    <Property Name="SubRouteId" Type="Int32" Nullable="false" />
+    <Property Name="SubRouteName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ZoneID" Type="Int32" />
+    <Property Name="ZoneName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
   </EntityType>
 </Schema>

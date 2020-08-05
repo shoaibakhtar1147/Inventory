@@ -1,4 +1,5 @@
 ﻿using CashandCarry.BL;
+using CashandCarry.Reports;
 using CashandCarry.Reports.Sale;
 using MetroFramework.Forms;
 using System;
@@ -28,20 +29,28 @@ namespace CashandCarry.FormReports
         private void btnSearch_Click(object sender, EventArgs e)
         {
             SaleGeneralReport objrep = new SaleGeneralReport();
+            rptViewer objView = new rptViewer();
             objrep.SetParameterValue("@mindate", txtMinDate.Value);
             objrep.SetParameterValue("@maxdate", txtmaxdate.Value);
-            //SaleInvoiceBL obj = new SaleInvoiceBL()
-            //{
-            //    mindate = Convert.ToDateTime(txtMinDate.Value),
-            //    maxdate = Convert.ToDateTime(txtmaxdate.Value)
-            //};
-            //DataTable dt = obj.SelectByDate();
-            //if (dt.Rows.Count > 0)
-            //{
-            //    objrep.SetDataSource(dt);
-               
-            //}
-                 crptViewerSale.ReportSource = objrep;
+            SaleInvoiceBL obj = new SaleInvoiceBL()
+            {
+                mindate = Convert.ToDateTime(txtMinDate.Value),
+                maxdate = Convert.ToDateTime(txtmaxdate.Value)
+            };
+            DataTable dt = obj.SelectByDate();
+            if (dt.Rows.Count > 0)
+            {
+                objrep.SetDataSource(dt);
+
+                objView.crptViewer.ReportSource = objrep;
+                objView.WindowState = FormWindowState.Maximized;
+                objView.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("No Record Found");
+            }
+            
            
             
         }
@@ -50,20 +59,29 @@ namespace CashandCarry.FormReports
         {
             if(!String.IsNullOrEmpty(txtCus.Text))
             {
+
                 SaleByCusReport objSale = new SaleByCusReport();
-            objSale.SetParameterValue("@CusID", txtCus.Text);
-            //SaleInvoiceBL objsal = new SaleInvoiceBL()
-            //{
-            //    CustomerID = Convert.ToInt32(txtCus.Text)
-            //};
-            //DataTable dt = objsal.SelectByCus();
-            //if (dt.Rows.Count > 0)
-            //{
-            //    objSale.SetDataSource(dt);
-            //    // btnCusprint.Visible = true;
-            //}
-                     crptViewerSale.ReportSource = objSale;
-                txtCus.Clear();
+                rptViewer objView = new rptViewer();
+                objSale.SetParameterValue("@CusID", txtCus.Text);
+                SaleInvoiceBL objsal = new SaleInvoiceBL()
+                {
+                    CustomerID = Convert.ToInt32(txtCus.Text)
+                };
+                DataTable dt = objsal.SelectByCus();
+                if (dt.Rows.Count > 0)
+                {
+                    objSale.SetDataSource(dt);
+                    // btnCusprint.Visible = true;
+                    objView.crptViewer.ReportSource = objSale;
+                    objView.WindowState = FormWindowState.Maximized;
+                    objView.ShowDialog();
+                    txtCus.Clear();
+                }
+                else
+                {
+                    MessageBox.Show("No Record Found");
+                }
+                
            
             
             
@@ -71,19 +89,27 @@ namespace CashandCarry.FormReports
             else if(!String.IsNullOrEmpty(txtinvoiceNo.Text))
             {
                  saleInvoiceReport objSale = new saleInvoiceReport();
-                 objSale.SetParameterValue("@InvoiceNo", txtinvoiceNo.Text);
-                // SaleInvoiceBL obj = new SaleInvoiceBL() 
-                // {
-                // InvoiceNo=Convert.ToInt32(txtinvoiceNo.Text)
-                // };
-                // DataTable dt = obj.Search();
-                //if(dt.Rows.Count>0)
-                //{
-                //    objSale.SetDataSource(dt);
-                   
-                //}
-                crptViewerSale.ReportSource = objSale;
-                txtinvoiceNo.Clear();
+                 rptViewer objView = new rptViewer();
+                objSale.SetParameterValue("@InvoiceNo", txtinvoiceNo.Text);
+                SaleInvoiceBL obj = new SaleInvoiceBL()
+                {
+                    InvoiceNo = Convert.ToInt32(txtinvoiceNo.Text)
+                };
+                DataTable dt = obj.Search();
+                if (dt.Rows.Count > 0)
+                {
+                    objSale.SetDataSource(dt);
+
+                    objView.crptViewer.ReportSource = objSale;
+                    objView.WindowState = FormWindowState.Maximized;
+                    objView.ShowDialog();
+                    txtinvoiceNo.Clear();
+                }
+                //crptViewerSale.ReportSource = objSale;
+                else
+                {
+                    MessageBox.Show("No Record Found");
+                }
             }
             else
             {

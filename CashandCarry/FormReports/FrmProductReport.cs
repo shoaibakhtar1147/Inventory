@@ -22,7 +22,8 @@ namespace CashandCarry.FormReports
 
         private void btnProd_Click(object sender, EventArgs e)
         {
-            ProductReport objPro = new ProductReport(); 
+            ProductReport objPro = new ProductReport();
+            rptViewer objView = new rptViewer();
             if(!String.IsNullOrEmpty(txtSearch.Text))
             {
                 objPro.SetParameterValue("@ProductID", txtSearch.Text);
@@ -32,11 +33,18 @@ namespace CashandCarry.FormReports
                      ProductID=Convert.ToInt32(txtSearch.Text)
                 };
                 var dt = obj.SearchByPRod();
-                if(dt.Rows.Count>0)
+                if(dt !=null)
                 {
                    objPro.SetDataSource(dt);
-                    crptViewerProd.ReportSource = objPro;
+                   objView.crptViewer.ReportSource = objPro;
+                   objView.WindowState = FormWindowState.Maximized;
+                   objView.ShowDialog();
+                    //crptViewerProd.ReportSource = objPro;
                     txtSearch.Clear();
+                }
+                else
+                {
+                    MessageBox.Show("No Record Found");
                 }
             }
             else
@@ -53,13 +61,21 @@ namespace CashandCarry.FormReports
         private void btnAllRecord_Click(object sender, EventArgs e)
         {
             ProductReport objPro = new ProductReport();
-            objPro.SetParameterValue("@ProductID", null);
+            rptViewer objView = new rptViewer();
+           
             ProductBL obj = new ProductBL();
-            var dt = obj.Select();
-            if(dt.Count>0)
+            var dt = obj.SearchByPRodCom();
+            if(dt != null)
             {
-                //objPro.SetDataSource(dt);
-                crptViewerProd.ReportSource = objPro;
+                objPro.SetDataSource(dt);
+                objView.crptViewer.ReportSource = objPro;
+                objView.WindowState = FormWindowState.Maximized;
+                objView.ShowDialog();
+                //crptViewerProd.ReportSource = objPro;
+            }
+            else
+            {
+                MessageBox.Show("No Record Found");
             }
         }
     }

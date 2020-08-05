@@ -19,6 +19,8 @@ namespace CashandCarry.BL
         public string Contact{get;set;}
         public string Email	{get;set;}
         public int ZoneID { get; set; }
+        public int SubZoneId { get; set; }
+        public decimal Duepayment { get; set; }
 
       
      
@@ -26,20 +28,38 @@ namespace CashandCarry.BL
         {
            using(var context=new CashCarryEntities3())
            {
-               tbl_Customer objCus = new tbl_Customer() 
-               { 
-                Name=Name,
-                 CusTypeID=CusTypeID,
-                  Address=Address,
-                   Contact=Contact,
-                    Email=Email,
-                     ZoneID=ZoneID,
-                     DuePayment=0
+               tbl_Customer objCus = new tbl_Customer(); 
 
-               };
-               context.tbl_Customer.Add(objCus);
-               context.SaveChanges();
-           }
+                if(objCus.DuePayment !=0)
+                {
+                    objCus.Name = Name;
+                 objCus.CusTypeID=CusTypeID;
+                  objCus.Address=Address;
+                   objCus.Contact=Contact;
+                    objCus.Email=Email;
+                     objCus.ZoneID=ZoneID;
+                     objCus.DuePayment=Duepayment;
+                     objCus.SubRouteId=SubZoneId;
+                     
+
+                }
+
+
+               else
+                {
+                    objCus.Name = Name;
+                    objCus.CusTypeID = CusTypeID;
+                    objCus.Address = Address;
+                    objCus.Contact = Contact;
+                    objCus.Email = Email;
+                    objCus.ZoneID = ZoneID;
+                    objCus.DuePayment = 0;
+                    objCus.SubRouteId = SubZoneId;
+                   
+                }
+                context.tbl_Customer.Add(objCus);
+                context.SaveChanges();
+                         }
         }
 
         public void Delete()
@@ -67,7 +87,7 @@ namespace CashandCarry.BL
                     result.Address = Address;
                     result.Contact = Contact;
                     result.Email = Email;
-                    result.ZoneID = ZoneID;
+                   // result.ZoneID = ZoneID;
                      context.SaveChanges();
                }
            }
@@ -98,14 +118,21 @@ namespace CashandCarry.BL
                 
            }
         }
-        //public DataTable SelectByCus()
-        //{
-        //    string spName = "SP_Cus_Search";
-        //    SqlParameter[] prm = new SqlParameter[1];
-        //    prm[0] = new SqlParameter("@CustomerID", CustomerID);
-      
-        //    return DB.SelectTableWithSP(spName, prm);
-        //}
+            public DataTable SelectByCus()
+            {
+                string spName = "SP_Cus_Search";
+                SqlParameter[] prm = new SqlParameter[1];
+                prm[0] = new SqlParameter("@CustomerID", CustomerID);
+
+                return DB.SelectTableWithSP(spName, prm);
+            }
+
+            public DataTable SelectAllCus()
+            {
+                string spName = "SP_Cus_Search";               
+                return DB.SelectTableWithSP(spName, null);
+            }
+
 
         public List<View_tbl_Customer> Select()
         {

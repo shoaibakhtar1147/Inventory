@@ -53,6 +53,10 @@
             this.btnZone = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.btnSubRoute = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel4.SuspendLayout();
@@ -65,6 +69,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCust
@@ -148,7 +154,7 @@
             this.panel4.Controls.Add(this.btnCompany);
             this.panel4.Controls.Add(this.label2);
             this.panel4.Controls.Add(this.pictureBox2);
-            this.panel4.Location = new System.Drawing.Point(588, 105);
+            this.panel4.Location = new System.Drawing.Point(588, 292);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(165, 156);
             this.panel4.TabIndex = 4;
@@ -313,7 +319,7 @@
             this.panel6.Controls.Add(this.btnZone);
             this.panel6.Controls.Add(this.label6);
             this.panel6.Controls.Add(this.pictureBox6);
-            this.panel6.Location = new System.Drawing.Point(588, 292);
+            this.panel6.Location = new System.Drawing.Point(788, 105);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(165, 156);
             this.panel6.TabIndex = 10;
@@ -339,11 +345,11 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Century Schoolbook", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label6.Location = new System.Drawing.Point(62, 14);
+            this.label6.Location = new System.Drawing.Point(58, 14);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(41, 16);
+            this.label6.Size = new System.Drawing.Size(49, 16);
             this.label6.TabIndex = 10;
-            this.label6.Text = "Zone";
+            this.label6.Text = "Route";
             // 
             // pictureBox6
             // 
@@ -355,6 +361,54 @@
             this.pictureBox6.TabIndex = 4;
             this.pictureBox6.TabStop = false;
             // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.panel2.Controls.Add(this.btnSubRoute);
+            this.panel2.Controls.Add(this.label7);
+            this.panel2.Controls.Add(this.pictureBox7);
+            this.panel2.Location = new System.Drawing.Point(588, 105);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(165, 156);
+            this.panel2.TabIndex = 12;
+            // 
+            // btnSubRoute
+            // 
+            this.btnSubRoute.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
+            this.btnSubRoute.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSubRoute.FlatAppearance.BorderSize = 0;
+            this.btnSubRoute.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSubRoute.Font = new System.Drawing.Font("Century Schoolbook", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSubRoute.ForeColor = System.Drawing.Color.White;
+            this.btnSubRoute.Location = new System.Drawing.Point(33, 128);
+            this.btnSubRoute.Name = "btnSubRoute";
+            this.btnSubRoute.Size = new System.Drawing.Size(98, 23);
+            this.btnSubRoute.TabIndex = 11;
+            this.btnSubRoute.Text = "Add";
+            this.btnSubRoute.UseVisualStyleBackColor = false;
+            this.btnSubRoute.Click += new System.EventHandler(this.btnSubRoute_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Century Schoolbook", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label7.Location = new System.Drawing.Point(42, 14);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(80, 16);
+            this.label7.TabIndex = 10;
+            this.label7.Text = "Sub Route";
+            // 
+            // pictureBox7
+            // 
+            this.pictureBox7.Image = global::CashandCarry.Properties.Resources.time;
+            this.pictureBox7.Location = new System.Drawing.Point(0, 39);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(165, 85);
+            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox7.TabIndex = 4;
+            this.pictureBox7.TabStop = false;
+            // 
             // FrmConfiguration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -362,6 +416,7 @@
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(965, 478);
             this.ControlBox = false;
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel9);
@@ -389,6 +444,9 @@
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -419,6 +477,10 @@
         private System.Windows.Forms.Button btnZone;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button btnSubRoute;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.PictureBox pictureBox7;
 
     }
 }

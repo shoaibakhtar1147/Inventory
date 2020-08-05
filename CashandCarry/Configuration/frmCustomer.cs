@@ -56,6 +56,7 @@ namespace CashandCarry.Configuration
             btnSave.Enabled = false;
             btnUpdate.Enabled = false;
             btnDelete.Enabled = false;
+            txtPreBalance.Enabled = false;
             btnClear.Enabled = false;
         }
         private void FormEnable()
@@ -65,6 +66,7 @@ namespace CashandCarry.Configuration
             txtCusType.Enabled = true;
             txtZoneID.Enabled = true;
             txtContact.Enabled = true;
+            txtPreBalance.Enabled = true;
             txtAddress.Enabled = true;
             
             
@@ -80,12 +82,32 @@ namespace CashandCarry.Configuration
                 txtCusID.Text = Convert.ToString(dt.Rows[0]["CustomerID"]);
                 FormEnable();
                 LoadZoneID();
+                //LoadSubZone();
                 LoadCusType();
                 btnSave.Enabled = true;
                 txtCusName.Focus();
                 btnAddnew.Enabled = false;
             }
            
+        }
+
+        private void LoadSubZone()
+        {
+            SubZoneBL objsubzone = new SubZoneBL() 
+            {
+            ZoneID=Convert.ToInt32(txtZoneID.SelectedValue)
+            };
+            var dt = objsubzone.SearchByZone();
+            if (dt != null)
+            {
+                txtSubZone.DataSource = dt;
+                txtSubZone.DisplayMember = "SubRouteName";
+                txtSubZone.ValueMember = "SubROuteId";
+            }
+            else
+            {
+                MessageBox.Show("No Record Found");
+            }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -168,12 +190,15 @@ namespace CashandCarry.Configuration
                     Address = txtAddress.Text,
                     Contact = txtContact.Text,
                     CusTypeID =Convert.ToInt32(txtCusType.SelectedValue),
-                    ZoneID = Convert.ToInt32(txtZoneID.SelectedValue)
+                    ZoneID = Convert.ToInt32(txtZoneID.SelectedValue),
+                    SubZoneId=Convert.ToInt32(txtSubZone.SelectedValue),
+                    Duepayment=Convert.ToDecimal(txtPreBalance.Text)
                 };
                 objcus.Save();
                 MessageBox.Show("Record Saved Successfull");
                 LoadData();
                 btnAddnew.Enabled = true;
+                btnSave.Enabled = false;
                 ClearGroup();
             }
             else
@@ -196,7 +221,7 @@ namespace CashandCarry.Configuration
 
         private bool FormValidate()
         {
-            if (txtCusName.Text==""||txtCusType.Text==""||txtContact.MaskCompleted==false||txtAddress.Text==""||txtZoneID.Text=="") return false;
+            if (txtCusName.Text==""||txtCusType.Text==""||txtContact.MaskCompleted==false||txtAddress.Text==""||txtZoneID.Text==""||txtSubZone.Text=="") return false;
             return true;
         }
         private void LoadZoneID()
@@ -216,7 +241,7 @@ namespace CashandCarry.Configuration
         private void LoadData()
         {
             CustomerBL objCus = new CustomerBL();
-            List<View_tbl_Customer> dt = objCus.Select();
+            var dt = objCus.Select();
             dgvCus.Columns.Clear();
             if (dt != null && dt.Count > 0)
             {
@@ -299,6 +324,7 @@ namespace CashandCarry.Configuration
                 txtContact.Text = dgvCus.Rows[rowindex].Cells[6].Value.ToString();
                 txtEmail.Text = dgvCus.Rows[rowindex].Cells[7].Value.ToString();
                 txtZoneID.Text = dgvCus.Rows[rowindex].Cells[8].Value.ToString();
+                txtSubZone.Text = dgvCus.Rows[rowindex].Cells[9].Value.ToString();
 
                 FormEnable();
                 btnSave.Enabled = false;
@@ -326,6 +352,19 @@ namespace CashandCarry.Configuration
                     MessageBox.Show("No Record Deleted");
                 }
             }
+        }
+
+        private void txtPreBalance_Leave(object sender, EventArgs e)
+        {
+            if(string.IsNullOrEmpty(txtPreBalance.Text))
+            {
+                txtPreBalance.Text = "0.00";
+            }
+        }
+
+        private void txtZoneID_Leave(object sender, EventArgs e)
+        {
+            LoadSubZone();
         }
     }
 }
