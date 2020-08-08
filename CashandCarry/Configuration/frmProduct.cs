@@ -114,29 +114,37 @@ namespace CashandCarry.Configuration
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if(FormValidate()==true)
+            try
             {
-                ProductBL objPro = new ProductBL() 
+                if (FormValidate() == true)
                 {
-                 ProductName=txtProdName.Text,
-                  TradePrice=Convert.ToDecimal(txtPP.Text),
-                   RetailPrice=Convert.ToDecimal(txtRP.Text),
-                    weight=txtWeight.Text,
-                      CategoryID=Convert.ToInt32(txtProdCate.SelectedValue),
-                       CompanyID=Convert.ToInt32(txtComName.SelectedValue),
-                       PiecePerCtn=Convert.ToInt32(txtPieCtn.Text)
-                        
-                };
-                objPro.Save();
-                MessageBox.Show("Product Saved Successfull");
-                LoadData();
-                btnAddnew.Enabled = true;
+                    ProductBL objPro = new ProductBL()
+                    {
+                        ProductName = txtProdName.Text,
+                        TradePrice = Convert.ToDecimal(txtPP.Text),
+                        RetailPrice = Convert.ToDecimal(txtRP.Text),
+                        weight = txtWeight.Text,
+                        CategoryID = Convert.ToInt32(txtProdCate.SelectedValue),
+                        CompanyID = Convert.ToInt32(txtComName.SelectedValue),
+                        PiecePerCtn = Convert.ToInt32(txtPieCtn.Text)
+
+                    };
+                    objPro.Save();
+                    MessageBox.Show("Product Saved Successfull");
+                    LoadData();
+                    btnAddnew.Enabled = true;
+                }
+                else
+                {
+                    MessageBox.Show("Some Fields Are Missing Or Error Occur");
+                }
+                ClearGroup();
             }
-            else
+
+            catch(Exception ex)
             {
-                MessageBox.Show("Some Fields Are Missing Or Error Occur");
+                MessageBox.Show(ex.Message.ToString());
             }
-            ClearGroup();
         }
 
         private void ClearGroup()

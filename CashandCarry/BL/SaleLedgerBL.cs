@@ -50,6 +50,7 @@ namespace CashandCarry.BL
                 {
 
                 SRecoveryID=SRecoveryID,
+                CustomerID=CustomerID,
                 Credit=Credit,
                 Debit=Debit,
                 Date=Date,
@@ -65,6 +66,7 @@ namespace CashandCarry.BL
                     {
 
                         RInvoice=RInvoice,
+                        CustomerID=CustomerID,
                         Credit = Credit,
                         Debit = Debit,
                         Date = Date,
@@ -72,6 +74,21 @@ namespace CashandCarry.BL
                         Description = Description
                     };
                     context.Tbl_SaleTransaction.Add(obj2);
+                    context.SaveChanges();
+                }
+                else if(Invoiceno ==0 && RInvoice==0 && SRecoveryID==0)
+                {
+                    Tbl_SaleTransaction obj3 = new Tbl_SaleTransaction() 
+                    {
+                        CustomerID=CustomerID,
+                        Credit=Credit,
+                        Debit=Debit,
+                        Date=Date,
+                        Balance=Balance,
+                        Description=Description
+
+                    };
+                    context.Tbl_SaleTransaction.Add(obj3);
                     context.SaveChanges();
                 }
                 }

@@ -181,29 +181,51 @@ namespace CashandCarry.Configuration
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if(FormValidate()==true)
+            try
             {
-                CustomerBL objcus = new CustomerBL()
+                decimal prebal = Convert.ToDecimal(txtPreBalance.Text);
+                if (FormValidate() == true)
                 {
-                    Name = txtCusName.Text,
-                    Email = txtEmail.Text,
-                    Address = txtAddress.Text,
-                    Contact = txtContact.Text,
-                    CusTypeID =Convert.ToInt32(txtCusType.SelectedValue),
-                    ZoneID = Convert.ToInt32(txtZoneID.SelectedValue),
-                    SubZoneId=Convert.ToInt32(txtSubZone.SelectedValue),
-                    Duepayment=Convert.ToDecimal(txtPreBalance.Text)
-                };
-                objcus.Save();
-                MessageBox.Show("Record Saved Successfull");
-                LoadData();
-                btnAddnew.Enabled = true;
-                btnSave.Enabled = false;
-                ClearGroup();
+                    CustomerBL objcus = new CustomerBL()
+                    {
+                        Name = txtCusName.Text,
+                        Email = txtEmail.Text,
+                        Address = txtAddress.Text,
+                        Contact = txtContact.Text,
+                        CusTypeID = Convert.ToInt32(txtCusType.SelectedValue),
+                        ZoneID = Convert.ToInt32(txtZoneID.SelectedValue),
+                        SubZoneId = Convert.ToInt32(txtSubZone.SelectedValue),
+                        Duepayment = Convert.ToDecimal(txtPreBalance.Text)
+                    };
+                    if (prebal > 0)
+                    {
+                        SaleLedgerBL objBl = new SaleLedgerBL()
+                        {
+                            CustomerID = Convert.ToInt32(txtCusID.Text),
+                            Credit = Convert.ToDecimal(prebal),
+                            Debit = Convert.ToDecimal("0.00"),
+                            Date = Convert.ToDateTime(DateTime.Now.ToShortDateString()),
+                            Balance = Convert.ToDecimal(prebal),
+                            Description = "Opening Balance"
+
+                        };
+                        objBl.Save();
+                    }
+                    objcus.Save();
+                    MessageBox.Show("Record Saved Successfull");
+                    LoadData();
+                    btnAddnew.Enabled = true;
+                    btnSave.Enabled = false;
+                    ClearGroup();
+                }
+                else
+                {
+                    MessageBox.Show("Some Error Occur No Record Save");
+                }
             }
-            else
+            catch(Exception ex)
             {
-                MessageBox.Show("Some Error Occur No Record Save");
+                MessageBox.Show(ex.Message.ToString());
             }
         }
 

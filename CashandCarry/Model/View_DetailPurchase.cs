@@ -31,5 +31,6 @@ namespace CashandCarry.Model
         public Nullable<decimal> Balance { get; set; }
         public Nullable<decimal> New_Balance { get; set; }
         public Nullable<decimal> frieght { get; set; }
+        public Nullable<int> ProductID { get; set; }
     }
 }

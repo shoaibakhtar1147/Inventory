@@ -96,7 +96,7 @@ namespace CashandCarry.Sales
             {
                 txtCusID.Text = dgvSaleRecovery.Rows[rowindex].Cells[1].Value.ToString();
                 txtCusName.Text = dgvSaleRecovery.Rows[rowindex].Cells[2].Value.ToString();
-                txtPreBalance.Text = dgvSaleRecovery.Rows[rowindex].Cells[8].Value.ToString();
+                txtPreBalance.Text = dgvSaleRecovery.Rows[rowindex].Cells[9].Value.ToString();
             }
         }
 
@@ -139,6 +139,7 @@ namespace CashandCarry.Sales
             objLedger.Date=Convert.ToDateTime(txtRecoveryDate.Text);
             objLedger.Balance=Convert.ToDecimal(txtNewBalance.Text);
             objLedger.Description = "Debit";
+            objLedger.Save();
            }
            else
            {
@@ -150,8 +151,9 @@ namespace CashandCarry.Sales
                objLedger.Date = Convert.ToDateTime(txtRecoveryDate.Text);
                objLedger.Balance = Convert.ToDecimal(txtNewBalance.Text);
                objLedger.Description = txtDescription.Text;
+               objLedger.Save();
            }
-            objLedger.Save();
+            
 
             //ReturnSaleBL objRet = new ReturnSaleBL() 
             //{
@@ -161,13 +163,14 @@ namespace CashandCarry.Sales
             //objRet.UpdateDueSub();
             (new SaleLedgerBL()).UpdateBalance(objLedger.Balance,objLedger.CustomerID);
 
-            SaleRecoveryIDReport objrpt = new SaleRecoveryIDReport();
-            objrpt.SetParameterValue("@RecoveryID", txtSRecoveryID.Text);
-            rptViewer objView = new rptViewer();
-            objView.crptViewer.ReportSource = objrpt;
-            //objView.crptViewer.RefreshReport();
-            objView.WindowState = FormWindowState.Normal;
-            objView.ShowDialog();
+            MessageBox.Show("Recovery Completed " + txtCusID.Text +"and Recovery Amount "+txtReturnCash.Text);
+            //SaleRecoveryIDReport objrpt = new SaleRecoveryIDReport();
+            //objrpt.SetParameterValue("@RecoveryID", txtSRecoveryID.Text);
+            //rptViewer objView = new rptViewer();
+            //objView.crptViewer.ReportSource = objrpt;
+            ////objView.crptViewer.RefreshReport();
+            //objView.WindowState = FormWindowState.Normal;
+            //objView.ShowDialog();
             
         }
 

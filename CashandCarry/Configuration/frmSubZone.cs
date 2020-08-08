@@ -12,114 +12,146 @@ using System.Windows.Forms;
 
 namespace CashandCarry.Configuration
 {
-    public partial class frmSubZone : MetroForm
+    public partial class FrmSubZone : MetroForm
     {
-        public frmSubZone()
+        public FrmSubZone()
         {
             InitializeComponent();
         }
 
-        private void frmSubZone_Load(object sender, EventArgs e)
+        private void FrmSubZone_Load(object sender, EventArgs e)
         {
-            FormDisable();
+            formDisable();
+            GridDesign();
             LoadData();
         }
 
         private void LoadData()
         {
-            SubZoneBL obj = new SubZoneBL();
-            var dt = obj.Select();
-            dgvSubZone.Columns.Clear();
-            if (dt != null && dt.Count > 0)
+            SubZoneBL obJBl = new SubZoneBL();
+            var dt = obJBl.Select();
+            if(dt != null)
             {
-                DataGridViewImageColumn edit = new DataGridViewImageColumn();
-                edit.Image = Properties.Resources.edit;
-                edit.ImageLayout = DataGridViewImageCellLayout.Zoom;
-                edit.HeaderText = "Edit";
-
-                DataGridViewImageColumn delete = new DataGridViewImageColumn();
-                delete.Image = Properties.Resources.delete;
-                delete.ImageLayout = DataGridViewImageCellLayout.Zoom;
-                delete.HeaderText = "Delete";
-                edit.Width = delete.Width = 40;
-                dgvSubZone.Columns.Add(edit);
-                dgvSubZone.Columns.Add(delete);
+                //DataGridViewImageColumn edit = new DataGridViewImageColumn();
+                //edit.Image = Properties.Resources.edit;
+                //edit.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                //edit.HeaderText = "Edit";
+                //DataGridViewImageColumn delete = new DataGridViewImageColumn();
+                //delete.Image = Properties.Resources.delete;
+                //delete.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                //delete.HeaderText = "Delete";
+                //edit.Width = delete.Width = 20;
+                //dgvSubZone.Columns.Add(edit);
+                //dgvSubZone.Columns.Add(delete);
                 dgvSubZone.DataSource = dt;
+                dgvSubZone.Columns["ZoneID"].Visible = false;
                 dgvSubZone.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             }
         }
 
-        
-
-        private void btnSave_Click(object sender, EventArgs e)
+        private void formDisable()
         {
-           if(!string.IsNullOrEmpty(txtSubRouteName.Text))
-           {
-
-               SubZoneBL obj = new SubZoneBL()
-               {
-                   SubRouteName = txtSubRouteName.Text,
-                   ZoneID = Convert.ToInt32(txtRoute.SelectedValue)
-               };
-               obj.Save();
-               MessageBox.Show("Sub Route Save Successfull");
-
-           }
-            else
-           {
-               MessageBox.Show("Please Enter Sub Route Name");
-           }
-
+            txtSubZoneName.Enabled = false;
+            txtZone.Enabled = false;
+            btnSave.Enabled = false;
+         
+            
         }
 
         private void btnAddnew_Click(object sender, EventArgs e)
         {
             FormEnable();
             LoadZone();
-        
         }
 
-        
+        private void GridDesign()
+        {
+            dgvSubZone.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(238, 239, 249);
+            dgvSubZone.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgvSubZone.DefaultCellStyle.SelectionBackColor = Color.DarkTurquoise;
+            dgvSubZone.DefaultCellStyle.SelectionForeColor = Color.WhiteSmoke;
+            dgvSubZone.BackgroundColor = Color.White;
+
+            dgvSubZone.EnableHeadersVisualStyles = false;
+            dgvSubZone.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dgvSubZone.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(20, 25, 72);
+            dgvSubZone.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+        }
+
         private void LoadZone()
         {
-            ZoneBL objzone = new ZoneBL();
-            var dt = objzone.Select();
-            if(dt != null)
-            {
-                txtRoute.DataSource = dt;
-                txtRoute.DisplayMember = "ZoneName";
-                txtRoute.ValueMember = "ZoneID";
-            }
+            ZoneBL objBl = new ZoneBL();
+            var dt = objBl.Select();
+            txtZone.DataSource = dt;
+            txtZone.DisplayMember = "ZoneName";
+            txtZone.ValueMember = "ZoneID";
+        }
+
+        private void FormEnable()
+        {
+            txtSubZoneName.Enabled = true;
+            txtZone.Enabled = true;
+            btnSave.Enabled = true;
+           
+            btnAddnew.Enabled = false;
             
         }
 
-        private void FormDisable()
+        private void btnSave_Click(object sender, EventArgs e)
         {
-            txtSearch.Enabled = false;
-           
-            txtRoute.Enabled = false;
-            txtSubRouteName.Enabled = false;
-            txtSubRouteId.Enabled = false;
-            btnSave.Enabled = false;
-            btnUpdate.Enabled = false;
-            btnDelete.Enabled = false;
+            try
+            {
+                if(FormValidate()==true)
+                {
+                    SubZoneBL objBl = new SubZoneBL() 
+                    {
+                    ZoneID=Convert.ToInt32(txtZone.SelectedValue),
+                    SubRouteName=txtSubZoneName.Text
+                    };
+                    objBl.Save();
+                    MessageBox.Show("Record Saved Successfull");
+                    ClearGroup();
+                    formDisable();
+                    btnAddnew.Enabled = true;
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
         }
-        private void FormEnable()
+        private void ClearGroup()
         {
-            txtSearch.Enabled = true;
-           
-            txtRoute.Enabled = true;
-            txtSubRouteName.Enabled = true;
-            btnSave.Enabled = true;
-            btnUpdate.Enabled = true;
-            btnDelete.Enabled = true;
-            btnAddnew.Enabled = false;
+            foreach (Control c in groupBox1.Controls)
+            {
+                if (c is TextBox || c is ComboBox || c is MaskedTextBox)
+                {
+                    c.Text = "";
+                }
+
+            }
+        }
+        private bool FormValidate()
+        {
+            if (txtSubZoneName.Text == "" || txtZone.Text == "") return false;
+            return true;
         }
 
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
+        //private void btnSearch_Click(object sender, EventArgs e)
+        //{
+        //    if(!string.IsNullOrEmpty(txtSearch.Text))
+        //    {
+        //        SubZoneBL objBl = new SubZoneBL()
+        //        {
+        //            SubRouteName = txtSearch.Text
+        //        };
+        //        var dt = objBl.SearchByName();
+        //        if(dt!= null)
+        //        {
 
-        }
+        //        }
+        //    }
+        //}
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
@@ -130,11 +162,11 @@ namespace CashandCarry.Configuration
             }
             else
             {
-                SubZoneBL obj = new SubZoneBL()
+                SubZoneBL objTest = new  SubZoneBL()
                 {
-                    SubRouteName=txtSearch.Text.ToLower()
+                    SubRouteName = txtSearch.Text.ToLower()
                 };
-                var dt = obj.SearchByName();
+                var dt = objTest.SearchByName();
                 AutoCompleteStringCollection coll = new AutoCompleteStringCollection();
                 txtSearch.AutoCompleteMode = AutoCompleteMode.Suggest;
                 txtSearch.AutoCompleteSource = AutoCompleteSource.CustomSource;
@@ -145,9 +177,5 @@ namespace CashandCarry.Configuration
                 }
             }
         }
-
-       
-
-       
     }
 }

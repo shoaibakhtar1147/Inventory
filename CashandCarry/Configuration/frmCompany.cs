@@ -28,18 +28,41 @@ namespace CashandCarry.Configuration
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            try
+            {
+                 decimal preBal = Convert.ToDecimal(txtPreBal.Text);
             CompanyBL objCom = new CompanyBL() 
             {
              CompanyName=txtComName.Text,
              Email=txtEmail.Text,
               Contact=txtContact.Text,
-               Address=txtAddress.Text 
+               Address=txtAddress.Text,
+               DuePayment=Convert.ToDecimal(txtPreBal.Text)
+               
             };
+            if(preBal>0)
+            {
+                PurchaseLedgerBL objBl = new PurchaseLedgerBL() 
+                {
+                    CompanyID=Convert.ToInt32(txtComID.Text),
+                    Debit=Convert.ToDecimal(txtPreBal.Text),
+                    Credit=0,
+                    Date=Convert.ToDateTime(DateTime.Now.ToShortDateString()),
+                    Balance=Convert.ToDecimal(txtPreBal.Text),
+                    Description="Opening Balance"
+                };
+                objBl.save();
+            }
             objCom.Save();
             MessageBox.Show("Record Saved Successfull");
             LoadData();
             btnAddnew.Enabled = true;
             ClearGroup();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
         }
         
         
@@ -141,6 +164,7 @@ namespace CashandCarry.Configuration
             txtComName.Enabled = true;
             txtContact.Enabled = true;
             txtEmail.Enabled = true;
+            txtPreBal.Enabled = true;
             txtAddress.Enabled = true;
             
         }
@@ -151,6 +175,7 @@ namespace CashandCarry.Configuration
             txtEmail.Enabled = false;
             txtAddress.Enabled = false;
             btnClear.Enabled = false;
+            txtPreBal.Enabled = false;
             btnDelete.Enabled = false;
             btnSave.Enabled = false;
             btnUpdate.Enabled = false;
@@ -270,6 +295,14 @@ namespace CashandCarry.Configuration
                     LoadData();
 
                 }
+            }
+        }
+
+        private void txtPreBal_Leave(object sender, EventArgs e)
+        {
+            if(string.IsNullOrEmpty(txtPreBal.Text))
+            {
+                txtPreBal.Text = "0.00";
             }
         }
     }

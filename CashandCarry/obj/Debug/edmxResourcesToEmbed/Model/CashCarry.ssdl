@@ -279,8 +279,9 @@ warning 6002: The table/view 'CashCarry.dbo.View_DetailPurchase' does not have a
     <Property Name="CompanyName" Type="varchar" MaxLength="100" />
     <Property Name="Contact" Type="varchar" MaxLength="20" />
     <Property Name="Date" Type="datetime" />
+    <Property Name="ProductID" Type="int" />
     <Property Name="ProductName" Type="varchar" MaxLength="30" />
-    <Property Name="TradePrice" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="TradePrice" Type="decimal" Precision="18" Scale="2" />
     <Property Name="Ctn" Type="decimal" Precision="18" Scale="2" />
     <Property Name="Quantity" Type="int" />
     <Property Name="frieght" Type="decimal" Precision="18" Scale="2" />
@@ -423,6 +424,7 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
     [View_DetailPurchase].[CompanyName] AS [CompanyName], 
     [View_DetailPurchase].[Contact] AS [Contact], 
     [View_DetailPurchase].[Date] AS [Date], 
+    [View_DetailPurchase].[ProductID] AS [ProductID], 
     [View_DetailPurchase].[ProductName] AS [ProductName], 
     [View_DetailPurchase].[TradePrice] AS [TradePrice], 
     [View_DetailPurchase].[Ctn] AS [Ctn], 

@@ -72,7 +72,7 @@ namespace CashandCarry.Configuration
 
         private void btnSubRoute_Click(object sender, EventArgs e)
         {
-            frmSubZone objSub = new frmSubZone();
+            FrmSubZone objSub = new FrmSubZone();
             objSub.ShowDialog();
         }
 

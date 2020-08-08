@@ -133,6 +133,11 @@ namespace CashandCarry.BL
                 return DB.SelectTableWithSP(spName, null);
             }
 
+        public DataTable Select15days()
+            {
+                string spName = "SP_CustomerCheck15Days";
+                return DB.SelectTableWithSP(spName, null);
+            }
 
         public List<View_tbl_Customer> Select()
         {

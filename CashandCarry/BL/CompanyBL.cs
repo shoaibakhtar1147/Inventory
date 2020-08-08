@@ -17,6 +17,7 @@ namespace CashandCarry.BL
         public string Contact { get; set; }
         public string Email { get; set; }
         public string Address { get; set; }
+        public decimal DuePayment { get; set; }
 
         public void Save()
         {
@@ -28,7 +29,7 @@ namespace CashandCarry.BL
                   Contact=Contact,
                    Email=Email,
                    Address=Address,
-                   DuePayment=0
+                   DuePayment=DuePayment
                 };
                 context.tbl_Company.Add(obj);
                 context.SaveChanges();

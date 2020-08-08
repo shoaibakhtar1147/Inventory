@@ -72,6 +72,20 @@ namespace CashandCarry.BL
               context.Tbl_PurTransaction.Add(obj2);
               context.SaveChanges();
           }
+          else if(PInvoice==0 && PReturnID==0 && PRemainID==0)
+          {
+              Tbl_PurTransaction obj3 = new Tbl_PurTransaction() 
+              {
+              CompanyID=CompanyID,
+              Credit=Credit,
+              Debit=Debit,
+              Date=Date,
+              Balance=Balance,
+              Description=Description
+              };
+              context.Tbl_PurTransaction.Add(obj3);
+              context.SaveChanges();
+          }
       }
       }
 

@@ -97,15 +97,22 @@ namespace CashandCarry.Configuration
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            CusTypeBL objCus = new CusTypeBL() 
+            try 
             {
-             CusType=txtCusType.Text
-            };
-            objCus.Save();
-            MessageBox.Show("Record Saved Successful");
-            LoadData();
-            btnAddnew.Enabled = true;
-            ClearGroup();
+                CusTypeBL objCus = new CusTypeBL()
+                {
+                    CusType = txtCusType.Text
+                };
+                objCus.Save();
+                MessageBox.Show("Record Saved Successful");
+                LoadData();
+                btnAddnew.Enabled = true;
+                ClearGroup();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
         }
 
         private void ClearGroup()

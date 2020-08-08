@@ -284,8 +284,9 @@ warning 6002: The table/view 'CashCarry.dbo.View_DetailPurchase' does not have a
           <Property Name="CompanyName" Type="varchar" MaxLength="100" />
           <Property Name="Contact" Type="varchar" MaxLength="20" />
           <Property Name="Date" Type="datetime" />
+          <Property Name="ProductID" Type="int" />
           <Property Name="ProductName" Type="varchar" MaxLength="30" />
-          <Property Name="TradePrice" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="TradePrice" Type="decimal" Precision="18" Scale="2" />
           <Property Name="Ctn" Type="decimal" Precision="18" Scale="2" />
           <Property Name="Quantity" Type="int" />
           <Property Name="frieght" Type="decimal" Precision="18" Scale="2" />
@@ -428,6 +429,7 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
     [View_DetailPurchase].[CompanyName] AS [CompanyName], 
     [View_DetailPurchase].[Contact] AS [Contact], 
     [View_DetailPurchase].[Date] AS [Date], 
+    [View_DetailPurchase].[ProductID] AS [ProductID], 
     [View_DetailPurchase].[ProductName] AS [ProductName], 
     [View_DetailPurchase].[TradePrice] AS [TradePrice], 
     [View_DetailPurchase].[Ctn] AS [Ctn], 
@@ -898,7 +900,7 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
           <Property Name="Contact" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="Date" Type="DateTime" Precision="3" />
           <Property Name="ProductName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="TradePrice" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="TradePrice" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="Ctn" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="Quantity" Type="Int32" />
           <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
@@ -908,6 +910,7 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
           <Property Name="Balance" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="New_Balance" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="frieght" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ProductID" Type="Int32" />
         </EntityType>
         <EntityType Name="tbl_Expense">
           <Key>
@@ -1312,6 +1315,7 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
           <EntitySetMapping Name="View_DetailPurchase">
             <EntityTypeMapping TypeName="CashCarryModel.View_DetailPurchase">
               <MappingFragment StoreEntitySet="View_DetailPurchase">
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
                 <ScalarProperty Name="frieght" ColumnName="frieght" />
                 <ScalarProperty Name="New_Balance" ColumnName="New Balance" />
                 <ScalarProperty Name="Balance" ColumnName="Balance" />

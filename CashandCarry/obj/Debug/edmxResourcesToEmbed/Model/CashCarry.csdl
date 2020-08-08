@@ -385,7 +385,7 @@
     <Property Name="Contact" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="Date" Type="DateTime" Precision="3" />
     <Property Name="ProductName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-    <Property Name="TradePrice" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="TradePrice" Type="Decimal" Precision="18" Scale="2" />
     <Property Name="Ctn" Type="Decimal" Precision="18" Scale="2" />
     <Property Name="Quantity" Type="Int32" />
     <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
@@ -395,6 +395,7 @@
     <Property Name="Balance" Type="Decimal" Precision="18" Scale="2" />
     <Property Name="New_Balance" Type="Decimal" Precision="18" Scale="2" />
     <Property Name="frieght" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="ProductID" Type="Int32" />
   </EntityType>
   <EntityType Name="tbl_Expense">
     <Key>
