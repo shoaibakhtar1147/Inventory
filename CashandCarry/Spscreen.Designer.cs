@@ -41,11 +41,11 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label1.Location = new System.Drawing.Point(47, 120);
+            this.label1.Location = new System.Drawing.Point(86, 120);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(330, 44);
+            this.label1.Size = new System.Drawing.Size(253, 44);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Amson Distributor";
+            this.label1.Text = "Umer Traders";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
@@ -53,7 +53,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label2.Location = new System.Drawing.Point(340, 162);
+            this.label2.Location = new System.Drawing.Point(298, 162);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 15);
             this.label2.TabIndex = 1;

@@ -101,6 +101,14 @@ namespace CashandCarry.BL
                 return context.tbl_Company.Where(a => a.CompanyName== CompanyName).ToList();
             }
         }
+
+        public List<tbl_Company> SearchByComName()
+        {
+            using (var context = new CashCarryEntities3())
+            {
+                return context.tbl_Company.Where(a => a.CompanyName.Contains(CompanyName.ToLower())).ToList();
+            }
+        }
         public List<tbl_Company> Select()
         {
             using(var context= new CashCarryEntities3())

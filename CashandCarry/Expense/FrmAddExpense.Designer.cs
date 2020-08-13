@@ -40,6 +40,7 @@
             this.txtExpName = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
+            this.btnAddnew = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -182,7 +183,7 @@
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(630, 152);
+            this.btnSave.Location = new System.Drawing.Point(630, 190);
             this.btnSave.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(128, 42);
@@ -191,11 +192,29 @@
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
+            // btnAddnew
+            // 
+            this.btnAddnew.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
+            this.btnAddnew.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAddnew.FlatAppearance.BorderSize = 0;
+            this.btnAddnew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddnew.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddnew.ForeColor = System.Drawing.Color.White;
+            this.btnAddnew.Location = new System.Drawing.Point(630, 140);
+            this.btnAddnew.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnAddnew.Name = "btnAddnew";
+            this.btnAddnew.Size = new System.Drawing.Size(128, 42);
+            this.btnAddnew.TabIndex = 54;
+            this.btnAddnew.Text = "New";
+            this.btnAddnew.UseVisualStyleBackColor = false;
+            this.btnAddnew.Click += new System.EventHandler(this.btnAddnew_Click);
+            // 
             // FrmAddExpense
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(856, 531);
+            this.Controls.Add(this.btnAddnew);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.groupBox1);
             this.Name = "FrmAddExpense";
@@ -221,5 +240,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtAmount;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnAddnew;
     }
 }

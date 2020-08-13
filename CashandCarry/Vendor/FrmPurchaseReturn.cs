@@ -77,12 +77,15 @@ namespace CashandCarry.Vendor
                 this.dgvProduct.Columns["InvoiceNo"].Visible = false;
                 this.dgvProduct.Columns["Date"].Visible = false;
                 this.dgvProduct.Columns["CompanyID"].Visible = false;
+                this.dgvProduct.Columns["ProductID"].Visible = false;
                 this.dgvProduct.Columns["New Balance"].Visible = false;
                 this.dgvProduct.Columns["Contact"].Visible = false;
                 this.dgvProduct.Columns["GrandTotal"].Visible = false;
                 this.dgvProduct.Columns["Balance"].Visible = false;
                 this.dgvProduct.Columns["Payment"].Visible = false;
-                this.dgvProduct.Columns["Discount"].Visible = false;
+                this.dgvProduct.Columns["Distribution Margin"].Visible = false;
+                this.dgvProduct.Columns["FurDiscount"].Visible = false;
+                this.dgvProduct.Columns["TotalAmount"].Visible = false;
                 dgvProduct.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
 
@@ -102,10 +105,10 @@ namespace CashandCarry.Vendor
                 
                 txtComName.Text = dgvProduct.Rows[rowindex].Cells[4].Value.ToString();
                 
-                txtProdName.Text = dgvProduct.Rows[rowindex].Cells[7].Value.ToString();
+                txtProdName.Text = dgvProduct.Rows[rowindex].Cells[8].Value.ToString();
                
-                lblQuantity.Text = dgvProduct.Rows[rowindex].Cells[10].Value.ToString();
-                lblctn.Text = dgvProduct.Rows[rowindex].Cells[9].Value.ToString();
+                lblQuantity.Text = dgvProduct.Rows[rowindex].Cells[11].Value.ToString();
+                lblctn.Text = dgvProduct.Rows[rowindex].Cells[10].Value.ToString();
                 
 
                 txtComName.Focus();
@@ -123,7 +126,7 @@ namespace CashandCarry.Vendor
             txtBalance.Enabled = false;
             txtProdName.Enabled = false;
             txtProdID.Enabled = false;
-
+            txtfurDiscount.Enabled = false;
             txtPrice.Enabled = false;
             txtAmount.Enabled = false;
             txtPrice.Enabled = false;
@@ -159,6 +162,7 @@ namespace CashandCarry.Vendor
             txtCtn.Enabled = true;
             txtProdName.Enabled = true;
             txtBillDiscount.Enabled = true;
+            txtfurDiscount.Enabled = true;
             btnSave.Enabled = true;
         }
 
@@ -308,29 +312,8 @@ namespace CashandCarry.Vendor
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            //PurchaseReturnBL objDue = new PurchaseReturnBL()
-            //{
-            //    DuePayment = Convert.ToDecimal(txtBalance.Text),
-            //    CompanyID = Convert.ToInt32(txtComID.Text)
-            //};
-            //objDue.UpdateDuePayment();
-            //PurchaseReturnBL objUp = new PurchaseReturnBL();
-            //for (int i = 0; i < dgvReturnItem.Rows.Count; i++)
-            //{
-            //    objUp.Amount = Convert.ToDecimal(dgvReturnItem.Rows[0].Cells[7].Value.ToString());
-            //    objUp.PInvoice = Convert.ToInt32(txtInvoiceID.Text);
-            //    objUp.Quantity = Convert.ToInt32(dgvReturnItem.Rows[0].Cells[6].Value.ToString());
-            //    objUp.ProductID = Convert.ToInt32(dgvReturnItem.Rows[0].Cells[1].Value.ToString());
-            //    objUp.UpdatePInvoice();
-            //}
-            //PurchaseReturnBL obj2 = new PurchaseReturnBL()
-            //{
-
-            //    GrandTotal = Convert.ToDecimal(txtGrandTotal.Text),
-            //    PInvoice = Convert.ToInt32(txtInvoiceID.Text)
-
-            //};
-            //obj2.UpdatePInvoice();
+            
+            
 
             PurchaseReturnBL objUpdate = new PurchaseReturnBL();
             {
@@ -386,7 +369,9 @@ namespace CashandCarry.Vendor
                 ReturnDate = DateTime.Parse(txtReturnDate.Text),
                 TotalAmount = Convert.ToDecimal(txtGrandTotal.Text),
                 ReturnCash = Convert.ToDecimal(txtReturnCash.Text),
-                DuePayment = Convert.ToDecimal(txtBalance.Text)
+                DuePayment = Convert.ToDecimal(txtBalance.Text),
+                furDiscount=Convert.ToDecimal(txtfurDiscount.Text),
+                GrandTotal=Convert.ToDecimal(txtGrandTotal.Text)
 
             };
             objMas.SaveMaster();
@@ -394,7 +379,7 @@ namespace CashandCarry.Vendor
             objLedger.PReturnID = Convert.ToInt32(txtReturnID.Text);
             objLedger.CompanyID = Convert.ToInt32(txtComID.Text);
             objLedger.Credit = 0;
-            objLedger.Debit = Convert.ToInt32(txtBalance.Text);
+            objLedger.Debit = Convert.ToDecimal(txtBalance.Text);
             objLedger.Date = Convert.ToDateTime(txtReturnDate.Text);
             objLedger.Balance = Convert.ToDecimal(txtNewBalance.Text);
             objLedger.Description = "Credit";
@@ -484,6 +469,9 @@ namespace CashandCarry.Vendor
                 {
                     c.Text = "";
                 }
+                lblctn.Text = "";
+                lblPiePerCtn.Text = "";
+                lblQuantity.Text = "";
 
             }
 
@@ -539,7 +527,7 @@ namespace CashandCarry.Vendor
             if (txtCtn.Text != string.Empty)
             {
                 decimal val1 = Convert.ToDecimal(txtPrice.Text);
-                int val2 = Convert.ToInt32(txtQuantity.Text);
+                int val2 = Convert.ToInt32(txtCtn.Text);
                 int val3 = Convert.ToInt32(val1 * val2);
                 txtAmount.Text = val3.ToString();
             }
@@ -576,20 +564,44 @@ namespace CashandCarry.Vendor
         {
             if (txtBillDiscount.Text == string.Empty)
             {
-                txtBillDiscount.Text = "0";
-                int Bill = Convert.ToInt32(txtTotalBill.Text);
-                txtGrandTotal.Text = Bill.ToString();
+                txtBillDiscount.Text = "0.00";
+                decimal Bill = Convert.ToDecimal(txtTotalBill.Text);
+                txttotalAmount.Text = Bill.ToString();
             }
             else
             {
-                int Bill = Convert.ToInt32(txtTotalBill.Text);
+                decimal Bill = Convert.ToDecimal(txtTotalBill.Text);
 
-                int val2 = Convert.ToInt32(txtBillDiscount.Text);
-                int val3 = Bill - val2;
-                txtGrandTotal.Text = val3.ToString();
+                decimal Billdiscount = Convert.ToDecimal(txtBillDiscount.Text);
+                decimal result = Convert.ToDecimal(Bill / 100) * Billdiscount;
+                decimal resu = Convert.ToDecimal(Bill - result);
+                txttotalAmount.Text = resu.ToString();
 
             }
 
+        }
+
+        private void txtfurDiscount_Leave(object sender, EventArgs e)
+        {
+            if (txtfurDiscount.Text == string.Empty)
+            {
+                txtfurDiscount.Text = "0.00";
+                decimal TotalAmount =Convert.ToDecimal(txttotalAmount.Text);
+                txtGrandTotal.Text = TotalAmount.ToString();
+            }
+            else
+            {
+                //int Bill = Convert.ToInt32(txtTotalBill.Text);
+
+                //int val2 = Convert.ToInt32(txtBillDiscount.Text);
+                //int val3 = Bill - val2;
+                decimal TotalAmount = Convert.ToDecimal(txttotalAmount.Text);
+                decimal furDiscount = Convert.ToDecimal(txtfurDiscount.Text);
+                decimal result = (TotalAmount / 100) * furDiscount;
+                decimal resu = Convert.ToDecimal(TotalAmount - result);
+                txtGrandTotal.Text = resu.ToString();
+
+            }
         }
 
         

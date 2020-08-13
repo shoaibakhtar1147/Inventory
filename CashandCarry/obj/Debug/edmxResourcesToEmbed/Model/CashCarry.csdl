@@ -52,12 +52,12 @@
     <EntitySet Name="Tbl_SaleTransaction" EntityType="CashCarryModel.Tbl_SaleTransaction" />
     <EntitySet Name="Tbl_PurTransaction" EntityType="CashCarryModel.Tbl_PurTransaction" />
     <EntitySet Name="View_PurLedger" EntityType="CashCarryModel.View_PurLedger" />
-    <EntitySet Name="View_SaleLedger" EntityType="CashCarryModel.View_SaleLedger" />
-    <EntitySet Name="View_DetailPurchase" EntityType="CashCarryModel.View_DetailPurchase" />
     <EntitySet Name="tbl_Expense" EntityType="CashCarryModel.tbl_Expense" />
     <EntitySet Name="Tbl_SubZone" EntityType="CashCarryModel.Tbl_SubZone" />
-    <EntitySet Name="View_tbl_Customer" EntityType="CashCarryModel.View_tbl_Customer" />
     <EntitySet Name="View_SubZone" EntityType="CashCarryModel.View_SubZone" />
+    <EntitySet Name="View_tbl_Customer" EntityType="CashCarryModel.View_tbl_Customer" />
+    <EntitySet Name="View_SaleLedger" EntityType="CashCarryModel.View_SaleLedger" />
+    <EntitySet Name="View_DetailPurchase" EntityType="CashCarryModel.View_DetailPurchase" />
   </EntityContainer>
   <EntityType Name="tbl_Zone">
     <Key>
@@ -211,6 +211,8 @@
     <Property Name="Discount" Type="Decimal" Precision="18" Scale="2" />
     <Property Name="Payment" Type="Decimal" Precision="18" Scale="2" />
     <Property Name="DuePayment" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="FurDiscount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="GrandTotal" Type="Decimal" Precision="18" Scale="2" />
   </EntityType>
   <ComplexType Name="SP_Cus_Search_Result">
     <Property Type="Int32" Name="CustomerID" Nullable="false" />
@@ -268,6 +270,8 @@
     <Property Name="ReturnDue" Type="Decimal" Precision="18" Scale="2" />
     <Property Name="Discount" Type="Decimal" Precision="18" Scale="2" />
     <Property Name="PInvoice" Type="Int32" />
+    <Property Name="GrandTotal" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="FurDiscount" Type="Decimal" Precision="18" Scale="2" />
   </EntityType>
   <EntityType Name="tbl_Employee_Salary">
     <Key>
@@ -355,6 +359,48 @@
     <Property Name="Balance" Type="Decimal" Precision="18" Scale="2" />
     <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
   </EntityType>
+  <EntityType Name="tbl_Expense">
+    <Key>
+      <PropertyRef Name="ExId" />
+    </Key>
+    <Property Name="ExId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ExType" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ExName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
+    <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="Tbl_SubZone">
+    <Key>
+      <PropertyRef Name="SubRouteId" />
+    </Key>
+    <Property Name="SubRouteId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SubRouteName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ZoneID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="View_SubZone">
+    <Key>
+      <PropertyRef Name="SubRouteId" />
+    </Key>
+    <Property Name="SubRouteId" Type="Int32" Nullable="false" />
+    <Property Name="SubRouteName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ZoneID" Type="Int32" />
+    <Property Name="ZoneName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="View_tbl_Customer">
+    <Key>
+      <PropertyRef Name="CustomerID" />
+    </Key>
+    <Property Name="CustomerID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="CusType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Contact" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Route" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="SubRouteName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="DuePayment" Type="Decimal" Precision="18" Scale="2" />
+  </EntityType>
   <EntityType Name="View_SaleLedger">
     <Key>
       <PropertyRef Name="STId" />
@@ -363,6 +409,7 @@
     <Property Name="CustomerID" Type="Int32" />
     <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
     <Property Name="Contact" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="SubRouteName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="InvoiceNo" Type="Int32" />
     <Property Name="RecoveryId" Type="Int32" />
     <Property Name="RInvoice" Type="Int32" />
@@ -384,59 +431,19 @@
     <Property Name="CompanyName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="Contact" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="Date" Type="DateTime" Precision="3" />
+    <Property Name="ProductID" Type="Int32" />
     <Property Name="ProductName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
     <Property Name="TradePrice" Type="Decimal" Precision="18" Scale="2" />
     <Property Name="Ctn" Type="Decimal" Precision="18" Scale="2" />
     <Property Name="Quantity" Type="Int32" />
+    <Property Name="frieght" Type="Decimal" Precision="18" Scale="2" />
     <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
-    <Property Name="Discount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Distribution_Margin" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="TotalAmount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="FurDiscount" Type="Decimal" Precision="18" Scale="2" />
     <Property Name="GrandTotal" Type="Decimal" Precision="18" Scale="2" />
     <Property Name="Payment" Type="Decimal" Precision="18" Scale="2" />
     <Property Name="Balance" Type="Decimal" Precision="18" Scale="2" />
     <Property Name="New_Balance" Type="Decimal" Precision="18" Scale="2" />
-    <Property Name="frieght" Type="Decimal" Precision="18" Scale="2" />
-    <Property Name="ProductID" Type="Int32" />
-  </EntityType>
-  <EntityType Name="tbl_Expense">
-    <Key>
-      <PropertyRef Name="ExId" />
-    </Key>
-    <Property Name="ExId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="ExType" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="ExName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="Date" Type="DateTime" Precision="3" />
-    <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
-  </EntityType>
-  <EntityType Name="Tbl_SubZone">
-    <Key>
-      <PropertyRef Name="SubRouteId" />
-    </Key>
-    <Property Name="SubRouteId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="SubRouteName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="ZoneID" Type="Int32" />
-  </EntityType>
-  <EntityType Name="View_tbl_Customer">
-    <Key>
-      <PropertyRef Name="CustomerID" />
-    </Key>
-    <Property Name="CustomerID" Type="Int32" Nullable="false" />
-    <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-    <Property Name="CusType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="Contact" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="Email" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="ZoneName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="SubRouteName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="DuePayment" Type="Decimal" Precision="18" Scale="2" />
-  </EntityType>
-  <EntityType Name="View_SubZone">
-    <Key>
-      <PropertyRef Name="SubRouteId" />
-    </Key>
-    <Property Name="SubRouteId" Type="Int32" Nullable="false" />
-    <Property Name="SubRouteName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="ZoneID" Type="Int32" />
-    <Property Name="ZoneName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
   </EntityType>
 </Schema>

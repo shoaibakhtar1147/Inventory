@@ -23,12 +23,14 @@ namespace CashandCarry.BL
         public DateTime maxdate { get; set; }
         public decimal Discount { get; set; }
         public decimal TotalAmount { get; set; }
-        public decimal GrandTotal { get; set; }
+        //public decimal SubTotal { get; set; }
         public decimal TotalBill { get; set; }
         public decimal Payment { get; set; }
         public decimal DuePayment { get; set; }
         public decimal Ctn { get; set; }
         public decimal frieght { get; set; }
+        public decimal furDiscount { get; set; }
+        public decimal GrandTotal { get; set; }
 
         public void SaveDetail()
         {
@@ -41,7 +43,7 @@ namespace CashandCarry.BL
                         PInvoice = PInvoice,
                         ProductID = ProductID,
                         Quantity = Quantity,
-                        TotalAmount = TotalAmount,
+                        TotalAmount = Amount,
                         Ctn = Ctn,
                         frieght=frieght
                     };
@@ -55,7 +57,7 @@ namespace CashandCarry.BL
                         PInvoice = PInvoice,
                         ProductID = ProductID,
                         Quantity = Quantity,
-                        TotalAmount = TotalAmount,
+                        TotalAmount = Amount,
                         Ctn = Ctn,
                         frieght = 0
                     };
@@ -74,9 +76,11 @@ namespace CashandCarry.BL
                  CompanyID=companyID,
                   Discount=Discount,
                    PurchaseDate=PurchaseDate,
-                    TotalAmount=GrandTotal,
+                    TotalAmount=TotalAmount,
                     Payment=Payment,
-                    DuePayment=DuePayment
+                    DuePayment=DuePayment,
+                    FurDiscount=furDiscount,
+                    GrandTotal=GrandTotal
                 };
                 context.Tbl_PurchaseMaster.Add(objMas);
                 context.SaveChanges();

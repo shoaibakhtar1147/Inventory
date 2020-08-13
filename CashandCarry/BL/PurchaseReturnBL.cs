@@ -28,6 +28,7 @@ namespace CashandCarry.BL
           public decimal Ctn { get; set; }
           public DateTime minDate { get; set; }
           public DateTime maxDate { get; set; }
+          public decimal furDiscount { get; set; }
 
         public void SaveDetail()
           {
@@ -58,7 +59,9 @@ namespace CashandCarry.BL
                        ReturnCash=ReturnCash,
                         ReturnDate=ReturnDate, 
                          ReturnDue=ReturnDue,
-                          TotalAmount=TotalAmount
+                          TotalAmount=TotalAmount,
+                          FurDiscount=furDiscount,
+                          GrandTotal=GrandTotal
                 };
                 context.Tbl_PurchaseReturn_Master.Add(objMaster);
                 context.SaveChanges();
@@ -111,17 +114,17 @@ namespace CashandCarry.BL
             prm[2] = new SqlParameter("@Action", 2);
             return DB.ExecuteNonQueryWithSP(spName,prm);
         }
-        public int UpdatePInvoice()
-        {
-            string SpName = "SP_Update_BothPurchase";
-            SqlParameter[] prm = new SqlParameter[5];
-            prm[0] = new SqlParameter("@Quantity", Quantity);
-            prm[1] = new SqlParameter("@Amount", Amount);
-            prm[2] = new SqlParameter("@PInvoice", PInvoice);
-            prm[3] = new SqlParameter("@ProductID", ProductID);
-            prm[4] = new SqlParameter("@Grandtotal", GrandTotal);
-            return DB.ExecuteNonQueryWithSP(SpName, prm);
-        }
+        //public int UpdatePInvoice()
+        //{
+        //    string SpName = "SP_Update_BothPurchase";
+        //    SqlParameter[] prm = new SqlParameter[5];
+        //    prm[0] = new SqlParameter("@Quantity", Quantity);
+        //    prm[1] = new SqlParameter("@Amount", Amount);
+        //    prm[2] = new SqlParameter("@PInvoice", PInvoice);
+        //    prm[3] = new SqlParameter("@ProductID", ProductID);
+        //    prm[4] = new SqlParameter("@Grandtotal", GrandTotal);
+        //    return DB.ExecuteNonQueryWithSP(SpName, prm);
+        //}
 
         public DataTable SearchByDateDiff()
         {

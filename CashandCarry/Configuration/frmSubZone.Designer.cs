@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnAddnew = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dgvSubZone = new System.Windows.Forms.DataGridView();
@@ -37,10 +37,10 @@
             this.label13 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtSubZoneName = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.txtZone = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.txtSubZoneName = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSubZone)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -77,24 +77,25 @@
             // 
             this.dgvSubZone.AllowUserToAddRows = false;
             this.dgvSubZone.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvSubZone.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvSubZone.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvSubZone.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSubZone.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvSubZone.GridColor = System.Drawing.SystemColors.ActiveCaption;
             this.dgvSubZone.Location = new System.Drawing.Point(0, 0);
             this.dgvSubZone.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dgvSubZone.Name = "dgvSubZone";
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black;
-            this.dgvSubZone.RowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            this.dgvSubZone.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvSubZone.Size = new System.Drawing.Size(816, 138);
             this.dgvSubZone.TabIndex = 54;
+            this.dgvSubZone.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSubZone_CellContentClick);
             // 
             // txtSearch
             // 
@@ -151,26 +152,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Sub Zone Information";
             // 
-            // txtSubZoneName
-            // 
-            this.txtSubZoneName.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSubZoneName.Location = new System.Drawing.Point(241, 113);
-            this.txtSubZoneName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtSubZoneName.Name = "txtSubZoneName";
-            this.txtSubZoneName.Size = new System.Drawing.Size(171, 23);
-            this.txtSubZoneName.TabIndex = 19;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label6.Location = new System.Drawing.Point(83, 117);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(114, 17);
-            this.label6.TabIndex = 10;
-            this.label6.Text = "Sub Zone Name:";
-            // 
             // txtZone
             // 
             this.txtZone.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -193,6 +174,26 @@
             this.label1.Size = new System.Drawing.Size(87, 17);
             this.label1.TabIndex = 21;
             this.label1.Text = "Zone Name:";
+            // 
+            // txtSubZoneName
+            // 
+            this.txtSubZoneName.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSubZoneName.Location = new System.Drawing.Point(241, 113);
+            this.txtSubZoneName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtSubZoneName.Name = "txtSubZoneName";
+            this.txtSubZoneName.Size = new System.Drawing.Size(171, 23);
+            this.txtSubZoneName.TabIndex = 19;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label6.Location = new System.Drawing.Point(83, 117);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(114, 17);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "Sub Zone Name:";
             // 
             // FrmSubZone
             // 

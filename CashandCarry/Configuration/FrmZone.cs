@@ -29,8 +29,7 @@ namespace CashandCarry.Configuration
             txtZoneID.Enabled = false;
             txtZoneName.Enabled = false;
             btnSave.Enabled = false;
-            btnUpdate.Enabled = false;
-            btnDelete.Enabled = false;
+            
 
         }
         private void loadData()
@@ -178,8 +177,7 @@ namespace CashandCarry.Configuration
                 {
                     dgvZone.DataSource = dt;
                     txtZoneName.Enabled = true;
-                    btnUpdate.Enabled = true;
-                    btnDelete.Enabled = true;
+                  
 
                 }
             }
@@ -216,9 +214,9 @@ namespace CashandCarry.Configuration
             {
                 txtZoneID.Text = dgvZone.Rows[rowindex].Cells[2].Value.ToString();
                 txtZoneName.Text = dgvZone.Rows[rowindex].Cells[3].Value.ToString();
-                btnUpdate.Enabled = true;
+               
                 txtZoneName.Enabled = true;
-                btnDelete.Enabled = true;
+               
             }
             else if (Columnindex == 1)
             {
@@ -231,6 +229,31 @@ namespace CashandCarry.Configuration
                 MessageBox.Show("Deleted Successfully");
                 loadData();
 
+            }
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            if (txtSearch.Text == string.Empty)
+            {
+                loadData();
+
+            }
+            else
+            {
+                ZoneBL objTest = new ZoneBL()
+                {
+                    ZoneName = txtSearch.Text.ToLower()
+                };
+                var dt = objTest.SearchByName();
+                AutoCompleteStringCollection coll = new AutoCompleteStringCollection();
+                txtSearch.AutoCompleteMode = AutoCompleteMode.Suggest;
+                txtSearch.AutoCompleteSource = AutoCompleteSource.CustomSource;
+                txtSearch.AutoCompleteCustomSource = coll;
+                if (dt.Count > 0)
+                {
+                    dgvZone.DataSource = dt;
+                }
             }
         }
         }

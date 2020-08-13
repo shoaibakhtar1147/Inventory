@@ -117,11 +117,12 @@ namespace CashandCarry.Configuration
             {
                 CustomerBL objCus = new  CustomerBL()
                 {
-                     CustomerID = Convert.ToInt32(txtSearch.Text)
+                     CustomerID = Convert.ToInt32(txtCusID.Text)
                 };
                 objCus.Delete();
                 MessageBox.Show("Record Delete Successfull");
                 LoadData();
+                ClearGroup();
                // Clear();
             }
             else
@@ -133,7 +134,7 @@ namespace CashandCarry.Configuration
         
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            if (txtSearch.Text == string.Empty)
+            if (txtCusID.Text == string.Empty)
             {
                 MessageBox.Show("Please Select A Customer ID ");
                 return;
@@ -387,6 +388,31 @@ namespace CashandCarry.Configuration
         private void txtZoneID_Leave(object sender, EventArgs e)
         {
             LoadSubZone();
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            if (txtSearch.Text == string.Empty)
+            {
+                LoadData();
+
+            }
+            else
+            {
+                CustomerBL objTest = new CustomerBL()
+                {
+                    Name = txtSearch.Text.ToLower()
+                };
+                var dt = objTest.SearchByCusName();
+                AutoCompleteStringCollection coll = new AutoCompleteStringCollection();
+                txtSearch.AutoCompleteMode = AutoCompleteMode.Suggest;
+                txtSearch.AutoCompleteSource = AutoCompleteSource.CustomSource;
+                txtSearch.AutoCompleteCustomSource = coll;
+                if (dt.Count > 0)
+                {
+                    dgvCus.DataSource = dt;
+                }
+            }
         }
     }
 }

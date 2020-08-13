@@ -22,5 +22,7 @@ namespace CashandCarry.Model
         public Nullable<decimal> ReturnDue { get; set; }
         public Nullable<decimal> Discount { get; set; }
         public Nullable<int> PInvoice { get; set; }
+        public Nullable<decimal> GrandTotal { get; set; }
+        public Nullable<decimal> FurDiscount { get; set; }
     }
 }

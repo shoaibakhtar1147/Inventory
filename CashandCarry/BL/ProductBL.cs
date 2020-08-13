@@ -126,5 +126,13 @@ namespace CashandCarry.BL
                 return context.View_tbl_Product.ToList();
             }
         }
+
+        public List<View_tbl_Product> SearchByProName()
+        {
+            using (var context = new CashCarryEntities3())
+            {
+                return context.View_tbl_Product.Where(a => a.ProductName.Contains(ProductName.ToLower())).ToList();
+            }
+        }
     }
 }

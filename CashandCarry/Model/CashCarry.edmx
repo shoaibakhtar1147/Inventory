@@ -131,6 +131,8 @@
           <Property Name="Discount" Type="decimal" Precision="18" Scale="2" />
           <Property Name="Payment" Type="decimal" Precision="18" Scale="2" />
           <Property Name="DuePayment" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="FurDiscount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="GrandTotal" Type="decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="tbl_PurchaseRemain">
           <Key>
@@ -165,6 +167,8 @@
           <Property Name="ReturnDue" Type="decimal" Precision="18" Scale="2" />
           <Property Name="Discount" Type="decimal" Precision="18" Scale="2" />
           <Property Name="PInvoice" Type="int" />
+          <Property Name="GrandTotal" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="FurDiscount" Type="decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="Tbl_PurTransaction">
           <Key>
@@ -291,7 +295,9 @@ warning 6002: The table/view 'CashCarry.dbo.View_DetailPurchase' does not have a
           <Property Name="Quantity" Type="int" />
           <Property Name="frieght" Type="decimal" Precision="18" Scale="2" />
           <Property Name="Amount" Type="decimal" Precision="18" Scale="2" />
-          <Property Name="Discount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Distribution Margin" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TotalAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="FurDiscount" Type="decimal" Precision="18" Scale="2" />
           <Property Name="GrandTotal" Type="decimal" Precision="18" Scale="2" />
           <Property Name="Payment" Type="decimal" Precision="18" Scale="2" />
           <Property Name="Balance" Type="decimal" Precision="18" Scale="2" />
@@ -326,6 +332,7 @@ warning 6002: The table/view 'CashCarry.dbo.View_SaleLedger' does not have a pri
           <Property Name="CustomerID" Type="int" />
           <Property Name="Name" Type="varchar" MaxLength="30" />
           <Property Name="Contact" Type="varchar" MaxLength="20" />
+          <Property Name="SubRouteName" Type="varchar(max)" />
           <Property Name="InvoiceNo" Type="int" />
           <Property Name="RecoveryId" Type="int" />
           <Property Name="RInvoice" Type="int" />
@@ -358,7 +365,7 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Customer' does not have a p
           <Property Name="Address" Type="varchar" MaxLength="100" />
           <Property Name="Contact" Type="varchar" MaxLength="20" />
           <Property Name="Email" Type="varchar" MaxLength="20" />
-          <Property Name="ZoneName" Type="varchar" MaxLength="20" />
+          <Property Name="Route" Type="varchar" MaxLength="20" />
           <Property Name="SubRouteName" Type="varchar(max)" />
           <Property Name="DuePayment" Type="decimal" Precision="18" Scale="2" />
         </EntityType>
@@ -436,7 +443,9 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
     [View_DetailPurchase].[Quantity] AS [Quantity], 
     [View_DetailPurchase].[frieght] AS [frieght], 
     [View_DetailPurchase].[Amount] AS [Amount], 
-    [View_DetailPurchase].[Discount] AS [Discount], 
+    [View_DetailPurchase].[Distribution Margin] AS [Distribution Margin], 
+    [View_DetailPurchase].[TotalAmount] AS [TotalAmount], 
+    [View_DetailPurchase].[FurDiscount] AS [FurDiscount], 
     [View_DetailPurchase].[GrandTotal] AS [GrandTotal], 
     [View_DetailPurchase].[Payment] AS [Payment], 
     [View_DetailPurchase].[Balance] AS [Balance], 
@@ -465,6 +474,7 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
     [View_SaleLedger].[CustomerID] AS [CustomerID], 
     [View_SaleLedger].[Name] AS [Name], 
     [View_SaleLedger].[Contact] AS [Contact], 
+    [View_SaleLedger].[SubRouteName] AS [SubRouteName], 
     [View_SaleLedger].[InvoiceNo] AS [InvoiceNo], 
     [View_SaleLedger].[RecoveryId] AS [RecoveryId], 
     [View_SaleLedger].[RInvoice] AS [RInvoice], 
@@ -491,7 +501,7 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
     [View_tbl_Customer].[Address] AS [Address], 
     [View_tbl_Customer].[Contact] AS [Contact], 
     [View_tbl_Customer].[Email] AS [Email], 
-    [View_tbl_Customer].[ZoneName] AS [ZoneName], 
+    [View_tbl_Customer].[Route] AS [Route], 
     [View_tbl_Customer].[SubRouteName] AS [SubRouteName], 
     [View_tbl_Customer].[DuePayment] AS [DuePayment]
     FROM [dbo].[View_tbl_Customer] AS [View_tbl_Customer]</DefiningQuery>
@@ -567,12 +577,12 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
           <EntitySet Name="Tbl_SaleTransaction" EntityType="CashCarryModel.Tbl_SaleTransaction" />
           <EntitySet Name="Tbl_PurTransaction" EntityType="CashCarryModel.Tbl_PurTransaction" />
           <EntitySet Name="View_PurLedger" EntityType="CashCarryModel.View_PurLedger" />
-          <EntitySet Name="View_SaleLedger" EntityType="CashCarryModel.View_SaleLedger" />
-          <EntitySet Name="View_DetailPurchase" EntityType="CashCarryModel.View_DetailPurchase" />
           <EntitySet Name="tbl_Expense" EntityType="CashCarryModel.tbl_Expense" />
           <EntitySet Name="Tbl_SubZone" EntityType="CashCarryModel.Tbl_SubZone" />
-          <EntitySet Name="View_tbl_Customer" EntityType="CashCarryModel.View_tbl_Customer" />
           <EntitySet Name="View_SubZone" EntityType="CashCarryModel.View_SubZone" />
+          <EntitySet Name="View_tbl_Customer" EntityType="CashCarryModel.View_tbl_Customer" />
+          <EntitySet Name="View_SaleLedger" EntityType="CashCarryModel.View_SaleLedger" />
+          <EntitySet Name="View_DetailPurchase" EntityType="CashCarryModel.View_DetailPurchase" />
         </EntityContainer>
         <EntityType Name="tbl_Zone">
           <Key>
@@ -726,6 +736,8 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
           <Property Name="Discount" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="Payment" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="DuePayment" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="FurDiscount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="GrandTotal" Type="Decimal" Precision="18" Scale="2" />
         </EntityType>
         <ComplexType Name="SP_Cus_Search_Result">
           <Property Type="Int32" Name="CustomerID" Nullable="false" />
@@ -783,6 +795,8 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
           <Property Name="ReturnDue" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="Discount" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="PInvoice" Type="Int32" />
+          <Property Name="GrandTotal" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="FurDiscount" Type="Decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="tbl_Employee_Salary">
           <Key>
@@ -870,6 +884,48 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
           <Property Name="Balance" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="tbl_Expense">
+          <Key>
+            <PropertyRef Name="ExId" />
+          </Key>
+          <Property Name="ExId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ExType" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ExName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="Tbl_SubZone">
+          <Key>
+            <PropertyRef Name="SubRouteId" />
+          </Key>
+          <Property Name="SubRouteId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SubRouteName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ZoneID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="View_SubZone">
+          <Key>
+            <PropertyRef Name="SubRouteId" />
+          </Key>
+          <Property Name="SubRouteId" Type="Int32" Nullable="false" />
+          <Property Name="SubRouteName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ZoneID" Type="Int32" />
+          <Property Name="ZoneName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="View_tbl_Customer">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="CusType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Contact" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Route" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SubRouteName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DuePayment" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
         <EntityType Name="View_SaleLedger">
           <Key>
             <PropertyRef Name="STId" />
@@ -878,6 +934,7 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
           <Property Name="CustomerID" Type="Int32" />
           <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="Contact" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SubRouteName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="InvoiceNo" Type="Int32" />
           <Property Name="RecoveryId" Type="Int32" />
           <Property Name="RInvoice" Type="Int32" />
@@ -899,60 +956,20 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
           <Property Name="CompanyName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Contact" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="ProductID" Type="Int32" />
           <Property Name="ProductName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="TradePrice" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="Ctn" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="Quantity" Type="Int32" />
+          <Property Name="frieght" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="Discount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Distribution_Margin" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TotalAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="FurDiscount" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="GrandTotal" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="Payment" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="Balance" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="New_Balance" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="frieght" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="ProductID" Type="Int32" />
-        </EntityType>
-        <EntityType Name="tbl_Expense">
-          <Key>
-            <PropertyRef Name="ExId" />
-          </Key>
-          <Property Name="ExId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ExType" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="ExName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Date" Type="DateTime" Precision="3" />
-          <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
-        </EntityType>
-        <EntityType Name="Tbl_SubZone">
-          <Key>
-            <PropertyRef Name="SubRouteId" />
-          </Key>
-          <Property Name="SubRouteId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="SubRouteName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="ZoneID" Type="Int32" />
-        </EntityType>
-        <EntityType Name="View_tbl_Customer">
-          <Key>
-            <PropertyRef Name="CustomerID" />
-          </Key>
-          <Property Name="CustomerID" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="CusType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Contact" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="Email" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="ZoneName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="SubRouteName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="DuePayment" Type="Decimal" Precision="18" Scale="2" />
-        </EntityType>
-        <EntityType Name="View_SubZone">
-          <Key>
-            <PropertyRef Name="SubRouteId" />
-          </Key>
-          <Property Name="SubRouteId" Type="Int32" Nullable="false" />
-          <Property Name="SubRouteName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="ZoneID" Type="Int32" />
-          <Property Name="ZoneName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1125,6 +1142,8 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
           <EntitySetMapping Name="Tbl_PurchaseMaster">
             <EntityTypeMapping TypeName="CashCarryModel.Tbl_PurchaseMaster">
               <MappingFragment StoreEntitySet="Tbl_PurchaseMaster">
+                <ScalarProperty Name="GrandTotal" ColumnName="GrandTotal" />
+                <ScalarProperty Name="FurDiscount" ColumnName="FurDiscount" />
                 <ScalarProperty Name="DuePayment" ColumnName="DuePayment" />
                 <ScalarProperty Name="Payment" ColumnName="Payment" />
                 <ScalarProperty Name="Discount" ColumnName="Discount" />
@@ -1189,6 +1208,8 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
           <EntitySetMapping Name="Tbl_PurchaseReturn_Master">
             <EntityTypeMapping TypeName="CashCarryModel.Tbl_PurchaseReturn_Master">
               <MappingFragment StoreEntitySet="Tbl_PurchaseReturn_Master">
+                <ScalarProperty Name="FurDiscount" ColumnName="FurDiscount" />
+                <ScalarProperty Name="GrandTotal" ColumnName="GrandTotal" />
                 <ScalarProperty Name="PInvoice" ColumnName="PInvoice" />
                 <ScalarProperty Name="Discount" ColumnName="Discount" />
                 <ScalarProperty Name="ReturnDue" ColumnName="ReturnDue" />
@@ -1294,48 +1315,6 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="View_SaleLedger">
-            <EntityTypeMapping TypeName="CashCarryModel.View_SaleLedger">
-              <MappingFragment StoreEntitySet="View_SaleLedger">
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Balance" ColumnName="Balance" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="Debit" ColumnName="Debit" />
-                <ScalarProperty Name="Credit" ColumnName="Credit" />
-                <ScalarProperty Name="RInvoice" ColumnName="RInvoice" />
-                <ScalarProperty Name="RecoveryId" ColumnName="RecoveryId" />
-                <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
-                <ScalarProperty Name="Contact" ColumnName="Contact" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
-                <ScalarProperty Name="STId" ColumnName="STId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="View_DetailPurchase">
-            <EntityTypeMapping TypeName="CashCarryModel.View_DetailPurchase">
-              <MappingFragment StoreEntitySet="View_DetailPurchase">
-                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
-                <ScalarProperty Name="frieght" ColumnName="frieght" />
-                <ScalarProperty Name="New_Balance" ColumnName="New Balance" />
-                <ScalarProperty Name="Balance" ColumnName="Balance" />
-                <ScalarProperty Name="Payment" ColumnName="Payment" />
-                <ScalarProperty Name="GrandTotal" ColumnName="GrandTotal" />
-                <ScalarProperty Name="Discount" ColumnName="Discount" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-                <ScalarProperty Name="Ctn" ColumnName="Ctn" />
-                <ScalarProperty Name="TradePrice" ColumnName="TradePrice" />
-                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="Contact" ColumnName="Contact" />
-                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
-                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
-                <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
-                <ScalarProperty Name="Sr_" ColumnName="Sr#" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="tbl_Expense">
             <EntityTypeMapping TypeName="CashCarryModel.tbl_Expense">
               <MappingFragment StoreEntitySet="tbl_Expense">
@@ -1357,12 +1336,22 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="View_SubZone">
+            <EntityTypeMapping TypeName="CashCarryModel.View_SubZone">
+              <MappingFragment StoreEntitySet="View_SubZone">
+                <ScalarProperty Name="ZoneName" ColumnName="ZoneName" />
+                <ScalarProperty Name="ZoneID" ColumnName="ZoneID" />
+                <ScalarProperty Name="SubRouteName" ColumnName="SubRouteName" />
+                <ScalarProperty Name="SubRouteId" ColumnName="SubRouteId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="View_tbl_Customer">
             <EntityTypeMapping TypeName="CashCarryModel.View_tbl_Customer">
               <MappingFragment StoreEntitySet="View_tbl_Customer">
                 <ScalarProperty Name="DuePayment" ColumnName="DuePayment" />
                 <ScalarProperty Name="SubRouteName" ColumnName="SubRouteName" />
-                <ScalarProperty Name="ZoneName" ColumnName="ZoneName" />
+                <ScalarProperty Name="Route" ColumnName="Route" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Contact" ColumnName="Contact" />
                 <ScalarProperty Name="Address" ColumnName="Address" />
@@ -1372,13 +1361,48 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="View_SubZone">
-            <EntityTypeMapping TypeName="CashCarryModel.View_SubZone">
-              <MappingFragment StoreEntitySet="View_SubZone">
-                <ScalarProperty Name="ZoneName" ColumnName="ZoneName" />
-                <ScalarProperty Name="ZoneID" ColumnName="ZoneID" />
+          <EntitySetMapping Name="View_SaleLedger">
+            <EntityTypeMapping TypeName="CashCarryModel.View_SaleLedger">
+              <MappingFragment StoreEntitySet="View_SaleLedger">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Debit" ColumnName="Debit" />
+                <ScalarProperty Name="Credit" ColumnName="Credit" />
+                <ScalarProperty Name="RInvoice" ColumnName="RInvoice" />
+                <ScalarProperty Name="RecoveryId" ColumnName="RecoveryId" />
+                <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
                 <ScalarProperty Name="SubRouteName" ColumnName="SubRouteName" />
-                <ScalarProperty Name="SubRouteId" ColumnName="SubRouteId" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="STId" ColumnName="STId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_DetailPurchase">
+            <EntityTypeMapping TypeName="CashCarryModel.View_DetailPurchase">
+              <MappingFragment StoreEntitySet="View_DetailPurchase">
+                <ScalarProperty Name="New_Balance" ColumnName="New Balance" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="Payment" ColumnName="Payment" />
+                <ScalarProperty Name="GrandTotal" ColumnName="GrandTotal" />
+                <ScalarProperty Name="FurDiscount" ColumnName="FurDiscount" />
+                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+                <ScalarProperty Name="Distribution_Margin" ColumnName="Distribution Margin" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="frieght" ColumnName="frieght" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Ctn" ColumnName="Ctn" />
+                <ScalarProperty Name="TradePrice" ColumnName="TradePrice" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
+                <ScalarProperty Name="Sr_" ColumnName="Sr#" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

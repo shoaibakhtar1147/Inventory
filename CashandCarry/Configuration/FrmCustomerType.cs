@@ -44,8 +44,7 @@ namespace CashandCarry.Configuration
         {
             txtCusType.Enabled = false;
             txtCusTypeID.Enabled = false;
-            btnDelete.Enabled = false;
-            btnUpdate.Enabled = false;
+           
             btnSave.Enabled = false;
         }
         private void FormEnable()
@@ -84,8 +83,7 @@ namespace CashandCarry.Configuration
                if(dt!= null)
                {
                    dgvCusType.DataSource = dt;
-                   btnDelete.Enabled = true;
-                   btnUpdate.Enabled = true;
+                  
                }
                 }
             
@@ -127,54 +125,55 @@ namespace CashandCarry.Configuration
             }
         }
 
-        private void btnUpdate_Click(object sender, EventArgs e)
-        {
-            if (txtCusType.Text == string.Empty)
-            {
-                MessageBox.Show("Please Enter An Customer Type For Update");
-                return;
-            }
-            else if (MessageBox.Show("Are You Sure To Update Customer Type?", "Update Alert", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
-            {
-                CusTypeBL obJCus = new CusTypeBL()
-                {
-                    CusTypeID = Convert.ToInt32(txtCusTypeID.Text),
-                    CusType = txtCusType.Text
-                };
-                obJCus.Update();
-                MessageBox.Show("Update Successful");
-                LoadData();
+        //private void btnUpdate_Click(object sender, EventArgs e)
+        //{
+        //    //if (txtCusType.Text == string.Empty)
+        //    //{
+        //    //    MessageBox.Show("Please Enter An Customer Type For Update");
+        //    //    return;
+        //    //}
+        //    if (MessageBox.Show("Are You Sure To Update Customer Type?", "Update Alert", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+        //    {
+        //        CusTypeBL obJCus = new CusTypeBL()
+        //        {
+        //            CusTypeID = Convert.ToInt32(txtCusTypeID.Text),
+        //            CusType = txtCusType.Text
+        //        };
+        //        obJCus.Update();
+        //        MessageBox.Show("Update Successful");
+        //        LoadData();
+                
                
-            }
-            else
-            {
-                MessageBox.Show("Customer Type Not Updated");
-            }
-            ClearGroup();
-        }
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("Customer Type Not Updated");
+        //    }
+        //    ClearGroup();
+        //}
 
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-             string message = "Are you sure to Delete Customer Type " + txtCusType.Text + "?";
+        //private void btnDelete_Click(object sender, EventArgs e)
+        //{
+        //     string message = "Are you sure to Delete Customer Type " + txtCusType.Text + "?";
 
-             if (MessageBox.Show(message, "Delete Alert", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
-             {
+        //     if (MessageBox.Show(message, "Delete Alert", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+        //     {
 
-                 CusTypeBL objCus = new CusTypeBL() 
-                 {
-                      CusTypeID=Convert.ToInt32(txtCusTypeID.Text)
-                 };
-                 objCus.Delete();
-                 MessageBox.Show("Record Deleted Successfull");
+        //         CusTypeBL objCus = new CusTypeBL() 
+        //         {
+        //              CusTypeID=Convert.ToInt32(txtCusTypeID.Text)
+        //         };
+        //         objCus.Delete();
+        //         MessageBox.Show("Record Deleted Successfull");
                
 
-            }
-            else
-            {
-                MessageBox.Show("Record Not Deleted ");
-            }
-            LoadData();
-             }
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("Record Not Deleted ");
+        //    }
+        //    LoadData();
+        //     }
 
           private void LoadData()
         {
@@ -212,25 +211,50 @@ namespace CashandCarry.Configuration
               {
                   txtCusTypeID.Text = dgvCusType.Rows[rowindex].Cells[2].Value.ToString();
                   txtCusType.Text = dgvCusType.Rows[rowindex].Cells[3].Value.ToString();
-                  btnUpdate.Enabled = true;
+                
                   txtCusType.Enabled = true;
                   
               }
-              if(columnIndex==1)
+              //if(columnIndex==1)
+              //{
+              //    string message = "Are you sure to Delete Customer Type " + txtCusType.Text + "?";
+
+              //    if (MessageBox.Show(message, "Delete Alert", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+              //    {
+
+              //        CusTypeBL objCus = new CusTypeBL()
+              //        {
+              //            CusTypeID = Convert.ToInt32(txtSearch.Text)
+              //        };
+              //        objCus.Delete();
+              //        MessageBox.Show("Record Deleted Successfull");
+
+
+              //    }
+              //}
+          }
+
+          private void txtSearch_TextChanged(object sender, EventArgs e)
+          {
+              if (txtSearch.Text == string.Empty)
               {
-                  string message = "Are you sure to Delete Customer Type " + txtCusType.Text + "?";
+                  LoadData();
 
-                  if (MessageBox.Show(message, "Delete Alert", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+              }
+              else
+              {
+                  CusTypeBL objTest = new  CusTypeBL()
                   {
-
-                      CusTypeBL objCus = new CusTypeBL()
-                      {
-                          CusTypeID = Convert.ToInt32(txtSearch.Text)
-                      };
-                      objCus.Delete();
-                      MessageBox.Show("Record Deleted Successfull");
-
-
+                      CusType = txtSearch.Text.ToLower()
+                  };
+                  var dt = objTest.SearchByName();
+                  AutoCompleteStringCollection coll = new AutoCompleteStringCollection();
+                  txtSearch.AutoCompleteMode = AutoCompleteMode.Suggest;
+                  txtSearch.AutoCompleteSource = AutoCompleteSource.CustomSource;
+                  txtSearch.AutoCompleteCustomSource = coll;
+                  if (dt.Count > 0)
+                  {
+                      dgvCusType.DataSource = dt;
                   }
               }
           }

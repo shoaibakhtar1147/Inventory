@@ -31,40 +31,48 @@ namespace CashandCarry.Configuration
             try
             {
                  decimal preBal = Convert.ToDecimal(txtPreBal.Text);
-            CompanyBL objCom = new CompanyBL() 
-            {
-             CompanyName=txtComName.Text,
-             Email=txtEmail.Text,
-              Contact=txtContact.Text,
-               Address=txtAddress.Text,
-               DuePayment=Convert.ToDecimal(txtPreBal.Text)
-               
-            };
-            if(preBal>0)
-            {
-                PurchaseLedgerBL objBl = new PurchaseLedgerBL() 
-                {
-                    CompanyID=Convert.ToInt32(txtComID.Text),
-                    Debit=Convert.ToDecimal(txtPreBal.Text),
-                    Credit=0,
-                    Date=Convert.ToDateTime(DateTime.Now.ToShortDateString()),
-                    Balance=Convert.ToDecimal(txtPreBal.Text),
-                    Description="Opening Balance"
-                };
-                objBl.save();
-            }
-            objCom.Save();
-            MessageBox.Show("Record Saved Successfull");
-            LoadData();
-            btnAddnew.Enabled = true;
-            ClearGroup();
+           if(FormValidate()==true)
+           {
+               CompanyBL objCom = new CompanyBL()
+               {
+                   CompanyName = txtComName.Text,
+                   Email = txtEmail.Text,
+                   Contact = txtContact.Text,
+                   Address = txtAddress.Text,
+                   DuePayment = Convert.ToDecimal(txtPreBal.Text)
+
+               };
+               if (preBal > 0)
+               {
+                   PurchaseLedgerBL objBl = new PurchaseLedgerBL()
+                   {
+                       CompanyID = Convert.ToInt32(txtComID.Text),
+                       Debit = Convert.ToDecimal(txtPreBal.Text),
+                       Credit = 0,
+                       Date = Convert.ToDateTime(DateTime.Now.ToShortDateString()),
+                       Balance = Convert.ToDecimal(txtPreBal.Text),
+                       Description = "Opening Balance"
+                   };
+                   objBl.save();
+               }
+               objCom.Save();
+               MessageBox.Show("Record Saved Successfull");
+               LoadData();
+               btnAddnew.Enabled = true;
+               ClearGroup();
+           }
             }
             catch(Exception ex)
             {
                 MessageBox.Show(ex.Message.ToString());
             }
         }
-        
+
+        private bool FormValidate()
+        {
+            if (txtComID.Text == "" || txtComName.Text == "" || txtContact.MaskCompleted == false || txtAddress.Text == "" ||txtEmail.Text==""||txtPreBal.Text== "") return false;
+            return true;
+        }
         
         private void ClearGroup()
         {
@@ -80,13 +88,13 @@ namespace CashandCarry.Configuration
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-             if (txtSearch.Text == string.Empty)
-            {
-                MessageBox.Show("Please Select A Zone ID ");
-                return;
-            }
+            // if (txtSearch.Text == string.Empty)
+            //{
+            //    MessageBox.Show("Please Select A Zone ID ");
+            //    return;
+            //}
 
-             else if (MessageBox.Show("Are You Sure To Update Company?", "UpdateAlert", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+         if (MessageBox.Show("Are You Sure To Update Company?", "UpdateAlert", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
              {
                  CompanyBL objCom = new CompanyBL()
                  {
@@ -144,12 +152,13 @@ namespace CashandCarry.Configuration
             {
                 CompanyBL objCom = new CompanyBL()
                 {
-                    CompanyID = int.Parse(txtSearch.Text)
+                    CompanyID = int.Parse(txtComID.Text)
                 };
                 objCom.Delete();
 
                     MessageBox.Show("Record Deleted Successfull");
                     LoadData();
+                    ClearGroup();
                 
             }
             else
@@ -285,15 +294,19 @@ namespace CashandCarry.Configuration
                 string message = "Are You Sure To Delete Company " + txtComName.Text + "?";
                 if (MessageBox.Show(message, "Delete Alert", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
-                    CompanyBL objCom = new CompanyBL()
-                    {
-                        CompanyID = int.Parse(txtSearch.Text)
-                    };
-                    objCom.Delete();
+                    
+                        CompanyBL objCom = new CompanyBL()
+                        {
+                            CompanyID = Convert.ToInt32(dgvCompany.Rows[rowindex].Cells[2].Value.ToString())
+                        };
+                        objCom.Delete();
 
-                    MessageBox.Show("Record Deleted Successfull");
-                    LoadData();
+                        MessageBox.Show("Record Deleted Successfull");
+                        LoadData();
+                        ClearGroup();
 
+                    
+                    
                 }
             }
         }
@@ -303,6 +316,31 @@ namespace CashandCarry.Configuration
             if(string.IsNullOrEmpty(txtPreBal.Text))
             {
                 txtPreBal.Text = "0.00";
+            }
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            if (txtSearch.Text == string.Empty)
+            {
+                LoadData();
+
+            }
+            else
+            {
+                CompanyBL objTest = new  CompanyBL()
+                {
+                    CompanyName = txtSearch.Text.ToLower()
+                };
+                var dt = objTest.SearchByName();
+                AutoCompleteStringCollection coll = new AutoCompleteStringCollection();
+                txtSearch.AutoCompleteMode = AutoCompleteMode.Suggest;
+                txtSearch.AutoCompleteSource = AutoCompleteSource.CustomSource;
+                txtSearch.AutoCompleteCustomSource = coll;
+                if (dt.Count > 0)
+                {
+                    dgvCompany.DataSource = dt;
+                }
             }
         }
     }

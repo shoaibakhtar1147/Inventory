@@ -20,17 +20,19 @@ namespace CashandCarry.Model
         public string CompanyName { get; set; }
         public string Contact { get; set; }
         public Nullable<System.DateTime> Date { get; set; }
+        public Nullable<int> ProductID { get; set; }
         public string ProductName { get; set; }
         public Nullable<decimal> TradePrice { get; set; }
         public Nullable<decimal> Ctn { get; set; }
         public Nullable<int> Quantity { get; set; }
+        public Nullable<decimal> frieght { get; set; }
         public Nullable<decimal> Amount { get; set; }
-        public Nullable<decimal> Discount { get; set; }
+        public Nullable<decimal> Distribution_Margin { get; set; }
+        public Nullable<decimal> TotalAmount { get; set; }
+        public Nullable<decimal> FurDiscount { get; set; }
         public Nullable<decimal> GrandTotal { get; set; }
         public Nullable<decimal> Payment { get; set; }
         public Nullable<decimal> Balance { get; set; }
         public Nullable<decimal> New_Balance { get; set; }
-        public Nullable<decimal> frieght { get; set; }
-        public Nullable<int> ProductID { get; set; }
     }
 }

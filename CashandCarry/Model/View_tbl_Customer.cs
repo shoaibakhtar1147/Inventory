@@ -20,7 +20,7 @@ namespace CashandCarry.Model
         public string Address { get; set; }
         public string Contact { get; set; }
         public string Email { get; set; }
-        public string ZoneName { get; set; }
+        public string Route { get; set; }
         public string SubRouteName { get; set; }
         public Nullable<decimal> DuePayment { get; set; }
     }

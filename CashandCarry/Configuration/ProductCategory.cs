@@ -130,18 +130,18 @@ namespace CashandCarry.Configuration
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             
-            if(txtSearch.Text==string.Empty)
-            {
-                MessageBox.Show("Please Select An Category ID ");
-                return;
-            }
+            //if(txtSearch.Text==string.Empty)
+            //{
+            //    MessageBox.Show("Please Select An Category ID ");
+            //    return;
+            //}
                 
-            else if(MessageBox.Show("Are You Sure To Update Category?","UpdateAlert",MessageBoxButtons.YesNo,MessageBoxIcon.Information)==DialogResult.Yes)
+            if(MessageBox.Show("Are You Sure To Update Category?","UpdateAlert",MessageBoxButtons.YesNo,MessageBoxIcon.Information)==DialogResult.Yes)
             {
                 
              CategoryBL ojcate=new CategoryBL()
              {
-              CategoryID=Convert.ToInt32(txtSearch.Text)
+              CategoryID=Convert.ToInt32(txtCategoryID.Text)
              };
                ojcate.Update();
                 MessageBox.Show("Record Updated");
@@ -157,35 +157,35 @@ namespace CashandCarry.Configuration
                 MessageBox.Show("Record Not Update");
             }
         }
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
-            if(txtSearch.Text==string.Empty)
-            {
-                MessageBox.Show("Please Enter An ID");
-            }
-           else if(!string.IsNullOrEmpty(txtSearch.Text))
-            {
-                CategoryBL objCate = new CategoryBL()
-                {
-                    CategoryID = Convert.ToInt32(txtSearch.Text)
-                };
-                var dt = objCate.Search();
-                if (dt != null)
-                {
-                    dgvCategory.DataSource = dt;
-                    txtCategory.Enabled = true;
-                    btnUpdate.Enabled = true;
-                   // btnDelete.Enabled = true;
+        //private void btnSearch_Click(object sender, EventArgs e)
+        //{
+        //    if(txtSearch.Text==string.Empty)
+        //    {
+        //        MessageBox.Show("Please Enter An ID");
+        //    }
+        //   else if(!string.IsNullOrEmpty(txtSearch.Text))
+        //    {
+        //        CategoryBL objCate = new CategoryBL()
+        //        {
+        //            CategoryID = Convert.ToInt32(txtSearch.Text)
+        //        };
+        //        var dt = objCate.Search();
+        //        if (dt != null)
+        //        {
+        //            dgvCategory.DataSource = dt;
+        //            txtCategory.Enabled = true;
+        //            btnUpdate.Enabled = true;
+        //           // btnDelete.Enabled = true;
 
-                }
-            }
-            else  
-            {
-                MessageBox.Show("Record Not Found");
-            }
+        //        }
+        //    }
+        //    else  
+        //    {
+        //        MessageBox.Show("Record Not Found");
+        //    }
            
                 
-        }
+        //}
         //private void btnDelete_Click(object sender, EventArgs e)
         //{
         //    string message="Are You Sure To Delete Product Category"+txtCategory.Text+"?";
@@ -243,6 +243,31 @@ namespace CashandCarry.Configuration
             //        ClearGroup();
             //    }
             //}
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            if (txtSearch.Text == string.Empty)
+            {
+                LoadData();
+
+            }
+            else
+            {
+                CategoryBL objTest = new  CategoryBL()
+                {
+                    CategoryName = txtSearch.Text.ToLower()
+                };
+                var dt = objTest.SearchByName();
+                AutoCompleteStringCollection coll = new AutoCompleteStringCollection();
+                txtSearch.AutoCompleteMode = AutoCompleteMode.Suggest;
+                txtSearch.AutoCompleteSource = AutoCompleteSource.CustomSource;
+                txtSearch.AutoCompleteCustomSource = coll;
+                if (dt.Count > 0)
+                {
+                    dgvCategory.DataSource = dt;
+                }
+            }
         }
     }
 }

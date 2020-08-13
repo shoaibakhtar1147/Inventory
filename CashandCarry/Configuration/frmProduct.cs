@@ -232,6 +232,7 @@ namespace CashandCarry.Configuration
                 objPro.Update();
                 MessageBox.Show("Product Update Successfull");
                 LoadData();
+                ClearGroup();
             }
             else
             {
@@ -248,11 +249,12 @@ namespace CashandCarry.Configuration
             {
                 ProductBL objPro=new ProductBL()
                 {
-                     ProductID = Convert.ToInt32(txtSearch.Text)
+                     ProductID = Convert.ToInt32(txtProductID.Text)
                 };
                 objPro.Delete();
                 MessageBox.Show("Record Delete Successfull");
                 LoadData();
+                ClearGroup();
                 
             }
         }
@@ -291,6 +293,31 @@ namespace CashandCarry.Configuration
                 objPro.Delete();
                 MessageBox.Show("Record Delete Successfull");
                 LoadData();
+            }
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            if (txtSearch.Text == string.Empty)
+            {
+                LoadData();
+
+            }
+            else
+            {
+                ProductBL objTest = new ProductBL()
+                {
+                    ProductName = txtSearch.Text.ToLower()
+                };
+                var dt = objTest.SearchByProName();
+                AutoCompleteStringCollection coll = new AutoCompleteStringCollection();
+                txtSearch.AutoCompleteMode = AutoCompleteMode.Suggest;
+                txtSearch.AutoCompleteSource = AutoCompleteSource.CustomSource;
+                txtSearch.AutoCompleteCustomSource = coll;
+                if (dt.Count > 0)
+                {
+                    dgvProduct.DataSource = dt;
+                }
             }
         }
       

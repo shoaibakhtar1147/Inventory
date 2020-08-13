@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtPurInvoiceDate = new System.Windows.Forms.DateTimePicker();
             this.txtInvoiceID = new System.Windows.Forms.TextBox();
@@ -74,9 +74,9 @@
             this.label16 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.label22 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtfurDiscount = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txttotalAmount = new System.Windows.Forms.TextBox();
             this.label26 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.txtnewBalance = new System.Windows.Forms.TextBox();
@@ -409,7 +409,7 @@
             this.lblPieCtn.AutoSize = true;
             this.lblPieCtn.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPieCtn.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblPieCtn.Location = new System.Drawing.Point(579, 149);
+            this.lblPieCtn.Location = new System.Drawing.Point(585, 149);
             this.lblPieCtn.Name = "lblPieCtn";
             this.lblPieCtn.Size = new System.Drawing.Size(0, 17);
             this.lblPieCtn.TabIndex = 120;
@@ -419,7 +419,7 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label10.Location = new System.Drawing.Point(504, 149);
+            this.label10.Location = new System.Drawing.Point(510, 149);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(69, 17);
             this.label10.TabIndex = 119;
@@ -623,9 +623,9 @@
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.label22);
-            this.groupBox5.Controls.Add(this.textBox1);
+            this.groupBox5.Controls.Add(this.txtfurDiscount);
             this.groupBox5.Controls.Add(this.label25);
-            this.groupBox5.Controls.Add(this.textBox2);
+            this.groupBox5.Controls.Add(this.txttotalAmount);
             this.groupBox5.Controls.Add(this.label26);
             this.groupBox5.Controls.Add(this.label21);
             this.groupBox5.Controls.Add(this.txtnewBalance);
@@ -660,14 +660,15 @@
             this.label22.TabIndex = 122;
             this.label22.Text = "%";
             // 
-            // textBox1
+            // txtfurDiscount
             // 
-            this.textBox1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(132, 147);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(142, 23);
-            this.textBox1.TabIndex = 15;
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtfurDiscount.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtfurDiscount.Location = new System.Drawing.Point(132, 147);
+            this.txtfurDiscount.Name = "txtfurDiscount";
+            this.txtfurDiscount.Size = new System.Drawing.Size(142, 23);
+            this.txtfurDiscount.TabIndex = 15;
+            this.txtfurDiscount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtfurDiscount.Leave += new System.EventHandler(this.txtfurDiscount_Leave);
             // 
             // label25
             // 
@@ -680,15 +681,15 @@
             this.label25.TabIndex = 121;
             this.label25.Text = "Fur Discount:";
             // 
-            // textBox2
+            // txttotalAmount
             // 
-            this.textBox2.Enabled = false;
-            this.textBox2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(132, 110);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(142, 23);
-            this.textBox2.TabIndex = 119;
-            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txttotalAmount.Enabled = false;
+            this.txttotalAmount.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txttotalAmount.Location = new System.Drawing.Point(132, 110);
+            this.txttotalAmount.Name = "txttotalAmount";
+            this.txttotalAmount.Size = new System.Drawing.Size(142, 23);
+            this.txttotalAmount.TabIndex = 119;
+            this.txttotalAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label26
             // 
@@ -697,9 +698,9 @@
             this.label26.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label26.Location = new System.Drawing.Point(17, 113);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(43, 17);
+            this.label26.Size = new System.Drawing.Size(99, 17);
             this.label26.TabIndex = 120;
-            this.label26.Text = "Total:";
+            this.label26.Text = "Total Amount:";
             // 
             // label21
             // 
@@ -760,9 +761,9 @@
             this.label17.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label17.Location = new System.Drawing.Point(16, 73);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(68, 17);
+            this.label17.Size = new System.Drawing.Size(83, 17);
             this.label17.TabIndex = 112;
-            this.label17.Text = "Discount:";
+            this.label17.Text = "Dist Margin:";
             // 
             // label20
             // 
@@ -802,9 +803,9 @@
             this.label19.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label19.Location = new System.Drawing.Point(16, 36);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(64, 17);
+            this.label19.Size = new System.Drawing.Size(70, 17);
             this.label19.TabIndex = 23;
-            this.label19.Text = "Amount:";
+            this.label19.Text = "Sub Total:";
             // 
             // label23
             // 
@@ -826,6 +827,7 @@
             this.txtTotalPay.TabIndex = 16;
             this.txtTotalPay.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtTotalPay.TextChanged += new System.EventHandler(this.txtTotalPay_TextChanged);
+            this.txtTotalPay.Leave += new System.EventHandler(this.txtTotalPay_Leave);
             // 
             // label24
             // 
@@ -850,14 +852,14 @@
             // 
             this.dgvProduct.AllowUserToAddRows = false;
             this.dgvProduct.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvProduct.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProduct.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvProduct.Location = new System.Drawing.Point(0, 0);
             this.dgvProduct.Name = "dgvProduct";
             this.dgvProduct.Size = new System.Drawing.Size(856, 262);
@@ -1036,9 +1038,9 @@
         private System.Windows.Forms.Label lblfrieghtQuan;
         private System.Windows.Forms.CheckBox ChkFrieghtOrder;
         private System.Windows.Forms.Label label22;
-        public System.Windows.Forms.TextBox textBox1;
+        public System.Windows.Forms.TextBox txtfurDiscount;
         private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txttotalAmount;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Button btnPrice;

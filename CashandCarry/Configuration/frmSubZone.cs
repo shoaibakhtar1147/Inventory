@@ -177,5 +177,10 @@ namespace CashandCarry.Configuration
                 }
             }
         }
+
+        private void dgvSubZone_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

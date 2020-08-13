@@ -18,6 +18,7 @@ namespace CashandCarry.Model
         public Nullable<int> CustomerID { get; set; }
         public string Name { get; set; }
         public string Contact { get; set; }
+        public string SubRouteName { get; set; }
         public Nullable<int> InvoiceNo { get; set; }
         public Nullable<int> RecoveryId { get; set; }
         public Nullable<int> RInvoice { get; set; }

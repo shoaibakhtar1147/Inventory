@@ -24,6 +24,35 @@ namespace CashandCarry.Sales
         private void FrmSaleLedger_Load(object sender, EventArgs e)
         {
             GridDesign();
+            LoadCus();
+            //LoadSubZone();
+        }
+
+        //private void LoadSubZone()
+        //{
+        //    SubZoneBL objZone = new SubZoneBL();
+        //    var dt = objZone.Select();
+        //    txtSubZone.DataSource = dt;
+        //    txtSubZone.AutoCompleteMode = AutoCompleteMode.Suggest;
+        //    txtSubZone.AutoCompleteSource = AutoCompleteSource.ListItems;
+        //    txtSubZone.DisplayMember = "SubRouteName";
+        //    txtSubZone.ValueMember = "SubRouteId";
+        //    txtSubZone.Text = "---Select---";
+
+
+        //}
+
+        private void LoadCus()
+        {
+            CustomerBL objCus = new CustomerBL();
+            var dt = objCus.Select();
+            txtCusName.DataSource = dt;
+            txtCusName.AutoCompleteMode = AutoCompleteMode.Suggest;
+            txtCusName.AutoCompleteSource = AutoCompleteSource.ListItems;
+            txtCusName.DisplayMember = "Name";
+            txtCusName.ValueMember = "CustomerID";
+            txtCusName.Text = "---Select---";
+
         }
 
         private void GridDesign()
@@ -42,47 +71,64 @@ namespace CashandCarry.Sales
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            SaleLedgerBL objLedger = new SaleLedgerBL()
+            if (txtCusName.Text != "---Select---")
             {
-                CustomerID =Convert.ToInt32( txtSearch.Text)
-            };
-            var dt = objLedger.search();
-            if(dt !=null)
-            {
-                dgvLedger.DataSource = dt;
-                this.dgvLedger.Columns["STid"].Visible = false;
-                    
+                SaleLedgerBL objLedger = new SaleLedgerBL()
+                {
+                    CustomerID = Convert.ToInt32(txtCusName.SelectedValue)
+                };
+                var dt = objLedger.search();
+                if (dt != null)
+                {
+                    dgvLedger.DataSource = dt;
+                    this.dgvLedger.Columns["STid"].Visible = false;
+
+                }
+                else
+                {
+                    MessageBox.Show("No Record Found " + txtCusName.Text);
+                }
             }
+            
+           
             else
-            {
-                MessageBox.Show("No Record Found " + txtSearch.Text);
-            }
+                {
+                    MessageBox.Show("Please Select Customer Name");
+                }
+           
+
+            
 
         }
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            if(string.IsNullOrEmpty(txtSearch.Text))
+            if(txtCusName.Text=="---Select---")
             {
-                MessageBox.Show("Please Enter Customer Id");
+                MessageBox.Show("Please Enter Customer Name");
             }
-            else
+            else if(dgvLedger.DataSource != null)
             {
                 SaleLedgerReport objSale = new SaleLedgerReport();
                 rptViewer objView = new rptViewer();
-                objSale.SetParameterValue("@CustomerID", txtSearch.Text);
+                objSale.SetParameterValue("@CustomerID", txtCusName.SelectedValue);
                 SaleLedgerBL objLedger = new SaleLedgerBL() 
                 {
-                CustomerID=Convert.ToInt32(txtSearch.Text)
+                CustomerID=Convert.ToInt32(txtCusName.SelectedValue)
                 };
                 DataTable dt = objLedger.Search();
                 if(dt != null)
                 {
                     objSale.SetDataSource(dt);
                     objView.crptViewer.ReportSource = objSale;
-                    objView.WindowState = FormWindowState.Normal;
+                    objView.WindowState = FormWindowState.Maximized;
                     objView.ShowDialog();
                 }
+                
+            }
+            else if (dgvLedger.DataSource == null)
+            {
+                MessageBox.Show("No Record Showed");
             }
         }
     }

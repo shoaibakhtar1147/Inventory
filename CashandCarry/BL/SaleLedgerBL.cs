@@ -21,7 +21,7 @@ namespace CashandCarry.BL
       public decimal Balance{get;set;}
      public string Description{get;set;}
      public int RInvoice { get; set;}
-
+     public string SubRouteName { get; set; }
         public void Save()
         {
             using(var context = new CashCarryEntities3())
