@@ -23,32 +23,80 @@ namespace CashandCarry.Configuration
         private void FrmPriceSet_Load(object sender, EventArgs e)
         {
             FormDisabled();
+            LoadData();
+            LoadGridDesign();
         }
 
+        private void LoadGridDesign()
+        {
+            
+            dgvProductPrice.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(238, 239, 249);
+            dgvProductPrice.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgvProductPrice.DefaultCellStyle.SelectionBackColor = Color.DarkTurquoise;
+            dgvProductPrice.DefaultCellStyle.SelectionForeColor = Color.WhiteSmoke;
+            dgvProductPrice.BackgroundColor = Color.White;
+
+            dgvProductPrice.EnableHeadersVisualStyles = false;
+            dgvProductPrice.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dgvProductPrice.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(20, 25, 72);
+            dgvProductPrice.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+        }
+        
+
         private void FormDisabled()
-        {            
+        {
+            txtProductId.Enabled = false;
             txtProductName.Enabled = false;
             txtBuyerPrice.Enabled = false;
             txtSellerPrice.Enabled = false;
             rdActive.Enabled = false;
             rdNotActive.Enabled = false;
             btnSave.Enabled = false;
+            btnUpdate.Enabled = false;
         }
 
         private void FromEnable()
-        {            
+        {
+            txtProductId.Enabled = true;
             txtProductName.Enabled = true;
             txtBuyerPrice.Enabled = true;
             txtSellerPrice.Enabled = true;
             rdActive.Enabled = true;
             rdNotActive.Enabled = true;
             btnSave.Enabled = true;
+            btnAddnew.Enabled = false;
         }
 
         private void btnAddnew_Click(object sender, EventArgs e)
         {
             FromEnable();
             LoadProduct();
+            
+        }
+
+        private void LoadData()
+        {
+            SetPriceBL objBL = new SetPriceBL();
+            var dt = objBL.selectwithSp();
+            dgvProductPrice.Columns.Clear();
+            if(dt != null)
+            {
+                DataGridViewImageColumn edit = new DataGridViewImageColumn();
+                edit.Image = Properties.Resources.edit;
+                edit.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                edit.HeaderText = "Edit";
+
+                DataGridViewImageColumn delete = new DataGridViewImageColumn();
+                delete.Image = Properties.Resources.delete;
+                delete.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                delete.HeaderText = "Delete";
+                edit.Width = delete.Width = 40;
+                dgvProductPrice.Columns.Add(edit);
+                dgvProductPrice.Columns.Add(delete);
+                dgvProductPrice.DataSource = dt;
+                dgvProductPrice.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                //dgvProductPrice.Columns["ProductPriceId"].Visible = false;
+            }
         }
 
         private void LoadProduct()
@@ -64,7 +112,116 @@ namespace CashandCarry.Configuration
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            try {
+                
+            if(FormValidate()==true)
+            {
+                bool status = rdActive.Checked ? true : false;
+                SetPriceBL objBL = new SetPriceBL() 
+                {
+                 BuyerPrice=Convert.ToDecimal(txtBuyerPrice.Text),
+                 SellerPrice=Convert.ToDecimal(txtSellerPrice.Text),
+                 ProductID=Convert.ToInt32(txtProductName.SelectedValue),
+                 IsActive=status,
+                 AddedDate=Convert.ToDateTime(DateTime.Now.ToShortDateString())
+                };
+                objBL.Save();
+                MessageBox.Show("Price Saved Successfull");
+                ClearGroup();
+                LoadData();
+                btnAddnew.Enabled = true;
+            }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+        }
 
+        private void ClearGroup()
+        {
+            foreach (Control c in groupBox1.Controls)
+            {
+                if (c is TextBox || c is ComboBox || c is MaskedTextBox)
+                {
+                    c.Text = "";
+                }
+                rdActive.Checked = false;
+                rdNotActive.Checked = false;
+
+            }
+        }
+
+        private bool FormValidate()
+        {
+            if (txtBuyerPrice.Text == "" || txtProductName.Text == "" || txtSellerPrice.Text == "" )
+            {
+                return false;
+            }
+            {
+                return true;
+            }
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            try {
+                bool Status=rdActive.Checked ? true : false;
+                SetPriceBL obj = new SetPriceBL() 
+                {
+                    ProductID=Convert.ToInt32(txtProductId.Text),
+                IsActive=Status,
+                SellerPrice=Convert.ToDecimal(txtSellerPrice.Text),
+                BuyerPrice=Convert.ToDecimal(txtBuyerPrice.Text)
+                };
+                obj.Update();
+                MessageBox.Show("Update Successfull");
+                LoadData();
+                ClearGroup();
+                
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+
+            }
+        }
+
+        private void dgvProductPrice_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int rowindex = e.RowIndex;
+            int columnindex = e.ColumnIndex;
+            if(columnindex ==0)
+            {
+                txtProductId.Text = dgvProductPrice.Rows[rowindex].Cells[3].Value.ToString();
+                txtProductName.Text = dgvProductPrice.Rows[rowindex].Cells[4].Value.ToString();
+                txtBuyerPrice.Text =  dgvProductPrice.Rows[rowindex].Cells[5].Value.ToString();
+                 txtSellerPrice.Text= dgvProductPrice.Rows[rowindex].Cells[6].Value.ToString();
+                 string Status =   dgvProductPrice.Rows[rowindex].Cells[8].Value.ToString();
+                if(Status=="Active")
+                {
+                    rdActive.Checked = true;
+                }
+                else if(Status=="Not Active")
+                {
+                    rdNotActive.Checked = true;
+                }
+                FromEnable();
+                btnUpdate.Enabled = true;
+            }
+        }
+
+        private void txtProductName_Leave(object sender, EventArgs e)
+        {
+            ProductBL objPro = new ProductBL()
+            {
+                ProductID = Convert.ToInt32(txtProductName.SelectedValue)
+            };
+            List<View_tbl_Product> dt = objPro.Search();
+            if (dt != null)
+            {
+                txtProductId.Text = Convert.ToString(dt[0].ProductID);
+            }
         }
 
        

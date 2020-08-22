@@ -12,17 +12,13 @@ namespace CashandCarry.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class View_tbl_Product
+    public partial class View_ProductPrice
     {
-        public int ProductID { get; set; }
+        public int ProductPriceId { get; set; }
         public string ProductName { get; set; }
-        public string Category { get; set; }
-        public string Company { get; set; }
-        public string weight { get; set; }
-        public decimal RetailPrice { get; set; }
-        public decimal PurchasePrice { get; set; }
-        public Nullable<int> PiecePerCtn { get; set; }
-        public Nullable<decimal> Ctn { get; set; }
-        public Nullable<int> Piece { get; set; }
+        public Nullable<decimal> BuyerPrice { get; set; }
+        public Nullable<decimal> SellerPrice { get; set; }
+        public Nullable<bool> IsActive { get; set; }
+        public Nullable<System.DateTime> AddedDate { get; set; }
     }
 }

@@ -312,6 +312,19 @@ warning 6002: The table/view 'CashCarry.dbo.View_DetailPurchase' does not have a
     <Property Name="New Balance" Type="decimal" Precision="18" Scale="2" />
   </EntityType>
   <!--Errors Found During Generation:
+warning 6002: The table/view 'CashCarry.dbo.View_ProductPrice' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="View_ProductPrice">
+    <Key>
+      <PropertyRef Name="ProductPriceId" />
+    </Key>
+    <Property Name="ProductPriceId" Type="int" Nullable="false" />
+    <Property Name="ProductName" Type="varchar" MaxLength="30" />
+    <Property Name="BuyerPrice" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="SellerPrice" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="AddedDate" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
 warning 6002: The table/view 'CashCarry.dbo.View_PurLedger' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="View_PurLedger">
     <Key>
@@ -388,11 +401,11 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
     <Property Name="Category" Type="varchar" MaxLength="50" />
     <Property Name="Company" Type="varchar" MaxLength="100" />
     <Property Name="weight" Type="varchar" MaxLength="20" />
-    <Property Name="RetailPrice" Type="decimal" Precision="18" Scale="0" />
-    <Property Name="PurchasePrice" Type="decimal" Precision="18" Scale="0" />
     <Property Name="PiecePerCtn" Type="int" />
     <Property Name="Ctn" Type="decimal" Precision="18" Scale="0" />
     <Property Name="Piece" Type="int" />
+    <Property Name="PurchasePrice" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="RetailPrice" Type="decimal" Precision="18" Scale="2" Nullable="false" />
   </EntityType>
   <Function Name="SP_Cate_AddNew" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="CategoryID" Type="int" Mode="In" />
@@ -461,6 +474,16 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
     [View_DetailPurchase].[New Balance] AS [New Balance]
     FROM [dbo].[View_DetailPurchase] AS [View_DetailPurchase]</DefiningQuery>
     </EntitySet>
+    <EntitySet Name="View_ProductPrice" EntityType="Self.View_ProductPrice" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [View_ProductPrice].[ProductPriceId] AS [ProductPriceId], 
+    [View_ProductPrice].[ProductName] AS [ProductName], 
+    [View_ProductPrice].[BuyerPrice] AS [BuyerPrice], 
+    [View_ProductPrice].[SellerPrice] AS [SellerPrice], 
+    [View_ProductPrice].[IsActive] AS [IsActive], 
+    [View_ProductPrice].[AddedDate] AS [AddedDate]
+    FROM [dbo].[View_ProductPrice] AS [View_ProductPrice]</DefiningQuery>
+    </EntitySet>
     <EntitySet Name="View_PurLedger" EntityType="Self.View_PurLedger" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
     [View_PurLedger].[PTId] AS [PTId], 
@@ -522,11 +545,11 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
     [View_tbl_Product].[Category] AS [Category], 
     [View_tbl_Product].[Company] AS [Company], 
     [View_tbl_Product].[weight] AS [weight], 
-    [View_tbl_Product].[RetailPrice] AS [RetailPrice], 
-    [View_tbl_Product].[PurchasePrice] AS [PurchasePrice], 
     [View_tbl_Product].[PiecePerCtn] AS [PiecePerCtn], 
     [View_tbl_Product].[Ctn] AS [Ctn], 
-    [View_tbl_Product].[Piece] AS [Piece]
+    [View_tbl_Product].[Piece] AS [Piece], 
+    [View_tbl_Product].[PurchasePrice] AS [PurchasePrice], 
+    [View_tbl_Product].[RetailPrice] AS [RetailPrice]
     FROM [dbo].[View_tbl_Product] AS [View_tbl_Product]</DefiningQuery>
     </EntitySet>
   </EntityContainer>

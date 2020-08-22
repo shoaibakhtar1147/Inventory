@@ -90,6 +90,7 @@
     <Compile Include="BL\SaleInvoiceBL.cs" />
     <Compile Include="BL\SaleLedgerBL.cs" />
     <Compile Include="BL\SaleRecoveryBL.cs" />
+    <Compile Include="BL\SetPriceBL.cs" />
     <Compile Include="BL\SubZoneBL.cs" />
     <Compile Include="BL\ZoneBL.cs" />
     <Compile Include="Configuration\FrmCustomerType.cs">
@@ -378,6 +379,9 @@
       <DependentUpon>CashCarry.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\View_DetailPurchase.cs">
+      <DependentUpon>CashCarry.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\View_ProductPrice.cs">
       <DependentUpon>CashCarry.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\View_PurLedger.cs">

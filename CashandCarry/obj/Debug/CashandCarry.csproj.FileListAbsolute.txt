@@ -90,7 +90,6 @@ G:\C#\Inventory\CashandCarry\bin\Debug\MetroFramework.dll
 G:\C#\Inventory\CashandCarry\bin\Debug\MetroFramework.Fonts.dll
 G:\C#\Inventory\CashandCarry\bin\Debug\EntityFramework.xml
 G:\C#\Inventory\CashandCarry\bin\Debug\EntityFramework.SqlServer.xml
-G:\C#\Inventory\CashandCarry\obj\Debug\CashandCarry.csprojResolveAssemblyReference.cache
 G:\C#\Inventory\CashandCarry\obj\Debug\CashandCarry.Configuration.frmCustomer.resources
 G:\C#\Inventory\CashandCarry\obj\Debug\CashandCarry.Configuration.frmCompany.resources
 G:\C#\Inventory\CashandCarry\obj\Debug\CashandCarry.Configuration.FrmCustomerType.resources

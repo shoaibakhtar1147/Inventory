@@ -444,5 +444,17 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="View_ProductPrice">
+      <EntityTypeMapping TypeName="CashCarryModel.View_ProductPrice">
+        <MappingFragment StoreEntitySet="View_ProductPrice">
+          <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="SellerPrice" ColumnName="SellerPrice" />
+          <ScalarProperty Name="BuyerPrice" ColumnName="BuyerPrice" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="ProductPriceId" ColumnName="ProductPriceId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

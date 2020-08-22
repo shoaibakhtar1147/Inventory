@@ -35,6 +35,7 @@
         <EntityTypeShape EntityType="CashCarryModel.View_SaleLedger" Width="1.5" PointX="9.375" PointY="9.75" />
         <EntityTypeShape EntityType="CashCarryModel.View_DetailPurchase" Width="1.5" PointX="0.75" PointY="9.75" />
         <EntityTypeShape EntityType="CashCarryModel.tbl_ProductPrice" Width="1.5" PointX="11.375" PointY="9.75" />
+        <EntityTypeShape EntityType="CashCarryModel.View_ProductPrice" Width="1.5" PointX="12.375" PointY="2.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
