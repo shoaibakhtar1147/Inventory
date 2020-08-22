@@ -857,6 +857,8 @@
             this.dgvProduct.Size = new System.Drawing.Size(672, 184);
             this.dgvProduct.TabIndex = 16;
             this.dgvProduct.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProduct_CellContentClick);
+            this.dgvProduct.DoubleClick += new System.EventHandler(this.dgvProduct_DoubleClick);
+            this.dgvProduct.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvProduct_KeyDown);
             // 
             // FrmSaleInvoice
             // 

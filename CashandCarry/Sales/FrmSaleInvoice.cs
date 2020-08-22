@@ -98,8 +98,11 @@ namespace CashandCarry.Sales
             }
             
         }
+        #region FormEnable/Disable
         private void FormDisable()
         {
+            ChkCtn.Enabled = false;
+            ChkPiece.Enabled = false;
             txtCusName.Enabled = false;
             txtCusId.Enabled = false;
             txtDiscount.Enabled = false;
@@ -137,6 +140,8 @@ namespace CashandCarry.Sales
             txtCusName.Enabled = true;
             txtDiscount.Enabled = true;
 
+            ChkCtn.Enabled = true;
+            ChkPiece.Enabled = true;
             
             txtDiscount.Enabled = true;
             txtTotalPay.Enabled = true;
@@ -145,6 +150,10 @@ namespace CashandCarry.Sales
             btnAdd.Enabled = true;
             btnReset.Enabled = true;
         }
+        #endregion
+
+
+
         private void LoadCus()
         {
             CustomerBL objCus = new CustomerBL();
@@ -665,6 +674,40 @@ namespace CashandCarry.Sales
                 ChkCtn.Focus();
             }
         }
+
+        private void dgvProduct_DoubleClick(object sender, EventArgs e)
+        {
+            Int32 selectedRowCount = dgvProduct.Rows.GetRowCount(DataGridViewElementStates.Selected);
+            if (selectedRowCount > 0)
+            {
+                for (int i = 0; i < selectedRowCount; i++)
+                {
+                    dgvProduct.Rows.RemoveAt(dgvProduct.SelectedRows[0].Index);
+                    //DelCalculate();
+
+
+                }
+            }
+        }
+
+        private void dgvProduct_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                Int32 selectedRowCount = dgvProduct.Rows.GetRowCount(DataGridViewElementStates.Selected);
+                if (selectedRowCount > 0)
+                {
+                    for (int i = 0; i < selectedRowCount; i++)
+                    {
+                        dgvProduct.Rows.RemoveAt(dgvProduct.SelectedRows[0].Index);
+                        //DelCalculate();
+                    }
+                }
+            }
+
+        }
+
+       
 
       
 

@@ -98,6 +98,12 @@
     <Compile Include="Configuration\FrmCustomerType.Designer.cs">
       <DependentUpon>FrmCustomerType.cs</DependentUpon>
     </Compile>
+    <Compile Include="Configuration\FrmPriceSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Configuration\FrmPriceSet.Designer.cs">
+      <DependentUpon>FrmPriceSet.cs</DependentUpon>
+    </Compile>
     <Compile Include="Configuration\FrmSubZone.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -324,6 +330,9 @@
       <DependentUpon>CashCarry.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\tbl_Product.cs">
+      <DependentUpon>CashCarry.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\tbl_ProductPrice.cs">
       <DependentUpon>CashCarry.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Tbl_PurchaseDetail.cs">
@@ -653,6 +662,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Configuration\FrmCustomerType.resx">
       <DependentUpon>FrmCustomerType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Configuration\FrmPriceSet.resx">
+      <DependentUpon>FrmPriceSet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Configuration\FrmSubZone.resx">
       <DependentUpon>FrmSubZone.cs</DependentUpon>

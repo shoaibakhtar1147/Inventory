@@ -139,3 +139,4 @@ G:\C#\Inventory\CashandCarry\obj\Debug\CashandCarry.Expense.frmExpense.resources
 G:\C#\Inventory\CashandCarry\obj\Debug\CashandCarry.Expense.FrmAddExpense.resources
 G:\C#\Inventory\CashandCarry\obj\Debug\CashandCarry.FormReports.FrmExpenseReport.resources
 G:\C#\Inventory\CashandCarry\obj\Debug\CashandCarry.Configuration.frmSubZone.resources
+G:\C#\Inventory\CashandCarry\obj\Debug\CashandCarry.Configuration.FrmPriceSet.resources

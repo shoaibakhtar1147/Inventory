@@ -156,7 +156,7 @@
             this.panel3.Controls.Add(this.label1);
             this.panel3.Controls.Add(this.pictureBox1);
             this.panel3.Controls.Add(this.btnSaleInv);
-            this.panel3.Location = new System.Drawing.Point(63, 105);
+            this.panel3.Location = new System.Drawing.Point(59, 105);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(165, 156);
             this.panel3.TabIndex = 12;

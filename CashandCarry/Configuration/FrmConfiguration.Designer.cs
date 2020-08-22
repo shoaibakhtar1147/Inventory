@@ -57,6 +57,10 @@
             this.btnSubRoute = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.btnSetPrice = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel4.SuspendLayout();
@@ -71,6 +75,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
+            this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCust
@@ -154,7 +160,7 @@
             this.panel4.Controls.Add(this.btnCompany);
             this.panel4.Controls.Add(this.label2);
             this.panel4.Controls.Add(this.pictureBox2);
-            this.panel4.Location = new System.Drawing.Point(588, 292);
+            this.panel4.Location = new System.Drawing.Point(788, 292);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(165, 156);
             this.panel4.TabIndex = 4;
@@ -250,7 +256,7 @@
             this.panel9.Controls.Add(this.btnCategory);
             this.panel9.Controls.Add(this.label4);
             this.panel9.Controls.Add(this.pictureBox4);
-            this.panel9.Location = new System.Drawing.Point(378, 292);
+            this.panel9.Location = new System.Drawing.Point(588, 292);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(165, 156);
             this.panel9.TabIndex = 6;
@@ -409,6 +415,54 @@
             this.pictureBox7.TabIndex = 4;
             this.pictureBox7.TabStop = false;
             // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.panel5.Controls.Add(this.btnSetPrice);
+            this.panel5.Controls.Add(this.label8);
+            this.panel5.Controls.Add(this.pictureBox8);
+            this.panel5.Location = new System.Drawing.Point(378, 292);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(165, 156);
+            this.panel5.TabIndex = 9;
+            // 
+            // btnSetPrice
+            // 
+            this.btnSetPrice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
+            this.btnSetPrice.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSetPrice.FlatAppearance.BorderSize = 0;
+            this.btnSetPrice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSetPrice.Font = new System.Drawing.Font("Century Schoolbook", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSetPrice.ForeColor = System.Drawing.Color.White;
+            this.btnSetPrice.Location = new System.Drawing.Point(33, 128);
+            this.btnSetPrice.Name = "btnSetPrice";
+            this.btnSetPrice.Size = new System.Drawing.Size(98, 23);
+            this.btnSetPrice.TabIndex = 8;
+            this.btnSetPrice.Text = "Add";
+            this.btnSetPrice.UseVisualStyleBackColor = false;
+            this.btnSetPrice.Click += new System.EventHandler(this.btnSetPrice_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Century Schoolbook", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label8.Location = new System.Drawing.Point(47, 13);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(70, 16);
+            this.label8.TabIndex = 7;
+            this.label8.Text = "Set Price";
+            // 
+            // pictureBox8
+            // 
+            this.pictureBox8.Image = global::CashandCarry.Properties.Resources.shipping;
+            this.pictureBox8.Location = new System.Drawing.Point(0, 39);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(165, 85);
+            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox8.TabIndex = 2;
+            this.pictureBox8.TabStop = false;
+            // 
             // FrmConfiguration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -416,6 +470,7 @@
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(965, 478);
             this.ControlBox = false;
+            this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel1);
@@ -447,6 +502,9 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -481,6 +539,10 @@
         private System.Windows.Forms.Button btnSubRoute;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.PictureBox pictureBox7;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Button btnSetPrice;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.PictureBox pictureBox8;
 
     }
 }

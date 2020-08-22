@@ -58,6 +58,7 @@
     <EntitySet Name="View_tbl_Customer" EntityType="CashCarryModel.View_tbl_Customer" />
     <EntitySet Name="View_SaleLedger" EntityType="CashCarryModel.View_SaleLedger" />
     <EntitySet Name="View_DetailPurchase" EntityType="CashCarryModel.View_DetailPurchase" />
+    <EntitySet Name="tbl_ProductPrice" EntityType="CashCarryModel.tbl_ProductPrice" />
   </EntityContainer>
   <EntityType Name="tbl_Zone">
     <Key>
@@ -163,6 +164,7 @@
     <Property Name="Discount" Type="Decimal" Precision="18" Scale="2" />
     <Property Name="TotalAmount" Type="Decimal" Precision="18" Scale="2" />
     <Property Name="Ctn" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="ProfitLoss" Type="Decimal" Precision="18" Scale="2" />
   </EntityType>
   <EntityType Name="tbl_SaleMAster">
     <Key>
@@ -175,6 +177,7 @@
     <Property Name="Payment" Type="Decimal" Precision="18" Scale="2" />
     <Property Name="DuePayment" Type="Decimal" Precision="18" Scale="2" />
     <Property Name="OrderBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ProfitLoss" Type="Decimal" Precision="18" Scale="2" />
   </EntityType>
   <ComplexType Name="SP_SaleInvoice_Search_Result">
     <Property Type="Int32" Name="InvoiceNo" Nullable="false" />
@@ -445,5 +448,16 @@
     <Property Name="Payment" Type="Decimal" Precision="18" Scale="2" />
     <Property Name="Balance" Type="Decimal" Precision="18" Scale="2" />
     <Property Name="New_Balance" Type="Decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="tbl_ProductPrice">
+    <Key>
+      <PropertyRef Name="ProductPriceId" />
+    </Key>
+    <Property Name="ProductPriceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductID" Type="Int32" />
+    <Property Name="BuyerPrice" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="SellerPrice" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="AddedDate" Type="DateTime" Precision="3" />
   </EntityType>
 </Schema>

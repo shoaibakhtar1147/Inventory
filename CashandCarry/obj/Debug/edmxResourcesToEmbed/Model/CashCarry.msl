@@ -111,6 +111,7 @@
     <EntitySetMapping Name="tbl_Saledetail">
       <EntityTypeMapping TypeName="CashCarryModel.tbl_Saledetail">
         <MappingFragment StoreEntitySet="tbl_Saledetail">
+          <ScalarProperty Name="ProfitLoss" ColumnName="ProfitLoss" />
           <ScalarProperty Name="Ctn" ColumnName="Ctn" />
           <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
           <ScalarProperty Name="Discount" ColumnName="Discount" />
@@ -124,6 +125,7 @@
     <EntitySetMapping Name="tbl_SaleMAster">
       <EntityTypeMapping TypeName="CashCarryModel.tbl_SaleMAster">
         <MappingFragment StoreEntitySet="tbl_SaleMAster">
+          <ScalarProperty Name="ProfitLoss" ColumnName="ProfitLoss" />
           <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
           <ScalarProperty Name="DuePayment" ColumnName="DuePayment" />
           <ScalarProperty Name="Payment" ColumnName="Payment" />
@@ -427,6 +429,18 @@
           <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
           <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
           <ScalarProperty Name="Sr_" ColumnName="Sr#" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_ProductPrice">
+      <EntityTypeMapping TypeName="CashCarryModel.tbl_ProductPrice">
+        <MappingFragment StoreEntitySet="tbl_ProductPrice">
+          <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="SellerPrice" ColumnName="SellerPrice" />
+          <ScalarProperty Name="BuyerPrice" ColumnName="BuyerPrice" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="ProductPriceId" ColumnName="ProductPriceId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

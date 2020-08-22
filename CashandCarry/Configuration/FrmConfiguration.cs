@@ -76,6 +76,12 @@ namespace CashandCarry.Configuration
             objSub.ShowDialog();
         }
 
+        private void btnSetPrice_Click(object sender, EventArgs e)
+        {
+            FrmPriceSet obj = new FrmPriceSet();
+            obj.ShowDialog();
+        }
+
        
         
 
