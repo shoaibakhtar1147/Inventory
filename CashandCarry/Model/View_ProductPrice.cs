@@ -20,5 +20,6 @@ namespace CashandCarry.Model
         public Nullable<decimal> SellerPrice { get; set; }
         public Nullable<bool> IsActive { get; set; }
         public Nullable<System.DateTime> AddedDate { get; set; }
+        public Nullable<int> ProductID { get; set; }
     }
 }

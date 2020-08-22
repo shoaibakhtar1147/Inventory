@@ -544,7 +544,7 @@ namespace CashandCarry.Sales
                 {
                     ProductName = txtProdName.Text
                 };
-                List<tbl_Product> dt = objPro.SearchByName();
+                List<View_tbl_Product> dt = objPro.SearchByName();
                 if (dt != null && dt.Count > 0)
                 {
                     txtProdID.Text = Convert.ToString(dt[0].ProductID);

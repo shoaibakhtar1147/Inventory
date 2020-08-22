@@ -190,8 +190,9 @@ namespace CashandCarry.Vendor
             if (dt.Count > 0)
             {
                 txtProdID.Text = Convert.ToString(dt[0].ProductID);
-                txtPrice.Text = Convert.ToString(dt[0].TradePrice);
+                txtPrice.Text = Convert.ToString(dt[0].PurchasePrice);
                 lblPiePerCtn.Text = Convert.ToString(dt[0].PiecePerCtn);
+                lblctn.Text = Convert.ToString(dt[0].Ctn);
                // GetDue();
             }
         }
@@ -602,6 +603,51 @@ namespace CashandCarry.Vendor
                 txtGrandTotal.Text = resu.ToString();
 
             }
+        }
+
+        private void groupBox6_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox7_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void groupBox5_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox4_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox3_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvReturnItem_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
         }
 
         

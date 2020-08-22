@@ -31,6 +31,8 @@ namespace CashandCarry.BL
         public decimal DuePayment { get; set; }
         public decimal Ctn { get; set; }
         public string OrderBy { get; set; }
+        public decimal DetailProfit { get; set; }
+        public decimal MasterProfit { get; set; }
 
         public void SaveDetail()
         {
@@ -44,7 +46,8 @@ namespace CashandCarry.BL
                     Discount = Discount,
                     Quantity = Quantity,
                     Ctn=Ctn,
-                    TotalAmount = TotalAmount
+                    TotalAmount = TotalAmount,
+                    ProfitLoss=DetailProfit
                 };
                 context.tbl_Saledetail.Add(objsale);
                 context.SaveChanges();
@@ -64,7 +67,8 @@ namespace CashandCarry.BL
                     TotalAmount = GrandTotal,
                      Payment=Payment,
                      DuePayment=DuePayment,
-                     OrderBy=OrderBy
+                     OrderBy=OrderBy,
+                     ProfitLoss=MasterProfit
                      
                 };
                 context.tbl_SaleMAster.Add(objMas);

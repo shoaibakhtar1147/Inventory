@@ -102,8 +102,6 @@
           <Property Name="weight" Type="varchar" MaxLength="20" />
           <Property Name="CategoryID" Type="int" />
           <Property Name="CompanyID" Type="int" />
-          <Property Name="RetailPrice" Type="decimal" Precision="18" Scale="2" />
-          <Property Name="TradePrice" Type="decimal" Precision="18" Scale="2" />
           <Property Name="Quantity" Type="int" />
           <Property Name="Ctn" Type="decimal" Precision="18" Scale="0" />
           <Property Name="PiecePerCtn" Type="int" />
@@ -328,6 +326,7 @@ warning 6002: The table/view 'CashCarry.dbo.View_ProductPrice' does not have a p
           <Property Name="SellerPrice" Type="decimal" Precision="18" Scale="2" />
           <Property Name="IsActive" Type="bit" />
           <Property Name="AddedDate" Type="datetime" />
+          <Property Name="ProductID" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'CashCarry.dbo.View_PurLedger' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -488,7 +487,8 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
     [View_ProductPrice].[BuyerPrice] AS [BuyerPrice], 
     [View_ProductPrice].[SellerPrice] AS [SellerPrice], 
     [View_ProductPrice].[IsActive] AS [IsActive], 
-    [View_ProductPrice].[AddedDate] AS [AddedDate]
+    [View_ProductPrice].[AddedDate] AS [AddedDate], 
+    [View_ProductPrice].[ProductID] AS [ProductID]
     FROM [dbo].[View_ProductPrice] AS [View_ProductPrice]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="View_PurLedger" EntityType="Self.View_PurLedger" store:Type="Views" store:Schema="dbo">
@@ -587,7 +587,6 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
           <EntitySet Name="tbl_CustomerTypes" EntityType="CashCarryModel.tbl_CustomerTypes" />
           <EntitySet Name="tbl_employee" EntityType="CashCarryModel.tbl_employee" />
           <EntitySet Name="tbl_Customer" EntityType="CashCarryModel.tbl_Customer" />
-          <EntitySet Name="tbl_Product" EntityType="CashCarryModel.tbl_Product" />
           <FunctionImport Name="SP_Prod_AddNew" ReturnType="Collection(Int32)">
           <Parameter Name="ProductID" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -624,6 +623,7 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
           <EntitySet Name="View_DetailPurchase" EntityType="CashCarryModel.View_DetailPurchase" />
           <EntitySet Name="tbl_ProductPrice" EntityType="CashCarryModel.tbl_ProductPrice" />
           <EntitySet Name="View_ProductPrice" EntityType="CashCarryModel.View_ProductPrice" />
+          <EntitySet Name="tbl_Product" EntityType="CashCarryModel.tbl_Product" />
         </EntityContainer>
         <EntityType Name="tbl_Zone">
           <Key>
@@ -687,21 +687,6 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
           <Property Name="ZoneID" Type="Int32" />
           <Property Name="DuePayment" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="SubRouteId" Type="Int32" />
-        </EntityType>
-        <EntityType Name="tbl_Product">
-          <Key>
-            <PropertyRef Name="ProductID" />
-          </Key>
-          <Property Name="ProductID" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
-          <Property Name="ProductName" MaxLength="30" FixedLength="false" Unicode="false" Type="String" />
-          <Property Name="weight" MaxLength="20" FixedLength="false" Unicode="false" Type="String" />
-          <Property Name="CategoryID" Type="Int32" />
-          <Property Name="CompanyID" Type="Int32" />
-          <Property Name="RetailPrice" Precision="18" Scale="2" Type="Decimal" />
-          <Property Name="TradePrice" Precision="18" Scale="2" Type="Decimal" />
-          <Property Name="Quantity" Type="Int32" />
-          <Property Name="Ctn" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="PiecePerCtn" Type="Int32" />
         </EntityType>
         <EntityType Name="View_tbl_Product">
           <Key>
@@ -1035,6 +1020,20 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
           <Property Name="SellerPrice" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="IsActive" Type="Boolean" />
           <Property Name="AddedDate" Type="DateTime" Precision="3" />
+          <Property Name="ProductID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tbl_Product">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="weight" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CategoryID" Type="Int32" />
+          <Property Name="CompanyID" Type="Int32" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="Ctn" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="PiecePerCtn" Type="Int32" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1113,22 +1112,6 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
                 <ScalarProperty Name="CusTypeID" ColumnName="CusTypeID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbl_Product">
-            <EntityTypeMapping TypeName="CashCarryModel.tbl_Product">
-              <MappingFragment StoreEntitySet="tbl_Product">
-                <ScalarProperty Name="PiecePerCtn" ColumnName="PiecePerCtn" />
-                <ScalarProperty Name="Ctn" ColumnName="Ctn" />
-                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-                <ScalarProperty Name="TradePrice" ColumnName="TradePrice" />
-                <ScalarProperty Name="RetailPrice" ColumnName="RetailPrice" />
-                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
-                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
-                <ScalarProperty Name="weight" ColumnName="weight" />
-                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
-                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1488,12 +1471,27 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
           <EntitySetMapping Name="View_ProductPrice">
             <EntityTypeMapping TypeName="CashCarryModel.View_ProductPrice">
               <MappingFragment StoreEntitySet="View_ProductPrice">
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
                 <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="SellerPrice" ColumnName="SellerPrice" />
                 <ScalarProperty Name="BuyerPrice" ColumnName="BuyerPrice" />
                 <ScalarProperty Name="ProductName" ColumnName="ProductName" />
                 <ScalarProperty Name="ProductPriceId" ColumnName="ProductPriceId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Product">
+            <EntityTypeMapping TypeName="CashCarryModel.tbl_Product">
+              <MappingFragment StoreEntitySet="tbl_Product">
+                <ScalarProperty Name="PiecePerCtn" ColumnName="PiecePerCtn" />
+                <ScalarProperty Name="Ctn" ColumnName="Ctn" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="weight" ColumnName="weight" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

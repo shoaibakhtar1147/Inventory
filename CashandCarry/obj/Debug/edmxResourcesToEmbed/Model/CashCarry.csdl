@@ -23,7 +23,6 @@
     <EntitySet Name="tbl_CustomerTypes" EntityType="CashCarryModel.tbl_CustomerTypes" />
     <EntitySet Name="tbl_employee" EntityType="CashCarryModel.tbl_employee" />
     <EntitySet Name="tbl_Customer" EntityType="CashCarryModel.tbl_Customer" />
-    <EntitySet Name="tbl_Product" EntityType="CashCarryModel.tbl_Product" />
     <FunctionImport Name="SP_Prod_AddNew" ReturnType="Collection(Int32)">
       <Parameter Name="ProductID" Mode="In" Type="Int32" />
     </FunctionImport>
@@ -60,6 +59,7 @@
     <EntitySet Name="View_DetailPurchase" EntityType="CashCarryModel.View_DetailPurchase" />
     <EntitySet Name="tbl_ProductPrice" EntityType="CashCarryModel.tbl_ProductPrice" />
     <EntitySet Name="View_ProductPrice" EntityType="CashCarryModel.View_ProductPrice" />
+    <EntitySet Name="tbl_Product" EntityType="CashCarryModel.tbl_Product" />
   </EntityContainer>
   <EntityType Name="tbl_Zone">
     <Key>
@@ -123,21 +123,6 @@
     <Property Name="ZoneID" Type="Int32" />
     <Property Name="DuePayment" Type="Decimal" Precision="18" Scale="2" />
     <Property Name="SubRouteId" Type="Int32" />
-  </EntityType>
-  <EntityType Name="tbl_Product">
-    <Key>
-      <PropertyRef Name="ProductID" />
-    </Key>
-    <Property Name="ProductID" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
-    <Property Name="ProductName" MaxLength="30" FixedLength="false" Unicode="false" Type="String" />
-    <Property Name="weight" MaxLength="20" FixedLength="false" Unicode="false" Type="String" />
-    <Property Name="CategoryID" Type="Int32" />
-    <Property Name="CompanyID" Type="Int32" />
-    <Property Name="RetailPrice" Precision="18" Scale="2" Type="Decimal" />
-    <Property Name="TradePrice" Precision="18" Scale="2" Type="Decimal" />
-    <Property Name="Quantity" Type="Int32" />
-    <Property Name="Ctn" Type="Decimal" Precision="18" Scale="0" />
-    <Property Name="PiecePerCtn" Type="Int32" />
   </EntityType>
   <EntityType Name="View_tbl_Product">
     <Key>
@@ -471,5 +456,19 @@
     <Property Name="SellerPrice" Type="Decimal" Precision="18" Scale="2" />
     <Property Name="IsActive" Type="Boolean" />
     <Property Name="AddedDate" Type="DateTime" Precision="3" />
+    <Property Name="ProductID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tbl_Product">
+    <Key>
+      <PropertyRef Name="ProductID" />
+    </Key>
+    <Property Name="ProductID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="weight" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="CategoryID" Type="Int32" />
+    <Property Name="CompanyID" Type="Int32" />
+    <Property Name="Quantity" Type="Int32" />
+    <Property Name="Ctn" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="PiecePerCtn" Type="Int32" />
   </EntityType>
 </Schema>

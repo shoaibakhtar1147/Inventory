@@ -70,10 +70,9 @@ namespace CashandCarry.Configuration
         public void FormDisable()
         {
             txtComName.Enabled = false;
-            txtPP.Enabled = false;
+            
             txtProdCate.Enabled = false;
             txtProdName.Enabled = false;
-            txtRP.Enabled = false;
             txtWeight.Enabled = false;
             btnSave.Enabled = false;
             btnUpdate.Enabled = false;
@@ -86,11 +85,9 @@ namespace CashandCarry.Configuration
         }
         public void FormEnable()
         {
-            txtComName.Enabled = true;
-            txtPP.Enabled = true;
+            txtComName.Enabled = true;           
             txtProdCate.Enabled = true;
-            txtProdName.Enabled = true;
-            txtRP.Enabled = true;
+            txtProdName.Enabled = true;           
             txtWeight.Enabled = true;
             txtPieCtn.Enabled = true;
         }
@@ -121,8 +118,7 @@ namespace CashandCarry.Configuration
                     ProductBL objPro = new ProductBL()
                     {
                         ProductName = txtProdName.Text,
-                        TradePrice = Convert.ToDecimal(txtPP.Text),
-                        RetailPrice = Convert.ToDecimal(txtRP.Text),
+                       
                         weight = txtWeight.Text,
                         CategoryID = Convert.ToInt32(txtProdCate.SelectedValue),
                         CompanyID = Convert.ToInt32(txtComName.SelectedValue),
@@ -184,7 +180,7 @@ namespace CashandCarry.Configuration
         }
         private bool FormValidate()
         {
-            if (txtProdName.Text == "" || txtRP.Text == "" || txtWeight.Text == "" || txtProdCate.Text == "" || txtComName.Text == "" || txtPP.Text == "") return false;
+            if (txtProdName.Text == "" ||  txtWeight.Text == "" || txtProdCate.Text == "" || txtComName.Text == "" ) return false;
             return true;
         }
 
@@ -223,8 +219,7 @@ namespace CashandCarry.Configuration
                 {
                     ProductID=Convert.ToInt32(txtProductID.Text),
                     ProductName = txtProdName.Text,
-                    TradePrice = Convert.ToDecimal(txtPP.Text),
-                    RetailPrice = Convert.ToDecimal(txtRP.Text),
+                    
                     weight = txtWeight.Text,
                     PiecePerCtn=Convert.ToInt32(txtPieCtn.Text)
                    
@@ -274,8 +269,7 @@ namespace CashandCarry.Configuration
                 
 
                 
-                txtRP.Text = dgvProduct.Rows[rowindex].Cells[7].Value.ToString();
-                txtPP.Text = dgvProduct.Rows[rowindex].Cells[8].Value.ToString();
+               
                 txtPieCtn.Text = dgvProduct.Rows[rowindex].Cells[9].Value.ToString();
                 FormEnable();
                 btnUpdate.Enabled = true;

@@ -75,22 +75,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="tbl_Product">
-      <EntityTypeMapping TypeName="CashCarryModel.tbl_Product">
-        <MappingFragment StoreEntitySet="tbl_Product">
-          <ScalarProperty Name="PiecePerCtn" ColumnName="PiecePerCtn" />
-          <ScalarProperty Name="Ctn" ColumnName="Ctn" />
-          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-          <ScalarProperty Name="TradePrice" ColumnName="TradePrice" />
-          <ScalarProperty Name="RetailPrice" ColumnName="RetailPrice" />
-          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
-          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
-          <ScalarProperty Name="weight" ColumnName="weight" />
-          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
-          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="SP_Prod_AddNew" FunctionName="CashCarryModel.Store.SP_Prod_AddNew" />
     <EntitySetMapping Name="View_tbl_Product">
       <EntityTypeMapping TypeName="CashCarryModel.View_tbl_Product">
@@ -447,12 +431,27 @@
     <EntitySetMapping Name="View_ProductPrice">
       <EntityTypeMapping TypeName="CashCarryModel.View_ProductPrice">
         <MappingFragment StoreEntitySet="View_ProductPrice">
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
           <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
           <ScalarProperty Name="IsActive" ColumnName="IsActive" />
           <ScalarProperty Name="SellerPrice" ColumnName="SellerPrice" />
           <ScalarProperty Name="BuyerPrice" ColumnName="BuyerPrice" />
           <ScalarProperty Name="ProductName" ColumnName="ProductName" />
           <ScalarProperty Name="ProductPriceId" ColumnName="ProductPriceId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Product">
+      <EntityTypeMapping TypeName="CashCarryModel.tbl_Product">
+        <MappingFragment StoreEntitySet="tbl_Product">
+          <ScalarProperty Name="PiecePerCtn" ColumnName="PiecePerCtn" />
+          <ScalarProperty Name="Ctn" ColumnName="Ctn" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="weight" ColumnName="weight" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

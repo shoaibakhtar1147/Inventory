@@ -118,12 +118,13 @@
             this.groupBox7.Controls.Add(this.label20);
             this.groupBox7.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox7.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.groupBox7.Location = new System.Drawing.Point(102, 81);
+            this.groupBox7.Location = new System.Drawing.Point(102, 62);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(302, 91);
             this.groupBox7.TabIndex = 60;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Purchase Invoice";
+            this.groupBox7.Enter += new System.EventHandler(this.groupBox7_Enter);
             // 
             // btnSearch
             // 
@@ -168,12 +169,13 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.groupBox1.Location = new System.Drawing.Point(102, 176);
+            this.groupBox1.Location = new System.Drawing.Point(102, 157);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(302, 93);
             this.groupBox1.TabIndex = 61;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Purchase Return";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // txtReturnDate
             // 
@@ -228,12 +230,13 @@
             this.groupBox3.Controls.Add(this.label23);
             this.groupBox3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.groupBox3.Location = new System.Drawing.Point(102, 274);
+            this.groupBox3.Location = new System.Drawing.Point(102, 255);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(302, 169);
             this.groupBox3.TabIndex = 62;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Company Info";
+            this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
             // 
             // txtComName
             // 
@@ -343,12 +346,13 @@
             this.groupBox4.Controls.Add(this.label16);
             this.groupBox4.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.groupBox4.Location = new System.Drawing.Point(410, 81);
+            this.groupBox4.Location = new System.Drawing.Point(410, 62);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(493, 267);
             this.groupBox4.TabIndex = 63;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Product Info";
+            this.groupBox4.Enter += new System.EventHandler(this.groupBox4_Enter);
             // 
             // txtCtn
             // 
@@ -604,12 +608,13 @@
             this.groupBox5.Controls.Add(this.label24);
             this.groupBox5.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox5.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.groupBox5.Location = new System.Drawing.Point(102, 449);
+            this.groupBox5.Location = new System.Drawing.Point(102, 430);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(301, 300);
             this.groupBox5.TabIndex = 64;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Payment";
+            this.groupBox5.Enter += new System.EventHandler(this.groupBox5_Enter);
             // 
             // label21
             // 
@@ -808,6 +813,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(672, 170);
             this.panel1.TabIndex = 66;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // dgvProduct
             // 
@@ -845,6 +851,7 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(672, 184);
             this.panel3.TabIndex = 65;
+            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
             // dgvReturnItem
             // 
@@ -873,18 +880,20 @@
             this.dgvReturnItem.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dgvReturnItem.Size = new System.Drawing.Size(672, 184);
             this.dgvReturnItem.TabIndex = 0;
+            this.dgvReturnItem.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvReturnItem_CellContentClick);
             // 
             // groupBox6
             // 
             this.groupBox6.Controls.Add(this.btnNew);
             this.groupBox6.Controls.Add(this.btnClear);
             this.groupBox6.Controls.Add(this.btnSave);
-            this.groupBox6.Location = new System.Drawing.Point(909, 85);
+            this.groupBox6.Location = new System.Drawing.Point(909, 66);
             this.groupBox6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(202, 214);
             this.groupBox6.TabIndex = 67;
             this.groupBox6.TabStop = false;
+            this.groupBox6.Enter += new System.EventHandler(this.groupBox6_Enter);
             // 
             // btnNew
             // 

@@ -33,7 +33,6 @@ namespace CashandCarry.Model
         public virtual DbSet<tbl_CustomerTypes> tbl_CustomerTypes { get; set; }
         public virtual DbSet<tbl_employee> tbl_employee { get; set; }
         public virtual DbSet<tbl_Customer> tbl_Customer { get; set; }
-        public virtual DbSet<tbl_Product> tbl_Product { get; set; }
         public virtual DbSet<View_tbl_Product> View_tbl_Product { get; set; }
         public virtual DbSet<tbl_Saledetail> tbl_Saledetail { get; set; }
         public virtual DbSet<tbl_SaleMAster> tbl_SaleMAster { get; set; }
@@ -58,6 +57,7 @@ namespace CashandCarry.Model
         public virtual DbSet<View_DetailPurchase> View_DetailPurchase { get; set; }
         public virtual DbSet<tbl_ProductPrice> tbl_ProductPrice { get; set; }
         public virtual DbSet<View_ProductPrice> View_ProductPrice { get; set; }
+        public virtual DbSet<tbl_Product> tbl_Product { get; set; }
     
         public virtual ObjectResult<Nullable<int>> SP_Cate_AddNew(Nullable<int> categoryID)
         {

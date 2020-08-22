@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtPieCtn = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -38,11 +38,7 @@
             this.txtComName = new System.Windows.Forms.ComboBox();
             this.txtProdCate = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtPP = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtRP = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.txtWeight = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtProdName = new System.Windows.Forms.TextBox();
@@ -70,11 +66,7 @@
             this.groupBox1.Controls.Add(this.txtComName);
             this.groupBox1.Controls.Add(this.txtProdCate);
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.txtPP);
-            this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.txtRP);
-            this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.txtWeight);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.txtProdName);
@@ -93,7 +85,7 @@
             // txtPieCtn
             // 
             this.txtPieCtn.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPieCtn.Location = new System.Drawing.Point(616, 244);
+            this.txtPieCtn.Location = new System.Drawing.Point(616, 127);
             this.txtPieCtn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtPieCtn.Name = "txtPieCtn";
             this.txtPieCtn.Size = new System.Drawing.Size(171, 23);
@@ -104,7 +96,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label7.Location = new System.Drawing.Point(461, 248);
+            this.label7.Location = new System.Drawing.Point(461, 131);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(73, 17);
             this.label7.TabIndex = 13;
@@ -164,26 +156,6 @@
             this.label6.TabIndex = 10;
             this.label6.Text = "Product Category:";
             // 
-            // txtPP
-            // 
-            this.txtPP.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPP.Location = new System.Drawing.Point(616, 73);
-            this.txtPP.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtPP.Name = "txtPP";
-            this.txtPP.Size = new System.Drawing.Size(171, 23);
-            this.txtPP.TabIndex = 4;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label5.Location = new System.Drawing.Point(461, 76);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(105, 17);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "Purchase Price:";
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -195,30 +167,10 @@
             this.label4.TabIndex = 6;
             this.label4.Text = "Company Name:";
             // 
-            // txtRP
-            // 
-            this.txtRP.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRP.Location = new System.Drawing.Point(616, 129);
-            this.txtRP.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtRP.Name = "txtRP";
-            this.txtRP.Size = new System.Drawing.Size(171, 23);
-            this.txtRP.TabIndex = 5;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label3.Location = new System.Drawing.Point(461, 133);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(82, 17);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Trade Price:";
-            // 
             // txtWeight
             // 
             this.txtWeight.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtWeight.Location = new System.Drawing.Point(616, 186);
+            this.txtWeight.Location = new System.Drawing.Point(616, 69);
             this.txtWeight.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtWeight.Name = "txtWeight";
             this.txtWeight.Size = new System.Drawing.Size(171, 23);
@@ -229,7 +181,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label2.Location = new System.Drawing.Point(461, 190);
+            this.label2.Location = new System.Drawing.Point(461, 73);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(58, 17);
             this.label2.TabIndex = 2;
@@ -353,22 +305,22 @@
             // 
             this.dgvProduct.AllowUserToAddRows = false;
             this.dgvProduct.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvProduct.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProduct.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvProduct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProduct.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvProduct.GridColor = System.Drawing.SystemColors.ActiveCaption;
             this.dgvProduct.Location = new System.Drawing.Point(0, 0);
             this.dgvProduct.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dgvProduct.Name = "dgvProduct";
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            this.dgvProduct.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            this.dgvProduct.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvProduct.Size = new System.Drawing.Size(1090, 193);
             this.dgvProduct.TabIndex = 26;
             this.dgvProduct.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProduct_CellContentClick_1);
@@ -432,11 +384,7 @@
         private System.Windows.Forms.ComboBox txtComName;
         private System.Windows.Forms.ComboBox txtProdCate;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtPP;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtRP;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtWeight;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtProdName;

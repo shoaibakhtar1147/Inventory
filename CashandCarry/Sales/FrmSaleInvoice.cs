@@ -17,6 +17,9 @@ namespace CashandCarry.Sales
 {
     public partial class FrmSaleInvoice : MetroForm
     {
+        public decimal TP;
+        public decimal resultTP;
+      //  public decimal resultGrand;
         public FrmSaleInvoice()
         {
             InitializeComponent();
@@ -266,6 +269,47 @@ namespace CashandCarry.Sales
 
         }
 
+        private void txtProd_Leave(object sender, EventArgs e)
+        {
+            if (txtProdName.Text == string.Empty)
+            {
+                MessageBox.Show("Please Enter Product Name");
+                txtProdName.Focus();
+            }
+            else
+            {
+                ProductBL objPro = new ProductBL()
+                {
+                    ProductID = Convert.ToInt32(txtProdName.SelectedValue)
+                };
+                List<View_tbl_Product> dt = objPro.Search();
+                if (dt != null)
+                {
+                    txtProdId.Text = Convert.ToString(dt[0].ProductID);
+                    txtPrice.Text = Convert.ToString(dt[0].RetailPrice);
+                    lblQuantity.Text = Convert.ToString(dt[0].Piece);
+                    TP = Convert.ToDecimal(dt[0].PurchasePrice);
+                    txtWeight.Text = dt[0].weight;
+                    lblCtn.Text = Convert.ToString(dt[0].Ctn);
+                    lblPiePerCtn.Text = Convert.ToString(dt[0].PiecePerCtn);
+
+
+
+                }
+            }
+        }
+
+        //private void SumDetailProduct()
+        //{
+        //    decimal sum = 0;
+        //    for (int i = 0; i < dgvProduct.Rows.Count; ++i)
+        //    {
+        //        sum += Convert.ToDecimal(resultTP);
+        //    }
+        //    resultGrand = Convert.ToDecimal(sum.ToString());
+            
+        //}
+
 
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -291,6 +335,20 @@ namespace CashandCarry.Sales
             }
 
 
+            
+           
+
+          
+            decimal Ssum = 0;
+            for(int i =0;i<dgvProduct.Rows.Count;++i)
+            {
+                decimal ctn = Convert.ToDecimal(dgvProduct.Rows[i].Cells[4].Value.ToString());
+                resultTP = (TP * ctn);
+                Ssum += resultTP;
+            }
+            decimal grandtotal = Convert.ToDecimal(txtGrandTotal.Text);
+            decimal InvoiceProfit =   grandtotal- Ssum;
+
             SaleInvoiceBL objmas = new SaleInvoiceBL()
             {
 
@@ -299,9 +357,10 @@ namespace CashandCarry.Sales
                 CustomerID = Convert.ToInt32(txtCusId.Text),
                 Payment = Convert.ToDecimal(txtTotalPay.Text),
                 DuePayment = Convert.ToDecimal(txtDuePay.Text),
-                OrderBy=txtSalesman.Text
-            };
+                OrderBy = txtSalesman.Text,
+                 MasterProfit=InvoiceProfit
 
+            };
             SaleInvoiceBL objsale = new SaleInvoiceBL();
 
             for (int i = 0; i < dgvProduct.Rows.Count; i++)
@@ -312,17 +371,14 @@ namespace CashandCarry.Sales
                 objsale.Quantity = Convert.ToInt32(dgvProduct.Rows[i].Cells[5].Value.ToString());
                 objsale.Discount = Convert.ToDecimal(dgvProduct.Rows[i].Cells[6].Value.ToString());
                 objsale.TotalAmount = Convert.ToDecimal(dgvProduct.Rows[i].Cells[7].Value.ToString());
-                objsale.SaveDetail();
+
+                decimal RP = Convert.ToDecimal(dgvProduct.Rows[i].Cells[3].Value);
+                decimal resultRP = (RP * objsale.Ctn) - objsale.Discount;
+                resultTP = (TP * objsale.Ctn);
+                objsale.DetailProfit = Convert.ToDecimal(resultRP - resultTP);
+                  objsale.SaveDetail();
             }
             objmas.SaveMaster();
-
-           
-            //SaleInvoiceBL objDue = new SaleInvoiceBL()
-            //{
-            //    CustomerID = Convert.ToInt32(txtCusId.Text),
-            //    DuePayment = Convert.ToDecimal(txtnewBalance.Text)
-            //};
-            //objDue.UpdateDueSum();
            
             SaleLedgerBL objLedger = new SaleLedgerBL(); 
             
@@ -467,34 +523,7 @@ namespace CashandCarry.Sales
             }
         }
 
-        private void txtProd_Leave(object sender, EventArgs e)
-        {
-            if (txtProdName.Text == string.Empty)
-            {
-                MessageBox.Show("Please Enter Product Name");
-                txtProdName.Focus();
-            }
-            else
-            {
-                ProductBL objPro = new ProductBL()
-                {
-                    ProductID = Convert.ToInt32(txtProdName.SelectedValue)
-                };
-                List<View_tbl_Product> dt = objPro.Search();
-                if (dt != null)
-                {
-                    txtProdId.Text = Convert.ToString(dt[0].ProductID);
-                    txtPrice.Text = Convert.ToString(dt[0].RetailPrice);
-                    lblQuantity.Text = Convert.ToString(dt[0].Piece);
-                    txtWeight.Text = dt[0].weight;
-                    lblCtn.Text = Convert.ToString(dt[0].Ctn);
-                    lblPiePerCtn.Text = Convert.ToString(dt[0].PiecePerCtn);
-
-
-
-                }
-            }
-        }
+      
 
         private void btnClear_Click(object sender, EventArgs e)
         {
