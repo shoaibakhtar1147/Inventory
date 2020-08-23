@@ -25,6 +25,7 @@ namespace CashandCarry.Sales
         {
             GridDesign();
             LoadCus();
+            LoadRoute();
             //LoadSubZone();
         }
 
@@ -55,6 +56,17 @@ namespace CashandCarry.Sales
 
         }
 
+        private void LoadRoute()
+        {
+            ZoneBL obj=new ZoneBL();
+            var dt=obj.Select();
+             txtRoute.DataSource = dt;
+            txtRoute.AutoCompleteMode = AutoCompleteMode.Suggest;
+            txtRoute.AutoCompleteSource = AutoCompleteSource.ListItems;
+            txtRoute.DisplayMember = "ZoneName";
+            txtRoute.ValueMember = "ZoneId";
+            txtRoute.Text = "---Select---";
+        }
         private void GridDesign()
         {
             dgvLedger.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(238, 239, 249);
@@ -71,6 +83,7 @@ namespace CashandCarry.Sales
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
+            dgvLedger.DataSource = null;
             if (txtCusName.Text != "---Select---")
             {
                 SaleLedgerBL objLedger = new SaleLedgerBL()
@@ -123,8 +136,80 @@ namespace CashandCarry.Sales
                     objView.crptViewer.ReportSource = objSale;
                     objView.WindowState = FormWindowState.Maximized;
                     objView.ShowDialog();
+                    LoadCus();
                 }
                 
+            }
+            else if (dgvLedger.DataSource == null)
+            {
+                MessageBox.Show("No Record Showed");
+            }
+        }
+
+        private void txtCusName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        
+
+        private void btnRouteSearch_Click(object sender, EventArgs e)
+        {
+            dgvLedger.DataSource=null;
+            if (txtRoute.Text != "---Select---")
+            {
+                CustomerBL objLedger = new CustomerBL()
+                {
+                    ZoneID = Convert.ToInt32(txtRoute.SelectedValue)
+                };
+                var dt = objLedger.SearchByZone();
+                if (dt != null)
+                {
+                    dgvLedger.DataSource = dt;
+                    
+
+                }
+                else
+                {
+                    MessageBox.Show("No Record Found " + txtRoute.Text);
+                }
+            }
+
+
+            else
+            {
+                MessageBox.Show("Please Select Route Name");
+            }
+           
+
+           
+        }
+
+        private void btnPrintRoute_Click(object sender, EventArgs e)
+        {
+            if (txtRoute.Text == "---Select---")
+            {
+                MessageBox.Show("Please Enter Route Name");
+            }
+            else if (dgvLedger.DataSource != null)
+            {
+                SaleLedgerByRoute objSale = new SaleLedgerByRoute();
+                rptViewer objView = new rptViewer();
+                objSale.SetParameterValue("@ZoneId", txtRoute.SelectedValue);
+                SaleLedgerBL objLedger = new SaleLedgerBL()
+                {
+                    ZoneId = Convert.ToInt32(txtRoute.SelectedValue)
+                };
+                DataTable dt = objLedger.SearchByRoute();
+                if (dt != null)
+                {
+                    objSale.SetDataSource(dt);
+                    objView.crptViewer.ReportSource = objSale;
+                    objView.WindowState = FormWindowState.Maximized;
+                    objView.ShowDialog();
+                    LoadRoute();
+                }
+
             }
             else if (dgvLedger.DataSource == null)
             {

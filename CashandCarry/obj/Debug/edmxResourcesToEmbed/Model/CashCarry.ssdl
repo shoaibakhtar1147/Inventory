@@ -385,6 +385,7 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Customer' does not have a p
     <Property Name="Address" Type="varchar" MaxLength="100" />
     <Property Name="Contact" Type="varchar" MaxLength="20" />
     <Property Name="Email" Type="varchar" MaxLength="20" />
+    <Property Name="ZoneID" Type="int" />
     <Property Name="Route" Type="varchar" MaxLength="20" />
     <Property Name="SubRouteName" Type="varchar(max)" />
     <Property Name="DuePayment" Type="decimal" Precision="18" Scale="2" />
@@ -533,6 +534,7 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
     [View_tbl_Customer].[Address] AS [Address], 
     [View_tbl_Customer].[Contact] AS [Contact], 
     [View_tbl_Customer].[Email] AS [Email], 
+    [View_tbl_Customer].[ZoneID] AS [ZoneID], 
     [View_tbl_Customer].[Route] AS [Route], 
     [View_tbl_Customer].[SubRouteName] AS [SubRouteName], 
     [View_tbl_Customer].[DuePayment] AS [DuePayment]

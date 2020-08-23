@@ -110,6 +110,17 @@ namespace CashandCarry.BL
 
             }
         }
+
+
+        public List<View_tbl_Customer> SearchByZone()
+        {
+            using (var context = new CashCarryEntities3())
+            {
+                return context.View_tbl_Customer.Where(a => a.ZoneID==ZoneID).ToList();
+
+            }
+        }
+
             public List<tbl_Customer> SearchByName()
         {
            using(var context=new CashCarryEntities3())

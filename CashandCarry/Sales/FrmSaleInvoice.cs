@@ -17,8 +17,8 @@ namespace CashandCarry.Sales
 {
     public partial class FrmSaleInvoice : MetroForm
     {
-        public decimal TP;
-        public decimal resultTP;
+       // public decimal TP=0;
+       // public decimal resultTP;
       //  public decimal resultGrand;
         public FrmSaleInvoice()
         {
@@ -207,7 +207,8 @@ namespace CashandCarry.Sales
             dt.Columns["SrNo"].AutoIncrementStep = 1;
             dt.Columns.Add("ProductID");
             dt.Columns.Add("ProductName");
-            dt.Columns.Add("RetailPrice");
+            dt.Columns.Add("TP");
+            dt.Columns.Add("RP");
             dt.Columns.Add("Ctn");
             dt.Columns.Add("Quantity");
             dt.Columns.Add("Discount");
@@ -234,11 +235,12 @@ namespace CashandCarry.Sales
             DataRow dr = dt.NewRow();
             dr[1] = txtProdId.Text;
             dr[2] = txtProdName.Text;
-            dr[3] = txtPrice.Text;
-            dr[4] = txtCtn.Text;
-            dr[5] = txtQuantity.Text;
-            dr[6] = txtDiscount.Text;
-            dr[7] = txtTotalAmount.Text;
+            dr[3] = lblTP.Text;
+            dr[4] = txtPrice.Text;
+            dr[5] = txtCtn.Text;
+            dr[6] = txtQuantity.Text;
+            dr[7] = txtDiscount.Text;
+            dr[8] = txtTotalAmount.Text;
             dt.Rows.Add(dr);
             // MessageBox.Show("Product Saved Successfull");
             ClearGroup();
@@ -263,7 +265,7 @@ namespace CashandCarry.Sales
             decimal sum = 0;
             for (int i = 0; i < dgvProduct.Rows.Count; ++i)
             {
-                sum += Convert.ToDecimal(dgvProduct.Rows[i].Cells[7].Value);
+                sum += Convert.ToDecimal(dgvProduct.Rows[i].Cells[8].Value);
             }
             txtGrandTotal.Text= sum.ToString();
 
@@ -288,7 +290,7 @@ namespace CashandCarry.Sales
                     txtProdId.Text = Convert.ToString(dt[0].ProductID);
                     txtPrice.Text = Convert.ToString(dt[0].RetailPrice);
                     lblQuantity.Text = Convert.ToString(dt[0].Piece);
-                    TP = Convert.ToDecimal(dt[0].PurchasePrice);
+                    lblTP.Text = Convert.ToString(dt[0].PurchasePrice);
                     txtWeight.Text = dt[0].weight;
                     lblCtn.Text = Convert.ToString(dt[0].Ctn);
                     lblPiePerCtn.Text = Convert.ToString(dt[0].PiecePerCtn);
@@ -321,7 +323,7 @@ namespace CashandCarry.Sales
             for (int i = 0; i < dgvProduct.Rows.Count; i++)
             {
                 objProd.ProductID = Convert.ToInt32(dgvProduct.Rows[i].Cells[1].Value.ToString());
-                objProd.Quantity = Convert.ToInt32(dgvProduct.Rows[i].Cells[5].Value.ToString());
+                objProd.Quantity = Convert.ToInt32(dgvProduct.Rows[i].Cells[6].Value.ToString());
                 objProd.UpdateProd();
 
             }
@@ -330,7 +332,7 @@ namespace CashandCarry.Sales
             for (int i = 0; i < dgvProduct.Rows.Count; i++)
             {
                 objCtn.ProductID = Convert.ToInt32(dgvProduct.Rows[i].Cells[1].Value.ToString());
-                objCtn.Ctn = Convert.ToDecimal(dgvProduct.Rows[i].Cells[4].Value.ToString());
+                objCtn.Ctn = Convert.ToDecimal(dgvProduct.Rows[i].Cells[5].Value.ToString());
                 objCtn.CtnUpdate();
             }
 
@@ -339,16 +341,33 @@ namespace CashandCarry.Sales
            
 
           
-            decimal Ssum = 0;
-            for(int i =0;i<dgvProduct.Rows.Count;++i)
-            {
-                decimal ctn = Convert.ToDecimal(dgvProduct.Rows[i].Cells[4].Value.ToString());
-                resultTP = (TP * ctn);
-                Ssum += resultTP;
-            }
-            decimal grandtotal = Convert.ToDecimal(txtGrandTotal.Text);
-            decimal InvoiceProfit =   grandtotal- Ssum;
+           
+            
 
+           
+            SaleInvoiceBL objsale = new SaleInvoiceBL();
+            decimal Ssum = 0;
+            for (int i = 0; i < dgvProduct.Rows.Count; i++)
+            {
+                objsale.InvoiceNo = Convert.ToInt32(txtInvoiceID.Text);
+                objsale.ProductID = Convert.ToInt32(dgvProduct.Rows[i].Cells[1].Value.ToString());
+                objsale.Ctn = Convert.ToDecimal(dgvProduct.Rows[i].Cells[5].Value.ToString());
+                objsale.Quantity = Convert.ToInt32(dgvProduct.Rows[i].Cells[6].Value.ToString());
+                objsale.Discount = Convert.ToDecimal(dgvProduct.Rows[i].Cells[7].Value.ToString());
+                objsale.TotalAmount = Convert.ToDecimal(dgvProduct.Rows[i].Cells[8].Value.ToString());
+              
+                decimal TP = Convert.ToDecimal(dgvProduct.Rows[i].Cells[3].Value.ToString());
+                decimal RP = Convert.ToDecimal(dgvProduct.Rows[i].Cells[4].Value);
+                decimal resultRP = (RP * objsale.Ctn) - objsale.Discount;
+                decimal resultTP = (TP * objsale.Ctn);
+               
+                objsale.DetailProfit = Convert.ToDecimal(resultRP - resultTP);
+                Ssum += resultTP;
+                 objsale.SaveDetail();
+            }
+
+            decimal grandtotal = Convert.ToDecimal(txtGrandTotal.Text);
+            decimal InvoiceProfit = grandtotal - Ssum;
             SaleInvoiceBL objmas = new SaleInvoiceBL()
             {
 
@@ -358,26 +377,9 @@ namespace CashandCarry.Sales
                 Payment = Convert.ToDecimal(txtTotalPay.Text),
                 DuePayment = Convert.ToDecimal(txtDuePay.Text),
                 OrderBy = txtSalesman.Text,
-                 MasterProfit=InvoiceProfit
+                MasterProfit = InvoiceProfit
 
             };
-            SaleInvoiceBL objsale = new SaleInvoiceBL();
-
-            for (int i = 0; i < dgvProduct.Rows.Count; i++)
-            {
-                objsale.InvoiceNo = Convert.ToInt32(txtInvoiceID.Text);
-                objsale.ProductID = Convert.ToInt32(dgvProduct.Rows[i].Cells[1].Value.ToString());
-                objsale.Ctn = Convert.ToDecimal(dgvProduct.Rows[i].Cells[4].Value.ToString());
-                objsale.Quantity = Convert.ToInt32(dgvProduct.Rows[i].Cells[5].Value.ToString());
-                objsale.Discount = Convert.ToDecimal(dgvProduct.Rows[i].Cells[6].Value.ToString());
-                objsale.TotalAmount = Convert.ToDecimal(dgvProduct.Rows[i].Cells[7].Value.ToString());
-
-                decimal RP = Convert.ToDecimal(dgvProduct.Rows[i].Cells[3].Value);
-                decimal resultRP = (RP * objsale.Ctn) - objsale.Discount;
-                resultTP = (TP * objsale.Ctn);
-                objsale.DetailProfit = Convert.ToDecimal(resultRP - resultTP);
-                  objsale.SaveDetail();
-            }
             objmas.SaveMaster();
            
             SaleLedgerBL objLedger = new SaleLedgerBL(); 
@@ -539,7 +541,7 @@ namespace CashandCarry.Sales
               
                 {
 
-                    if (Convert.ToString(row.Cells[2].Value) == txtProdName.Text && Convert.ToString(row.Cells[3].Value) == txtPrice.Text)
+                    if (Convert.ToString(row.Cells[2].Value) == txtProdName.Text && Convert.ToString(row.Cells[4].Value) == txtPrice.Text)
                     {
 
                        row.Cells[4].Value = Convert.ToString(Convert.ToInt32(txtQuantity.Text));

@@ -91,6 +91,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dgvProduct = new System.Windows.Forms.DataGridView();
+            this.lblTP = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -446,6 +448,8 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.lblTP);
+            this.groupBox3.Controls.Add(this.label25);
             this.groupBox3.Controls.Add(this.ChkComplete);
             this.groupBox3.Controls.Add(this.ChkPiece);
             this.groupBox3.Controls.Add(this.ChkCtn);
@@ -860,6 +864,27 @@
             this.dgvProduct.DoubleClick += new System.EventHandler(this.dgvProduct_DoubleClick);
             this.dgvProduct.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvProduct_KeyDown);
             // 
+            // lblTP
+            // 
+            this.lblTP.AutoSize = true;
+            this.lblTP.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTP.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblTP.Location = new System.Drawing.Point(423, 226);
+            this.lblTP.Name = "lblTP";
+            this.lblTP.Size = new System.Drawing.Size(0, 17);
+            this.lblTP.TabIndex = 123;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label25.Location = new System.Drawing.Point(350, 226);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(25, 17);
+            this.label25.TabIndex = 122;
+            this.label25.Text = "TP:";
+            // 
             // FrmSaleInvoice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -956,6 +981,8 @@
         private System.Windows.Forms.ComboBox txtSalesman;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.CheckBox ChkComplete;
+        private System.Windows.Forms.Label lblTP;
+        private System.Windows.Forms.Label label25;
 
     }
 }

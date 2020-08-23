@@ -21,7 +21,7 @@ namespace CashandCarry.BL
       public decimal Balance{get;set;}
      public string Description{get;set;}
      public int RInvoice { get; set;}
-     public string SubRouteName { get; set; }
+     public int ZoneId { get; set; }
         public void Save()
         {
             using(var context = new CashCarryEntities3())
@@ -100,7 +100,7 @@ namespace CashandCarry.BL
         {
             using(var context=new CashCarryEntities3())
             {
-                return context.View_SaleLedger.Where(m => m.CustomerID == CustomerID).ToList();
+                return context.View_SaleLedger.Where(m => m.CustomerID == CustomerID ).ToList();
             }
         }
 
@@ -124,6 +124,14 @@ namespace CashandCarry.BL
             SqlParameter[] prm = new SqlParameter[1];
             prm[0] = new SqlParameter("@CustomerID", CustomerID);
             return DB.SelectTableWithSP(spName, prm);
+        }
+
+        public DataTable SearchByRoute()
+        {
+            string SpName = "SP_SaleLedger_Route";
+            SqlParameter[] prm = new SqlParameter[1];
+            prm[0] = new SqlParameter("@ZoneId", ZoneId);
+            return DB.SelectTableWithSP(SpName, prm);
         }
     }
 }

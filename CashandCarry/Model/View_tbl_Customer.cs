@@ -23,5 +23,6 @@ namespace CashandCarry.Model
         public string Route { get; set; }
         public string SubRouteName { get; set; }
         public Nullable<decimal> DuePayment { get; set; }
+        public Nullable<int> ZoneID { get; set; }
     }
 }

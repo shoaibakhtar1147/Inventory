@@ -281,6 +281,7 @@ namespace CashandCarry.Configuration
                 dgvCus.Columns.Add(delete);
                 dgvCus.DataSource = dt;
                 dgvCus.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                dgvCus.Columns["ZoneID"].Visible = false;
             }
 
          }
