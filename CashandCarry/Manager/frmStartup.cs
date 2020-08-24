@@ -3,6 +3,7 @@ using CashandCarry.Configuration;
 using CashandCarry.Configuration;
 using CashandCarry.Employee;
 using CashandCarry.Expense;
+using CashandCarry.Manager;
 using CashandCarry.Purchase;
 using CashandCarry.Reports;
 using CashandCarry.Sales;
@@ -95,6 +96,13 @@ namespace CashandCarry
             ShowForm(objExp);
         }
 
+        private void btnBackup_Click(object sender, EventArgs e)
+        {
+            FrmBackUp obj = new FrmBackUp();
+            ShowForm(obj);
+        }
+
+      
        
        
         

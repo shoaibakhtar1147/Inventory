@@ -37,37 +37,50 @@ namespace CashandCarry
         {
             try
             {
-              
-                EmployeeBL objemp = new EmployeeBL() 
+                DateTime RegDate = Convert.ToDateTime("08/24/2020");
+                DateTime expDate = Convert.ToDateTime("10/24/2020");
+                DateTime currentDate=Convert.ToDateTime(DateTime.Now.ToShortDateString());
+                TimeSpan t = expDate - currentDate;
+                double nrofDays = t.TotalDays;
+                if(nrofDays>0)
                 {
-                Username=txtusername.Text,
-                Password=txtpassword.Text
-                };
-                var dt = objemp.ForLogin();
-                if (dt != null )
-                {
-                    int LoginType = Convert.ToInt32(dt.LoginTypeID);
-                    string Name = Convert.ToString(dt.Name);
-                    Properties.Settings.Default.Name = Name;
-                    LoginInfoBL.Name = Convert.ToString(dt.Name);
-                    this.Hide();
-                    if (LoginType == 1)
+                    EmployeeBL objemp = new EmployeeBL()
                     {
-                        frmStartup objstart = new frmStartup();
-                        objstart.Show();
-                    }
-                    else if(LoginType == 2)
+                        Username = txtusername.Text,
+                        Password = txtpassword.Text
+                    };
+                    var dt = objemp.ForLogin();
+                    if (dt != null)
                     {
-                        FrmOperater objope=new FrmOperater();
-                        objope.Show();
-                    }
+                        int LoginType = Convert.ToInt32(dt.LoginTypeID);
+                        string Name = Convert.ToString(dt.Name);
+                        Properties.Settings.Default.Name = Name;
+                        LoginInfoBL.Name = Convert.ToString(dt.Name);
+                        this.Hide();
+                        if (LoginType == 1)
+                        {
+                            frmStartup objstart = new frmStartup();
+                            objstart.Show();
+                        }
+                        else if (LoginType == 2)
+                        {
+                            FrmOperater objope = new FrmOperater();
+                            objope.Show();
+                        }
 
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid Username Or Password ", "Altert");
+                        txtpassword.Clear();
+                    }
                 }
+              
                 else
                 {
-                    MessageBox.Show("Invalid Username Or Password ", "Altert");
-                    txtpassword.Clear();
+                    MessageBox.Show("Your software is expired.Please contact your software prodiver for renewal. ");
                 }
+                
 
 
             }

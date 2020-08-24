@@ -139,3 +139,5 @@ G:\C#\Inventory\CashandCarry\obj\Debug\CashandCarry.Expense.FrmAddExpense.resour
 G:\C#\Inventory\CashandCarry\obj\Debug\CashandCarry.FormReports.FrmExpenseReport.resources
 G:\C#\Inventory\CashandCarry\obj\Debug\CashandCarry.Configuration.frmSubZone.resources
 G:\C#\Inventory\CashandCarry\obj\Debug\CashandCarry.Configuration.FrmPriceSet.resources
+G:\C#\Inventory\CashandCarry\obj\Debug\CashandCarry.Backup.FormBack.resources
+G:\C#\Inventory\CashandCarry\obj\Debug\CashandCarry.Manager.FrmBackUp.resources

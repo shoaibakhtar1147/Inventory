@@ -56,6 +56,11 @@
     </Reference>
     <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
     <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.ConnectionInfo, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.SqlServer.ConnectionInfoExtended, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.SqlServer.Management.Sdk.Sfc, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.SqlServer.Smo, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.SqlServer.SmoExtended, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -73,6 +78,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Backup\FormBack.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Backup\FormBack.Designer.cs">
+      <DependentUpon>FormBack.cs</DependentUpon>
+    </Compile>
     <Compile Include="BL\CategoryBL.cs" />
     <Compile Include="BL\CompanyBL.cs" />
     <Compile Include="BL\CustomerBL.cs" />
@@ -251,6 +262,12 @@
     </Compile>
     <Compile Include="Employee\frmEmployeeRegistration.Designer.cs">
       <DependentUpon>frmEmployeeRegistration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Backup\FrmBackUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Backup\FrmBackUp.Designer.cs">
+      <DependentUpon>FrmBackUp.cs</DependentUpon>
     </Compile>
     <Compile Include="Manager\frmHomePage.cs">
       <SubType>Form</SubType>
@@ -664,6 +681,9 @@
     <Compile Include="Vendor\PurchaseInvoice.Designer.cs">
       <DependentUpon>PurchaseInvoice.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Backup\FormBack.resx">
+      <DependentUpon>FormBack.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Configuration\frmCustomer.resx">
       <DependentUpon>frmCustomer.cs</DependentUpon>
     </EmbeddedResource>
@@ -741,6 +761,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMessageBox\SaleMesage.resx">
       <DependentUpon>SaleMesage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Backup\FrmBackUp.resx">
+      <DependentUpon>FrmBackUp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Manager\frmHomePage.resx">
       <DependentUpon>frmHomePage.cs</DependentUpon>

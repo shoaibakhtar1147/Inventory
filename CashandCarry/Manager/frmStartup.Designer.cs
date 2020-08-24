@@ -30,11 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmStartup));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnBackup = new System.Windows.Forms.Button();
+            this.btnExpense = new System.Windows.Forms.Button();
             this.lblUsername = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.pnlmain = new System.Windows.Forms.Panel();
-            this.btnExpense = new System.Windows.Forms.Button();
             this.btnEmployee = new System.Windows.Forms.Button();
             this.btnReport = new System.Windows.Forms.Button();
             this.btnPuchase = new System.Windows.Forms.Button();
@@ -42,12 +41,15 @@
             this.btnSales = new System.Windows.Forms.Button();
             this.btnConfiguration = new System.Windows.Forms.Button();
             this.btnHome = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.pnlmain = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
+            this.panel1.Controls.Add(this.btnBackup);
             this.panel1.Controls.Add(this.btnExpense);
             this.panel1.Controls.Add(this.lblUsername);
             this.panel1.Controls.Add(this.label1);
@@ -63,6 +65,42 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(161, 740);
             this.panel1.TabIndex = 0;
+            // 
+            // btnBackup
+            // 
+            this.btnBackup.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
+            this.btnBackup.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBackup.FlatAppearance.BorderSize = 0;
+            this.btnBackup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBackup.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBackup.ForeColor = System.Drawing.Color.White;
+            this.btnBackup.Image = ((System.Drawing.Image)(resources.GetObject("btnBackup.Image")));
+            this.btnBackup.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBackup.Location = new System.Drawing.Point(0, 354);
+            this.btnBackup.Name = "btnBackup";
+            this.btnBackup.Size = new System.Drawing.Size(161, 40);
+            this.btnBackup.TabIndex = 11;
+            this.btnBackup.Text = "Back Up";
+            this.btnBackup.UseVisualStyleBackColor = false;
+            this.btnBackup.Click += new System.EventHandler(this.btnBackup_Click);
+            // 
+            // btnExpense
+            // 
+            this.btnExpense.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
+            this.btnExpense.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExpense.FlatAppearance.BorderSize = 0;
+            this.btnExpense.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExpense.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExpense.ForeColor = System.Drawing.Color.White;
+            this.btnExpense.Image = ((System.Drawing.Image)(resources.GetObject("btnExpense.Image")));
+            this.btnExpense.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExpense.Location = new System.Drawing.Point(0, 264);
+            this.btnExpense.Name = "btnExpense";
+            this.btnExpense.Size = new System.Drawing.Size(161, 40);
+            this.btnExpense.TabIndex = 10;
+            this.btnExpense.Text = "Expense";
+            this.btnExpense.UseVisualStyleBackColor = false;
+            this.btnExpense.Click += new System.EventHandler(this.btnExpense_Click);
             // 
             // lblUsername
             // 
@@ -85,42 +123,6 @@
             this.label1.TabIndex = 8;
             this.label1.Text = "Welcome";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(82)))), ((int)(((byte)(83)))));
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(161, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(963, 10);
-            this.panel2.TabIndex = 1;
-            // 
-            // pnlmain
-            // 
-            this.pnlmain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlmain.Location = new System.Drawing.Point(161, 10);
-            this.pnlmain.Name = "pnlmain";
-            this.pnlmain.Size = new System.Drawing.Size(963, 730);
-            this.pnlmain.TabIndex = 2;
-            this.pnlmain.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlmain_Paint);
-            // 
-            // btnExpense
-            // 
-            this.btnExpense.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
-            this.btnExpense.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnExpense.FlatAppearance.BorderSize = 0;
-            this.btnExpense.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExpense.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExpense.ForeColor = System.Drawing.Color.White;
-            this.btnExpense.Image = ((System.Drawing.Image)(resources.GetObject("btnExpense.Image")));
-            this.btnExpense.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExpense.Location = new System.Drawing.Point(0, 264);
-            this.btnExpense.Name = "btnExpense";
-            this.btnExpense.Size = new System.Drawing.Size(161, 40);
-            this.btnExpense.TabIndex = 10;
-            this.btnExpense.Text = "Expense";
-            this.btnExpense.UseVisualStyleBackColor = false;
-            this.btnExpense.Click += new System.EventHandler(this.btnExpense_Click);
             // 
             // btnEmployee
             // 
@@ -186,7 +188,7 @@
             this.btnLogOut.ForeColor = System.Drawing.Color.White;
             this.btnLogOut.Image = global::CashandCarry.Properties.Resources.icons8_logout_rounded_up_24;
             this.btnLogOut.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLogOut.Location = new System.Drawing.Point(0, 353);
+            this.btnLogOut.Location = new System.Drawing.Point(0, 398);
             this.btnLogOut.Name = "btnLogOut";
             this.btnLogOut.Size = new System.Drawing.Size(161, 40);
             this.btnLogOut.TabIndex = 6;
@@ -251,6 +253,24 @@
             this.btnHome.UseVisualStyleBackColor = false;
             this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
             // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(82)))), ((int)(((byte)(83)))));
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(161, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(963, 10);
+            this.panel2.TabIndex = 1;
+            // 
+            // pnlmain
+            // 
+            this.pnlmain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlmain.Location = new System.Drawing.Point(161, 10);
+            this.pnlmain.Name = "pnlmain";
+            this.pnlmain.Size = new System.Drawing.Size(963, 730);
+            this.pnlmain.TabIndex = 2;
+            this.pnlmain.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlmain_Paint);
+            // 
             // frmStartup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -287,5 +307,6 @@
         private System.Windows.Forms.Label lblUsername;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnExpense;
+        private System.Windows.Forms.Button btnBackup;
     }
 }
