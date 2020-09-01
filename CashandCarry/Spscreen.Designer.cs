@@ -41,11 +41,11 @@
             this.lblTraderName.AutoSize = true;
             this.lblTraderName.Font = new System.Drawing.Font("Century Gothic", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTraderName.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblTraderName.Location = new System.Drawing.Point(86, 120);
+            this.lblTraderName.Location = new System.Drawing.Point(69, 120);
             this.lblTraderName.Name = "lblTraderName";
-            this.lblTraderName.Size = new System.Drawing.Size(253, 44);
+            this.lblTraderName.Size = new System.Drawing.Size(287, 44);
             this.lblTraderName.TabIndex = 0;
-            this.lblTraderName.Text = "Umer Traders";
+            this.lblTraderName.Text = "Roshan Traders";
             this.lblTraderName.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
@@ -53,7 +53,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label2.Location = new System.Drawing.Point(298, 162);
+            this.label2.Location = new System.Drawing.Point(315, 162);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 15);
             this.label2.TabIndex = 1;
