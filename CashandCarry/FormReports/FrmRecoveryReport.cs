@@ -1,6 +1,7 @@
 ﻿using CashandCarry.BL;
 using CashandCarry.Reports;
 using CashandCarry.Reports.Customer;
+using CashandCarry.Reports.Sale;
 using MetroFramework.Forms;
 using System;
 using System.Collections.Generic;
@@ -56,20 +57,18 @@ namespace CashandCarry.FormReports
             }
             else if(!string.IsNullOrEmpty(txtCusID.Text))
             {
-                RecoveryByCusIDReport objCus = new RecoveryByCusIDReport();
+                SaleLedgerReport objSale = new SaleLedgerReport();
                 rptViewer objView = new rptViewer();
-                objCus.SetParameterValue("@CustomerID", txtCusID.Text);
-                
-
-                 SaleRecoveryBL objBL = new SaleRecoveryBL() 
+                objSale.SetParameterValue("@CustomerID", txtCusID.Text);
+                SaleLedgerBL objLedger = new SaleLedgerBL()
                 {
-                CustomerID=Convert.ToInt32(txtCusID.Text)
+                    CustomerID = Convert.ToInt32(txtCusID.Text)
                 };
-                var dt = objBL.SearchByCusID();
+                DataTable dt = objLedger.Search();
                 if(dt != null)
                 {
-                    objCus.SetDataSource(dt);
-                    objView.crptViewer.ReportSource = objCus;
+                    objSale.SetDataSource(dt);
+                    objView.crptViewer.ReportSource = objSale;
                     objView.WindowState = FormWindowState.Maximized;
                     objView.ShowDialog();
                     txtCusID.Clear();

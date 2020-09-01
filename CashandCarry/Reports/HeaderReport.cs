@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CashandCarry.Reports.Company {
+namespace CashandCarry.Reports {
     using System;
     using System.ComponentModel;
     using CrystalDecisions.Shared;
@@ -16,14 +16,14 @@ namespace CashandCarry.Reports.Company {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class RemainByComIDReport : ReportClass {
+    public class HeaderReport : ReportClass {
         
-        public RemainByComIDReport() {
+        public HeaderReport() {
         }
         
         public override string ResourceName {
             get {
-                return "RemainByComIDReport.rpt";
+                return "HeaderReport.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace CashandCarry.Reports.Company {
         
         public override string FullResourceName {
             get {
-                return "CashandCarry.Reports.Company.RemainByComIDReport.rpt";
+                return "CashandCarry.Reports.HeaderReport.rpt";
             }
             set {
                 // Do nothing
@@ -87,20 +87,12 @@ namespace CashandCarry.Reports.Company {
                 return this.ReportDefinition.Sections[4];
             }
         }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_ComID {
-            get {
-                return this.DataDefinition.ParameterFields[0];
-            }
-        }
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedRemainByComIDReport : Component, ICachedReport {
+    public class CachedHeaderReport : Component, ICachedReport {
         
-        public CachedRemainByComIDReport() {
+        public CachedHeaderReport() {
         }
         
         [Browsable(false)]
@@ -137,7 +129,7 @@ namespace CashandCarry.Reports.Company {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            RemainByComIDReport rpt = new RemainByComIDReport();
+            HeaderReport rpt = new HeaderReport();
             rpt.Site = this.Site;
             return rpt;
         }

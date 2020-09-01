@@ -29,6 +29,7 @@ namespace CashandCarry.BL
           public DateTime minDate { get; set; }
           public DateTime maxDate { get; set; }
           public decimal furDiscount { get; set; }
+          public decimal TP { get; set; }
 
         public void SaveDetail()
           {
@@ -40,7 +41,8 @@ namespace CashandCarry.BL
                  ProductID=ProductID,
                  Quantity=Quantity,
                   Amount=Amount,
-                  Ctn=Ctn
+                  Ctn=Ctn,
+                  PurchasePrice=TP
                 
                 };
                 context.Tbl_PurchaseReturn_Detail.Add(objDetail);

@@ -128,6 +128,7 @@
           <Property Name="TotalAmount" Type="decimal" Precision="18" Scale="2" />
           <Property Name="Ctn" Type="decimal" Precision="18" Scale="2" />
           <Property Name="frieght" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="PurchasePrice" Type="decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="Tbl_PurchaseMaster">
           <Key>
@@ -163,6 +164,7 @@
           <Property Name="Quantity" Type="int" />
           <Property Name="Amount" Type="decimal" Precision="18" Scale="2" />
           <Property Name="Ctn" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="PurchasePrice" Type="decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="Tbl_PurchaseReturn_Master">
           <Key>
@@ -205,6 +207,7 @@
           <Property Name="Discount" Type="decimal" Precision="18" Scale="2" />
           <Property Name="Amount" Type="decimal" Precision="18" Scale="2" />
           <Property Name="Ctn" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="RetailPrice" Type="decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="Tbl_ReturnSaleMaster">
           <Key>
@@ -230,6 +233,7 @@
           <Property Name="TotalAmount" Type="decimal" Precision="18" Scale="2" />
           <Property Name="Ctn" Type="decimal" Precision="18" Scale="2" />
           <Property Name="ProfitLoss" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="RetailPrice" Type="decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="tbl_SaleMAster">
           <Key>
@@ -290,18 +294,16 @@ warning 6002: The table/view 'CashCarry.dbo.View_DetailPurchase' does not have a
         <EntityType Name="View_DetailPurchase">
           <Key>
             <PropertyRef Name="Sr#" />
-            <PropertyRef Name="InvoiceNo" />
-            <PropertyRef Name="CompanyID" />
           </Key>
           <Property Name="Sr#" Type="int" Nullable="false" />
-          <Property Name="InvoiceNo" Type="int" Nullable="false" />
-          <Property Name="CompanyID" Type="int" Nullable="false" />
+          <Property Name="InvoiceNo" Type="int" />
+          <Property Name="CompanyID" Type="int" />
           <Property Name="CompanyName" Type="varchar" MaxLength="100" />
           <Property Name="Contact" Type="varchar" MaxLength="20" />
           <Property Name="Date" Type="datetime" />
           <Property Name="ProductID" Type="int" />
           <Property Name="ProductName" Type="varchar" MaxLength="30" />
-          <Property Name="TradePrice" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TP" Type="decimal" Precision="18" Scale="2" />
           <Property Name="Ctn" Type="decimal" Precision="18" Scale="2" />
           <Property Name="Quantity" Type="int" />
           <Property Name="frieght" Type="decimal" Precision="18" Scale="2" />
@@ -467,7 +469,7 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
     [View_DetailPurchase].[Date] AS [Date], 
     [View_DetailPurchase].[ProductID] AS [ProductID], 
     [View_DetailPurchase].[ProductName] AS [ProductName], 
-    [View_DetailPurchase].[TradePrice] AS [TradePrice], 
+    [View_DetailPurchase].[TP] AS [TP], 
     [View_DetailPurchase].[Ctn] AS [Ctn], 
     [View_DetailPurchase].[Quantity] AS [Quantity], 
     [View_DetailPurchase].[frieght] AS [frieght], 
@@ -621,11 +623,11 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
           <EntitySet Name="Tbl_SubZone" EntityType="CashCarryModel.Tbl_SubZone" />
           <EntitySet Name="View_SubZone" EntityType="CashCarryModel.View_SubZone" />
           <EntitySet Name="View_tbl_Customer" EntityType="CashCarryModel.View_tbl_Customer" />
-          <EntitySet Name="View_DetailPurchase" EntityType="CashCarryModel.View_DetailPurchase" />
           <EntitySet Name="tbl_ProductPrice" EntityType="CashCarryModel.tbl_ProductPrice" />
           <EntitySet Name="View_ProductPrice" EntityType="CashCarryModel.View_ProductPrice" />
           <EntitySet Name="tbl_Product" EntityType="CashCarryModel.tbl_Product" />
           <EntitySet Name="View_SaleLedger" EntityType="CashCarryModel.View_SaleLedger" />
+          <EntitySet Name="View_DetailPurchase" EntityType="CashCarryModel.View_DetailPurchase" />
         </EntityContainer>
         <EntityType Name="tbl_Zone">
           <Key>
@@ -717,6 +719,7 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
           <Property Name="TotalAmount" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="Ctn" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="ProfitLoss" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="RetailPrice" Type="Decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="tbl_SaleMAster">
           <Key>
@@ -754,6 +757,7 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
           <Property Name="TotalAmount" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="Ctn" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="frieght" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="PurchasePrice" Type="Decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="Tbl_PurchaseMaster">
           <Key>
@@ -789,6 +793,7 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
           <Property Name="Discount" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="Ctn" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="RetailPrice" Type="Decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="Tbl_ReturnSaleMaster">
           <Key>
@@ -812,6 +817,7 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
           <Property Name="Quantity" Type="Int32" />
           <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="Ctn" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="PurchasePrice" Type="Decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="Tbl_PurchaseReturn_Master">
           <Key>
@@ -957,33 +963,6 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
           <Property Name="DuePayment" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="ZoneID" Type="Int32" />
         </EntityType>
-        <EntityType Name="View_DetailPurchase">
-          <Key>
-            <PropertyRef Name="Sr_" />
-            <PropertyRef Name="InvoiceNo" />
-            <PropertyRef Name="CompanyID" />
-          </Key>
-          <Property Name="Sr_" Type="Int32" Nullable="false" />
-          <Property Name="InvoiceNo" Type="Int32" Nullable="false" />
-          <Property Name="CompanyID" Type="Int32" Nullable="false" />
-          <Property Name="CompanyName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Contact" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="Date" Type="DateTime" Precision="3" />
-          <Property Name="ProductID" Type="Int32" />
-          <Property Name="ProductName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="TradePrice" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="Ctn" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="Quantity" Type="Int32" />
-          <Property Name="frieght" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="Distribution_Margin" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="TotalAmount" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="FurDiscount" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="GrandTotal" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="Payment" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="Balance" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="New_Balance" Type="Decimal" Precision="18" Scale="2" />
-        </EntityType>
         <EntityType Name="tbl_ProductPrice">
           <Key>
             <PropertyRef Name="ProductPriceId" />
@@ -1037,6 +1016,31 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
           <Property Name="Date" Type="DateTime" Precision="3" />
           <Property Name="Balance" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="View_DetailPurchase">
+          <Key>
+            <PropertyRef Name="Sr_" />
+          </Key>
+          <Property Name="Sr_" Type="Int32" Nullable="false" />
+          <Property Name="InvoiceNo" Type="Int32" />
+          <Property Name="CompanyID" Type="Int32" />
+          <Property Name="CompanyName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Contact" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="ProductID" Type="Int32" />
+          <Property Name="ProductName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="TP" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Ctn" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="frieght" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Distribution_Margin" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TotalAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="FurDiscount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="GrandTotal" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Payment" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Balance" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="New_Balance" Type="Decimal" Precision="18" Scale="2" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1138,6 +1142,7 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
           <EntitySetMapping Name="tbl_Saledetail">
             <EntityTypeMapping TypeName="CashCarryModel.tbl_Saledetail">
               <MappingFragment StoreEntitySet="tbl_Saledetail">
+                <ScalarProperty Name="RetailPrice" ColumnName="RetailPrice" />
                 <ScalarProperty Name="ProfitLoss" ColumnName="ProfitLoss" />
                 <ScalarProperty Name="Ctn" ColumnName="Ctn" />
                 <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
@@ -1182,6 +1187,7 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
           <EntitySetMapping Name="Tbl_PurchaseDetail">
             <EntityTypeMapping TypeName="CashCarryModel.Tbl_PurchaseDetail">
               <MappingFragment StoreEntitySet="Tbl_PurchaseDetail">
+                <ScalarProperty Name="PurchasePrice" ColumnName="PurchasePrice" />
                 <ScalarProperty Name="frieght" ColumnName="frieght" />
                 <ScalarProperty Name="Ctn" ColumnName="Ctn" />
                 <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
@@ -1223,6 +1229,7 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
           <EntitySetMapping Name="Tbl_ReturnSaleDetail">
             <EntityTypeMapping TypeName="CashCarryModel.Tbl_ReturnSaleDetail">
               <MappingFragment StoreEntitySet="Tbl_ReturnSaleDetail">
+                <ScalarProperty Name="RetailPrice" ColumnName="RetailPrice" />
                 <ScalarProperty Name="Ctn" ColumnName="Ctn" />
                 <ScalarProperty Name="Amount" ColumnName="Amount" />
                 <ScalarProperty Name="Discount" ColumnName="Discount" />
@@ -1249,6 +1256,7 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
           <EntitySetMapping Name="Tbl_PurchaseReturn_Detail">
             <EntityTypeMapping TypeName="CashCarryModel.Tbl_PurchaseReturn_Detail">
               <MappingFragment StoreEntitySet="Tbl_PurchaseReturn_Detail">
+                <ScalarProperty Name="PurchasePrice" ColumnName="PurchasePrice" />
                 <ScalarProperty Name="Ctn" ColumnName="Ctn" />
                 <ScalarProperty Name="Amount" ColumnName="Amount" />
                 <ScalarProperty Name="Quantity" ColumnName="Quantity" />
@@ -1415,32 +1423,6 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="View_DetailPurchase">
-            <EntityTypeMapping TypeName="CashCarryModel.View_DetailPurchase">
-              <MappingFragment StoreEntitySet="View_DetailPurchase">
-                <ScalarProperty Name="New_Balance" ColumnName="New Balance" />
-                <ScalarProperty Name="Balance" ColumnName="Balance" />
-                <ScalarProperty Name="Payment" ColumnName="Payment" />
-                <ScalarProperty Name="GrandTotal" ColumnName="GrandTotal" />
-                <ScalarProperty Name="FurDiscount" ColumnName="FurDiscount" />
-                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
-                <ScalarProperty Name="Distribution_Margin" ColumnName="Distribution Margin" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="frieght" ColumnName="frieght" />
-                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-                <ScalarProperty Name="Ctn" ColumnName="Ctn" />
-                <ScalarProperty Name="TradePrice" ColumnName="TradePrice" />
-                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
-                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="Contact" ColumnName="Contact" />
-                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
-                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
-                <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
-                <ScalarProperty Name="Sr_" ColumnName="Sr#" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="tbl_ProductPrice">
             <EntityTypeMapping TypeName="CashCarryModel.tbl_ProductPrice">
               <MappingFragment StoreEntitySet="tbl_ProductPrice">
@@ -1496,6 +1478,32 @@ warning 6002: The table/view 'CashCarry.dbo.View_tbl_Product' does not have a pr
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
                 <ScalarProperty Name="STId" ColumnName="STId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_DetailPurchase">
+            <EntityTypeMapping TypeName="CashCarryModel.View_DetailPurchase">
+              <MappingFragment StoreEntitySet="View_DetailPurchase">
+                <ScalarProperty Name="New_Balance" ColumnName="New Balance" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="Payment" ColumnName="Payment" />
+                <ScalarProperty Name="GrandTotal" ColumnName="GrandTotal" />
+                <ScalarProperty Name="FurDiscount" ColumnName="FurDiscount" />
+                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+                <ScalarProperty Name="Distribution_Margin" ColumnName="Distribution Margin" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="frieght" ColumnName="frieght" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Ctn" ColumnName="Ctn" />
+                <ScalarProperty Name="TP" ColumnName="TP" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
+                <ScalarProperty Name="Sr_" ColumnName="Sr#" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

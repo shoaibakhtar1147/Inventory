@@ -31,6 +31,7 @@ namespace CashandCarry.BL
         public decimal frieght { get; set; }
         public decimal furDiscount { get; set; }
         public decimal GrandTotal { get; set; }
+        public decimal TP { get; set; }
 
         public void SaveDetail()
         {
@@ -45,7 +46,8 @@ namespace CashandCarry.BL
                         Quantity = Quantity,
                         TotalAmount = Amount,
                         Ctn = Ctn,
-                        frieght=frieght
+                        frieght=frieght,
+                        PurchasePrice=TP
                     };
                     context.Tbl_PurchaseDetail.Add(objpur);
                     context.SaveChanges();

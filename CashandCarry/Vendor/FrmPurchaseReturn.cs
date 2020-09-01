@@ -109,6 +109,8 @@ namespace CashandCarry.Vendor
                
                 lblQuantity.Text = dgvProduct.Rows[rowindex].Cells[11].Value.ToString();
                 lblctn.Text = dgvProduct.Rows[rowindex].Cells[10].Value.ToString();
+                txtPrice.Text = dgvProduct.Rows[rowindex].Cells[9].Value.ToString();
+                
                 
 
                 txtComName.Focus();
@@ -189,10 +191,9 @@ namespace CashandCarry.Vendor
             var dt = objPro.SearchByName();
             if (dt.Count > 0)
             {
-                txtProdID.Text = Convert.ToString(dt[0].ProductID);
-                txtPrice.Text = Convert.ToString(dt[0].PurchasePrice);
+                txtProdID.Text = Convert.ToString(dt[0].ProductID);              
                 lblPiePerCtn.Text = Convert.ToString(dt[0].PiecePerCtn);
-                lblctn.Text = Convert.ToString(dt[0].Ctn);
+                
                // GetDue();
             }
         }
@@ -217,8 +218,6 @@ namespace CashandCarry.Vendor
             dt.Columns["SrNo"].AutoIncrementSeed = 1;
             dt.Columns["SrNo"].AutoIncrementStep = 1;
             dt.Columns.Add("ProductID");
-            dt.Columns.Add("CompanyID");
-            dt.Columns.Add("CompanyName");
             dt.Columns.Add("ProductName");
             dt.Columns.Add("RetailPrice");
             dt.Columns.Add("Ctn");
@@ -236,12 +235,10 @@ namespace CashandCarry.Vendor
             DataRow dr = dt.NewRow();
             dr[1] = txtProdID.Text;
             dr[2] = txtProdName.Text;
-            dr[3] = txtComID.Text;
-            dr[4] = txtComName.Text;
-            dr[5] = txtPrice.Text;
-            dr[6] = txtCtn.Text;
-            dr[7] = txtQuantity.Text;
-            dr[8] = txtAmount.Text;
+            dr[3] = txtPrice.Text;
+            dr[4] = txtCtn.Text;
+            dr[5] = txtQuantity.Text;
+            dr[6] = txtAmount.Text;
             dt.Rows.Add(dr);
             SumCalculate();
             txtBillDiscount.Focus();
@@ -257,7 +254,7 @@ namespace CashandCarry.Vendor
             int sum = 0;
             for (int i = 0; i < dgvReturnItem.Rows.Count; ++i)
             {
-                sum += Convert.ToInt32(dgvReturnItem.Rows[i].Cells[8].Value);
+                sum += Convert.ToInt32(dgvReturnItem.Rows[i].Cells[6].Value);
             }
             txtTotalBill.Text = sum.ToString();
 
@@ -313,15 +310,15 @@ namespace CashandCarry.Vendor
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            
-            
+
+
 
             PurchaseReturnBL objUpdate = new PurchaseReturnBL();
             {
                 for (int i = 0; i < dgvReturnItem.Rows.Count; i++)
                 {
                     objUpdate.ProductID = Convert.ToInt32(dgvReturnItem.Rows[i].Cells[1].Value.ToString());
-                    objUpdate.Quantity = Convert.ToInt32(dgvReturnItem.Rows[i].Cells[7].Value.ToString());
+                    objUpdate.Quantity = Convert.ToInt32(dgvReturnItem.Rows[i].Cells[5].Value.ToString());
                     objUpdate.ProdUpdate();
                 }
 
@@ -331,20 +328,21 @@ namespace CashandCarry.Vendor
                 for (int i = 0; i < dgvReturnItem.Rows.Count; i++)
                 {
                     objCtn.ProductID = Convert.ToInt32(dgvReturnItem.Rows[i].Cells[1].Value.ToString());
-                    objCtn.Ctn = Convert.ToDecimal(dgvReturnItem.Rows[i].Cells[6].Value.ToString());
+                    objCtn.Ctn = Convert.ToDecimal(dgvReturnItem.Rows[i].Cells[4].Value.ToString());
                     objCtn.CtnUpdate();
                 }
             }
-            
+
             PurchaseReturnBL objDetail = new PurchaseReturnBL();
             {
                 for (int i = 0; i < dgvReturnItem.Rows.Count; i++)
                 {
                     objDetail.PReturnID = Convert.ToInt32(txtReturnID.Text);
                     objDetail.ProductID = Convert.ToInt32(dgvReturnItem.Rows[i].Cells[1].Value.ToString());
-                    objDetail.Ctn = Convert.ToDecimal(dgvReturnItem.Rows[i].Cells[6].Value.ToString());
-                    objDetail.Quantity = Convert.ToInt32(dgvReturnItem.Rows[i].Cells[7].Value.ToString());
-                    objDetail.Amount = Convert.ToInt32(dgvReturnItem.Rows[i].Cells[8].Value.ToString());
+                    objDetail.TP = Convert.ToDecimal(dgvReturnItem.Rows[i].Cells[3].Value.ToString());
+                    objDetail.Ctn = Convert.ToDecimal(dgvReturnItem.Rows[i].Cells[4].Value.ToString());
+                    objDetail.Quantity = Convert.ToInt32(dgvReturnItem.Rows[i].Cells[5].Value.ToString());
+                    objDetail.Amount = Convert.ToDecimal(dgvReturnItem.Rows[i].Cells[6].Value.ToString());
                     objDetail.SaveDetail();
 
                 }
@@ -442,9 +440,9 @@ namespace CashandCarry.Vendor
                     if (Convert.ToString(row.Cells[2].Value) == txtProdName.Text && Convert.ToString(row.Cells[5].Value) == txtPrice.Text)
                     {
 
-                        row.Cells[6].Value=Convert.ToString(Convert.ToDecimal(txtCtn.Text));
-                        row.Cells[7].Value = Convert.ToString(Convert.ToInt32(txtQuantity.Text));
-                        row.Cells[8].Value = Convert.ToString(Convert.ToDecimal(txtAmount.Text));
+                        row.Cells[4].Value=Convert.ToString(Convert.ToDecimal(txtCtn.Text));
+                        row.Cells[5].Value = Convert.ToString(Convert.ToInt32(txtQuantity.Text));
+                        row.Cells[6].Value = Convert.ToString(Convert.ToDecimal(txtAmount.Text));
                         found = true;
                         SumCalculate();
                         ClearGroup();
@@ -491,7 +489,7 @@ namespace CashandCarry.Vendor
 
         private void txtReturnCash_TextChanged(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtReturnCash.Text))
+            if (!string.IsNullOrEmpty(txtReturnCash.Text) || !string.IsNullOrEmpty(txtTotalBill.Text))
             {
                 decimal grand = Convert.ToDecimal(txtGrandTotal.Text);
                 decimal returnCash = Convert.ToDecimal(txtReturnCash.Text);
@@ -500,10 +498,7 @@ namespace CashandCarry.Vendor
                 decimal preBal = Convert.ToDecimal(txtPreBalance.Text);
                 txtNewBalance.Text = (preBal - res).ToString();
             }
-            else
-            {
-                txtReturnCash.Text = "0.00";
-            }
+           
             
         }
 

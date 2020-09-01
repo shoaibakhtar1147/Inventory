@@ -320,7 +320,7 @@ namespace CashandCarry.Sales
 
 
             SaleInvoiceBL objProd = new SaleInvoiceBL();
-            for (int i = 0; i < dgvProduct.Rows.Count; i++)
+            for (int i = 0; i < dgvProduct.Rows.Count; ++i)
             {
                 objProd.ProductID = Convert.ToInt32(dgvProduct.Rows[i].Cells[1].Value.ToString());
                 objProd.Quantity = Convert.ToInt32(dgvProduct.Rows[i].Cells[6].Value.ToString());
@@ -329,7 +329,7 @@ namespace CashandCarry.Sales
             }
 
             PurchaseReturnBL objCtn = new PurchaseReturnBL();
-            for (int i = 0; i < dgvProduct.Rows.Count; i++)
+            for (int i = 0; i < dgvProduct.Rows.Count; ++i)
             {
                 objCtn.ProductID = Convert.ToInt32(dgvProduct.Rows[i].Cells[1].Value.ToString());
                 objCtn.Ctn = Convert.ToDecimal(dgvProduct.Rows[i].Cells[5].Value.ToString());
@@ -347,7 +347,7 @@ namespace CashandCarry.Sales
            
             SaleInvoiceBL objsale = new SaleInvoiceBL();
             decimal Ssum = 0;
-            for (int i = 0; i < dgvProduct.Rows.Count; i++)
+            for (int i = 0; i < dgvProduct.Rows.Count; ++i)
             {
                 objsale.InvoiceNo = Convert.ToInt32(txtInvoiceID.Text);
                 objsale.ProductID = Convert.ToInt32(dgvProduct.Rows[i].Cells[1].Value.ToString());
@@ -357,11 +357,11 @@ namespace CashandCarry.Sales
                 objsale.TotalAmount = Convert.ToDecimal(dgvProduct.Rows[i].Cells[8].Value.ToString());
               
                 decimal TP = Convert.ToDecimal(dgvProduct.Rows[i].Cells[3].Value.ToString());
-                decimal RP = Convert.ToDecimal(dgvProduct.Rows[i].Cells[4].Value);
-                decimal resultRP = (RP * objsale.Ctn) - objsale.Discount;
+                objsale.RP = Convert.ToDecimal(dgvProduct.Rows[i].Cells[4].Value);
+                decimal resultRP = (objsale.RP * objsale.Ctn) - objsale.Discount;
                 decimal resultTP = (TP * objsale.Ctn);
-               
-                objsale.DetailProfit = Convert.ToDecimal(resultRP - resultTP);
+                decimal detailP = Convert.ToDecimal(resultRP - resultTP);
+                objsale.DetailProfit = detailP;
                 Ssum += resultTP;
                  objsale.SaveDetail();
             }
@@ -412,8 +412,10 @@ namespace CashandCarry.Sales
             }
             objview.crptViewer.ReportSource = objSale;
             objview.WindowState = FormWindowState.Normal;
+           
             objview.ShowDialog();
             ClearForm();
+            dgvProduct.DataSource = null;
             btnNew.Enabled = true;
         }
 
@@ -448,6 +450,11 @@ namespace CashandCarry.Sales
 
             }
             dgvProduct.DataSource = null;
+            ChkComplete.Checked = false;
+            lblCtn.Text = "";
+            lblPiePerCtn.Text = "";
+            lblQuantity.Text = "";
+            lblTP.Text = "";
         }
 
 

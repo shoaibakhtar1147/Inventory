@@ -23,6 +23,7 @@ namespace CashandCarry.Backup
 
         private void FormBack_Load(object sender, EventArgs e)
         {
+            
 
         }
 
@@ -33,7 +34,7 @@ namespace CashandCarry.Backup
             {
                 Server DbServer = new Server(new ServerConnection(txtServer.Text));
                 Microsoft.SqlServer.Management.Smo.Backup dbBackup = new Microsoft.SqlServer.Management.Smo.Backup() { Action = BackupActionType.Database, Database = txtDatabase.Text };
-                dbBackup.Devices.AddDevice(@txtPath.Text+"UmerTraders.bak", DeviceType.File);
+                dbBackup.Devices.AddDevice(@txtPath.Text+"RoshanTraders"+DateTime.Now.ToShortDateString()+".bak", DeviceType.File);
                 dbBackup.Initialize = true; dbBackup.PercentComplete += DbBackup_PercentComplete;
                 dbBackup.Complete += DbBackup_Complete;
                 dbBackup.SqlBackupAsync(DbServer);

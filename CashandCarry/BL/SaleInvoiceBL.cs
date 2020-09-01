@@ -33,6 +33,7 @@ namespace CashandCarry.BL
         public string OrderBy { get; set; }
         public decimal DetailProfit { get; set; }
         public decimal MasterProfit { get; set; }
+        public decimal RP { get; set; }
 
         public void SaveDetail()
         {
@@ -47,7 +48,8 @@ namespace CashandCarry.BL
                     Quantity = Quantity,
                     Ctn=Ctn,
                     TotalAmount = TotalAmount,
-                    ProfitLoss=DetailProfit
+                    ProfitLoss=DetailProfit,
+                    RetailPrice=RP
                 };
                 context.tbl_Saledetail.Add(objsale);
                 context.SaveChanges();

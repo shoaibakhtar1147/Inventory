@@ -53,11 +53,11 @@ namespace CashandCarry.Model
         public virtual DbSet<Tbl_SubZone> Tbl_SubZone { get; set; }
         public virtual DbSet<View_SubZone> View_SubZone { get; set; }
         public virtual DbSet<View_tbl_Customer> View_tbl_Customer { get; set; }
-        public virtual DbSet<View_DetailPurchase> View_DetailPurchase { get; set; }
         public virtual DbSet<tbl_ProductPrice> tbl_ProductPrice { get; set; }
         public virtual DbSet<View_ProductPrice> View_ProductPrice { get; set; }
         public virtual DbSet<tbl_Product> tbl_Product { get; set; }
         public virtual DbSet<View_SaleLedger> View_SaleLedger { get; set; }
+        public virtual DbSet<View_DetailPurchase> View_DetailPurchase { get; set; }
     
         public virtual ObjectResult<Nullable<int>> SP_Cate_AddNew(Nullable<int> categoryID)
         {

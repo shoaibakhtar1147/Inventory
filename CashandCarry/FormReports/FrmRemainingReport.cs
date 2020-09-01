@@ -1,6 +1,7 @@
 ﻿using CashandCarry.BL;
 using CashandCarry.Reports;
 using CashandCarry.Reports.Company;
+using CashandCarry.Reports.Purchase;
 using MetroFramework.Forms;
 using System;
 using System.Collections.Generic;
@@ -54,20 +55,20 @@ namespace CashandCarry.FormReports
             }
             else if(!string.IsNullOrEmpty(txtComID.Text))
             {
-                RemainByComIDReport objCom = new RemainByComIDReport();
-                rptViewer objView = new rptViewer();
-                objCom.SetParameterValue("@ComID", txtComID.Text);
-                PurRemainBL objBL = new PurRemainBL() 
+                PurLedger objrpt = new PurLedger();
+                rptViewer objview = new rptViewer();
+                objrpt.SetParameterValue("@CompanyID", txtComID.Text);
+                PurchaseLedgerBL objLedger = new PurchaseLedgerBL()
                 {
-                CompanyID=Convert.ToInt32(txtComID.Text)
+                    CompanyID = Convert.ToInt32(txtComID.Text)
                 };
-                var dt = objBL.SearchByComID();
+                DataTable dt = objLedger.Search();
                 if(dt !=null)
                 {
-                    objCom.SetDataSource(dt);
-                    objView.crptViewer.ReportSource = objCom;
-                    objView.WindowState = FormWindowState.Maximized;
-                    objView.ShowDialog();
+                    objrpt.SetDataSource(dt);
+                    objview.crptViewer.ReportSource = objrpt;
+                    objview.WindowState = FormWindowState.Maximized;
+                    objview.ShowDialog();
                 }
                 else
                 {

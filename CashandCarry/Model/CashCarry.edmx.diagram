@@ -31,11 +31,11 @@
         <EntityTypeShape EntityType="CashCarryModel.Tbl_SubZone" Width="1.5" PointX="11.375" PointY="0.75" IsExpanded="false" />
         <EntityTypeShape EntityType="CashCarryModel.View_SubZone" Width="1.5" PointX="3.375" PointY="11.75" />
         <EntityTypeShape EntityType="CashCarryModel.View_tbl_Customer" Width="1.5" PointX="11.375" PointY="5.75" />
-        <EntityTypeShape EntityType="CashCarryModel.View_DetailPurchase" Width="1.5" PointX="0.75" PointY="9.75" />
         <EntityTypeShape EntityType="CashCarryModel.tbl_ProductPrice" Width="1.5" PointX="11.375" PointY="9.75" />
         <EntityTypeShape EntityType="CashCarryModel.View_ProductPrice" Width="1.5" PointX="12.375" PointY="2.75" />
         <EntityTypeShape EntityType="CashCarryModel.tbl_Product" Width="1.5" PointX="5.375" PointY="12.75" />
         <EntityTypeShape EntityType="CashCarryModel.View_SaleLedger" Width="1.5" PointX="7.375" PointY="12.75" />
+        <EntityTypeShape EntityType="CashCarryModel.View_DetailPurchase" Width="1.5" PointX="0.75" PointY="9.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

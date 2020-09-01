@@ -55,11 +55,11 @@
     <EntitySet Name="Tbl_SubZone" EntityType="CashCarryModel.Tbl_SubZone" />
     <EntitySet Name="View_SubZone" EntityType="CashCarryModel.View_SubZone" />
     <EntitySet Name="View_tbl_Customer" EntityType="CashCarryModel.View_tbl_Customer" />
-    <EntitySet Name="View_DetailPurchase" EntityType="CashCarryModel.View_DetailPurchase" />
     <EntitySet Name="tbl_ProductPrice" EntityType="CashCarryModel.tbl_ProductPrice" />
     <EntitySet Name="View_ProductPrice" EntityType="CashCarryModel.View_ProductPrice" />
     <EntitySet Name="tbl_Product" EntityType="CashCarryModel.tbl_Product" />
     <EntitySet Name="View_SaleLedger" EntityType="CashCarryModel.View_SaleLedger" />
+    <EntitySet Name="View_DetailPurchase" EntityType="CashCarryModel.View_DetailPurchase" />
   </EntityContainer>
   <EntityType Name="tbl_Zone">
     <Key>
@@ -151,6 +151,7 @@
     <Property Name="TotalAmount" Type="Decimal" Precision="18" Scale="2" />
     <Property Name="Ctn" Type="Decimal" Precision="18" Scale="2" />
     <Property Name="ProfitLoss" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="RetailPrice" Type="Decimal" Precision="18" Scale="2" />
   </EntityType>
   <EntityType Name="tbl_SaleMAster">
     <Key>
@@ -188,6 +189,7 @@
     <Property Name="TotalAmount" Type="Decimal" Precision="18" Scale="2" />
     <Property Name="Ctn" Type="Decimal" Precision="18" Scale="2" />
     <Property Name="frieght" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="PurchasePrice" Type="Decimal" Precision="18" Scale="2" />
   </EntityType>
   <EntityType Name="Tbl_PurchaseMaster">
     <Key>
@@ -223,6 +225,7 @@
     <Property Name="Discount" Type="Decimal" Precision="18" Scale="2" />
     <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
     <Property Name="Ctn" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="RetailPrice" Type="Decimal" Precision="18" Scale="2" />
   </EntityType>
   <EntityType Name="Tbl_ReturnSaleMaster">
     <Key>
@@ -246,6 +249,7 @@
     <Property Name="Quantity" Type="Int32" />
     <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
     <Property Name="Ctn" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="PurchasePrice" Type="Decimal" Precision="18" Scale="2" />
   </EntityType>
   <EntityType Name="Tbl_PurchaseReturn_Master">
     <Key>
@@ -391,33 +395,6 @@
     <Property Name="DuePayment" Type="Decimal" Precision="18" Scale="2" />
     <Property Name="ZoneID" Type="Int32" />
   </EntityType>
-  <EntityType Name="View_DetailPurchase">
-    <Key>
-      <PropertyRef Name="Sr_" />
-      <PropertyRef Name="InvoiceNo" />
-      <PropertyRef Name="CompanyID" />
-    </Key>
-    <Property Name="Sr_" Type="Int32" Nullable="false" />
-    <Property Name="InvoiceNo" Type="Int32" Nullable="false" />
-    <Property Name="CompanyID" Type="Int32" Nullable="false" />
-    <Property Name="CompanyName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="Contact" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="Date" Type="DateTime" Precision="3" />
-    <Property Name="ProductID" Type="Int32" />
-    <Property Name="ProductName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-    <Property Name="TradePrice" Type="Decimal" Precision="18" Scale="2" />
-    <Property Name="Ctn" Type="Decimal" Precision="18" Scale="2" />
-    <Property Name="Quantity" Type="Int32" />
-    <Property Name="frieght" Type="Decimal" Precision="18" Scale="2" />
-    <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
-    <Property Name="Distribution_Margin" Type="Decimal" Precision="18" Scale="2" />
-    <Property Name="TotalAmount" Type="Decimal" Precision="18" Scale="2" />
-    <Property Name="FurDiscount" Type="Decimal" Precision="18" Scale="2" />
-    <Property Name="GrandTotal" Type="Decimal" Precision="18" Scale="2" />
-    <Property Name="Payment" Type="Decimal" Precision="18" Scale="2" />
-    <Property Name="Balance" Type="Decimal" Precision="18" Scale="2" />
-    <Property Name="New_Balance" Type="Decimal" Precision="18" Scale="2" />
-  </EntityType>
   <EntityType Name="tbl_ProductPrice">
     <Key>
       <PropertyRef Name="ProductPriceId" />
@@ -471,5 +448,30 @@
     <Property Name="Date" Type="DateTime" Precision="3" />
     <Property Name="Balance" Type="Decimal" Precision="18" Scale="2" />
     <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="View_DetailPurchase">
+    <Key>
+      <PropertyRef Name="Sr_" />
+    </Key>
+    <Property Name="Sr_" Type="Int32" Nullable="false" />
+    <Property Name="InvoiceNo" Type="Int32" />
+    <Property Name="CompanyID" Type="Int32" />
+    <Property Name="CompanyName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Contact" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
+    <Property Name="ProductID" Type="Int32" />
+    <Property Name="ProductName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="TP" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Ctn" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Quantity" Type="Int32" />
+    <Property Name="frieght" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Distribution_Margin" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="TotalAmount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="FurDiscount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="GrandTotal" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Payment" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Balance" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="New_Balance" Type="Decimal" Precision="18" Scale="2" />
   </EntityType>
 </Schema>

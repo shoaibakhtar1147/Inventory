@@ -43,6 +43,7 @@ namespace CashandCarry.Vendor
 
         private void FormDisable()
         {
+            txtNewBalance.Enabled = false;
             txtRemainID.Enabled = false;
             txtComID.Enabled = false;
             txtComName.Enabled = false;
@@ -150,12 +151,7 @@ namespace CashandCarry.Vendor
             }
             objLedger.save();
             (new PurchaseLedgerBL()).UpdateBalance(objLedger.Balance,objLedger.CompanyID); 
-            //PurchaseReturnBL obj = new PurchaseReturnBL() 
-            //{ 
-            // CompanyID=Convert.ToInt32(txtComID.Text),
-            // DuePayment =Convert.ToDecimal(txtReturnCash.Text)
-            //};
-            //obj.UpdateDuePayment();
+           
             MessageBox.Show("Payment Paid "+ txtReturnCash.Text);
 
             PurRemainIDReport objrpt = new PurRemainIDReport();
@@ -188,6 +184,17 @@ namespace CashandCarry.Vendor
             
            
 
+        }
+
+        private void txtReturnCash_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtReturnCash.Text))
+            {
+                decimal pre = Convert.ToDecimal(txtPreBalance.Text);
+                decimal cash = Convert.ToDecimal(txtReturnCash.Text);
+                decimal bal = pre - cash;
+                txtNewBalance.Text = bal.ToString();
+            }
         }
     }
 }

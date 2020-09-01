@@ -22,5 +22,6 @@ namespace CashandCarry.Model
         public Nullable<decimal> TotalAmount { get; set; }
         public Nullable<decimal> Ctn { get; set; }
         public Nullable<decimal> ProfitLoss { get; set; }
+        public Nullable<decimal> RetailPrice { get; set; }
     }
 }

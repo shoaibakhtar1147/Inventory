@@ -301,6 +301,7 @@
             this.txtReturnCash.Name = "txtReturnCash";
             this.txtReturnCash.Size = new System.Drawing.Size(171, 23);
             this.txtReturnCash.TabIndex = 5;
+            this.txtReturnCash.TextChanged += new System.EventHandler(this.txtReturnCash_TextChanged);
             // 
             // label4
             // 

@@ -122,6 +122,9 @@ namespace CashandCarry.Sales
                 this.dgvProduct.Columns["GrandTotal"].Visible = false;
                 this.dgvProduct.Columns["Payment"].Visible = false;
                 this.dgvProduct.Columns["Code"].Visible = false;
+                this.dgvProduct.Columns["OrderBy"].Visible = false;
+                this.dgvProduct.Columns["CustomerID"].Visible = false;
+                this.dgvProduct.Columns["ProfitLoss"].Visible = false;
                 dgvProduct.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                
             }
@@ -320,22 +323,7 @@ namespace CashandCarry.Sales
        
         private void btnSave_Click(object sender, EventArgs e)
         {
-        //    ReturnSaleBL objUp = new ReturnSaleBL();
-        //    for (int i = 0; i < dgvReturnItem.Rows.Count; i++)
-        //    {
-        //        objUp.TotalAmount = Convert.ToDecimal(dgvReturnItem.Rows[0].Cells[7].Value.ToString());
-        //        objUp.Invoiceno = Convert.ToInt32(txtInvoiceID.Text);
-        //        objUp.Quantity = Convert.ToInt32(dgvReturnItem.Rows[0].Cells[5].Value.ToString());
-        //        objUp.ProductID = Convert.ToInt32(dgvReturnItem.Rows[0].Cells[2].Value.ToString());
-        //        objUp.UpdateInvoice();
-        //    }
-        //    ReturnSaleBL obj2 = new ReturnSaleBL()
-        //    {
-        //        Invoiceno = Convert.ToInt32(txtInvoiceID.Text),
-        //        TotalBill = Convert.ToDecimal(txtTotalBill.Text)
-
-        //    };
-        //    obj2.UpdateInvoice();
+      
         
           
 
@@ -353,11 +341,12 @@ namespace CashandCarry.Sales
             {
 
                 objDetail.RInvoice = Convert.ToInt32(txtReturnID.Text);
-                objDetail.ProductID = Convert.ToInt32(dgvReturnItem.Rows[0].Cells[2].Value.ToString());
+                objDetail.ProductID = Convert.ToInt32(dgvReturnItem.Rows[i].Cells[2].Value.ToString());
+                objDetail.RP=Convert.ToDecimal(dgvReturnItem.Rows[i].Cells[4].Value.ToString());
                 objDetail.Ctn = Convert.ToDecimal(dgvReturnItem.Rows[i].Cells[5].Value.ToString());
-                objDetail.Quantity = Convert.ToInt32(dgvReturnItem.Rows[0].Cells[6].Value.ToString());
-                objDetail.Discount = Convert.ToDecimal(dgvReturnItem.Rows[0].Cells[7].Value.ToString());
-                objDetail.Amount = Convert.ToDecimal(dgvReturnItem.Rows[0].Cells[8].Value.ToString());
+                objDetail.Quantity = Convert.ToInt32(dgvReturnItem.Rows[i].Cells[6].Value.ToString());
+                objDetail.Discount = Convert.ToDecimal(dgvReturnItem.Rows[i].Cells[7].Value.ToString());
+                objDetail.Amount = Convert.ToDecimal(dgvReturnItem.Rows[i].Cells[8].Value.ToString());
                 objDetail.SaveDetail();
             }
             PurchaseInvoiceBL objPur = new PurchaseInvoiceBL();
@@ -468,6 +457,9 @@ namespace CashandCarry.Sales
             }
             dgvProduct.DataSource = null;
             dgvReturnItem.DataSource = null;
+            lblCtn.Text = "";
+            lblPiePerCtn.Text = "";
+            lblQuantity.Text = "";
         }
 
         private void txtReturnPay_TextChanged(object sender, EventArgs e)
@@ -497,6 +489,7 @@ namespace CashandCarry.Sales
                // txtDiscount.Text = dgvProduct.Rows[rowindex].Cells[8].Value.ToString();
                 lblCtn.Text = dgvProduct.Rows[rowindex].Cells[6].Value.ToString();
                 lblQuantity.Text=dgvProduct.Rows[rowindex].Cells[7].Value.ToString();
+                txtPrice.Text = dgvProduct.Rows[rowindex].Cells[5].Value.ToString();
                
                 FormEnable();
                 txtCusName.Focus();
@@ -548,7 +541,6 @@ namespace CashandCarry.Sales
                 if (dt != null && dt.Count > 0)
                 {
                     txtProdID.Text = Convert.ToString(dt[0].ProductID);
-                    txtPrice.Text = Convert.ToString(dt[0].RetailPrice);
                     lblPiePerCtn.Text = Convert.ToString(dt[0].PiecePerCtn);
                 }
             }

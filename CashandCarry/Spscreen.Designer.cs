@@ -29,24 +29,24 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblTraderName = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.lblcount = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // label1
+            // lblTraderName
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label1.Location = new System.Drawing.Point(86, 120);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(253, 44);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Umer Traders";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.lblTraderName.AutoSize = true;
+            this.lblTraderName.Font = new System.Drawing.Font("Century Gothic", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTraderName.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblTraderName.Location = new System.Drawing.Point(86, 120);
+            this.lblTraderName.Name = "lblTraderName";
+            this.lblTraderName.Size = new System.Drawing.Size(253, 44);
+            this.lblTraderName.TabIndex = 0;
+            this.lblTraderName.Text = "Umer Traders";
+            this.lblTraderName.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -93,7 +93,7 @@
             this.Controls.Add(this.lblcount);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblTraderName);
             this.Name = "Spscreen";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
@@ -105,11 +105,11 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label lblcount;
+        public System.Windows.Forms.Label lblTraderName;
     }
 }
 

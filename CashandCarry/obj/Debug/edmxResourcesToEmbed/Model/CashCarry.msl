@@ -95,6 +95,7 @@
     <EntitySetMapping Name="tbl_Saledetail">
       <EntityTypeMapping TypeName="CashCarryModel.tbl_Saledetail">
         <MappingFragment StoreEntitySet="tbl_Saledetail">
+          <ScalarProperty Name="RetailPrice" ColumnName="RetailPrice" />
           <ScalarProperty Name="ProfitLoss" ColumnName="ProfitLoss" />
           <ScalarProperty Name="Ctn" ColumnName="Ctn" />
           <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
@@ -139,6 +140,7 @@
     <EntitySetMapping Name="Tbl_PurchaseDetail">
       <EntityTypeMapping TypeName="CashCarryModel.Tbl_PurchaseDetail">
         <MappingFragment StoreEntitySet="Tbl_PurchaseDetail">
+          <ScalarProperty Name="PurchasePrice" ColumnName="PurchasePrice" />
           <ScalarProperty Name="frieght" ColumnName="frieght" />
           <ScalarProperty Name="Ctn" ColumnName="Ctn" />
           <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
@@ -180,6 +182,7 @@
     <EntitySetMapping Name="Tbl_ReturnSaleDetail">
       <EntityTypeMapping TypeName="CashCarryModel.Tbl_ReturnSaleDetail">
         <MappingFragment StoreEntitySet="Tbl_ReturnSaleDetail">
+          <ScalarProperty Name="RetailPrice" ColumnName="RetailPrice" />
           <ScalarProperty Name="Ctn" ColumnName="Ctn" />
           <ScalarProperty Name="Amount" ColumnName="Amount" />
           <ScalarProperty Name="Discount" ColumnName="Discount" />
@@ -206,6 +209,7 @@
     <EntitySetMapping Name="Tbl_PurchaseReturn_Detail">
       <EntityTypeMapping TypeName="CashCarryModel.Tbl_PurchaseReturn_Detail">
         <MappingFragment StoreEntitySet="Tbl_PurchaseReturn_Detail">
+          <ScalarProperty Name="PurchasePrice" ColumnName="PurchasePrice" />
           <ScalarProperty Name="Ctn" ColumnName="Ctn" />
           <ScalarProperty Name="Amount" ColumnName="Amount" />
           <ScalarProperty Name="Quantity" ColumnName="Quantity" />
@@ -372,32 +376,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="View_DetailPurchase">
-      <EntityTypeMapping TypeName="CashCarryModel.View_DetailPurchase">
-        <MappingFragment StoreEntitySet="View_DetailPurchase">
-          <ScalarProperty Name="New_Balance" ColumnName="New Balance" />
-          <ScalarProperty Name="Balance" ColumnName="Balance" />
-          <ScalarProperty Name="Payment" ColumnName="Payment" />
-          <ScalarProperty Name="GrandTotal" ColumnName="GrandTotal" />
-          <ScalarProperty Name="FurDiscount" ColumnName="FurDiscount" />
-          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
-          <ScalarProperty Name="Distribution_Margin" ColumnName="Distribution Margin" />
-          <ScalarProperty Name="Amount" ColumnName="Amount" />
-          <ScalarProperty Name="frieght" ColumnName="frieght" />
-          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-          <ScalarProperty Name="Ctn" ColumnName="Ctn" />
-          <ScalarProperty Name="TradePrice" ColumnName="TradePrice" />
-          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
-          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
-          <ScalarProperty Name="Date" ColumnName="Date" />
-          <ScalarProperty Name="Contact" ColumnName="Contact" />
-          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
-          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
-          <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
-          <ScalarProperty Name="Sr_" ColumnName="Sr#" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="tbl_ProductPrice">
       <EntityTypeMapping TypeName="CashCarryModel.tbl_ProductPrice">
         <MappingFragment StoreEntitySet="tbl_ProductPrice">
@@ -453,6 +431,32 @@
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
           <ScalarProperty Name="STId" ColumnName="STId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="View_DetailPurchase">
+      <EntityTypeMapping TypeName="CashCarryModel.View_DetailPurchase">
+        <MappingFragment StoreEntitySet="View_DetailPurchase">
+          <ScalarProperty Name="New_Balance" ColumnName="New Balance" />
+          <ScalarProperty Name="Balance" ColumnName="Balance" />
+          <ScalarProperty Name="Payment" ColumnName="Payment" />
+          <ScalarProperty Name="GrandTotal" ColumnName="GrandTotal" />
+          <ScalarProperty Name="FurDiscount" ColumnName="FurDiscount" />
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+          <ScalarProperty Name="Distribution_Margin" ColumnName="Distribution Margin" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="frieght" ColumnName="frieght" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Ctn" ColumnName="Ctn" />
+          <ScalarProperty Name="TP" ColumnName="TP" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Contact" ColumnName="Contact" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+          <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
+          <ScalarProperty Name="Sr_" ColumnName="Sr#" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

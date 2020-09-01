@@ -15,14 +15,14 @@ namespace CashandCarry.Model
     public partial class View_DetailPurchase
     {
         public int Sr_ { get; set; }
-        public int InvoiceNo { get; set; }
-        public int CompanyID { get; set; }
+        public Nullable<int> InvoiceNo { get; set; }
+        public Nullable<int> CompanyID { get; set; }
         public string CompanyName { get; set; }
         public string Contact { get; set; }
         public Nullable<System.DateTime> Date { get; set; }
         public Nullable<int> ProductID { get; set; }
         public string ProductName { get; set; }
-        public Nullable<decimal> TradePrice { get; set; }
+        public Nullable<decimal> TP { get; set; }
         public Nullable<decimal> Ctn { get; set; }
         public Nullable<int> Quantity { get; set; }
         public Nullable<decimal> frieght { get; set; }
