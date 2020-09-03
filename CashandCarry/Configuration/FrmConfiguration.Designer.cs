@@ -208,7 +208,7 @@
             this.panel8.Controls.Add(this.btnProduct);
             this.panel8.Controls.Add(this.label3);
             this.panel8.Controls.Add(this.pictureBox3);
-            this.panel8.Location = new System.Drawing.Point(170, 292);
+            this.panel8.Location = new System.Drawing.Point(378, 292);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(165, 156);
             this.panel8.TabIndex = 7;
@@ -421,7 +421,7 @@
             this.panel5.Controls.Add(this.btnSetPrice);
             this.panel5.Controls.Add(this.label8);
             this.panel5.Controls.Add(this.pictureBox8);
-            this.panel5.Location = new System.Drawing.Point(378, 292);
+            this.panel5.Location = new System.Drawing.Point(170, 292);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(165, 156);
             this.panel5.TabIndex = 9;

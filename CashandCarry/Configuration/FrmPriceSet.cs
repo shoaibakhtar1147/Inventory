@@ -69,8 +69,16 @@ namespace CashandCarry.Configuration
 
         private void btnAddnew_Click(object sender, EventArgs e)
         {
-            FromEnable();
-            LoadProduct();
+            SetPriceBL objBL = new SetPriceBL();
+            var dt = objBL.AddNew();
+            if(dt.Rows.Count>0)
+            {
+                txtPriceId.Text = Convert.ToString(dt.Rows[0]["ProductPriceId"]);
+                FromEnable();
+                LoadProduct();
+                txtProductName.Focus();
+            }
+           
             
         }
 
@@ -169,7 +177,7 @@ namespace CashandCarry.Configuration
                 bool Status=rdActive.Checked ? true : false;
                 SetPriceBL obj = new SetPriceBL() 
                 {
-                    ProductID=Convert.ToInt32(txtProductId.Text),
+                    ProductPriceId=Convert.ToInt32(txtPriceId.Text),
                 IsActive=Status,
                 SellerPrice=Convert.ToDecimal(txtSellerPrice.Text),
                 BuyerPrice=Convert.ToDecimal(txtBuyerPrice.Text)
@@ -193,6 +201,7 @@ namespace CashandCarry.Configuration
             int columnindex = e.ColumnIndex;
             if(columnindex ==0)
             {
+                txtPriceId.Text = dgvProductPrice.Rows[rowindex].Cells[2].Value.ToString();
                 txtProductId.Text = dgvProductPrice.Rows[rowindex].Cells[3].Value.ToString();
                 txtProductName.Text = dgvProductPrice.Rows[rowindex].Cells[4].Value.ToString();
                 txtBuyerPrice.Text =  dgvProductPrice.Rows[rowindex].Cells[5].Value.ToString();
@@ -206,8 +215,29 @@ namespace CashandCarry.Configuration
                 {
                     rdNotActive.Checked = true;
                 }
+                
                 FromEnable();
                 btnUpdate.Enabled = true;
+            }
+
+            else if(columnindex ==1)
+            {
+                string message = "Are You Sure To Delete Price of " + dgvProductPrice.Rows[rowindex].Cells[4].Value.ToString() + "?";
+                if (MessageBox.Show(message, "Delete Alert", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                {
+                    SetPriceBL objCus = new SetPriceBL()
+                    {
+                        ProductPriceId = Convert.ToInt32(dgvProductPrice.Rows[rowindex].Cells[2].Value.ToString())
+                    };
+                    objCus.Delete();
+                    MessageBox.Show("Record Delete Successfull");
+                    LoadData();
+
+                }
+                else
+                {
+                    MessageBox.Show("No Record Deleted");
+                }
             }
         }
 
@@ -221,6 +251,31 @@ namespace CashandCarry.Configuration
             if (dt != null)
             {
                 txtProductId.Text = Convert.ToString(dt[0].ProductID);
+            }
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            if (txtSearch.Text == string.Empty)
+            {
+                LoadData();
+
+            }
+            else
+            {
+                SetPriceBL obj = new SetPriceBL()
+                {
+                     Productname= txtSearch.Text.ToLower()
+                };
+                var dt = obj.Search();
+                AutoCompleteStringCollection coll = new AutoCompleteStringCollection();
+                txtSearch.AutoCompleteMode = AutoCompleteMode.Suggest;
+                txtSearch.AutoCompleteSource = AutoCompleteSource.CustomSource;
+                txtSearch.AutoCompleteCustomSource = coll;
+                if (dt.Count > 0)
+                {
+                    dgvProductPrice.DataSource = dt;
+                }
             }
         }
 
