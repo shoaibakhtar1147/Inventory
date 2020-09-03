@@ -9,11 +9,18 @@ namespace CashandCarry
 {
     public sealed class DB
     {
+        public static string ConnectionString
+        {
+            get
+            {
+                return @"Data Source=SHOAIB-PC\SQLEXPRESS;Database=CashCarry;integrated security=true";
+            }
+        }
 
         public static int insert(string query)
         {
-          
-            string constring = @"Data Source=SHOAIB-PC\SQLEXPRESS;Database=CashCarry;integrated security=true";
+
+            string constring = ConnectionString;
             SqlConnection con = new SqlConnection(constring);
             try
             {
@@ -41,7 +48,7 @@ namespace CashandCarry
       
         public static string SelectScalerWithSP(string spName,SqlParameter[]prm)
         {
-            string constring = @"Data Source=SHOAIB-PC\SQLEXPRESS;Database=CashCarry;integrated security=true";
+            string constring = ConnectionString;
             try
             {
                 SqlConnection cn = new SqlConnection(constring);
@@ -66,7 +73,7 @@ namespace CashandCarry
         }
         public static int ExecuteNonQueryWithSP(string spName, SqlParameter[] prm)
         {
-            string constring = @"Data Source=SHOAIB-PC\SQLEXPRESS;Database=CashCarry;integrated security=true";
+            string constring = ConnectionString;
             //SqlConnection con = new SqlConnection();
             SqlConnection cn = new SqlConnection(constring);
             try
@@ -88,7 +95,7 @@ namespace CashandCarry
         }
         public static DataTable Select(string query)
         {
-            string constring = @"Data Source=SHOAIB-PC\SQLEXPRESS;Database=CashCarry;integrated security=true";
+            string constring = ConnectionString;
             try
             {
 
@@ -109,7 +116,7 @@ namespace CashandCarry
         }
         public static DataTable SelectTableWithSP(string spName,SqlParameter[] prm)
         {
-            string constring = @"Data Source=SHOAIB-PC\SQLEXPRESS;Database=CashCarry;integrated security=true";
+            string constring = ConnectionString;
             try
             {
                 SqlConnection cn = new SqlConnection(constring);

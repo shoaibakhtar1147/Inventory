@@ -523,7 +523,7 @@ namespace CashandCarry.Vendor
             if (txtCtn.Text != string.Empty)
             {
                 decimal val1 = Convert.ToDecimal(txtPrice.Text);
-                int val2 = Convert.ToInt32(txtCtn.Text);
+                int val2 = Convert.ToInt32(txtQuantity.Text);
                 int val3 = Convert.ToInt32(val1 * val2);
                 txtAmount.Text = val3.ToString();
             }

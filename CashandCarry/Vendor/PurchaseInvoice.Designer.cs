@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtPurInvoiceDate = new System.Windows.Forms.DateTimePicker();
             this.txtInvoiceID = new System.Windows.Forms.TextBox();
@@ -98,6 +98,7 @@
             this.btnClear = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnPrice = new System.Windows.Forms.Button();
+            this.ChkComplete = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -270,6 +271,7 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.ChkComplete);
             this.groupBox4.Controls.Add(this.txtfrieghtQuan);
             this.groupBox4.Controls.Add(this.txtfrieghtCtn);
             this.groupBox4.Controls.Add(this.lblfrieghtQuan);
@@ -852,14 +854,14 @@
             // 
             this.dgvProduct.AllowUserToAddRows = false;
             this.dgvProduct.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvProduct.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProduct.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvProduct.Location = new System.Drawing.Point(0, 0);
             this.dgvProduct.Name = "dgvProduct";
             this.dgvProduct.Size = new System.Drawing.Size(856, 262);
@@ -938,6 +940,20 @@
             this.btnPrice.Text = "Update Price";
             this.btnPrice.UseVisualStyleBackColor = false;
             this.btnPrice.Click += new System.EventHandler(this.btnPrice_Click);
+            // 
+            // ChkComplete
+            // 
+            this.ChkComplete.AutoSize = true;
+            this.ChkComplete.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ChkComplete.Location = new System.Drawing.Point(507, 321);
+            this.ChkComplete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.ChkComplete.Name = "ChkComplete";
+            this.ChkComplete.Size = new System.Drawing.Size(93, 21);
+            this.ChkComplete.TabIndex = 128;
+            this.ChkComplete.Text = "Complete";
+            this.ChkComplete.UseVisualStyleBackColor = true;
+            this.ChkComplete.CheckedChanged += new System.EventHandler(this.ChkComplete_CheckedChanged);
+            this.ChkComplete.Leave += new System.EventHandler(this.ChkComplete_Leave);
             // 
             // PurchaseInvoice
             // 
@@ -1044,5 +1060,6 @@
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Button btnPrice;
+        private System.Windows.Forms.CheckBox ChkComplete;
     }
 }

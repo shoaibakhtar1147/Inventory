@@ -266,6 +266,7 @@ namespace CashandCarry.Vendor
             dr[8] = Convert.ToDecimal(txtAmount.Text);
             dt.Rows.Add(dr);
             ChkFrieghtOrder.Checked = false;
+            ChkComplete.Focus();
             SumCalculate();
             txtTotalBill.Focus();
             ClearGroup();
@@ -582,7 +583,7 @@ namespace CashandCarry.Vendor
             else
             {
                 decimal val = Convert.ToDecimal(txtPrice.Text);
-                decimal val1 = Convert.ToDecimal(txtCtn.Text);
+                decimal val1 = Convert.ToDecimal(txtQuantity.Text);
                 decimal val2 = val * val1;
                 txtAmount.Text = val2.ToString();
             }
@@ -625,6 +626,30 @@ namespace CashandCarry.Vendor
         private void txtTotalPay_Leave(object sender, EventArgs e)
         {
             btnSave.Focus();
+        }
+
+        private void ChkComplete_Leave(object sender, EventArgs e)
+        {
+            if (ChkComplete.Checked == true)
+            {
+                txtBillDiscount.Focus();
+            }
+            else if (ChkComplete.Checked != true)
+            {
+                txtProdName.Focus();
+            }
+        }
+
+        private void ChkComplete_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ChkComplete.Checked == true)
+            {
+                txtBillDiscount.Focus();
+            }
+            else if (ChkComplete.Checked != true)
+            {
+                txtProdName.Focus();
+            }
         }
 
        

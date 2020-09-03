@@ -622,7 +622,7 @@ namespace CashandCarry.Sales
             {
                 if(!string.IsNullOrEmpty(txtCtn.Text))
                 {
-                    decimal ctn = Convert.ToDecimal(txtCtn.Text);
+                    decimal ctn = Convert.ToDecimal(txtQuantity.Text);
                     decimal retailPrice = Convert.ToDecimal(txtPrice.Text);
                     decimal result = Convert.ToDecimal(ctn * retailPrice);
                     txtAmount.Text = result.ToString();
